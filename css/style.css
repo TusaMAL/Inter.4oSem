@@ -1,0 +1,65 @@
+.logoarea52{
+    width: 100px;
+}
+
+.profile-userpic{
+    width: 100px;
+    display: block;
+    margin: auto;
+}
+
+.centerall
+{
+    display: block;
+    margin: auto;
+}
+
+.profile-usertitle-name {
+  color: #55FF00;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 0px 10px 0px;
+  
+}
+
+.profile-text{
+    color: white;
+    text-shadow: 
+        -1px -1px 0px #000,
+         0px -1px 0px #000,
+         1px -1px 0px #000,
+        -1px  0px 0px #000,
+         1px  0px 0px #000,
+        -1px  1px 0px #000,
+         0px  1px 0px #000,
+         1px  1px 0px #000;
+
+}
+
+.glypicon-color{
+    color: #55FF00;
+    text-shadow: 
+        1px 1px 0px #000,
+         0px 1px 0px #000,
+         1px 1px 0px #000,
+        1px  0px 0px #000,
+         0px  0px 0px #000,
+        0px  0px 0px #000,
+         0px  0px 0px #000,
+         0px  0px 0px #000;
+
+}
+span#text-color-area52 {
+    color: #55FF00;
+    font-size: 20px;
+    text-shadow: 
+        1px 1px 0px #000,
+         0px 1px 0px #000,
+         1px 1px 0px #000,
+        1px  0px 0px #000,
+         0px  0px 0px #000,
+        0px  0px 0px #000,
+         0px  0px 0px #000,
+         0px  0px 0px #000;
+
+}
