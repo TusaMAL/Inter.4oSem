@@ -1,13 +1,11 @@
 .logoarea52{
-    width: 125px;
-    height: auto;
+    width: 100px;
 }
 
 .profile-userpic{
-    width: 150px;
+    width: 100px;
     display: block;
     margin: auto;
-    
 }
 
 .centerall
@@ -17,19 +15,10 @@
 }
 
 .profile-usertitle-name {
-  color: #00ff00;
+  color: #55FF00;
   font-size: 20px;
   font-weight: 600;
   padding: 10px 0px 10px 0px;
-  text-shadow: 
-        -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000;
   
 }
 
@@ -48,60 +37,21 @@
 }
 
 .glypicon-color{
-    color: #00ff00;
+    color: #55FF00;
     text-shadow: 
-        -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000;
+        1px 1px 0px #000,
+         0px 1px 0px #000,
+         1px 1px 0px #000,
+        1px  0px 0px #000,
+         0px  0px 0px #000,
+        0px  0px 0px #000,
+         0px  0px 0px #000,
+         0px  0px 0px #000;
 
 }
-
-.glypicon-color-menu{
-    color: #00ff00;
-    text-shadow: 
-        -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000;
-
-}
-
-.glypicon-color-menu:hover{
-    color: #00d214;
-
-}
-
-#glypicon-color-menu{
-    color: #00ff00;
-    text-shadow: 
-        -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000;
-
-}
-
-#glypicon-color-menu:hover{
-    color: #00d214;
-
-}
-
-
 span#text-color-area52 {
-    color: #00ff00;
+    color: #55FF00;
+    font-size: 20px;
     text-shadow: 
         1px 1px 0px #000,
          0px 1px 0px #000,
