@@ -3,6 +3,12 @@
     height: auto;
 }
 
+a:link, a:visited, a:hover, a:active {
+  color: #00ff00;
+  text-decoration: none;
+  /* removendo alterações no link caso ja tenha visitado pra n mudar cor e etc */
+}
+
 .profile-userpic{
     width: 150px;
     display: block;
@@ -72,7 +78,7 @@
         -1px  1px 0px #000,
          0px  1px 0px #000,
          1px  1px 0px #000;
-        
+        text-decoration: none;
 
 
 }
