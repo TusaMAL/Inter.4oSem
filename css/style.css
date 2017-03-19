@@ -1,9 +1,10 @@
-.logoarea52{
+#logoarea52{
+    margin: -2px 10px 0px 25px;
     width: 125px;
     height: auto;
 }
 
-a:link, a:visited, a:hover, a:active {
+a:link, a:visited, a:hover, a:active, button:link, button:visited, button:hover, button:active {
   color: #00ff00;
   text-decoration: none;
   /* removendo alterações no link caso ja tenha visitado pra n mudar cor e etc */
