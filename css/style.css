@@ -28,56 +28,56 @@ a:link, a:visited, a:hover, a:active {
   font-weight: 600;
   padding: 10px 0px 10px 0px;
   text-shadow: 
-        -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000;
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b;
   
 }
 
 .profile-text{
     color: white;
     text-shadow: 
-        -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000;
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b;
 
 }
 
 .glypicon-color{
     color: #00ff00;
     text-shadow: 
-        -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000;
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b;
 
 }
 
 .glypicon-color-menu{
     color: #00ff00;
     text-shadow: 
-        -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000;
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b;
         text-decoration: none;
 
 
@@ -92,14 +92,14 @@ a:link, a:visited, a:hover, a:active {
 #glypicon-color-menu{
     color: #00ff00;
     text-shadow: 
-        -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000;
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b;
 
 }
 
@@ -112,18 +112,17 @@ a:link, a:visited, a:hover, a:active {
 span#text-color-area52 {
     color: #00ff00;
     text-shadow: 
-        -1px -1px 0px #000,
-         0px -1px 0px #000,
-         1px -1px 0px #000,
-        -1px  0px 0px #000,
-         1px  0px 0px #000,
-        -1px  1px 0px #000,
-         0px  1px 0px #000,
-         1px  1px 0px #000;
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b,
+         0px  0px 0.5px #1b1b1b;
 
 }
 
 .borda-profile{
     border:1px solid black;
-    
 }
