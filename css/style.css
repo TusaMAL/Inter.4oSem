@@ -39,27 +39,27 @@
 .glypicon-color{
     color: #55FF00;
     text-shadow: 
-        1px 1px 0px #000,
-         0px 1px 0px #000,
-         1px 1px 0px #000,
-        1px  0px 0px #000,
-         0px  0px 0px #000,
-        0px  0px 0px #000,
-         0px  0px 0px #000,
-         0px  0px 0px #000;
+        -1px -1px 0px #000,
+         0px -1px 0px #000,
+         1px -1px 0px #000,
+        -1px  0px 0px #000,
+         1px  0px 0px #000,
+        -1px  1px 0px #000,
+         0px  1px 0px #000,
+         1px  1px 0px #000;
 
 }
 span#text-color-area52 {
     color: #55FF00;
     font-size: 20px;
     text-shadow: 
-        1px 1px 0px #000,
-         0px 1px 0px #000,
-         1px 1px 0px #000,
-        1px  0px 0px #000,
-         0px  0px 0px #000,
-        0px  0px 0px #000,
-         0px  0px 0px #000,
-         0px  0px 0px #000;
+        -1px -1px 0px #000,
+         0px -1px 0px #000,
+         1px -1px 0px #000,
+        -1px  0px 0px #000,
+         1px  0px 0px #000,
+        -1px  1px 0px #000,
+         0px  1px 0px #000,
+         1px  1px 0px #000;
 
 }
