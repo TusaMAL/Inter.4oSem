@@ -35,20 +35,29 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<<<<<<< HEAD
       <ul class="nav navbar-nav">
           <li><a href="#"><span class="glyphicon glyphicon-home glypicon-color"></span> </a></li>
         <li><a href="#"><span class="glyphicon glyphicon-cog glypicon-color-menu"></span> </a></li>
         
         
       </ul>
+=======
+      
+>>>>>>> refs/remotes/origin/site-1.0
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search Friends">
+          <button class="btn btn-default glypicon-color-menu" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+          
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-out glypicon-color"></span> Logout</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-home glypicon-color-menu"> Home</span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-cog glypicon-color-menu"> Settings</span> </a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-out glypicon-color"> Logout</span> </a></li>
         
         </li>
       </ul>
@@ -68,7 +77,7 @@
      <div class="list-group">
        <div class="list-group-item">
   
-    <img src="../img/pp.jpg" class="profile-userpic img-circle" alt="">
+    <img src="../img/pp.jpg" class="profile-userpic img-circle borda-profile" alt="">
                             
      <p class="profile-usertitle-name profile-text text-center">TusaMAL</p>
      
@@ -82,10 +91,8 @@
     </p>
     
   </div>
-  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item">Morbi leo risus</a>
-  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item">Vestibulum at eros</a>
+  <a href="#" id="glypicon-color-menu" class="list-group-item"><span class="glyphicon glyphicon-ok"> Requests</span></a>
+  <a href="#" id="glypicon-color-menu"class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"> Commends</span></a>
 
      </div>
      </div>
@@ -106,7 +113,7 @@
         <div class="col-lg-7">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <span class="glyphicon glyphicon-time"></span> Feed
+                    <span class="glyphicon glyphicon-time glypicon-color"> Feed</span>
                     
                 </div>
                     <div class="panel-body">
@@ -129,17 +136,18 @@
 
             <div class="col-lg-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><span class="glyphicon glyphicon-user"></span> Friends (0)
+                    <div class="panel-heading"><a href="#"> <span class="glyphicon glyphicon-user glypicon-color-menu"> Friends (0)</span></a>
                     </div>
                         <div class="panel-body">
-                            You haven't added any friends yet
+                            <p class="text-center">You haven't added any friends yet</p>
                         </div>
                     </div>
                     <div class="panel panel-default">
-                    <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> Groups (0)
+                    <div class="panel-heading"><a href="#"><span class="glyphicon glyphicon-list glypicon-color-menu"> Groups (0)</span></a>
                     </div>
                         <div class="panel-body">
-                            You haven't joined at any group yet
+                            <p class="text-center">You haven't joined at any group yet</p>
+                            
                         </div>
                     </div>
             </div>
@@ -191,9 +199,9 @@
     <div class="row">
         <div class="col-lg-12">
             <ul class="nav nav-pills nav-justified">
-                <li><a href="/">© 2013 Disciplina Team</a></li>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Privacy</a></li>
+                <li><a id="glypicon-color-menu" href="#">© 2013 Disciplina Team</a></li>
+                <li><a id="glypicon-color-menu" href="#">Terms of Service</a></li>
+                <li><a id="glypicon-color-menu" href="#">Privacy</a></li>
             </ul>
         </div>
     </div>
@@ -206,9 +214,15 @@
             -->
 
 <!-- Bootstrap Core JavaScript -->
+<<<<<<< HEAD
     <script src="js/bootstrap.min.js"></script>
 </body>
 
 
+=======
+   <script src="../scripts/jquery-1.9.1.min.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
+>>>>>>> refs/remotes/origin/site-1.0
 
+</body>
 </html>
