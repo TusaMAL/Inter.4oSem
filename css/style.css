@@ -58,8 +58,6 @@
         -1px  1px 0px #000,
          0px  1px 0px #000,
          1px  1px 0px #000;
-<<<<<<< HEAD
-=======
 
 }
 
@@ -74,12 +72,14 @@
         -1px  1px 0px #000,
          0px  1px 0px #000,
          1px  1px 0px #000;
->>>>>>> refs/remotes/origin/site-1.0
+        
+
 
 }
 
 .glypicon-color-menu:hover{
     color: #00d214;
+     text-decoration: none;
 
 }
 
