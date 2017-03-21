@@ -6,6 +6,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <!-- Nosso CSS -->
     <link href="../css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
     <title>
         Area52
     </title>
@@ -19,15 +20,15 @@
     
     -->
     
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-default navbar-static-top fixed-nav-bar">
+  <div id="fundopreto" class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button id="botao-menu" type="button" id="cor-fonte-menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span id="barrinha-menu" class="icon-bar"></span>
+        <span id="barrinha-menu" class="icon-bar"></span>
+        <span id="barrinha-menu" class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#"><img id="logoarea52" class="img-responsive" src="../img/area52.png"  alt=""></a>
       
@@ -35,7 +36,8 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left">
+      <!--<form class="navbar-form navbar-left">
+        
         <div class="form-group">
             
           <input type="text" class="form-control" placeholder="Search Friends">
@@ -44,11 +46,14 @@
                         </button>
                         
         </div>
+        
           
       </form>
+      -->
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-home glypicon-color-menu"> Home</span></a></li>
         <li><a href="#"><span class="glyphicon glyphicon-cog glypicon-color-menu"> Settings</span> </a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-ok glypicon-color-menu"> Requests</span> </a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-out glypicon-color-menu"> Logout</span> </a></li>
         
         </li>
@@ -66,26 +71,31 @@
 
      -->
      <div class="col-lg-2">
-     <div class="list-group">
-         
-       <div class="list-group-item">
+     <div id="bordapreta" class="list-group">
+         <div id="fundopreto" class="panel-heading">
+                    <a href="#"> <span class="glyphicon glyphicon-user glypicon-color-menu"> Profile</span></a>
+                    
+                </div>
+       <div id="bordapretageral" class="list-group-item">
+           
   
-    <a href=""> <img src="../img/pp.jpg" class="profile-userpic img-circle thumbnail borda-profile" alt=""></a>
+    <a href=""> <img src="../img/pp.jpg" class="profile-userpic thumbnail borda-profile" alt=""></a>
                             
-     <p class="profile-usertitle-name glypicon-color text-center">TusaMAL</p>
+     <p class="profile-usertitle-name profile-text text-center">TusaMAL</p>
      
 
-     
-    <p class="glypicon-color">Name: Felipe<br />
-    Gender: Male<br />
-    Age: 25<br />
-    City: São José do Rio Preto<br />
-    State: São Paulo<br /><br/>
-    </p>
+     <table>
+        <tr><td class="text-right">Name:</td> <td>&nbsp;Felipe</td></tr>
+        <tr><td class="text-right">Gender:</td> <td>&nbsp;Male</td></tr>
+        <tr><td class="text-right">Age:</td> <td>&nbsp;25</td></tr>
+        <tr><td class="text-right">City:</td> <td>&nbsp;São José do Rio Preto</td></tr>
+        <tr><td class="text-right">State:</td> <td>&nbsp;São Paulo</td></tr>
+    
+     </table>
     
   </div>
-  <a href="#" id="glypicon-color-menu" class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="glyphicon glyphicon-ok"> Requests </span> </a>
-  <a href="#" id="glypicon-color-menu"class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"> Commends</span></a>
+  <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a>
+  <a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
 
      </div>
      </div>
@@ -104,13 +114,222 @@
         -->
 
         <div class="col-lg-7">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div id="bordapreta" class="panel panel-default">
+                <div id="fundopreto" class="panel-heading">
                     <span class="glyphicon glyphicon-time glypicon-color"> Feed</span>
                     
                 </div>
                     <div class="panel-body">
-                        Panel content
+<!-- 
+
+    começo post a esquerda
+
+    -->
+
+
+                        <div class="media">
+  <div class="media-left">
+    <a id="cor-fonte-menu" href="#" class="">
+      <img class="media-object imagem-feed borda-profile" src="../img/pp.jpg" alt="...">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="#" class="cor-fonte-menu">TusaMAL </a></h4>
+    <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) @ <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+    <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+</div>
+
+<!--
+
+    fim Post a esquerda
+
+    -->
+    <!-- 
+
+    começo post a direita
+
+    -->
+
+
+                        <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading text-right"><a href="#" class="cor-fonte-menu">Gust</a></h4>
+      <h6 class="fonte-post-pequena text-right">21-03-2017, 11:20 (UTC- 03:00) @ <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+      <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="media-right">
+        <a id="cor-fonte-menu" href="#" class="">
+      <img src="../img/gust.jpg" class="media-object imagem-feed borda-profile">
+      </a>
+    </div>
+  </div>
+
+
+<!--
+
+    fim Post a direita
+
+    -->
+
+<!-- 
+
+    começo post a esquerda
+
+    -->
+
+
+                        <div class="media">
+  <div class="media-left">
+    <a id="cor-fonte-menu" href="#" class="">
+      <img class="media-object imagem-feed borda-profile" src="../img/john.jpg" alt="...">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="#" class="cor-fonte-menu">MXJonasV </a></h4>
+    <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) @ <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+    <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+</div>
+
+<!--
+
+    fim Post a esquerda
+
+    -->
+    <!-- 
+
+    começo post a direita
+
+    -->
+
+
+                        <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading text-right"><a href="#" class="cor-fonte-menu">Akhenathon</a></h4>
+      <h6 class="fonte-post-pequena text-right">21-03-2017, 11:20 (UTC- 03:00) @ <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+      <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="media-right">
+        <a id="cor-fonte-menu" href="#" class="">
+      <img src="../img/akhe.jpg" class="media-object imagem-feed borda-profile">
+      </a>
+    </div>
+  </div>
+
+
+<!--
+
+    fim Post a direita
+
+    -->
+
+    <!-- 
+
+    começo post a esquerda
+
+    -->
+
+
+                        <div class="media">
+  <div class="media-left">
+    <a id="cor-fonte-menu" href="#" class="">
+      <img class="media-object imagem-feed borda-profile" src="../img/pp.jpg" alt="...">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="#" class="cor-fonte-menu">TusaMAL </a></h4>
+    <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) @ <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+    <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+</div>
+
+<!--
+
+    fim Post a esquerda
+
+    -->
+    <!-- 
+
+    começo post a direita
+
+    -->
+
+
+                        <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading text-right"><a href="#" class="cor-fonte-menu">Gust</a></h4>
+      <h6 class="fonte-post-pequena text-right">21-03-2017, 11:20 (UTC- 03:00) @ <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+      <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="media-right">
+        <a id="cor-fonte-menu" href="#" class="">
+      <img src="../img/gust.jpg" class="media-object imagem-feed borda-profile">
+      </a>
+    </div>
+  </div>
+
+
+<!--
+
+    fim Post a direita
+
+    -->
+
+<!-- 
+
+    começo post a esquerda
+
+    -->
+
+
+                        <div class="media">
+  <div class="media-left">
+    <a id="cor-fonte-menu" href="#" class="">
+      <img class="media-object imagem-feed borda-profile" src="../img/john.jpg" alt="...">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><a href="#" class="cor-fonte-menu">MXJonasV </a></h4>
+    <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) @ <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+    <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+</div>
+
+<!--
+
+    fim Post a esquerda
+
+    -->
+    <!-- 
+
+    começo post a direita
+
+    -->
+
+
+                        <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading text-right"><a href="#" class="cor-fonte-menu">Akhenathon</a></h4>
+      <h6 class="fonte-post-pequena text-right">21-03-2017, 11:20 (UTC- 03:00) @ <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+      <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="media-right">
+        <a id="cor-fonte-menu" href="#" class="">
+      <img src="../img/akhe.jpg" class="media-object imagem-feed borda-profile">
+      </a>
+    </div>
+  </div>
+
+
+<!--
+
+    fim Post a direita
+
+    -->
+    
+    
+                        </div>
                     </div>
             </div>
         </div>
@@ -128,25 +347,25 @@
             -->
 
             <div class="col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><a href="#"> <span class="glyphicon glyphicon-user glypicon-color-menu"> Friends (3)</span></a>
+                <div id="bordapreta" class="panel panel-default">
+                    <div id="fundopreto" class="panel-heading"><a href="#"> <span class="glyphicon glyphicon-star glypicon-color-menu"> Friends (3)</span></a>
                     </div>
                         <div class="panel-body">
                             <div class="row">
                <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/akhe.jpg" alt="">
                     <p class="text-center">Akhenathon</p>
                 </a>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/gust.jpg" alt="">
                     <p class="text-center">Gust</p>
                 </a>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/john.jpg" alt="">
                     <p class="text-center">MXJonasV</p>
                 </a>
@@ -154,64 +373,64 @@
                               </div>
                         </div>
                     </div>
-                    <div class="panel panel-default">
-                    <div class="panel-heading"><a href="#"><span class="glyphicon glyphicon-list glypicon-color-menu"> Groups (9)</span></a>
+                    <div id="bordapreta"  class="panel panel-default">
+                    <div id="fundopreto" class="panel-heading"><a href="#"><span class="glyphicon glyphicon-list glypicon-color-menu"> Groups (9)</span></a>
                     </div>
                         <div class="panel-body">
                             
 
                               <div class="row">
             <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/dota2.jpg" alt="">
                     <p class="text-center">Dota 2 Rio Preto</p>
                 </a>
             </div>
            <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/csgo.jpg" alt="">
                     <p class="text-center">CS:GO Brasil</p>
                 </a>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/overwatch.png" alt="">
                     <p class="text-center">Paladins is da best</p>
                 </a>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/lol.png" alt="">
                     <p class="text-center">League of Legends</p>
                 </a>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/heart.png" alt="">
                     <p class="text-center">Hearthstone BR</p>
                 </a>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/fifa17.png" alt="">
                     <p class="text-center">Tomates Peladeiros</p>
                 </a>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/starcraft.jpg" alt="">
                     <p class="text-center">Star Craft II</p>
                 </a>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="#" class="thumbnail glypicon-color-menu">
+                <a id="cor-fonte-menu" href="#" class="thumbnail">
                     <img class="img-responsive center-block" src="../img/hots.png" alt="">
                     <p class="text-center">Heroes of The Storm</p>
                 </a>
             </div>
                               </div>
                               
-                              <a href="#" class="glypicon-color-menu"><p class="text-right">See more...</p></a>
+                              <a href="#" class="cor-fonte-menu"><p class="text-right">See more...</p></a>
 
                             
                         </div>
@@ -267,13 +486,13 @@
     
   </div>
   
-  <hr>
+  <hr style="border-color: #660066">
     <div class="row">
         <div class="col-lg-12">
             <ul class="nav nav-pills nav-justified">
-                <li><a id="glypicon-color-menu" href="#">© 2017 Disciplina Team</a></li>
-                <li><a id="glypicon-color-menu" href="#">Terms of Service</a></li>
-                <li><a id="glypicon-color-menu" href="#">Privacy</a></li>
+                <li><a id="cor-fonte-menu" href="#">© 2017 Disciplina Team</a></li>
+                <li><a id="cor-fonte-menu" href="#">Terms of Service</a></li>
+                <li><a id="cor-fonte-menu" href="#">Privacy</a></li>
             </ul>
         </div>
     </div>
@@ -287,8 +506,7 @@
 
 <!-- Bootstrap Core JavaScript -->
 
-    <script src="js/bootstrap.min.js"></script>
-</body>
+ 
 
 
 
