@@ -4,8 +4,6 @@ body{
     max-width: 100%;
     overflow-x: hidden;
     padding-top: 70px;
-    font-size: 1.4em;
-    
 }
 
 .fixed-nav-bar {
@@ -165,15 +163,5 @@ span#text-color-area52 {
 
 .fonte-post-pequena{
     font-size: 8pt;
-}
-
-.imagem-grupos-amigos{
-    width: 64px;
-    height: 64px;
-    
-}
-.fonte-responsiva-grupos-amigos
-{
-    font-size: 0.7em;
 }
 
