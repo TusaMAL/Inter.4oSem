@@ -4,7 +4,18 @@ body{
     max-width: 100%;
     overflow-x: hidden;
     padding-top: 70px;
+<<<<<<< HEAD
     font-size: 14px;    
+=======
+<<<<<<< HEAD
+=======
+    font-size: 1.4em;
+<<<<<<< HEAD
+    
+>>>>>>> parent of c305ca5... "Travando" o tamanho das divs amigo/grupo
+=======
+>>>>>>> parent of 4859a59... Revert ""Travando" o tamanho das divs amigo/grupo"
+>>>>>>> parent of d6fc83d... Deletei td nao da sync
 }
 
 .fixed-nav-bar {
@@ -100,14 +111,24 @@ div#fundopreto{
 
 .profile-usertitle-name {
   color: #00ff00;
+<<<<<<< HEAD
   font-size: 1.4em;
   font-weight: 600;
   padding: 10px 0px 10px 0px;
+=======
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 0px 10px 0px;
+ 
+>>>>>>> parent of d6fc83d... Deletei td nao da sync
   
 }
 
 .profile-text{
+<<<<<<< HEAD
 	font-size: 1em;
+=======
+>>>>>>> parent of d6fc83d... Deletei td nao da sync
     color: black;
 
 }
@@ -166,6 +187,11 @@ span#text-color-area52 {
     font-size: 8pt;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> parent of d6fc83d... Deletei td nao da sync
 .imagem-grupos-amigos{
     width: 64px;
     height: 64px;
@@ -174,4 +200,17 @@ span#text-color-area52 {
 .fonte-responsiva-grupos-amigos
 {
     font-size: 0.7em;
+<<<<<<< HEAD
 }
+=======
+}
+
+<<<<<<< HEAD
+>>>>>>> parent of c305ca5... "Travando" o tamanho das divs amigo/grupo
+=======
+div#limitar-tamanho-divs{
+	max-width: 400px;
+	min-width: 200px;
+}
+>>>>>>> parent of 4859a59... Revert ""Travando" o tamanho das divs amigo/grupo"
+>>>>>>> parent of d6fc83d... Deletei td nao da sync
