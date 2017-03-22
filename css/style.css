@@ -4,6 +4,11 @@ body{
     max-width: 100%;
     overflow-x: hidden;
     padding-top: 70px;
+<<<<<<< HEAD
+=======
+    font-size: 1.4em;
+    
+>>>>>>> parent of c305ca5... "Travando" o tamanho das divs amigo/grupo
 }
 
 .fixed-nav-bar {
@@ -165,3 +170,16 @@ span#text-color-area52 {
     font-size: 8pt;
 }
 
+<<<<<<< HEAD
+=======
+.imagem-grupos-amigos{
+    width: 64px;
+    height: 64px;
+    
+}
+.fonte-responsiva-grupos-amigos
+{
+    font-size: 0.7em;
+}
+
+>>>>>>> parent of c305ca5... "Travando" o tamanho das divs amigo/grupo
