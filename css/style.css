@@ -4,8 +4,7 @@ body{
     max-width: 100%;
     overflow-x: hidden;
     padding-top: 70px;
-    font-size: 1.4em;
-    
+    font-size: 14px;    
 }
 
 .fixed-nav-bar {
@@ -101,14 +100,14 @@ div#fundopreto{
 
 .profile-usertitle-name {
   color: #00ff00;
-  font-size: 20px;
+  font-size: 1.4em;
   font-weight: 600;
   padding: 10px 0px 10px 0px;
- 
   
 }
 
 .profile-text{
+	font-size: 1em;
     color: black;
 
 }
@@ -176,4 +175,3 @@ span#text-color-area52 {
 {
     font-size: 0.7em;
 }
-
