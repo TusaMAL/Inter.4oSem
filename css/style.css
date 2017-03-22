@@ -1,12 +1,12 @@
-@media screen and (max-width:480px) {
+@media screen and (max-width:479px) {
 html {
-font-size: 90%;
+font-size: 100%;
 }
 }
 
-@media screen and (min-width: 481px) and (max-width: 950px) {
+@media screen and (min-width: 480px) and (max-width: 950px) {
 body {
-font-size: 100%;
+font-size: 2em;
 }
 }
 
@@ -123,21 +123,6 @@ div#fundopreto{
 
 }
 
-.glypicon-color{
-    color: #00ff00;
-    
-
-}
-
-.glypicon-color-menu{
-    color: #00ff00;
-    text-decoration: none;
-}
-
-.glypicon-color-menu:hover{
-    text-decoration: none;
-    background: #660066;
-}
 
 .link-dentro-body:hover{
     text-decoration: underline;
@@ -177,6 +162,23 @@ div#fundopreto{
     text-decoration: underline;
 }
 
+/*.glypicon-color{
+    color: #00ff00;
+    
+
+}
+
+.glypicon-color-menu{
+    color: #00ff00;
+    text-decoration: none;
+}
+
+.glypicon-color-menu:hover{
+    text-decoration: none;
+    background: #660066;
+}
+
+
 #glypicon-color-menu{
    
     border-color: #000000;   
@@ -185,7 +187,7 @@ div#fundopreto{
 
 #glypicon-color-menu:hover{
     color: #660066;
-}
+}*/
 
 
 span#text-color-area52 {
