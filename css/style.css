@@ -52,8 +52,7 @@ div#bordapreta{
 
 #cor-fonte-menu{
     color: #000000;
-    border-color: #000000;
-    
+    border-color: #000000;    
 }
 
 #cor-fonte-menu:hover{
@@ -161,6 +160,15 @@ div#fundopreto{
     background: #660066;
 }
 
+.head-amigrups{
+    color: #00ff00;
+    text-decoration: none;
+}
+
+.head-amigrups:hover{
+    text-decoration: underline;
+}
+
 #glypicon-color-menu{
    
     border-color: #000000;   
@@ -174,8 +182,6 @@ div#fundopreto{
 
 span#text-color-area52 {
     color: #00ff00;
-    
-
 }
 
 .borda-profile{
@@ -204,5 +210,9 @@ span#text-color-area52 {
 .fonte-responsiva-grupos-amigos
 {
     font-size: 0.7em;
+}
+
+.font-perfil{
+	font-weight: bold;
 }
 
