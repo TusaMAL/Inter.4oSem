@@ -7,8 +7,11 @@ body{
 <<<<<<< HEAD
 =======
     font-size: 1.4em;
+<<<<<<< HEAD
     
 >>>>>>> parent of c305ca5... "Travando" o tamanho das divs amigo/grupo
+=======
+>>>>>>> parent of 4859a59... Revert ""Travando" o tamanho das divs amigo/grupo"
 }
 
 .fixed-nav-bar {
@@ -182,4 +185,11 @@ span#text-color-area52 {
     font-size: 0.7em;
 }
 
+<<<<<<< HEAD
 >>>>>>> parent of c305ca5... "Travando" o tamanho das divs amigo/grupo
+=======
+div#limitar-tamanho-divs{
+	max-width: 400px;
+	min-width: 200px;
+}
+>>>>>>> parent of 4859a59... Revert ""Travando" o tamanho das divs amigo/grupo"
