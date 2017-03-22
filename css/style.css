@@ -1,45 +1,22 @@
-/* Smaller than standard 960 (devices and browsers) */
-@media only screen and (max-width: 959px) {
-    html{
-        font-size: 90%;
-    }
+@media screen and (max-width:480px) {
+html {
+font-size: 50%;
+}
 }
 
-/* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-    html{
-        font-size: 80%;
-    }
+@media screen and (min-width: 481px) and (max-width: 750px) {
+html {
+font-size: 75%;
 }
-
-/* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 767px) {
-    html{
-        font-size: 80%;
-    }
-}
-
-/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-    html{
-        font-size: 80%;
-    }
-}
-
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) {
-    html{
-        font-size: 80%;
-    }
 }
 
 body{
     font-family: 'Roboto Mono', serif;
     background: #f2f2f2;
-    max-width: 100%;
+    /*max-width: 100%;  */
     overflow-x: hidden;
     padding-top: 70px;
-    font-size: 1.4em;      
+    /*font-size: 1.4em;      */
 }
 
 .fixed-nav-bar {
@@ -135,7 +112,7 @@ div#fundopreto{
 
 .profile-usertitle-name {
   color: #00ff00;
-  font-size: 20px;
+  /*font-size: 20px;*/
   font-weight: 600;
   padding: 10px 0px 10px 0px;
  
@@ -155,13 +132,16 @@ div#fundopreto{
 
 .glypicon-color-menu{
     color: #00ff00;
-        text-decoration: none;
+    text-decoration: none;
 }
 
 .glypicon-color-menu:hover{
-    color: #660066;
-     text-decoration: none;
+    text-decoration: none;
+    background: #660066;
+}
 
+.cor-letra-menu{
+    color: #00ff00;
 }
 
 #glypicon-color-menu{
@@ -172,8 +152,6 @@ div#fundopreto{
 
 #glypicon-color-menu:hover{
     color: #660066;
-    
-
 }
 
 
