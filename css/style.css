@@ -1,12 +1,12 @@
 @media screen and (max-width:480px) {
 html {
-font-size: 50%;
+font-size: 90%;
 }
 }
 
-@media screen and (min-width: 481px) and (max-width: 750px) {
-html {
-font-size: 75%;
+@media screen and (min-width: 481px) and (max-width: 950px) {
+body {
+font-size: 100%;
 }
 }
 
@@ -140,8 +140,25 @@ div#fundopreto{
     background: #660066;
 }
 
-.cor-letra-menu{
+.link-dentro-body:hover{
+    text-decoration: underline;
+    background: #660066;
+    border-top: 50px;
+}
+
+.cor-letra-verde-sem-efeito{
     color: #00ff00;
+    text-decoration: none;
+}
+
+.cor-letra-verde{
+    color: #00ff00;
+    text-decoration: none;
+}
+
+.cor-letra-verde:hover{
+    text-decoration: none;
+    background: #660066;
 }
 
 #glypicon-color-menu{
