@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<head>
+        <!-- Teste -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap Core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <!-- Nosso CSS -->
+        <link href="../css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+        <title>
+            Area52
+        </title>
+</head>
+<body>
+
+        <!--Começo NavBAR-->
+            
+    <nav class="navbar navbar-default navbar-static-top fixed-nav-bar">
+        <div id="fundopreto" class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button id="botao-menu" type="button" class="navbar-toggle collapsed efeito-fade-navbar" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span id="barrinha-menu" class="icon-bar"></span>
+                        <span id="barrinha-menu" class="icon-bar"></span>
+                        <span id="barrinha-menu" class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand" href="#"><img id="logoarea52" class="img-responsive" src="../img/area52.png"  alt=""></a>
+                        
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <!--<form class="navbar-form navbar-left">
+                            
+                            <div class="form-group">
+                                
+                            <input type="text" class="form-control" placeholder="Search Friends">
+                            <button class="btn btn-default glypicon-color-menu" type="button" style="color:#00FF00">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                            </button>
+                                            
+                            </div>
+                            
+                            
+                        </form>
+                        -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="cor-letra-verde efeito-fade-navbar"><a href="#"><span class="glyphicon glyphicon-home cor-letra-verde-sem-efeito"> Home</span></a></li>
+                            <li class="cor-letra-verde efeito-fade-navbar"><a href="#"><span class="glyphicon glyphicon-cog cor-letra-verde-sem-efeito"> Settings</span> </a></li>
+                            <li class="cor-letra-verde efeito-fade-navbar"><a href="#"><span class="glyphicon glyphicon-ok cor-letra-verde-sem-efeito"> Requests</span> </a></li>
+                            <li class="cor-letra-verde efeito-fade-navbar"><a href="#"><span class="glyphicon glyphicon-log-out cor-letra-verde-sem-efeito"> Logout</span> </a></li>
+                            
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!--FimNavBAR-->
+        <!--Começo Menu Esquerdo-->
+        <div class="col-lg-2">
+            <div id="bordapreta" class="list-group">
+                <div id="fundopreto" class="panel-heading">
+                    <a href="#" class=""> <span class="glyphicon glyphicon-user head-amigrups"> Profile    </span></a>
+                </div>
+                <div id="bordapretageral" class="list-group-item">
+                    <a href=""> <img src="../img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+                                    
+                    <p class="nick-person profile-usertitle-name profile-text text-center">TusaMAL</p>
+                    <center>
+                        <table>
+                            <tr><td class="text-right font-perfil">Name:</td> <td>&nbsp;Felipe</td></tr>
+                            <tr><td class="text-right font-perfil">Gender:</td> <td>&nbsp;Male</td></tr>
+                            <tr><td class="text-right font-perfil">Age:</td> <td>&nbsp;25</td></tr>
+                            <tr><td class="text-right font-perfil">City:</td> <td>&nbsp;São José do Rio Preto</td></tr>
+                            <tr><td class="text-right font-perfil">State:</td> <td>&nbsp;São Paulo</td></tr>    
+                        </table>
+                    </center> 
+                </div>
+            <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a>
+            <a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
+
+            </div>
+        </div>
+        <!-- Começo da tela de "amigos" -->
+        <div style="padding-right: 2em">
+            <div id="bordapreta" class="list-group">
+                <div id="fundopreto" class="panel-heading">
+                    <span class="glyphicon glyphicon-star cor-letra-verde-sem-efeito">  Amigos</span>
+                </div>
+                <div id="bordapretageral" class="list-group-item">
+                    <div style="float: right;"> <!-- Barra de procura de amigos/pessoas -->
+                        <form class="navbar-form navbar-left">                            
+                                <div class="form-group">                                
+                                    <input type="text" class="form-control" placeholder="Search People">
+                                        <button class="btn btn-default glypicon-color-menu" type="button" style="color:#00FF00">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>                                           
+                                </div>  
+                        </form>
+                    </div>
+                    <div class="panel-body panel-grupos-amigos">
+                        <div class="row">
+                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
+                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/gust.jpg" alt=""></a>
+                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">Gust</p>
+                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> Gustavo </p>   
+                            </div>
+                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
+                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/akhe.jpg" alt=""></a>
+                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">Akhenathon</p>
+                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> Alisson </p>   
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
+                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/akhe.jpg" alt=""></a>
+                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">Akhenathon</p>
+                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> Alisson </p>   
+                            </div>
+                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
+                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/john.jpg" alt=""></a>
+                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">MXJonasV</p>
+                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> João </p>   
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
+                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/john.jpg" alt=""></a>
+                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">MXJonasV</p>
+                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> João </p>   
+                            </div>
+                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
+                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/gust.jpg" alt=""></a>
+                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">Gust</p>
+                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> Gustavo </p>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

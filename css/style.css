@@ -263,9 +263,37 @@ span#text-color-area52 {
 
 .imagem-grupos-amigos{
     width: 64px;
-    height: 64px;
-    
+    height: 64px;    
 }
+
+.panel-grupos-amigos{
+    padding-top: 50px;
+    padding-left: 25px;
+}
+
+.tabela-grupos-amigos{
+    width: 30em;
+    height: 11.5em;
+    margin-left: 75px;
+}
+.foto-grupos-amigos{
+    width: 150px;
+    display: block;
+    margin: auto;
+}
+p.nick-grupos-amigos{
+    padding-top: 2em;
+    padding-left: 10em;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+p.nome-grupos-amigos{
+    padding-top: 1em;
+    padding-left: 12em;
+    font-size: 1em;
+}
+
 .fonte-responsiva-grupos-amigos
 {
     font-size: 0.7em;
