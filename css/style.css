@@ -1,14 +1,63 @@
+/* ~~~~~~ Configs de Responsividade ~~~~~ */
+
 @media screen and (max-width:480px) {
-html {
-font-size: 90%;
+body {
+font-size: 175%;
 }
 }
 
-@media screen and (min-width: 481px) and (max-width: 950px) {
+@media screen and (min-width: 481px) and (max-width: 1360px) {
 body {
-font-size: 100%;
+font-size: 125%;
+}
+.nick-post{
+    font-size: 75%;
+}
+
+p.nick-person{
+    font-size:75%;
+}
+
+p.nick-friendgroup{
+    font-size:75%;
 }
 }
+
+@media screen and (min-width: 2000px){
+body {
+font-size: 225%;
+}
+.nick-post{
+    font-size: 125%;
+}
+
+p.nick-person{
+    font-size:125%;
+}
+
+p.nick-friendgroup{
+    font-size:75%;
+}
+}
+
+@media screen and (min-width: 2750px){
+body {
+font-size: 400%;
+}
+.nick-post{
+    font-size: 125%;
+}
+
+p.nick-person{
+    font-size:125%;
+}
+
+p.nick-friendgroup{
+    font-size:75%;
+}
+}
+
+/* ~~~~~~ Configs de Responsividade ~~~~~ */
 
 body{
     font-family: 'Roboto Mono', serif;
@@ -207,7 +256,7 @@ span#text-color-area52 {
 }
 
 .fonte-post-pequena{
-    font-size: 8pt;
+    font-size: 0.7em;
 }
 
 .imagem-grupos-amigos{
