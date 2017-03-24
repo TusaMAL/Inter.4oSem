@@ -190,10 +190,19 @@ div#fundopreto{
     
 }
 
+#cor-letra-verde{
+    color:#00ff00;
+}
+
 .cor-letra-verde:hover{
     text-decoration: none;
     background: #660066;
     
+}
+
+.cor-letra-verde:active {
+  background-color: #660066;
+  transform: translateY(1px);
 }
 
 .efeito-fade-navbar{
@@ -313,7 +322,10 @@ p.nome-grupos-amigos{
     padding-bottom: 40px;
 }
 
-
-button.cor-letra-verde:focus {
-  background-color: #660066;
+.remover-amigo:active{
+    background-color: red;
+    color: black;
 }
+
+
+
