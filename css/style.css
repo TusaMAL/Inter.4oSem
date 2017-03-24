@@ -327,5 +327,46 @@ p.nome-grupos-amigos{
     color: black;
 }
 
+button.cor-letra-verde:focus {
+  background-color: #660066;
+}
 
+.barra-settings{
+width:100%;
+overflow:hidden
+}
 
+.barra-settings .botao-barra{
+white-space:normal;
+}
+
+.barra-settings .item-barra-set{
+padding:8px 16px;
+float:left;
+width:auto;
+background: #000;
+outline:none;
+display:block
+}
+
+.botao-settings-cor{
+color:#00ff00!important;
+background-color:#000!important
+}
+
+.botao-settings-select{
+color:#00ff00!important;
+background-color:#660066!important
+}
+
+.settings-container{
+padding:0.01em 16px
+}
+
+label.settings-label{
+    padding:25px;
+}
+
+select.settings-select{
+    width:10%;
+}
