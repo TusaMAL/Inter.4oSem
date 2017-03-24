@@ -370,3 +370,8 @@ label.settings-label{
 select.settings-select{
     width:10%;
 }
+
+.alinhar-div{
+	position:absolute;
+	left: 20em; 
+}
