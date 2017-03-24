@@ -202,7 +202,7 @@ div#fundopreto{
 
 .cor-letra-verde:active {
   background-color: #660066;
-  transform: translateY(1px);
+  transform: translateY(0.5px);
 }
 
 .efeito-fade-navbar{
