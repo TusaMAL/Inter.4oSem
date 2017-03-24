@@ -303,3 +303,11 @@ p.nome-grupos-amigos{
 	font-weight: bold;
 }
 
+.padding-page-amigos{
+    padding-left: 50px;
+    padding-bottom: 40px;
+}
+
+button.cor-letra-verde:focus {
+  background-color: #660066;
+}

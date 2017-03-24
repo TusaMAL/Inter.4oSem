@@ -59,7 +59,7 @@
         </nav>
         <!--FimNavBAR-->
         <!--Começo Menu Esquerdo-->
-        <div class="col-lg-2">
+        <div class="col-lg-3">
             <div id="bordapreta" class="list-group">
                 <div id="fundopreto" class="panel-heading">
                     <a href="#" class=""> <span class="glyphicon glyphicon-user head-amigrups"> Profile    </span></a>
@@ -84,62 +84,56 @@
             </div>
         </div>
         <!-- Começo da tela de "amigos" -->
-        <div style="padding-right: 2em">
-            <div id="bordapreta" class="list-group">
-                <div id="fundopreto" class="panel-heading">
-                    <span class="glyphicon glyphicon-star cor-letra-verde-sem-efeito">  Amigos</span>
+        <!-- 
+
+                Começo Feed
+
+                -->
+
+        <div class="col-lg-9">
+            <div id="bordapreta" class="panel panel-default">
+                <div id="fundopreto" class="panel-heading"><a class="" href="../pages/friend.html"> <span class="glyphicon glyphicon-star head-amigrups"> Friends (7)</span></a>
                 </div>
-                <div id="bordapretageral" class="list-group-item">
-                    <div style="float: right;"> <!-- Barra de procura de amigos/pessoas -->
-                        <form class="navbar-form navbar-left">                            
-                                <div class="form-group">                                
-                                    <input type="text" class="form-control" placeholder="Search People">
-                                        <button class="btn btn-default glypicon-color-menu" type="button" style="color:#00FF00">
-                                            <i class="glyphicon glyphicon-search"></i>
-                                        </button>                                           
-                                </div>  
-                        </form>
-                    </div>
-                    <div class="panel-body panel-grupos-amigos">
-                        <div class="row">
-                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
-                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/gust.jpg" alt=""></a>
-                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">Gust</p>
-                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> Gustavo </p>   
-                            </div>
-                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
-                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/akhe.jpg" alt=""></a>
-                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">Akhenathon</p>
-                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> Alisson </p>   
-                            </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default cor-letra-verde efeito-fade-navbar" type="button">
+                                                <i class="glyphicon glyphicon-search" style="color:#00ff00"></i>
+                                    </button>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Search new friends">
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            
+                    </div><!-- /.row -->
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-4 portfolio-item">
+                            <a id="cor-fonte-menu" href="#" class="thumbnail"><img class="media-object imagem-feed borda-profile pull-left" src="../img/john.jpg" alt="">
+                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos">MXJonasV</p>
+                                <p>João Victor</p>
+                            </a>    
                         </div>
-                        <div class="row">
-                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
-                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/akhe.jpg" alt=""></a>
-                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">Akhenathon</p>
-                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> Alisson </p>   
-                            </div>
-                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
-                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/john.jpg" alt=""></a>
-                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">MXJonasV</p>
-                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> João </p>   
-                            </div>
+                        <div class="col-md-4 portfolio-item">
+                            <a id="cor-fonte-menu" href="#" class="thumbnail"><img class="media-object imagem-feed borda-profile pull-left" src="../img/john.jpg" alt="">
+                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos padding-page-amigos">MXJonasV</p>
+                            </a>    
                         </div>
-                        <div class="row">
-                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
-                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/john.jpg" alt=""></a>
-                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">MXJonasV</p>
-                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> João </p>   
-                            </div>
-                            <div id="cor-fonte-menu" class="col-md-4 thumbnail portifolio-item tabela-grupos-amigos">
-                                <a id="cor-fonte-menu" href="#"><img class="img-responsive foto-grupos-amigos pull-left" src="../img/gust.jpg" alt=""></a>
-                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos nick-grupos-amigos">Gust</p>
-                                <p class="fonte-responsiva-grupos-amigos nome-grupos-amigos"> Gustavo </p>   
-                            </div>
+                        <div class="col-md-4 portfolio-item">
+                            <a id="cor-fonte-menu" href="#" class="thumbnail"><img class="media-object imagem-feed borda-profile pull-left" src="../img/john.jpg" alt="">
+                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos padding-page-amigos">MXJonasV</p>
+                            </a>    
                         </div>
                     </div>
+                    <div class="row">     
+                        <div class="col-md-3 portfolio-item">
+                            <a id="cor-fonte-menu" href="#" class="thumbnail"><img class="media-object imagem-feed borda-profile pull-left" src="../img/john.jpg" alt="">
+                                <p class="nick-friendgroup fonte-responsiva-grupos-amigos padding-page-amigos">MXJonasV</p>
+                            </a>    
+                        </div>
+                    </div>          
                 </div>
-            </div>
-        </div>
     </body>
 </html>
