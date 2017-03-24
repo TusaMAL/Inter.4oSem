@@ -253,6 +253,11 @@ span#text-color-area52 {
     width: 64px;
 }
 
+.imagem-page-amigos{
+    height: 96px;
+    width: 96px;
+}
+
 .imagem-feed:hover{
     border-color: #660066;
 }
@@ -304,9 +309,10 @@ p.nome-grupos-amigos{
 }
 
 .padding-page-amigos{
-    padding-left: 50px;
+    padding-left: 10px;
     padding-bottom: 40px;
 }
+
 
 button.cor-letra-verde:focus {
   background-color: #660066;
