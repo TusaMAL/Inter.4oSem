@@ -115,6 +115,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Evento.cs" />
+    <Compile Include="Models\Grupo.cs" />
+    <Compile Include="Models\Jogo.cs" />
+    <Compile Include="Models\Mensagem.cs" />
+    <Compile Include="Models\Participante.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

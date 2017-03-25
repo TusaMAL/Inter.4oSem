@@ -6,22 +6,22 @@ using System.Web;
 
 namespace DisciplineTeam.Area52.Web.Models
 {
-    public class Pessoa
+    public abstract class Pessoa
     {
         public int IdPessoa { get; set; }
 
         [Required]
-        public string nome { get; set; }
+        public string Nome { get; set; }
 
         [Required]
-        public string nick { get; set; }
+        public string Nick { get; set; }
 
         [Required]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [Required]
-        public string senha { get; set; }
+        public string Senha { get; set; }
 
-        public int status { get; set; }
+        public int Status { get; set; }
     }
 }
