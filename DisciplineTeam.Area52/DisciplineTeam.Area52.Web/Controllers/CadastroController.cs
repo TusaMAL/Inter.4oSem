@@ -6,23 +6,14 @@ using System.Web.Mvc;
 
 namespace DisciplineTeam.Area52.Web.Controllers
 {
-    public class UsuarioController : Controller
+    public class CadastroController : Controller
     {
-        // GET: Usuario
+        // GET: Cadastro
         public ActionResult Index()
         {
             return View();
         }
-        // GET: Usuario/Friends
-        public ActionResult Friends()
-        {
-            return View();
-        }
-        // Get: Usuario/User
-        public ActionResult User()
-        {
-            return View();
-        }
+        // GET: Create
         public ActionResult Create()
         {
             return View();
