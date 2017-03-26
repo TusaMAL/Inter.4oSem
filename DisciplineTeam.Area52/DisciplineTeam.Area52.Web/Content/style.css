@@ -66,7 +66,6 @@ body{
     overflow-x: hidden;
     padding-top: 70px;
     /*font-size: 1.4em;      */
-    overflow:hidden;
     text-overflow:ellipsis;
 }
 
@@ -78,7 +77,6 @@ body{
   width: 100%;
   height: 50px;
 }
-
 
 #botao-menu{
     border-color: #00ff00;
@@ -373,3 +371,4 @@ select.settings-select{
 	position:absolute;
 	left: 20em; 
 }
+
