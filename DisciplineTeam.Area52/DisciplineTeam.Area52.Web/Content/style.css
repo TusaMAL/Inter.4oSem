@@ -66,6 +66,8 @@ body{
     overflow-x: hidden;
     padding-top: 70px;
     /*font-size: 1.4em;      */
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
 .fixed-nav-bar {
@@ -257,10 +259,6 @@ span#text-color-area52 {
     border:1px solid black;
 }
 
-.imagem-feed{
-    height: 64px;
-    width: 64px;
-}
 
 .imagem-page-amigos{
     height: 96px;
