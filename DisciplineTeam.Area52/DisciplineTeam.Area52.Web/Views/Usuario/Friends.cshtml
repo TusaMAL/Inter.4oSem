@@ -1,0 +1,134 @@
+﻿@model DisciplineTeam.Area52.Web.Models.Usuario
+@{
+    ViewBag.Title = "friends";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--Começo Menu Esquerdo-->
+<div class="col-lg-3">
+    <div id="bordapreta" class="list-group">
+        <div id="fundopreto" class="panel-heading">
+            <a id="cor-letra-verde" href="#"><span class="glyphicon glyphicon-user cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Profile</span></a>
+        </div>
+        <div id="bordapretageral" class="list-group-item">
+            <a href="/Usuario/Index"> <img src="../img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+
+            <p class="nick-person profile-usertitle-name profile-text text-center">TusaMAL</p>
+            <center>
+                <table>
+                    <tr><td class="text-right font-perfil">Name:</td> <td>&nbsp;Felipe</td></tr>
+                    <tr><td class="text-right font-perfil">Gender:</td> <td>&nbsp;Male</td></tr>
+                    <tr><td class="text-right font-perfil">Age:</td> <td>&nbsp;25</td></tr>
+                    <tr><td class="text-right font-perfil">City:</td> <td>&nbsp;São José do Rio Preto</td></tr>
+                    <tr><td class="text-right font-perfil">State:</td> <td>&nbsp;São Paulo</td></tr>
+                </table>
+            </center>
+        </div>
+        <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a>
+        <a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
+
+    </div>
+</div>
+<!-- Começo da tela de "amigos" -->
+<div class="col-lg-9">
+    <div id="bordapreta" class="panel panel-default">
+        <div id="fundopreto" class="panel-heading">
+            <a id="cor-letra-verde" href="../pages/friend.html"><span class="glyphicon glyphicon-star cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Friends (7)</span></a>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn cor-letra-verde efeito-fade-navbar" type="button">
+                                <i class="glyphicon glyphicon-search" style="color:#00ff00"></i>
+                            </button>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Search new friends">
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+
+            </div><!-- /.row -->
+            <hr>
+            <div class="row">
+                <div class="col-sm-4 col-md-4">
+                    <div class="thumbnail">
+                        <img src="../img/gust.jpg" alt="..." class="borda-profile">
+                        <div class="caption text-center">
+                            <h3 class="">Gust</h3>
+                            <p>Gustavo</p>
+                            <p><a id="cor-letra-verde" href="#" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Delete Friend</a></p>
+                        </div>
+                    </div>
+                </div><!-- /.col-sm-4 col-md-4 -->
+                <div class="col-sm-4 col-md-4">
+                    <div class="thumbnail">
+                        <img src="../img/akhe.jpg" alt="..." class="borda-profile">
+                        <div class="caption text-center">
+                            <h3 class="">Akhenathon</h3>
+                            <p>Alisson</p>
+                            <p><a id="cor-letra-verde" href="#" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Delete Friend</a></p>
+                        </div>
+                    </div>
+                </div><!-- /.col-sm-4 col-md-4 -->
+                <a href="#">
+                    <div class="col-sm-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="../img/john.jpg" alt="..." class="borda-profile">
+                            <div class="caption text-center">
+                                <h3 class="">MXJonasV</h3>
+                                <p>João Victor</p>
+                                <p><a id="cor-letra-verde" href="#" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Delete Friend</a></p>
+                            </div>
+                        </div>
+                    </div><!-- /.col-sm-4 col-md-4 -->
+            </div><!-- /.row -->
+            <div class="row">
+                <div class="col-sm-4 col-md-4">
+                    <div class="thumbnail">
+                        <img src="../img/gust.jpg" alt="..." class="borda-profile">
+                        <div class="caption text-center">
+                            <h3 class="">Gust</h3>
+                            <p>Gustavo</p>
+                            <p><a id="cor-letra-verde" href="#" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Delete Friend</a></p>
+                        </div>
+                    </div>
+                </div><!-- /.col-sm-4 col-md-4 -->
+                <div class="col-sm-4 col-md-4">
+                    <div class="thumbnail">
+                        <img src="../img/akhe.jpg" alt="..." class="borda-profile">
+                        <div class="caption text-center">
+                            <h3 class="">Akhenathon</h3>
+                            <p>Alisson</p>
+                            <p><a id="cor-letra-verde" href="#" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Delete Friend</a></p>
+                        </div>
+                    </div>
+                </div><!-- /.col-sm-4 col-md-4 -->
+                <a href="#">
+                    <div class="col-sm-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="../img/john.jpg" alt="..." class="borda-profile">
+                            <div class="caption text-center">
+                                <h3 class="">MXJonasV</h3>
+                                <p>João Victor</p>
+                                <p><a id="cor-letra-verde" href="#" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Delete Friend</a></p>
+                            </div>
+                        </div>
+                    </div><!-- /.col-sm-4 col-md-4 -->
+            </div><!-- /.row -->
+            <div class="row">
+                <div class="col-sm-4 col-md-4">
+                    <div class="thumbnail">
+                        <img src="../img/gust.jpg" alt="..." class="borda-profile">
+                        <div class="caption text-center">
+                            <h3 class="">Gust</h3>
+                            <p>Gustavo</p>
+                            <p><a id="cor-letra-verde" href="#" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Delete Friend</a></p>
+                        </div>
+                    </div>
+                </div><!-- /.col-sm-4 col-md-4 -->
+            </div><!-- /.row -->
+        </div><!-- /.panel-body -->
+    </div><!-- /.panel panel-default -->
+</div><!-- /.col-lg-9 -->
+
