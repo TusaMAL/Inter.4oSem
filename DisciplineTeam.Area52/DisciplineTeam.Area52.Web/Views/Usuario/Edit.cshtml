@@ -1,0 +1,77 @@
+﻿@model DisciplineTeam.Area52.Web.Models.Usuario
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-2"></div>
+<div class="col-lg-8 col-sm-12 col-md-3 thumbnail borda-profile">
+    <div id="fundopreto" class="panel-heading barra-settings botao-settings-cor">
+        <button id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search item-barra-set botao-barra tablink botao-settings-select" onclick="openTab(event,'Profile')">Profile</button>
+        <button id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search item-barra-set botao-barra tablink" onclick="openTab(event,'Secutiry')">Security</button>
+        <!--<button id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search item-barra-set botao-barra tablink" onclick="openTab(event,'Games')">Games</button>-->
+    </div>
+    <div id="Profile" class="settings-container form-horizontal tab-set panel-body">
+        <div class="form-group">
+            <label for="lbl_idade" class="col-sm-2 control-label settings-label">Age:</label>
+            <div class="col-sm-10">
+                <select class="form-control settings-select" id="lbl_idade">
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="label_city" class="col-sm-2 control-label settings-label">City:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="label_city" placeholder="Cidade">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lbl_estado" class="col-sm-2 control-label settings-label">State:</label>
+            <div class="col-sm-10">
+                <select class="form-control settings-select" id="lbl_estado">
+                    <option>SP</option>
+                    <option>RJ</option>
+                    <option>MS</option>
+                    <option>SC</option>
+                    <option>MG</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label settings-label">Gender:</label>
+            <label class="radio-inline">
+                <input type="radio" checked name="radio_sex" id="radio_sex1" value="m"> Male
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="radio_sex" id="radio_sex2" value="f"> Female
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label settings-label">Photo:</label>
+            <img src="../img/gust.jpg" alt="..." class="img-rounded">
+            <label>
+                <button type="submit" class="btn btn-default">Upload</button>
+                Upload your photo here.
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="label_desc" class="col-sm-2 control-label settings-label">Description:</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="5" id="label_desc" placeholder="Describe yourself!"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default center-block">Save</button>
+    </div>
+    <div id="Secutiry" class="settings-container borda-profile form-horizontal tab-set" style="display:none">
+        <h4>Teste</h4>
+    </div>
+    <!--<div id="Games" class="settings-container borda-profile form-horizontal tab-set" style="display:none">
+        <h4>Teste2</h4>
+    </div>-->
+</div>
+<div class="col-lg-2"></div>

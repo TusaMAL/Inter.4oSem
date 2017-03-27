@@ -27,5 +27,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
+        public ActionResult Edit()
+        {
+            return View();
+        }
     }
 }
