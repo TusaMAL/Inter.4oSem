@@ -216,11 +216,13 @@ button.cor-letra-verde:focus {
 
 .barra-settings{
 width:100%;
-overflow:hidden
+overflow:hidden;
+margin-bottom: 25px;
 }
 
 .barra-settings .botao-barra{
 white-space:normal;
+margin: 0.25em;
 }
 
 .barra-settings .item-barra-set{
@@ -254,8 +256,7 @@ select.settings-select{
     width:10%;
 }
 
-.alinhar-div{
-	position:absolute;
-	left: 20em; 
+div.settings-input{
+    width:54em;
 }
 
