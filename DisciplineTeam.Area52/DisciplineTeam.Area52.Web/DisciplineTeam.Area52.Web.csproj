@@ -150,6 +150,7 @@
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Cadastro\Create.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Cadastro\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
