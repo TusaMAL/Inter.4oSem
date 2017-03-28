@@ -4,93 +4,120 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!--btn cor-letra-verde efeito-fade-navbar borda-botao-search item-barra-set botao-barra tablink botao-settings-select-->
 
 <div class="col-lg-offset-2 col-lg-8 col-sm-12 col-md-12 col-lg-offset-2">
-    <div id="bordapreta" class="panel panel-default">
-        <div id="fundopreto" class="panel-heading">
-            
+    <div id="bordapreta" class="well" style="background: white">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="asdw" id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search" onclick="MudarAba(myTabContent)" data-toggle="tab">Profile</a></li>
+            <li><a href="asdw" id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search" onclick="MudarAba(myTabContent)" data-toggle="tab">Security</a></li>
+        </ul>
+        <div id="bordapreta myTabContent" class="tab-content">
+            <div class="tab-pane active" id="profile">
+                <form class="form-horizontal" method="post">
+                    <fieldset>
+                        <div class="row">&nbsp;</div>
+                        <div class="form-group">
+                            <label for="lbl_idade" class="col-sm-2 control-label">Age:</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="lbl_idade">
+                                    <option>16</option>
+                                    <option>17</option>
+                                    <option>18</option>
+                                    <option>19</option>
+                                    <option>20</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="label_city" class="col-sm-2 control-label">City:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="label_city" placeholder="City">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbl_estado" class="col-sm-2 control-label">State:</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="lbl_estado">
+                                    <option>SP</option>
+                                    <option>RJ</option>
+                                    <option>MS</option>
+                                    <option>SC</option>
+                                    <option>MG</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Gender:</label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" checked name="radio_sex" id="radio_sex1" value="m"> Male
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="radio_sex" id="radio_sex2" value="f"> Female
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Photo:</label>
+                            <div class="col-sm-4 col-md-4 col-xs-4"><img src="../img/gust.jpg" alt="..." class="img-rounded"></div>                            
+                            <div class="col-sm-4">
+                                <label>
+                                    <button type="submit" class="btn btn-default">Upload</button>
+                                    <br />
+                                    Upload your photo here.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="label_desc" class="col-sm-2 control-label">Description:</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="5" id="label_desc" placeholder="Describe yourself!"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-default center-block">Save</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade in" id="security">
+                <form class="form-horizontal" action='' method="post">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="old_password" class="col-sm-2 control-label">Old password:</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="old_password" placeholder="Old Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="new_password" class="col-sm-2 control-label">New password:</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="new_password" placeholder="New Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_new" class="col-sm-2 control-label">Confirm the password:</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="confirm_new" placeholder="Confirm the new password">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-default center-block">Save</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <!--<div id="fundopreto" class="panel-heading">            
             <button id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search item-barra-set botao-barra tablink botao-settings-select" onclick="openTab(event,'Profile')">Profile</button>
             <button id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search item-barra-set botao-barra tablink" onclick="openTab(event,'Secutiry')">Security</button>
         </div>
-        <div class="panel-body">
+        <div class="panel-body myTabContent" class="tab-content">
             <div id="Profile" class="settings-container form-horizontal tab-set panel-body">
-                <div class="form-group">
-                    <label for="lbl_idade" class="col-sm-2 control-label settings-label">Age:</label>
-                    <div class="settings-input">
-                        <select class="form-control settings-select" id="lbl_idade">
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="label_city" class="col-sm-2 control-label settings-label">City:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="label_city" placeholder="City">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="lbl_estado" class="col-sm-2 control-label settings-label">State:</label>
-                    <div class="settings-input">
-                        <select class="form-control settings-select" id="lbl_estado">
-                            <option>SP</option>
-                            <option>RJ</option>
-                            <option>MS</option>
-                            <option>SC</option>
-                            <option>MG</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label settings-label">Gender:</label>
-                    <label class="radio-inline">
-                        <input type="radio" checked name="radio_sex" id="radio_sex1" value="m"> Male
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="radio_sex" id="radio_sex2" value="f"> Female
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label settings-label">Photo:</label>
-                    <img src="../img/gust.jpg" alt="..." class="img-rounded">
-                    <label>
-                        <button type="submit" class="btn btn-default">Upload</button>
-                        Upload your photo here.
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label for="label_desc" class="col-sm-2 control-label settings-label">Description:</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control" rows="5" id="label_desc" placeholder="Describe yourself!"></textarea>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-default center-block">Save</button>
+
             </div>
             <div id="Secutiry" class="settings-container form-horizontal tab-set panel-body" style="display:none">
-                <div class="form-group">
-                    <label for="old_password" class="col-sm-2 control-label settings-label">Old password:</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="old_password" placeholder="Old Password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="new_password" class="col-sm-2 control-label settings-label">New password:</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="new_password" placeholder="New Password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="confirm_new" class="col-sm-2 control-label settings-label">Confirm the password:</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="confirm_new" placeholder="Confirm the new password">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-default center-block">Save</button>
+                
             </div>
             </div>
-        </div>
+        </div>-->
     </div>
       
