@@ -151,6 +151,7 @@
     <Content Include="Views\Cadastro\Create.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Cadastro\Index.cshtml" />
+    <Content Include="Views\Grupos\Groups.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -161,7 +162,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Eventos\" />
-    <Folder Include="Views\Grupos\" />
     <Folder Include="Views\Jogos\" />
   </ItemGroup>
   <PropertyGroup>

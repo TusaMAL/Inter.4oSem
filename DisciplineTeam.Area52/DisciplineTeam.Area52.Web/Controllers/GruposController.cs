@@ -13,5 +13,10 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
+        //GET: Search
+        public ActionResult Groups()
+        {
+            return View();
+        }
     }
 }

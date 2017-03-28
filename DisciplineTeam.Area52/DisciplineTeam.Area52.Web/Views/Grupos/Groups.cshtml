@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Groups";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--Começo Menu Esquerdo-->
+<div class="col-lg-2 col-sm-12 col-md-3">
+    <div id="bordapreta" class="list-group">
+        <div id="fundopreto" class="panel-heading">
+            <a id="cor-letra-verde" href="#"><span class="glyphicon glyphicon-user cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Profile</span></a>
+        </div>
+        <div id="bordapretageral" class="list-group-item">
+            <a href="/Usuario/Index"> <img src="../img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+
+            <p class="nick-person profile-usertitle-name profile-text text-center">TusaMAL</p>
+            <center>
+                <table>
+                    <tr><td class="text-right font-perfil">Name:</td> <td>&nbsp;Felipe</td></tr>
+                    <tr><td class="text-right font-perfil">Gender:</td> <td>&nbsp;Male</td></tr>
+                    <tr><td class="text-right font-perfil">Age:</td> <td>&nbsp;25</td></tr>
+                    <tr><td class="text-right font-perfil">City:</td> <td>&nbsp;São José do Rio Preto</td></tr>
+                    <tr><td class="text-right font-perfil">State:</td> <td>&nbsp;São Paulo</td></tr>
+                </table>
+            </center>
+        </div>
+        <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a>
+        <a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
+
+    </div>
+</div>
+<!-- Começo da tela de "amigos" -->
+<div class="col-lg-10 col-sm-12 col-md-9">
+    <div id="bordapreta" class="panel panel-default">
+        <div id="fundopreto" class="panel-heading">
+            <a id="cor-letra-verde" href="../Usuario/Friends"><span class="glyphicon glyphicon-list cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (6)</span></a>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-4 col-sm-4 col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn cor-letra-verde efeito-fade-navbar" type="button">
+                                <i class="glyphicon glyphicon-search" style="color:#00ff00"></i>
+                            </button>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Search through groups">
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+            <hr>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="thumbnail">
+                    <a href="#"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
+                    <div class="caption text-center">
+                        <a id="cor-fonte-menu" href="">
+                            <h3 class="">CS:GO Brasil</h3>
+                            <p>Counter Strike: Global Offensive</p>
+                        </a>
+                        <p><a id="cor-letra-verde" href="asdasd" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Leave Group</a></p>
+                    </div>
+                </div>
+            </div><!-- /.col-sm-4 col-md-4 -->
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="thumbnail">
+                    <a href="#"><img src="../img/dota2.png" alt="..." class="borda-profile"></a>
+                    <div class="caption text-center">
+                        <a id="cor-fonte-menu" href="">
+                            <h3 class="">Dota 2 Rio Preto</h3>
+                            <p>Dota 2</p>
+                        </a>
+                        <p><a id="cor-letra-verde" href="asdasd" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Leave Group</a></p>
+                    </div>
+                </div>
+            </div><!-- /.col-sm-4 col-md-4 -->
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="thumbnail">
+                    <a href="#"><img src="../img/lol.png" alt="..." class="borda-profile"></a>
+                    <div class="caption text-center">
+                        <a id="cor-fonte-menu" href="">
+                            <h3 class="">League of Legends</h3>
+                            <p>League of Legends</p>
+                        </a>
+                        <p><a id="cor-letra-verde" href="asdasd" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Leave Group</a></p>
+                    </div>
+                </div>
+            </div><!-- /.col-sm-4 col-md-4 -->
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="thumbnail">
+                    <a href="#"><img src="../img/heart.png" alt="..." class="borda-profile"></a>
+                    <div class="caption text-center">
+                        <a id="cor-fonte-menu" href="">
+                            <h3 class="">Hearthstone BR</h3>
+                            <p>Hearthstone</p>
+                        </a>
+                        <p><a id="cor-letra-verde" href="asdasd" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Leave Group</a></p>
+                    </div>
+                </div>
+            </div><!-- /.col-sm-4 col-md-4 -->
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="thumbnail">
+                    <a href="#"><img src="../img/overwatch.png" alt="..." class="borda-profile"></a>
+                    <div class="caption text-center">
+                        <a id="cor-fonte-menu" href="">
+                            <h3 class="">Paladins is da best</h3>
+                            <p>Overwatch</p>
+                        </a>
+                        <p><a id="cor-letra-verde" href="asdasd" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Leave Group</a></p>
+                    </div>
+                </div>
+            </div><!-- /.col-sm-4 col-md-4 -->
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="thumbnail">
+                    <a href="#"><img src="../img/fifa17.png" alt="..." class="borda-profile"></a>
+                    <div class="caption text-center">
+                        <a id="cor-fonte-menu" href="">
+                            <h3 class="">Tomates Peladeiros</h3>
+                            <p>Fifa 17</p>
+                        </a>
+                        <p><a id="cor-letra-verde" href="asdasd" class="btn cor-letra-verde efeito-fade-navbar remover-amigo" role="button">Leave Group</a></p>
+                    </div>
+                </div>
+            </div><!-- /.col-sm-4 col-md-4 -->
+        </div><!-- /.panel-body -->
+    </div><!-- /.panel panel-default -->
+</div><!-- /.col-lg-9 -->
