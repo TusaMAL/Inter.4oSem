@@ -152,6 +152,7 @@
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Cadastro\Index.cshtml" />
     <Content Include="Views\Grupos\Groups.cshtml" />
+    <Content Include="Views\Grupos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
