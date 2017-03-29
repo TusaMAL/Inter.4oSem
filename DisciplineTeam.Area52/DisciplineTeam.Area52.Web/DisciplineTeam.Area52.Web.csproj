@@ -154,6 +154,7 @@
     <Content Include="Views\Grupos\Index.cshtml" />
     <Content Include="Views\Jogos\Index.cshtml" />
     <Content Include="Views\Jogos\Create.cshtml" />
+    <Content Include="Views\Grupos\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
