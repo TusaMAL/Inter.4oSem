@@ -152,6 +152,8 @@
     <Content Include="Views\Cadastro\Index.cshtml" />
     <Content Include="Views\Grupos\Groups.cshtml" />
     <Content Include="Views\Grupos\Index.cshtml" />
+    <Content Include="Views\Jogos\Index.cshtml" />
+    <Content Include="Views\Jogos\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -162,7 +164,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Eventos\" />
-    <Folder Include="Views\Jogos\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

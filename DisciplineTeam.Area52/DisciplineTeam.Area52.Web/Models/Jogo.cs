@@ -11,6 +11,7 @@ namespace DisciplineTeam.Area52.Web.Models
         public int IdAdmin { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
+        public string Imagem { get; set; }
 
     }
 }

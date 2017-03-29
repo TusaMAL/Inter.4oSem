@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DisciplineTeam.Area52.Web.Models.Jogo>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-offset-2 col-lg-8 col-sm-12 col-md-12 col-lg-offset-2">
+    <div id="bordapreta" class="panel panel-default">
+        <div id="fundopreto" class="panel-heading">
+            <a id="cor-letra-verde"><span class="glyphicon glyphicon-plus cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Add a game</span></a>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                @foreach (var j in Model)
+                {
+                    <tr>
+                        <td>@j.IdJogo</td>
+                        <td>@j.Nome</td>
+                        <td>@j.Descricao</td>
+                        <td>@j.Imagem</td>
+                    </tr>
+
+                }
+            </table>
+
+            <a href="/Jogos/Create" class="btn btn-success">New game</a>
+        </div>
+    </div>
+</div>
