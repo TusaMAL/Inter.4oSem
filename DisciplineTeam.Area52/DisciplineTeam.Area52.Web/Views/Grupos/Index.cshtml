@@ -1,253 +1,257 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--
-
-        Começo Menu Esquerdo
-
-        -->
+<!--            Começo Menu Esquerdo            -->
+<!--Cria as Coluna principal da Div-->
 <div class="col-lg-2 col-sm-12 col-md-3">
-    <div id="bordapreta" class="list-group">
+    <!-- Cria a Div interior e a deixa com borda preta-->
+    <div id="bordapreta" class="panel panel-default">
+        <!--Aplica o fundo preto e cria o head da div-->
         <div id="fundopreto" class="panel-heading">
-            <a id="cor-letra-verde" href="#"><span class="glyphicon glyphicon-list cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Group</span></a>
-        </div>
-        <div id="bordapretageral" class="list-group-item">
+            <!-- Escritos e icones da barra preta da div-->
+            <a id="cor-letra-verde" href="../Grupos/Index"><span class="glyphicon glyphicon-list cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Group</span></a>
+        </div><!--/panel-heading-->
+        <!--Div onde fica os textos do grupo-->
+        <div class="list-group-item">
             <a href=""> <img src="../img/csgo.png" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
-
             <h2 class="text-center">CS:GO Brasil</h2>
             <p class="text-center">Counter Strike: Global Offensive</p>
             <center>
+                <!--Botão join-->
                 <button id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search" type="button">
                     <i class="glyphicon glyphicon-ok"></i><span>&nbsp;Join</span>
-                </button>
+                </button><!--/Botão join-->
             </center>
-        </div>
-        <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a>
-        <a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
-
-    </div>
-</div>
-
-
-<!--
-
-    Fim Menu Esquerdo
-
-    -->
-<!--
-
-                Começo Feed
-
-                -->
+        </div><!--/list-group-item-->
+        <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a><a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
+    </div><!--/list-group-->
+</div><!--/col-lg-2 col-sm-12 col-md-3-->
+<!--            Fim Menu Esquerdo               -->
+<!--                Começo Feed                 -->
+<!-- Começo col-lg-7 col-sm-12 col-md-6-->
 <div class="col-lg-7 col-sm-12 col-md-6">
-<div class="col-lg-12">
+    <!--Começo Coluna About com tamanho maximo disponivel dentro da coluna-->
+    <div class="col-lg-12">
+        <!-- Cria a Div interior e a deixa com borda preta-->
+        <div id="bordapreta" class="panel panel-default">
+            <!--Aplica o fundo preto e cria o head da div-->
+            <div id="fundopreto" class="panel-heading">
+                <!-- Escritos e icones da barra preta da div-->
+                <span class="glyphicon glyphicon-tag cor-letra-verde-sem-efeito">&nbsp;</span><span class="cor-letra-verde-sem-efeito">About</span>
+            </div><!--/panel-heading-->
+            <!-- Corpo do texto da div nem todas terão ele-->
+            <div class="panel-body">
+                <!--começo post a esquerda-->
+                <div class="col-lg-12">
+                    <!--Cria thumbnail e deixa com borda preta-->
+                    <div class="thumbnail borda-profile">
+                        <div class="media">
+                            <!--Corpo da div media -->
+                            <div class="media-body">
+                                <!--div alinhada verticalmente ao centro-->
+                                <div class="vertical-align">
+                                    <!--nome do Grupo-->
+                                    <h2 class="media-heading"><a href="#" class="cor-fonte-menu">CS:GO Brasil </a></h2>
+                                    <!--Titulo de descrição-->
+                                    <h4 class="">About Group:</h4>
+                                </div><!--./vertical-align-->
+                                <!--Descrição do grupo-->
+                                <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div><!--./media-body-->
+                        </div><!--./media-->
+                    </div><!--/thumbnail-->
+                </div><!--/Post a esquerda-->
+            </div><!--/panel-body -->
+        </div><!--/panel-default -->
+    </div><!--Fim Coluna About-->
+    <!--Começo Coluna Messages Dentro com tamanho maximo dentro da coluna-->
+    <div class="col-lg-12">
+        <!-- Cria a Div interior e a deixa com borda preta-->
+        <div id="bordapreta" class="panel panel-default">
+            <!-- Escritos e icones da barra preta da div-->
+            <div id="fundopreto" class="panel-heading">
+                <a id="cor-letra-verde" href="#"><span class="glyphicon glyphicon-envelope cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Messages</span></a>
+            </div><!--/panel-heading-->
+            <!-- Corpo do texto da div nem todas terão ele-->
+            <div class="panel-body">
+                <!--começo post a esquerda com tamanho maximo da coluna-->
+                <div class="col-lg-12">
+                    <!-- Coloca uma borda na div e a deixa com cor preta-->
+                    <div class="thumbnail borda-profile">
+                        <!--Cria o corpo da mensagem-->
+                        <div class="media">
+                            <!--Alinha a foto do post a esquerda-->
+                            <div class="media-left">
+                                <a id="cor-fonte-menu" href="#" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                            </div><!--/media-left-->
+                            <!--Corpo da div media alinhada verticalmente ao centro-->
+                            <div class="media-body">
+                                <div class="vertical-align">
+                                    <!--Nick do Usuario q postou a msg-->
+                                    <h4 class="nick-post media-heading"><a href="#" class="cor-fonte-menu">TusaMAL </a></h4>
+                                    <!--Data/Hora e grupo que foi postada a msg-->
+                                    <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+                                </div>
+                                <!--Mensagem postada-->
+                                <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div><!--/media-body-->
+                        </div><!--/media-->
+                    </div><!--/borda-profile-->
+                </div><!--Fim post a esquerda /col-lg-12-->
+                <!--começo post a esquerda com tamanho maximo da coluna-->
+                <div class="col-lg-12">
+                    <!-- Coloca uma borda na div e a deixa com cor preta-->
+                    <div class="thumbnail borda-profile">
+                        <!--Cria o corpo da mensagem-->
+                        <div class="media">
+                            <!--Alinha a foto do post a esquerda-->
+                            <div class="media-left">
+                                <a id="cor-fonte-menu" href="#" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                            </div><!--/media-left-->
+                            <!--Corpo da div media alinhada verticalmente ao centro-->
+                            <div class="media-body">
+                                <div class="vertical-align">
+                                    <h4 class="nick-post media-heading"><a href="#" class="cor-fonte-menu">TusaMAL </a></h4>
+                                    <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+                                </div>
+                                <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div><!--/media-body-->
+                        </div><!--/media-->
+                    </div><!--/borda-profile-->
+                </div><!--Fim post a esquerda /col-lg-12-->
+                <!--começo post a esquerda com tamanho maximo da coluna-->
+                <div class="col-lg-12">
+                    <!-- Coloca uma borda na div e a deixa com cor preta-->
+                    <div class="thumbnail borda-profile">
+                        <!--Cria o corpo da mensagem-->
+                        <div class="media">
+                            <!--Alinha a foto do post a esquerda-->
+                            <div class="media-left">
+                                <a id="cor-fonte-menu" href="#" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                            </div><!--/media-left-->
+                            <!--Corpo da div media alinhada verticalmente ao centro-->
+                            <div class="media-body">
+                                <div class="vertical-align">
+                                    <h4 class="nick-post media-heading"><a href="#" class="cor-fonte-menu">TusaMAL </a></h4>
+                                    <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+                                </div>
+                                <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div><!--/media-body-->
+                        </div><!--/media-->
+                    </div><!--/borda-profile-->
+                </div><!--Fim post a esquerda /col-lg-12-->
+                <!--começo post a esquerda com tamanho maximo da coluna-->
+                <div class="col-lg-12">
+                    <!-- Coloca uma borda na div e a deixa com cor preta-->
+                    <div class="thumbnail borda-profile">
+                        <!--Cria o corpo da mensagem-->
+                        <div class="media">
+                            <!--Alinha a foto do post a esquerda-->
+                            <div class="media-left">
+                                <a id="cor-fonte-menu" href="#" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                            </div><!--/media-left-->
+                            <!--Corpo da div media alinhada verticalmente ao centro-->
+                            <div class="media-body">
+                                <div class="vertical-align">
+                                    <h4 class="nick-post media-heading"><a href="#" class="cor-fonte-menu">TusaMAL </a></h4>
+                                    <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+                                </div>
+                                <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div><!--/media-body-->
+                        </div><!--/media-->
+                    </div><!--/borda-profile-->
+                </div><!--Fim post a esquerda /col-lg-12-->
+            </div><!--/panel-body-->
+        </div><!--/panel-default-->
+    </div><!--Fim coluna messages /col-lg-12-->
+</div><!--/col-lg-7 col-sm-12 col-md-6-->
+<!--Começo Members e Events-->
+<!--Cria a coluna para ocupar 3/12 da pagina e ocupar toda a tela em uma resolução pequena-->
+<div class="col-lg-3 col-sm-12 col-md-3">
+    <!-- Cria a Div interior e a deixa com borda preta-->
     <div id="bordapreta" class="panel panel-default">
+        <!-- Escritos e icones da barra preta da div-->
         <div id="fundopreto" class="panel-heading">
-            <a id="cor-letra-verde" href="#"><span class="glyphicon glyphicon-tag cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">About</span></a>
-        </div>
+            <!-- Escritos e icones da barra preta da div-->
+            <a id="cor-letra-verde" href="../Usuario/Friends"><span class="glyphicon glyphicon-star cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Members (7)</span></a>
+        </div><!--/panel-heading-->
+        <!-- Corpo do texto da div nem todas terão ele-->
         <div class="panel-body">
-            <!--
-
-            começo post a esquerda
-
-            -->
+            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
+                    <!--Anchor ou link do membro em questão-->
+                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
+                </a>
+            </div><!--/col-sm-12 col-md-6 col-lg-4-->
+            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
+                    <!--Anchor ou link do membro em questão-->
+                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
+                </a>
+            </div><!--/col-sm-12 col-md-6 col-lg-4-->
+            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
+                    <!--Anchor ou link do membro em questão-->
+                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
+                </a>
+            </div><!--/col-sm-12 col-md-6 col-lg-4-->
+            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
+                    <!--Anchor ou link do membro em questão-->
+                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
+                </a>
+            </div><!--/col-sm-12 col-md-6 col-lg-4-->
+            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
+                    <!--Anchor ou link do membro em questão-->
+                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
+                </a>
+            </div><!--/col-sm-12 col-md-6 col-lg-4-->
+            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
+                    <!--Anchor ou link do membro em questão-->
+                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
+                </a>
+            </div><!--/col-sm-12 col-md-6 col-lg-4-->
+            <!-- Coluna criada pra evitar que o See more nao fique sem ser no final da coluna-->
             <div class="col-lg-12">
-                <div class="thumbnail borda-profile">
-                    <div class="media">
-                        <div class="media-body vertical-align">
-                            <h2 class="media-heading"><a href="#" class="cor-fonte-menu">CS:GO Brasil </a></h2>
-                            <h4 class="">About Group:</h4>
-                        </div>
-                    </div>
-                    <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-            <!--
-
-            fim Post a esquerda
-
-             -->
-        </div><!-- Fim panel-body -->
-    </div><!-- Fim panel-default -->
-</div><!-- Fim - col-lg-7 -->
-                <!--
-
-                fim Feed
-
-                -->
-                <!--
-
-                Começo Feed
-
-                -->
-
-            <div class="col-lg-12">
-                <div id="bordapreta" class="panel panel-default">
-                    <div id="fundopreto" class="panel-heading">
-                        <a id="cor-letra-verde" href="#"><span class="glyphicon glyphicon-envelope cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Messages</span></a>
-                    </div>
-                    <div class="panel-body">
-                        <!--
-
-    começo post a esquerda
-
-    -->
-                        <div class="col-sm-12 col-lg-12 col-md-12">
-                            <div class="thumbnail borda-profile">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a id="cor-fonte-menu" href="#" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="media-body vertical-align">
-                                        <h4 class="nick-post media-heading"><a href="#" class="cor-fonte-menu">TusaMAL </a></h4>
-                                        <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
-                                    </div>
-                                </div>
-                                <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </div>
-                        <!--
-
-    fim Post a esquerda
-
-     -->
-                        <!--
-
-    começo post a esquerda
-
-    -->
-                        <div class="col-sm-12 col-lg-12 col-md-12">
-                            <div class="thumbnail borda-profile">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a id="cor-fonte-menu" href="#" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/akhe.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="media-body vertical-align">
-                                        <h4 class="nick-post media-heading"><a href="#" class="cor-fonte-menu">Akhenathon </a></h4>
-                                        <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
-                                    </div>
-                                </div>
-                                <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </div>
-                        <!--
-
-    fim Post a esquerda
-
-     -->
-                        <!--
-
-    começo post a esquerda
-
-    -->
-                        <div class="col-sm-12 col-lg-12 col-md-12">
-                            <div class="thumbnail borda-profile">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a id="cor-fonte-menu" href="#" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/gust.jpg" alt="..."></a>
-                                    </div>
-                                    <div class="media-body vertical-align">
-                                        <h4 class="nick-post media-heading"><a href="#" class="cor-fonte-menu">Gust </a></h4>
-                                        <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6>
-                                    </div>
-                                </div>
-                                <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                        </div>
-                        <!--
-
-    fim Post a esquerda
-
-     -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--
-
-                Começo Amigos e grupos
-
-            -->
-
-            <div class="col-lg-3 col-sm-12 col-md-3">
-                <div id="bordapreta" class="panel panel-default">
-                    <div id="fundopreto" class="panel-heading">
-                        <a id="cor-letra-verde" href="../Usuario/Friends"><span class="glyphicon glyphicon-star cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Members (6)</span></a>
-                    </div>
-                    <div class="panel-body">
-
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
-                                <img class="img-responsive center-block" src="../img/akhe.jpg" alt="">
-                                <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p>
-                            </a>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <a id="cor-fonte-menu" href="#" class="thumbnail" title="Gust">
-                                <img class="img-responsive center-block" src="../img/gust.jpg" alt="">
-                                <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Gust</p>
-                            </a>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <a id="cor-fonte-menu" href="#" class="thumbnail" title="MXJonasV">
-                                <img class="img-responsive center-block" src="../img/john.jpg" alt="">
-                                <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">MXJonasV</p>
-                            </a>
-                        </div>
-
-
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <a id="cor-fonte-menu" href="#" class="thumbnail" title="MXJonasV">
-                                <img class="img-responsive center-block" src="../img/john.jpg" alt="">
-                                <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">MXJonasV</p>
-                            </a>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <a id="cor-fonte-menu" href="#" class="thumbnail" title="Gust">
-                                <img class="img-responsive center-block" src="../img/gust.jpg" alt="">
-                                <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Gust</p>
-                            </a>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
-                                <img class="img-responsive center-block" src="../img/akhe.jpg" alt="">
-                                <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p>
-                            </a>
-                        </div>
-
-                        <a href="../pages/friend.html" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
-                    </div> <!--fim panel-body Friends-->
-                </div> <!--fim panel-default Friends-->
-                <div id="bordapreta" class="panel panel-default">
-                    <div id="fundopreto" class="panel-heading">
-                        <a id="cor-letra-verde" href="../Grupos/Groups"><span class="glyphicon glyphicon-pushpin cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Events</span></a>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-sm-12 col-lg-12 col-md-12">
-
-                            <div class="media">
-                                <div id="bordapreta" class="thumbnail">
-                                    <h4>13º Amadorzão de CS:GO</h4>
-                                    <h6 class="fonte-post-pequena">15-04-2017, 00:00 (UTC- 03:00) <a href="#" class="cor-fonte-menu">Online Event</a></h6>
-                                </div>
-                                <div id="bordapreta" class="thumbnail">
-                                    <h4>1º Campeonato Brasileiro de CS:GO</h4>
-                                    <h6 class="fonte-post-pequena">30-04-2017, 00:00 (UTC- 03:00) <a href="#" class="cor-fonte-menu">Lan Event</a></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- Fim panel-body groups -->
-                </div><!-- fim panel-default groups -->
-            </div><!-- Fim col-lg-3 -->
-            <!--
-
-            Fim Amigos e grupos
-
-            -->
-
-
-
+                <a href="../pages/friend.html" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+            </div><!--/col-lg-12-->
+        </div> <!--fim panel-body Members-->
+    </div> <!--fim panel-default Members -->
+    <!--Começo Coluna Events-->
+    <div id="bordapreta" class="panel panel-default">
+        <!-- Escritos e icones da barra preta da div-->
+        <div id="fundopreto" class="panel-heading">
+            <!-- Escritos e icones da barra preta da div-->
+            <span class="glyphicon glyphicon-pushpin cor-letra-verde-sem-efeito">&nbsp;</span><span class="cor-letra-verde-sem-efeito">Events</span>
+        </div>
+        <!--Corpo da Div Events-->
+        <div class="panel-body">
+            <!--Começo Evento-->
+            <div id="bordapreta" class="thumbnail">
+                <h4>13º Amadorzão de CS:GO</h4>
+                <h6 class="fonte-post-pequena">15-04-2017, 00:00 (UTC- 03:00) <a href="#" class="cor-fonte-menu">Online Event</a></h6>
+            </div><!--Fim Evento-->
+            <!--Começo Evento-->
+            <div id="bordapreta" class="thumbnail">
+                <h4>1º Campeonato Brasileiro de CS:GO</h4>
+                <h6 class="fonte-post-pequena">30-04-2017, 00:00 (UTC- 03:00) <a href="#" class="cor-fonte-menu">Lan Event</a></h6>
+            </div><!--Fim Evento-->
+        </div><!-- Fim panel-body groups -->
+    </div><!-- /panel-default Events -->
+</div><!-- Fim col-lg-3 Members e Events -->
