@@ -3,9 +3,11 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
-
+<!--Colunas lg 8/12, md 6/12 e sm 6/12-->
 <div class="col-lg-8 col-md-6 col-sm-6">
+    <!--adiciona thumbnail e deixa a borda preta-->
     <div id="bordapreta" class="thumbnail">
+        <!-- começo do slider aqui nao sei oq nada faz-->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -58,17 +60,24 @@
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div>
-    </div>
-</div>
+        </div><!--Fim do Slider-->
+    </div><!--./thumbnail-->
+</div><!--/.col-lg-8 col-md-6 col-sm-6-->
+<!--Começo Menu Login-->
+<!--Colunas lg 4/12 md 6/12 sm 6/12-->
 <div class="col-lg-4 col-md-6 col-sm-6">
-    <div id="bordapreta" class="well" style="background: white;">
+    <!--Deixa a borda preta e seila oq-->
+    <div id="bordapreta" class="well">
+        <!--Lista nao ordenada com os botões das abas-->
         <ul class="nav nav-tabs">
             <li class="active"><a href="#login" id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search" data-toggle="tab">Login</a></li>
             <li><a href="#create" id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search" data-toggle="tab">Create Account</a></li>
         </ul>
+        <!--Conteudo das abas-->
         <div id="bordapreta myTabContent" class="tab-content">
+            <!--Aba Login-->
             <div class="tab-pane active in" id="login">
+                <!--Formulario de login-->
                 <form class="form-horizontal" action='../Cadastro/Index' method="POST">
                     <fieldset>
                         <div class="row">&nbsp;</div>
@@ -90,13 +99,15 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-10">
-                                <button id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search" type="submit">Sign In</button>
+                                <a href="../Usuario/User" id="cor-letra-verde" class="btn cor-letra-verde efeito-fade-navbar borda-botao-search" type="submit">Sign In</a>
                             </div>
                         </div>
                     </fieldset>
-                </form>
-            </div>
+                </form><!-- Fim formulario login-->
+            </div><!-- Fim tab login-->
+            <!--Começo tab Cadastro-->
             <div class="tab-pane fade" id="create">
+                <!--Começo formulario Cadastro-->
                 <form class="form-horizontal" action='../Cadastro/Create' method="POST">
                     <fieldset>
                         <div class="row">&nbsp;</div>
@@ -131,10 +142,9 @@
                             </div>
                         </div>
                     </fieldset>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+                </form><!--Fim formulario Cadastro-->
+            </div><!--Fim tab Cadastro-->
+        </div><!--./tab-content-->
+    </div><!--./well-->
+</div><!--./col-lg-4 col-md-6 col-sm-6-->
+<!--Fim Coluna login-->
