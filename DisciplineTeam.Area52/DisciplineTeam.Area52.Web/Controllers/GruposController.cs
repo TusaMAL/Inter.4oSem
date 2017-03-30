@@ -23,5 +23,11 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
+
+        //GET: Person
+        public ActionResult Person()
+        {
+            return View();
+        }
     }
 }

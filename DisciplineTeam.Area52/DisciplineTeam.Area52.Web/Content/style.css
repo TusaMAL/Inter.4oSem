@@ -199,3 +199,6 @@ button.cor-letra-verde:focus {
   background-color: #660066;
 }
 
+.textarea-sem-resize{
+    resize: none;
+}

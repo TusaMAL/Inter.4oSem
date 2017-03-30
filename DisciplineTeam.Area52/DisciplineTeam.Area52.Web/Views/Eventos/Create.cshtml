@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-offset-2 col-lg-8 col-sm-12 col-md-12 col-lg-offset-2">
+    <div id="bordapreta" class="panel panel-default">
+        <div id="fundopreto" class="panel-heading">
+            <a id="cor-letra-verde"><i class="glyphicon glyphicon-flash"></i><span>&nbsp;Create Event</span></a>
+        </div>
+        <div>
+            <form class="form-horizontal" method="post">
+                <fieldset>
+                    <br />
+                    <div class="form-group">
+                        <label for="label_name_event" class="col-sm-2 control-label">Name:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="label_name_event" placeholder="Name of the Event">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="label_date" class="col-sm-2 control-label">Date:</label>
+                        <div class="col-sm-3">
+                            <input type="date" class="form-control" id="label_date" placeholder="DD/MM/AAAA">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="label_time" class="col-sm-2 control-label">Time:</label>
+                        <div class="col-sm-3">
+                            <input type="time" class="form-control" id="label_time" placeholder="HH:MM">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Location:</label>
+                        <div class="col-sm-8">
+                            <div class="col-sm-3">
+                                <label class="radio-inline">
+                                    <input type="radio" checked name="radio_loc" id="radio_loc1" value="online"> Online
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="radio_loc" id="radio_loc2" value="presential"> Presential
+                                </label>
+                                <input type="text" class="form-control" id="label_loc" placeholder="Address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="label_desc" class="col-sm-2 control-label">Description:</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control textarea-sem-resize" rows="5" id="label_desc" placeholder="Describe your event!"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <button id="cor-letra-verde" type="submit" class="btn btn cor-letra-verde efeito-fade-navbar center-block">Cancel</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button id="cor-letra-verde" type="submit" class="btn btn cor-letra-verde efeito-fade-navbar center-block">Save</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+

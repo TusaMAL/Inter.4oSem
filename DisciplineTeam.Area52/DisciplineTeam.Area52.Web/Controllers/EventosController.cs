@@ -13,5 +13,10 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
