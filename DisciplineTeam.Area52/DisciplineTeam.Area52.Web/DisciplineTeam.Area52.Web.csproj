@@ -144,7 +144,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Usuario\Friends.cshtml" />
+    <Content Include="Views\Usuario\Members.cshtml" />
     <Content Include="Views\Usuario\User.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Cadastro\Create.cshtml" />
