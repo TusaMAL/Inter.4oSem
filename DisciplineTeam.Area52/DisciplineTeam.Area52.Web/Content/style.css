@@ -26,7 +26,18 @@ div#fundopreto{background: #000000;}
 .no-border{
     border: none;
 }
-/* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução*/
+
+/* Efeito de hover roxo nos li de onde tiver o id*/
+#efeito-form li > a:hover{
+    background-color:#660066 !important;
+    border-color:#000000 !important;
+}
+#efeito-form li.active a{
+    background-color: #660066 !important;
+    border-color:#000000 !important;
+}
+
+/* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução)*/
 @media (max-width: 800px) {
     .navbar-header {
         float: none;
