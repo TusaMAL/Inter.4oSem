@@ -47,7 +47,7 @@
     }
 }
 /* ~~~~~~ Configs de Responsividade ~~~~~ */
-/* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução)*/
+/* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resoluÃ§Ã£o)*/
 @media (max-width: 800px) {
     .navbar-header {
         float: none;
@@ -84,7 +84,7 @@
         display:block !important;
     }
 }
-/* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução)*/
+/* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resoluÃ§Ã£o)*/
 body{font-family: 'oxygen', sans-serif;
      background: #FFe6e6;
      overflow-x: hidden;
