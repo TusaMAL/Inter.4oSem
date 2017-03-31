@@ -1,52 +1,52 @@
 /* ~~~~~~ Configs de Responsividade ~~~~~ */
-
-@media screen and (max-width:480px){body{font-size: 175%;}}
-@media screen and (min-width: 481px) and (max-width: 1360px){body{font-size: 125%;}.nick-post{font-size: 75%;}p.nick-person{font-size:75%;}p.nick-friendgroup{font-size:75%;}}
-@media screen and (min-width: 2000px){body {font-size: 225%;}.nick-post{font-size: 125%;}p.nick-person{font-size:125%;}p.nick-friendgroup{font-size:75%;}}
-@media screen and (min-width: 2750px){body {font-size: 400%;}.nick-post{font-size: 125%;}p.nick-person{font-size:125%;}p.nick-friendgroup{font-size:75%;}}
+@media screen and (max-width:480px){
+    body{
+        font-size: 175%;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 1360px){
+    body{
+        font-size: 125%;
+    }
+    .nick-post{
+        font-size: 75%;
+    }
+    p.nick-person{
+        font-size:75%;
+    }
+    p.nick-friendgroup{
+        font-size:75%;
+    }
+}
+@media screen and (min-width: 2000px){
+    body {
+        font-size: 225%;
+    }
+    .nick-post{
+        font-size: 125%;
+    }
+    p.nick-person{
+        font-size:125%;
+    }
+    p.nick-friendgroup{
+        font-size:75%;
+    }
+}
+@media screen and (min-width: 2750px){
+    body {
+        font-size: 400%;
+    }
+    .nick-post{
+        font-size: 125%;
+    }
+    p.nick-person{
+        font-size:125%;
+    }
+    p.nick-friendgroup{
+        font-size:75%;
+    }
+}
 /* ~~~~~~ Configs de Responsividade ~~~~~ */
-body{font-family: 'Roboto Mono', serif;background: #f2f2f2;/*max-width: 100%;  */overflow-x: hidden;padding-top: 70px;/*font-size: 1.4em;      */text-overflow:ellipsis;}
-.fixed-nav-bar {position: fixed;top: 0;left: 0;z-index: 9999;width: 100%;height: 50px;}
-#botao-menu{border-color: #00ff00;background: #000000;}
-#botao-menu:hover{background-color: #660066}
-#barrinha-menu{background: #00ff00;}
-div#bordapreta{border-radius: 7px;border: 2px solid #000000;border-color: #000000;overflow: hidden;}
-#cor-fonte-menu{color: #000000;border-color: #000000;}
-#cor-fonte-menu:hover{color: #660066;border-color: #660066;}
-.cor-fonte-menu:visited, .cor-fonte-menu:link{color:#660066;}
-.cor-fonte-menu{color: #000000;border-color: #000000;text-decoration: none;}
-.cor-fonte-menu:hover{color: #660066;border-color: #660066;}
-div#bordapretageral{border-color: #000000;overflow: hidden;}
-.vertical-align{display: table-cell;vertical-align: middle;}
-.text-overflow{white-space: nowrap;text-overflow: ellipsis;overflow: hidden; width: auto;}
-.borda-botao-search{border-color:#00ff00;}
-#logoarea52{margin: -2px 10px 0px 25px;width: 125px;height: auto;}
-div#fundopreto{background: #000000;}
-.profile-userpic{width: 150px;display: block;margin: auto;}
-.no-border{
-    border: none;
-}
-
-/* Efeito de hover roxo nos li de onde tiver o id*/
-#efeito-form li a{
-    border-color:#000000 !important;
-    color: #00ff00 !important;
-}
-
-#efeito-form li > a:hover{
-    background-color:#660066 !important;
-    border-color:#000000 !important;
-    color: #00ff00 !important;
-}
-
-#efeito-form li.active a{
-    background-color: #FFFFFF !important;
-    border-color:#000000 !important;
-    color: #660066 !important;
-    font-weight: bold;
-    border-bottom-color: #FFFFFF !important;
-}
-
 /* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução)*/
 @media (max-width: 800px) {
     .navbar-header {
@@ -84,136 +84,183 @@ div#fundopreto{background: #000000;}
         display:block !important;
     }
 }
+/* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução)*/
+body{font-family: 'Roboto Mono', serif;
+     background: #f2f2f2;
+     overflow-x: hidden;
+     padding-top: 70px;
+     text-overflow:ellipsis;
+}
+#botao-menu{
+    border-color: #00ff00;
+    background: #000000;
+}
+#botao-menu:hover{
+    background-color: #660066
+}
+#barrinha-menu{
+    background: #00ff00;
+}
+div#bordapreta{
+    border-radius: 7px;
+    border: 2px solid #000000;
+    border-color: #000000;
+    overflow: hidden;
+}
+#cor-fonte-menu{
+    color: #000000;
+    border-color: #000000;
+}
+#cor-fonte-menu:hover{
+    color: #660066;
+    border-color: #660066;
+}
+div#bordapretageral{
+    border-color: #000000;
+    overflow: hidden;
+}
+#logoarea52{
+    margin: -2px 10px 0px 25px;
+    width: 125px;
+    height: auto;
+}
+div#fundopreto{
+    background: #000000;
+}
+/* Efeito de hover roxo nos li de onde tiver o id*/
+#efeito-form li a{
+    border-color:#000000 !important;
+    color: #00ff00 !important;
+}
+#efeito-form li > a:hover{
+    background-color:#660066 !important;
+    border-color:#000000 !important;
+    color: #00ff00 !important;
+}
 
+#efeito-form li.active a{
+    background-color: #FFFFFF !important;
+    border-color:#000000 !important;
+    color: #660066 !important;
+    font-weight: bold;
+    border-bottom-color: #FFFFFF !important;
+}
+/* Efeito de hover roxo nos li de onde tiver o id*/
+#cor-letra-verde{
+    color:#00ff00;
+}
+span#text-color-area52 {
+    color: #00ff00;
+}
+.cor-fonte-menu:visited, .cor-fonte-menu:link{
+    color:#660066;
+}
+.cor-fonte-menu{
+    color: #000000;
+    border-color: #000000;
+    text-decoration: none;
+}
+.cor-fonte-menu:hover{
+    color: #660066;
+    border-color: #660066;
+}
+.vertical-align{
+    display: table-cell;
+    vertical-align: middle;
+}
+.text-overflow{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: auto;
+}
+.borda-botao-search{
+    border-color:#00ff00;
+}
+.profile-userpic{
+    width: 150px;
+    display: block;
+    margin: auto;
+}
+.no-border{
+    border: none;
+}
+.fixed-nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 50px;
+}
 .centerall
 {
     display: block;
     margin: auto;
 }
-
 .profile-usertitle-name {
   color: #00ff00;
   font-size: 20px;
   font-weight: 600;
   padding: 10px 0px 10px 0px;
- 
-  
 }
-
 .profile-text{
     color: black;
-
 }
-
-
 .link-dentro-body:hover{
     text-decoration: underline;
     background: #660066;
     border-top: 50px;
 }
-
 .cor-letra-verde-sem-efeito{
     color: #00ff00;
     text-decoration: none;
 }
-
 .cor-letra-verde{
     color: #00ff00;
     text-decoration: none;
-    
 }
-
-#cor-letra-verde{
-    color:#00ff00;
-}
-
 .cor-letra-verde:hover{
     text-decoration: none;
     background: #660066;
-    
 }
-
 .cor-letra-verde:active {
   background-color: #660066;
   transform: translateY(0.5px);
 }
-
 .efeito-fade-navbar{
     background: black;
     transition: background-color 0.5s;
-    
 }
-
 .head-amigrups{
     color: #00ff00;
     text-decoration: none;
 }
-
 .head-amigrups:hover{
     text-decoration: underline;
 }
-
-/*.glypicon-color{
-    color: #00ff00;
-    
-
-}
-
-.glypicon-color-menu{
-    color: #00ff00;
-    text-decoration: none;
-}
-
-.glypicon-color-menu:hover{
-    text-decoration: none;
-    background: #660066;
-}
-
-
-#glypicon-color-menu{
-   
-    border-color: #000000;   
-
-}
-
-#glypicon-color-menu:hover{
-    color: #660066;
-}*/
-
-
-span#text-color-area52 {
-    color: #00ff00;
-}
-
 .borda-profile{
     border-radius: 7px;
     border:1px solid black;
 }
-
-
 .imagem-page-amigos{
     height: 96px;
     width: 96px;
 }
-
 .imagem-feed:hover{
     border-color: #660066;
 }
-
 .fonte-post-pequena{
     font-size: 0.7em;
 }
-
 .imagem-grupos-amigos{
     width: 64px;
     height: 64px;    
 }
-
 .panel-grupos-amigos{
     padding-top: 50px;
     padding-left: 25px;
 }
-
 .tabela-grupos-amigos{
     width: 30em;
     height: 11.5em;
@@ -236,30 +283,24 @@ p.nome-grupos-amigos{
     padding-left: 12em;
     font-size: 1em;
 }
-
 .fonte-responsiva-grupos-amigos
 {
     font-size: 0.7em;
 }
-
 .font-perfil{
 	font-weight: bold;
 }
-
 .padding-page-amigos{
     padding-left: 10px;
     padding-bottom: 40px;
 }
-
 .remover-amigo:active{
     background-color: red;
     color: black;
 }
-
 button.cor-letra-verde:focus {
   background-color: #660066;
 }
-
 .textarea-sem-resize{
     resize: none;
 }
