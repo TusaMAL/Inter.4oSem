@@ -311,21 +311,25 @@ button.cor-letra-verde:focus {
 html, body {
   height: 100%;
 }
-
 #wrap {
   min-height: 100%;
 }
-
 #main {  
-  padding-bottom:150px; /* this needs to be bigger than footer height*/
+  padding-bottom:10px !important; /* this needs to be bigger than footer height*/
   overflow:auto;
 }
-
 .footer {
   position: relative;
   margin-top: -150px; /* negative value of footer height */
-  height: auto;
+  height: 100px;
   clear:both;
   padding-top:20px;
 }
 /* Fixar barra no final da pagina*/
+/*Define o tamnho do slider*/
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 50%;
+    margin: auto;
+}
+/*Define o tamnho do slider*/
