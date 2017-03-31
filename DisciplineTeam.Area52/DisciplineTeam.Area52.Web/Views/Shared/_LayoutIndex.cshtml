@@ -40,9 +40,15 @@
         </div><!-- /.container-fluid -->
     </nav>
     <!--    FimNavBAR    -->
-    @RenderBody()
+    <!--Div's pra fazer o footer ficar sempre embaixo-->
+    <div id="wrap">
+        <div id="main" class="container clear-top">
+            @RenderBody()
+        </div>
+    </div>
+    <!--./Div's pra fazer o footer ficar sempre embaixo-->
     <!-- Começo Footer -->
-    <footer class="text-center ">
+    <footer class="text-center footer">
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
 
@@ -73,7 +79,7 @@
                         </ul>
                     </div>
                 </div>Fim Row-->
-                <hr style="border-color: #660066">
+                <hr id="borda-footer">
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 col-md-12">
                         <ul class="nav nav-pills nav-justified">
