@@ -85,26 +85,26 @@
     }
 }
 /* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução)*/
-body{font-family: 'Roboto Mono', serif;
-     background: #f2f2f2;
+body{font-family: 'oxygen', sans-serif;
+     background: #FFe6e6;
      overflow-x: hidden;
      padding-top: 70px;
      text-overflow:ellipsis;
 }
 #botao-menu{
-    border-color: #00ff00;
+    border-color: #ffffff;
     background: #000000;
 }
 #botao-menu:hover{
-    background-color: #660066
+    background-color: #660066;
 }
 #barrinha-menu{
-    background: #00ff00;
+    background: #e60000;
 }
 div#bordapreta{
     border-radius: 7px;
-    border: 2px solid #000000;
-    border-color: #000000;
+    border: 2px solid #FFe6e6;
+    border-color: #FFe6e6;
     overflow: hidden;
 }
 #cor-fonte-menu{
@@ -125,17 +125,17 @@ div#bordapretageral{
     height: auto;
 }
 div#fundopreto{
-    background: #000000;
+    background: #b30000;
 }
 /* Efeito de hover roxo nos li de onde tiver o id*/
 #efeito-form li a{
     border-color:#000000 !important;
-    color: #00ff00 !important;
+    color: #ffffff !important;
 }
 #efeito-form li > a:hover{
     background-color:#660066 !important;
     border-color:#000000 !important;
-    color: #00ff00 !important;
+    color: #ffffff !important;
 }
 
 #efeito-form li.active a{
@@ -147,10 +147,10 @@ div#fundopreto{
 }
 /* Efeito de hover roxo nos li de onde tiver o id*/
 #cor-letra-verde{
-    color:#00ff00;
+    color:#ffffff;
 }
 span#text-color-area52 {
-    color: #00ff00;
+    color: #ffffff;
 }
 .cor-fonte-menu:visited, .cor-fonte-menu:link{
     color:#660066;
@@ -175,7 +175,7 @@ span#text-color-area52 {
     width: auto;
 }
 .borda-botao-search{
-    border-color:#00ff00;
+    border-color:#ffffff;
 }
 .profile-userpic{
     width: 150px;
@@ -199,7 +199,7 @@ span#text-color-area52 {
     margin: auto;
 }
 .profile-usertitle-name {
-  color: #00ff00;
+  color: #ffffff;
   font-size: 20px;
   font-weight: 600;
   padding: 10px 0px 10px 0px;
@@ -213,27 +213,27 @@ span#text-color-area52 {
     border-top: 50px;
 }
 .cor-letra-verde-sem-efeito{
-    color: #00ff00;
+    color: #ffffff;
     text-decoration: none;
 }
 .cor-letra-verde{
-    color: #00ff00;
+    color: #ffffff;
     text-decoration: none;
 }
 .cor-letra-verde:hover{
     text-decoration: none;
-    background: #660066;
+    background: #990000;
 }
 .cor-letra-verde:active {
-  background-color: #660066;
+  background-color: #990000;
   transform: translateY(0.5px);
 }
 .efeito-fade-navbar{
-    background: black;
+    background: #b30000;
     transition: background-color 0.5s;
 }
 .head-amigrups{
-    color: #00ff00;
+    color: #ffffff;
     text-decoration: none;
 }
 .head-amigrups:hover{
