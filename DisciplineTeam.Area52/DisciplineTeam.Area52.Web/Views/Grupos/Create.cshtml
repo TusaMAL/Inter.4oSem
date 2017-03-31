@@ -1,0 +1,43 @@
+﻿@model DisciplineTeam.Area52.Web.Models.Grupo
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-offset-3 col-lg-6 col-sm-12 col-md-12 col-lg-offset-3">
+    <div id="bordapreta" class="panel panel-default">
+        <div id="fundopreto" class="panel-heading no-border">
+            <a id="cor-letra-verde"><span class="glyphicon glyphicon-plus cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Create Group</span></a>
+        </div>
+        <!-- Body da div -->
+        <div class="panel-body no-border">
+            <!-- Cria o formulário -->
+            <form action="/Groups/Create" method="post">
+                <!-- input do nome do grupo-->
+                <div class="form-group">
+                    <label for="nome">Group Name</label>
+                    <input type="text" name="Nome" class="form-control" id="lblNomeGrupo" placeholder="Enter the group name...">
+                </div>
+                <!-- input do formulario do grupo-->
+                <div class="form-group">
+                    <label for="nome">Game</label>
+                    <select class="form-control" id="lblJogoGrupo">
+                        <option value="">Select the group game...</option>
+                        <option value="csgo">Counter-Strike: Global Offensive</option>
+                        <option value="dota2">Dota 2</option>
+                        <option value="lol">League of Legends</option>
+                        <option value="overwatch">Overwatch</option>
+                        <option value="hearthstone">Hearthstone</option>
+                    </select>
+                </div>
+                <!-- input da descrição do jogo-->
+                <div class="form-group">
+                    <label for="desc">Description</label>
+                    <textarea name="Descricao" class="form-control" id="desc" rows="4" required></textarea>
+                </div>
+                <button id="cor-letra-verde" type="submit" class="btn btn cor-letra-verde efeito-fade-navbar">Create Group</button>
+            </form>
+        </div><!--./panel-body-->
+    </div><!--./panel-->
+</div><!--./col-lg-offset-3 col-lg-6 col-sm-12 col-md-12 col-lg-offset-3-->
+

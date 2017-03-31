@@ -1,0 +1,306 @@
+﻿/* ~~~~~~ Configs de Responsividade ~~~~~ */
+@media screen and (max-width:480px){
+    body{
+        font-size: 175%;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 1360px){
+    body{
+        font-size: 125%;
+    }
+    .nick-post{
+        font-size: 75%;
+    }
+    p.nick-person{
+        font-size:75%;
+    }
+    p.nick-friendgroup{
+        font-size:75%;
+    }
+}
+@media screen and (min-width: 2000px){
+    body {
+        font-size: 225%;
+    }
+    .nick-post{
+        font-size: 125%;
+    }
+    p.nick-person{
+        font-size:125%;
+    }
+    p.nick-friendgroup{
+        font-size:75%;
+    }
+}
+@media screen and (min-width: 2750px){
+    body {
+        font-size: 400%;
+    }
+    .nick-post{
+        font-size: 125%;
+    }
+    p.nick-person{
+        font-size:125%;
+    }
+    p.nick-friendgroup{
+        font-size:75%;
+    }
+}
+/* ~~~~~~ Configs de Responsividade ~~~~~ */
+/* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução)*/
+@media (max-width: 800px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+}
+/* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução)*/
+body{font-family: 'Roboto Mono', serif;
+     background: #FFFFFF;
+     overflow-x: hidden;
+     padding-top: 70px;
+     text-overflow:ellipsis;
+}
+#botao-menu{
+    border-color: #00ff00;
+    background: #000000;
+}
+#botao-menu:hover{
+    background-color: #660066
+}
+#barrinha-menu{
+    background: #00ff00;
+}
+div#bordapreta{
+    border-radius: 7px;
+    border: 2px solid #000000;
+    border-color: #000000;
+    overflow: hidden;
+}
+#cor-fonte-menu{
+    color: #000000;
+    border-color: #000000;
+}
+#cor-fonte-menu:hover{
+    color: #660066;
+    border-color: #660066;
+}
+div#bordapretageral{
+    border-color: #000000;
+    overflow: hidden;
+}
+#logoarea52{
+    margin: -2px 10px 0px 25px;
+    width: 125px;
+    height: auto;
+}
+div#fundopreto{
+    background: #000000;
+}
+/* Efeito de hover roxo nos li de onde tiver o id*/
+#efeito-form li a{
+    border-color:#000000 !important;
+    color: #00ff00 !important;
+}
+#efeito-form li > a:hover{
+    background-color:#660066 !important;
+    border-color:#000000 !important;
+    color: #00ff00 !important;
+}
+
+#efeito-form li.active a{
+    background-color: #FFFFFF !important;
+    border-color:#000000 !important;
+    color: #660066 !important;
+    font-weight: bold;
+    border-bottom-color: #FFFFFF !important;
+}
+/* Efeito de hover roxo nos li de onde tiver o id*/
+#cor-letra-verde{
+    color:#00ff00;
+}
+span#text-color-area52 {
+    color: #00ff00;
+}
+.cor-fonte-menu:visited, .cor-fonte-menu:link{
+    color:#660066;
+}
+.cor-fonte-menu{
+    color: #000000;
+    border-color: #000000;
+    text-decoration: none;
+}
+.cor-fonte-menu:hover{
+    color: #660066;
+    border-color: #660066;
+}
+.vertical-align{
+    display: table-cell;
+    vertical-align: middle;
+}
+.text-overflow{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: auto;
+}
+.borda-botao-search{
+    border-color:#00ff00;
+}
+.profile-userpic{
+    width: 150px;
+    display: block;
+    margin: auto;
+}
+.no-border{
+    border: none;
+}
+.fixed-nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 50px;
+}
+.centerall
+{
+    display: block;
+    margin: auto;
+}
+.profile-usertitle-name {
+  color: #00ff00;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 0px 10px 0px;
+}
+.profile-text{
+    color: black;
+}
+.link-dentro-body:hover{
+    text-decoration: underline;
+    background: #660066;
+    border-top: 50px;
+}
+.cor-letra-verde-sem-efeito{
+    color: #00ff00;
+    text-decoration: none;
+}
+.cor-letra-verde{
+    color: #00ff00;
+    text-decoration: none;
+}
+.cor-letra-verde:hover{
+    text-decoration: none;
+    background: #660066;
+}
+.cor-letra-verde:active {
+  background-color: #660066;
+  transform: translateY(0.5px);
+}
+.efeito-fade-navbar{
+    background: black;
+    transition: background-color 0.5s;
+}
+.head-amigrups{
+    color: #00ff00;
+    text-decoration: none;
+}
+.head-amigrups:hover{
+    text-decoration: underline;
+}
+.borda-profile{
+    border-radius: 7px;
+    border:1px solid black;
+}
+.imagem-page-amigos{
+    height: 96px;
+    width: 96px;
+}
+.imagem-feed:hover{
+    border-color: #660066;
+}
+.fonte-post-pequena{
+    font-size: 0.7em;
+}
+.imagem-grupos-amigos{
+    width: 64px;
+    height: 64px;    
+}
+.panel-grupos-amigos{
+    padding-top: 50px;
+    padding-left: 25px;
+}
+.tabela-grupos-amigos{
+    width: 30em;
+    height: 11.5em;
+    margin-left: 75px;
+}
+.foto-grupos-amigos{
+    width: 150px;
+    display: block;
+    margin: auto;
+}
+p.nick-grupos-amigos{
+    padding-top: 2em;
+    padding-left: 10em;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+p.nome-grupos-amigos{
+    padding-top: 1em;
+    padding-left: 12em;
+    font-size: 1em;
+}
+.fonte-responsiva-grupos-amigos
+{
+    font-size: 0.7em;
+}
+.font-perfil{
+	font-weight: bold;
+}
+.padding-page-amigos{
+    padding-left: 10px;
+    padding-bottom: 40px;
+}
+.remover-amigo:active{
+    background-color: red;
+    color: black;
+}
+button.cor-letra-verde:focus {
+  background-color: #660066;
+}
+.textarea-sem-resize{
+    resize: none;
+}

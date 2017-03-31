@@ -1,0 +1,44 @@
+﻿@model DisciplineTeam.Area52.Web.Models.Jogo
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.Mensagem != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Mensagem
+    </div>
+}
+
+<div class="col-lg-offset-2 col-lg-8 col-sm-12 col-md-12 col-lg-offset-2">
+    <div id="bordapreta" class="panel panel-default">
+        <div id="fundopreto" class="panel-heading no-border">
+            <a id="cor-letra-verde"><span class="glyphicon glyphicon-plus cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Add a game</span></a>
+        </div>
+        <div class="panel-body no-border">
+            <form action="/Jogos/Create" method="post">
+
+                <div class="form-group">
+                    <label for="nome">Name</label>
+                    <input type="text" name="Nome" class="form-control" id="nome" placeholder="Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="desc">Descrição</label>
+                    <textarea name="Descricao" class="form-control" id="desc" rows="4" required></textarea>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="imagem_jogo">Image of the game</label>
+                    <input type="file" name="Imagem" id="imagem_jogo">
+                    <p class="help-block">Upload the photo of the game</p>
+                </div>
+
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
