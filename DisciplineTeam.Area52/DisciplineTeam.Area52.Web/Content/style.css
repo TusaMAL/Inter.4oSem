@@ -93,10 +93,10 @@ body{font-family: 'oxygen', sans-serif;
 }
 #botao-menu{
     border-color: #ffffff;
-    background: #000000;
+    background: #990000;
 }
 #botao-menu:hover{
-    background-color: #660066;
+    background-color: #fff;
 }
 #barrinha-menu{
     background: #e60000;
@@ -133,7 +133,7 @@ div#fundopreto{
     color: #ffffff !important;
 }
 #efeito-form li > a:hover{
-    background-color:#660066 !important;
+    background-color:#990000 !important;
     border-color:#000000 !important;
     color: #ffffff !important;
 }
@@ -141,7 +141,7 @@ div#fundopreto{
 #efeito-form li.active a{
     background-color: #FFFFFF !important;
     border-color:#000000 !important;
-    color: #660066 !important;
+    color: #e60000 !important;
     font-weight: bold;
     border-bottom-color: #FFFFFF !important;
 }
@@ -299,7 +299,7 @@ p.nome-grupos-amigos{
     color: black;
 }
 button.cor-letra-verde:focus {
-  background-color: #660066;
+  background-color: #4d0000;
 }
 .textarea-sem-resize{
     resize: none;
