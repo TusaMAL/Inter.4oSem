@@ -157,6 +157,7 @@
     <Content Include="Views\Grupos\Create.cshtml" />
     <Content Include="Views\Eventos\Create.cshtml" />
     <Content Include="Views\Grupos\Person.cshtml" />
+    <Content Include="Views\Cadastro\ForgotP.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

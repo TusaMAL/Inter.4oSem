@@ -18,5 +18,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
+        public ActionResult ForgotP()
+        {
+            return View();
+        }
     }
 }

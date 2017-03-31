@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "ForgotP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "ForgotP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-offset-3 col-lg-6 col-sm-12 col-md-12 col-lg-offset-3">
+    <div id="bordapreta" class="panel panel-default">
+        <div id="fundopreto" class="panel-heading no-border">
+            <a id="cor-letra-verde"><span class="glyphicon glyphicon-question-sign cor-letra-verde-sem-efeito">&nbsp;</span><span class="head-amigrups">Forgot the password</span></a>
+        </div>
+        <!-- Body da div -->
+        <div class="panel-body no-border">
+            <!-- Cria o formulário -->
+            <form action="../Cadastro/Index" method="post">
+                <!-- input do nome do grupo-->
+
+                <!-- input do formulario do grupo-->
+                <div class="form-group">
+                    <label for="nome">Secret Question</label>
+                    <select class="form-control" id="lblSecretQ">
+                        <option value="">Select your question</option>
+                        <option value="csgo">Name of your first dog</option>
+                        <option value="dota2">Name of your mother</option>
+                        <option value="lol">Your first car</option>
+                    </select>
+                </div>
+                <!-- input da descrição do jogo-->
+                <div class="form-group">
+                    <label for="nome">Secret Answer</label>
+                    <input type="text" name="Nome" class="form-control" id="lblNomeGrupo" placeholder="Enter the answer...">
+                </div>
+                <button id="cor-letra-verde" type="submit" class="btn btn cor-letra-verde efeito-fade-navbar">Submit</button>
+            </form>
+        </div><!--./panel-body-->
+    </div><!--./panel-->
+</div><!--./col-lg-offset-3 col-lg-6 col-sm-12 col-md-12 col-lg-offset-3-->
