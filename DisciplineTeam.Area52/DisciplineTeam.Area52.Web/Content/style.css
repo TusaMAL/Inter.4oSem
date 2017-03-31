@@ -86,7 +86,6 @@
 }
 /* Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução)*/
 body{font-family: 'Roboto Mono', serif;
-     background: #f2f2f2;
      overflow-x: hidden;
      padding-top: 70px;
      text-overflow:ellipsis;
