@@ -133,13 +133,13 @@ body{font-family: 'oxygen', sans-serif;
 /*
     Cores de Borda
 */
-div#bordapreta{
+div#cor-borda{
     border-radius: 7px;
     border: 2px solid #FFe6e6;
     border-color: #FFe6e6;
     overflow: hidden;
 }
-div#bordapretageral{
+div#cor-bordageral{
     border-color: #000000;
     overflow: hidden;
 }
