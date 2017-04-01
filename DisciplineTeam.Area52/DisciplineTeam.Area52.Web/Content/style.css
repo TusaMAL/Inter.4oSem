@@ -167,7 +167,7 @@ div#bordapretageral{
     color: #660066;
     border-color: #660066;
 }
-#cor-letra-verde{
+#cor-fonte{
     color:#ffffff;
 }
 span#text-color-area52 {
@@ -194,19 +194,19 @@ span#text-color-area52 {
 .profile-text{
     color: #000000;
 }
-.cor-letra-verde-sem-efeito{
+.cor-fonte-sem-efeito{
     color: #ffffff;
     text-decoration: none;
 }
-.cor-letra-verde{
+.cor-fonte{
     color: #ffffff;
     text-decoration: none;
 }
-.cor-letra-verde:hover{
+.cor-fonte:hover{
     text-decoration: none;
     background: #990000;
 }
-.cor-letra-verde:active {
+.cor-fonte:active {
   background-color: #990000;
   transform: translateY(0.5px);
 }
@@ -220,7 +220,7 @@ span#text-color-area52 {
 }
 /* ./Cores de fonte*/
 /* Cores de Fundo*/
-div#fundopreto{
+div#cor-fundo{
     background: #b30000;
 }
 /* Cores de Fundo*/
@@ -330,7 +330,7 @@ div#fundopreto{
     background-color: red;
     color: black;
 }
-button.cor-letra-verde:focus {
+button.cor-fonte:focus {
   background-color: #4d0000;
 }
 .textarea-sem-resize{
