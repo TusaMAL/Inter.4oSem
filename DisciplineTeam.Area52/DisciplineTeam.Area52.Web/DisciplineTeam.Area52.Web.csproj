@@ -128,10 +128,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Confirmado.cs" />
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Grupo.cs" />
     <Compile Include="Models\Jogo.cs" />
     <Compile Include="Models\Mensagem.cs" />
+    <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Participante.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Usuario.cs" />

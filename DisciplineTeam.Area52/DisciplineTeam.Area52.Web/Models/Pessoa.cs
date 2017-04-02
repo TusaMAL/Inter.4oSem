@@ -12,10 +12,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
         [Required]
         public string Nome { get; set; }
-
-        [Required]
-        public string Nick { get; set; }
-
+        
         [Required]
         public string Email { get; set; }
 

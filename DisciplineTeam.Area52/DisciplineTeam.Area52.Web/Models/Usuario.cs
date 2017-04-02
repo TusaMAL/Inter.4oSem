@@ -9,7 +9,15 @@ namespace DisciplineTeam.Area52.Web.Models
     public class Usuario : Pessoa
     {
         [Required]
+        public string Nick { get; set; }
+
         public string Datanasc { get; set; }
+
+        public string Cidade { get; set; }
+
+        public string Estado { get; set; }
+
+        public string Cep { get; set; }
 
         public string Descricao { get; set; }
 
