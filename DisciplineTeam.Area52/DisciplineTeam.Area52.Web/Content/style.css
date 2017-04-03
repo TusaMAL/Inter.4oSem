@@ -111,10 +111,10 @@ p.nome-grupos-amigos{
 /* ./Sobreescreve o navbar collapse do bootstrap (recolhe o menu qdo diminui a resolução)*/
 /*Cor do menu collapse (menu de quando a barra fica em resolução pequena*/
 #barrinha-menu{
-    background: #e60000;
+    background: #e4f6f6;
 }
 body{font-family: 'oxygen', sans-serif;
-     background: #FFe6e6;
+     background: #e4f6f6;
      overflow-x: hidden;
      padding-top: 70px;
      text-overflow:ellipsis;
@@ -125,18 +125,18 @@ body{font-family: 'oxygen', sans-serif;
 */
 #botao-menu{
     border-color: #ffffff;
-    background: #990000;
+    background: #216666;
 }
 #botao-menu:hover{
-    background-color: #fff;
+    background-color: #309393;
 }
 /*
     Cores de Borda
 */
 div#cor-borda{
     border-radius: 7px;
-    border: 2px solid #FFe6e6;
-    border-color: #FFe6e6;
+    border: 2px solid #e4f6f6;
+    border-color: #e4f6f6;
     overflow: hidden;
 }
 div#cor-bordageral{
@@ -144,7 +144,7 @@ div#cor-bordageral{
     overflow: hidden;
 }
 #borda-footer{
-    border-color: #e60000;
+    border-color: #216666;
 }
 .borda-botao-search{
     border-color:#ffffff;
@@ -164,8 +164,8 @@ div#cor-bordageral{
     border-color: #000000;
 }
 #cor-fonte-menu:hover{
-    color: #660066;
-    border-color: #660066;
+    color: #000000;
+    border-color: #000000;
 }
 #cor-fonte{
     color:#ffffff;
@@ -182,8 +182,8 @@ span#text-color-area52 {
     text-decoration: none;
 }
 .cor-fonte-menu:hover{
-    color: #660066;
-    border-color: #660066;
+    color: #000000;
+    border-color: #000000;
 }
 .profile-usertitle-name {
   color: #ffffff;
@@ -204,14 +204,14 @@ span#text-color-area52 {
 }
 .cor-fonte:hover{
     text-decoration: none;
-    background: #990000;
+    background: #309393;
 }
 .cor-fonte:active {
-  background-color: #990000;
+  background-color: #309393;
   transform: translateY(0.5px);
 }
 .efeito-fade-navbar{
-    background: #b30000;
+    background: #216666;
     transition: background-color 0.5s;
 }
 .head-amigrups{
@@ -221,7 +221,10 @@ span#text-color-area52 {
 /* ./Cores de fonte*/
 /* Cores de Fundo*/
 div#cor-fundo{
-    background: #b30000;
+    background: #216666;
+}
+#cor-fundo-header{
+    background: #309393;
 }
 /* Cores de Fundo*/
 /*Logo Area52*/
@@ -237,14 +240,14 @@ div#cor-fundo{
     color: #ffffff !important;
 }
 #efeito-form li > a:hover{
-    background-color:#990000 !important;
+    background-color:#309393 !important;
     border-color:#000000 !important;
     color: #ffffff !important;
 }
 #efeito-form li.active a{
     background-color: #FFFFFF !important;
     border-color:#000000 !important;
-    color: #e60000 !important;
+    color: #309393 !important;
     font-weight: bold;
     border-bottom-color: #FFFFFF !important;
 }
@@ -287,7 +290,7 @@ div#cor-fundo{
 }
 .borda-profile{
     border-radius: 7px;
-    border:1px solid black;
+    border:1px solid #000000;
 }
 .font-perfil{
 	font-weight: bold;
@@ -327,11 +330,11 @@ div#cor-fundo{
     padding-bottom: 40px;
 }
 .remover-amigo:active{
-    background-color: red;
-    color: black;
+    background-color: #216666;
+    color: #000000;
 }
 button.cor-fonte:focus {
-  background-color: #4d0000;
+  background-color: #309393;
 }
 .textarea-sem-resize{
     resize: none;
