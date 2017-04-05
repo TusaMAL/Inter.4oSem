@@ -339,25 +339,6 @@ button.cor-fonte:focus {
 .textarea-sem-resize{
     resize: none;
 }
-/* Fixar barra no final da pagina*/
-html, body {
-  height: 100%;
-}
-#wrap {
-  min-height: 100%;
-}
-#main {  
-  padding-bottom:10px !important; /* this needs to be bigger than footer height*/
-  overflow:auto;
-}
-.footer {
-  position: relative;
-  margin-top: -150px; /* negative value of footer height */
-  height: 100px;
-  clear:both;
-  padding-top:20px;
-}
-/* Fixar barra no final da pagina*/
 /*Define o tamnho do slider*/
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
