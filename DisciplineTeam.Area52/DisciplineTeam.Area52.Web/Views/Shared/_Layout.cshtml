@@ -31,12 +31,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
-                        
-                            <input type="text" class="form-control" placeholder="Search groups">
-                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button">
-                                <i class="glyphicon glyphicon-search"></i><span>&nbsp;Search</span>
-                            </button>
-                        
+
+                        <input type="text" class="form-control" placeholder="Search groups">
+                        <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button">
+                            <i class="glyphicon glyphicon-search"></i><span>&nbsp;Search</span>
+                        </button>
+
                     </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
@@ -51,31 +51,28 @@
     <!--    FimNavBAR    -->
     <!--Div's pra fazer o footer ficar sempre embaixo-->
     <div id="wrap">
-        <div id="main" class="col-lg-12 col-sm-12 col-md-12">
+        <div class="container col-lg-12 col-md-12 col-sm-12">
             @RenderBody()
         </div>
     </div>
     <!--./Div's pra fazer o footer ficar sempre embaixo-->
     <!--    Começo Footer   -->
-    <footer class="text-center footer">
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 col-md-12">
-                <hr id="borda-footer">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12 col-md-12">
-                        <ul class="nav nav-pills nav-justified">
-                            <li><a id="cor-fonte-menu" href="#">© 2017 Disciplina Team</a></li>
-                            @*<li><a id="cor-fonte-menu" href="#">Terms of Service</a></li>
-                            <li><a id="cor-fonte-menu" href="#">Privacy</a></li>*@
-                        </ul>
-                    </div><!-- /.col-lg-12 -->
-                </div><!-- /.row -->
+    <div id="footer">
+        <div class="container col-lg-12 col-sm-12 col-md-12">
+            <div class="row">
+                <hr id="borda-footer" />
+                <ul class="nav nav-pills nav-justified">
+                    <li><a id="cor-fonte-menu" href="#">© 2017 Disciplina Team</a></li>
+                    @*<li><a id="cor-fonte-menu" href="#">Terms of Service</a></li>
+                    <li><a id="cor-fonte-menu" href="#">Privacy</a></li>*@
+                </ul>
+                <div id="push"></div>
             </div><!-- /.col-lg-12 -->
         </div><!-- /.row -->
-    </footer>
-    <!--    fim Footer    -->
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../Scripts/jquery-1.10.2.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
+    </div>
+            <!--    fim Footer    -->
+            <!-- Bootstrap Core JavaScript -->
+            <script src="../Scripts/jquery-1.10.2.js"></script>
+            <script src="../Scripts/bootstrap.min.js"></script>
 </body>
 </html>

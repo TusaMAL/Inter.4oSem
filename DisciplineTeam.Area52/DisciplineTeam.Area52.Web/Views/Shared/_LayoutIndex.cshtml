@@ -48,27 +48,22 @@
     </div>
     <!--./Div's pra fazer o footer ficar sempre embaixo-->
     <!-- Começo Footer -->
-    <footer class="text-center footer">
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 col-md-12">
-                <hr id="borda-footer">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12 col-md-12">
-                        <ul class="nav nav-pills nav-justified">
-                            <li><a id="cor-fonte-menu" href="#">© 2017 Disciplina Team</a></li>
-                            @*<li><a id="cor-fonte-menu" href="#">Terms of Service</a></li>
-                                <li><a id="cor-fonte-menu" href="#">Privacy</a></li>*@
-                        </ul>
-                    </div>
-                </div><!-- /.col-lg-12 -->
-            </div><!-- /.row -->
-            </div>
-    </footer>
-    <!--
-
-    fim Footer
-
-    -->
+    <div id="footer">
+        <!-- usado pra deixar a coluna para fixar o footer do tamanho da tela, se não usar as 3 colunas o navegador vai usar o
+            padrão do container e dar uma encolhida no footer-->
+        <div class="container col-lg-12 col-sm-12 col-md-12">
+            <div class="row">
+                <!-- adiciona o separador-->
+                <hr id="borda-footer" />
+                <ul class="nav nav-pills nav-justified">
+                    <li><a id="cor-fonte-menu" href="#">© 2017 Disciplina Team</a></li>
+                    @*<li><a id="cor-fonte-menu" href="#">Terms of Service</a></li>
+                        <li><a id="cor-fonte-menu" href="#">Privacy</a></li>*@
+                </ul>
+                <div id="push"></div>
+            </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+    </div><!--    fim Footer    -->
     <!-- Bootstrap Core JavaScript -->
     <script src="../Scripts/jquery-1.10.2.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
