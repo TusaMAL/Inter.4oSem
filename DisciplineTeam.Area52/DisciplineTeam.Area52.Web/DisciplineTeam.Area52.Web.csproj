@@ -132,6 +132,7 @@
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Grupo.cs" />
     <Compile Include="Models\Jogo.cs" />
+    <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\Mensagem.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Participante.cs" />

@@ -19,22 +19,26 @@ namespace DisciplineTeam.Area52.Web.Controllers
 
         public ActionResult Create()
         {
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Jogo j)
+        public ActionResult Create(Jogo e)
         {
             if (ModelState.IsValid)
             {
-                lista.Add(j);
+                using (JogoModel model = new JogoModel())
+                {
+                    model.Create(e);
+                }
 
                 return RedirectToAction("Index");
             }
             else
             {
                 ViewBag.Mensagem = "Falha no cadastro!";
-                return View(j);
+                return View(e);
             }
         }
     }
