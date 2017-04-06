@@ -20,5 +20,28 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
+
+        public List<Jogo> Read()
+        {
+            List<Jogo> lista = new List<Jogo>();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM v_Jogos ORDER BY nome";
+            //cmd.CommandType = System.Data.CommandType.Text;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Jogo p = new Jogo();
+                p.Nome = (string)reader["Nome"];
+                p.Descricao = (string)reader["Descricao"];
+                p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                lista.Add(p);
+            }
+
+            return lista;
+        }
     }
 }

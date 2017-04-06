@@ -14,7 +14,12 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Jogos
         public ActionResult Index()
         {
-            return View(lista);
+            using (JogoModel model = new JogoModel())
+            {
+
+                return View(model.Read());
+
+            } // model.Dispose();
         }
 
         public ActionResult Create()
