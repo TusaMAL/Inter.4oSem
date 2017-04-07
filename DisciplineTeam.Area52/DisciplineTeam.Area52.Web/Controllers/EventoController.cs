@@ -6,19 +6,15 @@ using System.Web.Mvc;
 
 namespace DisciplineTeam.Area52.Web.Controllers
 {
-    public class CadastroController : Controller
+    public class EventoController : Controller
     {
-        // GET: Cadastro
+        // GET: Eventos
         public ActionResult Index()
         {
             return View();
         }
-        // GET: Create
+
         public ActionResult Create()
-        {
-            return View();
-        }
-        public ActionResult ForgotP()
         {
             return View();
         }

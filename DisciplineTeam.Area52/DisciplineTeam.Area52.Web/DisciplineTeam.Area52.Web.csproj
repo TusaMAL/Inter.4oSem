@@ -120,9 +120,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CadastroController.cs" />
-    <Compile Include="Controllers\EventosController.cs" />
-    <Compile Include="Controllers\GruposController.cs" />
-    <Compile Include="Controllers\JogosController.cs" />
+    <Compile Include="Controllers\EventoController.cs" />
+    <Compile Include="Controllers\GrupoController.cs" />
+    <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -146,22 +146,21 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Members.cshtml" />
     <Content Include="Views\Usuario\User.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
-    <Content Include="Views\Cadastro\Create.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
-    <Content Include="Views\Cadastro\Index.cshtml" />
-    <Content Include="Views\Grupos\Groups.cshtml" />
-    <Content Include="Views\Grupos\Index.cshtml" />
-    <Content Include="Views\Jogos\Index.cshtml" />
-    <Content Include="Views\Jogos\Create.cshtml" />
-    <Content Include="Views\Grupos\Create.cshtml" />
-    <Content Include="Views\Eventos\Create.cshtml" />
-    <Content Include="Views\Grupos\Person.cshtml" />
-    <Content Include="Views\Cadastro\ForgotP.cshtml" />
-    <Content Include="Views\Eventos\Index.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Grupo\Groups.cshtml" />
+    <Content Include="Views\Grupo\Index.cshtml" />
+    <Content Include="Views\Jogo\Index.cshtml" />
+    <Content Include="Views\Jogo\Create.cshtml" />
+    <Content Include="Views\Grupo\Create.cshtml" />
+    <Content Include="Views\Evento\Create.cshtml" />
+    <Content Include="Views\Grupo\Person.cshtml" />
+    <Content Include="Views\Usuario\ForgotP.cshtml" />
+    <Content Include="Views\Evento\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -171,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cadastro\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

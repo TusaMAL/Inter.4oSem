@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace DisciplineTeam.Area52.Web.Controllers
 {
-    public class JogosController : Controller
+    public class JogoController : Controller
     {
         public static List<Jogo> lista = new List<Jogo>();
 
