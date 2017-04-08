@@ -37,21 +37,23 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
+        /* Faz o login e chama o metodo .Read do UsuarioModel para ler os dados do banco*/
         [HttpPost]
         public ActionResult Login(Usuario e)
         {
             using (UsuarioModel model = new UsuarioModel())
             {
                 Usuario user = model.Read(e.Email, e.Senha);
-
+                /*Retorna mensagem de erro caso as informações estejam diferentes no banco pois vai retornar um objeto vazio*/
                 if (user == null)
                 {
                     ViewBag.Erro = "Informações inválidas";
                 }
                 else
                 {
+                    /*Cria a sessão do usuario e redireciona para a pagina do profile*/
                     Session["usuario"] = user;
-                    return RedirectToAction("Index", "Produto");
+                    return RedirectToAction("User", "Usuario");
                 }
             }
             return View();

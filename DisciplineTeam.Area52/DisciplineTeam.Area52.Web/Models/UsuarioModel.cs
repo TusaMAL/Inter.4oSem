@@ -22,22 +22,23 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
+        /* Método para fazer o login no site */
         public Usuario Read(string email, string senha)
         {
             Usuario e = null;
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM Usuarios WHERE Email = @email AND Senha = @senha";
+            cmd.CommandText = @"SELECT * FROM Pessoas WHERE email = @email AND senha = @senha";
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@senha", senha);
 
             SqlDataReader reader = cmd.ExecuteReader();
-
+            /*Faz a validação dos dados no banco e se coincidirem autentica o usuario*/
             if (reader.Read())
             {
                 e = new Usuario();
-                e.IdPessoa = (int)reader["IdPessoa"];
+                e.IdPessoa = (int)reader["Id"];
                 e.Nome = (string)reader["Nome"];
                 e.Email = (string)reader["Email"];
             }
