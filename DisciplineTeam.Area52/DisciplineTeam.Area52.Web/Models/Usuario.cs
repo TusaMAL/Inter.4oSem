@@ -8,7 +8,7 @@ namespace DisciplineTeam.Area52.Web.Models
 {
     public class Usuario : Pessoa
     {
-        [Required]
+        [Required(ErrorMessage = "Nick is required")]
         public string Nick { get; set; }
 
         public string Datanasc { get; set; }

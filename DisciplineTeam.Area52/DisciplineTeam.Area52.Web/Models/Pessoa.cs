@@ -10,14 +10,14 @@ namespace DisciplineTeam.Area52.Web.Models
     {
         public int IdPessoa { get; set; }
 
-        [Required(ErrorMessage = "O campo nome é obrigatorio")]
+        [Required(ErrorMessage = "Name is required")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "O campo email é obrigatorio")]
+        [Required(ErrorMessage = "Email is required")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "O campo senha é obrigatorio")]
+        [Required(ErrorMessage = "Password is required")]
         [MinLength(6, ErrorMessage = "A senha deve conter no minimo 6 caracteres")]
         public string Senha { get; set; }
 
