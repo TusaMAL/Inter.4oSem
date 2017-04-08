@@ -14,8 +14,8 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
-        // GET: Usuario/Friends
-        public ActionResult Members()
+        //GET: Person
+        public ActionResult Person()
         {
             return View();
         }

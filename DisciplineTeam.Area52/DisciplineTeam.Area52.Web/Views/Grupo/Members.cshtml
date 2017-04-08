@@ -20,10 +20,16 @@
             <h2 class="text-center">CS:GO Brasil</h2>
             <p class="text-center">Counter Strike: Global Offensive</p>
             <center>
-                <!--Botão join-->
-                <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button">
-                    <i class="glyphicon glyphicon-ok"></i><span>&nbsp;Join</span>
-                </button><!--/Botão join-->
+                <div class="joined" style="display: none;">
+                    <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button" onclick="$('.joined').hide(); $('.join').show()">
+                        <span class="glyphicon glyphicon-remove"></span> Leave Group
+                    </button>
+                </div>
+                <div class="join">
+                    <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button" onclick="$('.join').hide(); $('.joined').show()">
+                        <span class="glyphicon glyphicon-ok"></span> Join
+                    </button>
+                </div><!--./Botão join com efeito JS-->
             </center>
         </div><!--/list-group-item-->
         <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a><a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
@@ -62,7 +68,7 @@
             </div><!-- /.row -->
             <hr class="borda-profile"><!--Divisor-->
             <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-sm-6">
                 <!--Adiciona o thumbnail e deixa a borda preta-->
                 <div id="cor-borda" class="thumbnail">
                     <!--Link para o profile-->
@@ -80,7 +86,7 @@
                 </div><!--/thumbnail-->
             </div><!-- Fim membro /.col-sm-3 -->
             <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-sm-6">
                 <!--Adiciona o thumbnail e deixa a borda preta-->
                 <div id="cor-borda" class="thumbnail">
                     <!--Link para o profile-->
@@ -98,7 +104,7 @@
                 </div><!--/thumbnail-->
             </div><!-- Fim membro /.col-sm-3 -->
             <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-sm-6">
                 <!--Adiciona o thumbnail e deixa a borda preta-->
                 <div id="cor-borda" class="thumbnail">
                     <!--Link para o profile-->
@@ -116,7 +122,7 @@
                 </div><!--/thumbnail-->
             </div><!-- Fim membro /.col-sm-3 -->
             <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-sm-6">
                 <!--Adiciona o thumbnail e deixa a borda preta-->
                 <div id="cor-borda" class="thumbnail">
                     <!--Link para o profile-->
@@ -134,7 +140,7 @@
                 </div><!--/thumbnail-->
             </div><!-- Fim membro /.col-sm-3 -->
             <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-sm-6">
                 <!--Adiciona o thumbnail e deixa a borda preta-->
                 <div id="cor-borda" class="thumbnail">
                     <!--Link para o profile-->
@@ -152,7 +158,7 @@
                 </div><!--/thumbnail-->
             </div><!-- Fim membro /.col-sm-3 -->
             <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-sm-6">
                 <!--Adiciona o thumbnail e deixa a borda preta-->
                 <div id="cor-borda" class="thumbnail">
                     <!--Link para o profile-->
@@ -170,7 +176,7 @@
                 </div><!--/thumbnail-->
             </div><!-- Fim membro /.col-sm-3 -->
             <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-sm-6">
                 <!--Adiciona o thumbnail e deixa a borda preta-->
                 <div id="cor-borda" class="thumbnail">
                     <!--Link para o profile-->

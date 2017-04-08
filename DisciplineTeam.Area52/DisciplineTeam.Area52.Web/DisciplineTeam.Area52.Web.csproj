@@ -146,7 +146,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Usuario\Members.cshtml" />
+    <Content Include="Views\Grupo\Members.cshtml" />
     <Content Include="Views\Usuario\User.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
@@ -158,7 +158,7 @@
     <Content Include="Views\Jogo\Create.cshtml" />
     <Content Include="Views\Grupo\Create.cshtml" />
     <Content Include="Views\Evento\Create.cshtml" />
-    <Content Include="Views\Grupo\Person.cshtml" />
+    <Content Include="Views\Usuario\Person.cshtml" />
     <Content Include="Views\Usuario\ForgotP.cshtml" />
     <Content Include="Views\Evento\Index.cshtml" />
     <None Include="Web.Debug.config">
