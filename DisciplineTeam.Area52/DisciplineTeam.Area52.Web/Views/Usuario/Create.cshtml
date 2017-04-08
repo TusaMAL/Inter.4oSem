@@ -15,37 +15,28 @@
                 @ViewBag.Erro
             </div>
         }
-
         <form action="/Usuario/Create" method="POST">
-            <div class="input-group col-xs-12">
-                <label>Name: </label>
-                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @type = "text" })
+            <div class="form-group has-feedback">
+                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @type = "text", @placeholder = "Enter your name" })
                 @Html.ValidationMessageFor(m => m.Nome)
                 @*<input type="email" name="Email" class="form-control" />*@
             </div>
-
-            <div class="input-group col-xs-12">
-                <label>E-Mail: </label>
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email" })
+            <div class="form-group has-feedback">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @placeholder = "Enter your email" })
                 @Html.ValidationMessageFor(m => m.Email)
                 @*<input type="password" name="Senha" class="form-control" />*@
             </div>
-            <div class="input-group col-xs-12">
-                <label>Password: </label>
-                @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @type = "password" })
+            <div class="form-group has-feedback">
+                @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @type = "password", @placeholder = "Enter your password" })
                 @Html.ValidationMessageFor(m => m.Senha)
                 @*<input type="email" name="Email" class="form-control" />*@
             </div>
-
-            <div class="input-group col-xs-12">
-                <label>Nick: </label>
-                @Html.TextBoxFor(m => m.Nick, new { @class = "form-control", @type = "text" })
+            <div class="form-group has-feedback">
+                @Html.TextBoxFor(m => m.Nick, new { @class = "form-control", @type = "text", @placeholder = "Enter your nickname" })
                 @Html.ValidationMessageFor(m => m.Nick)
                 @*<input type="password" name="Senha" class="form-control" />*@
             </div>
-
-            <br />
-            <div class="col-xs-12">
+            <div class="form-group">
                 <div class="form-group col-xs-offset-2 col-xs-5">
                     <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Sign Up</button>
                 </div>
@@ -54,7 +45,6 @@
                 </div>
             </div>
         </form>
-        <br />
     </div>
 </div><!--./col-lg-4 col-md-6 col-sm-6-->
 <!--Fim Coluna login-->

@@ -1,4 +1,4 @@
-﻿@model DisciplineTeam.Area52.Web.Models.Usuario
+﻿@model DisciplineTeam.Area52.Web.Models.Pessoa
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
@@ -17,21 +17,21 @@
             </div>
         }
         <form action="/Usuario/Login" method="POST">
-            <div class="input-group col-xs-12">
-                <label>Email: </label>
+            
+            <div class="form-group has-feedback">
+                <label class="control-label">Email: </label>
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email" })
                 @Html.ValidationMessageFor(m => m.Email)
                 @*<input type="email" name="Email" class="form-control" />*@
             </div>
-            
-            <div class="input-group col-xs-12">
-                <label>Password: </label>
+
+            <div class="form-group has-feedback">
+                <label class="control-label">Password: </label>
                 @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Senha)
                 @*<input type="password" name="Senha" class="form-control" />*@
             </div>
-            <br />
-            <div class="col-xs-12">
+            <div class="form-group">
                 <div class="form-group col-xs-offset-2 col-xs-5">
                     <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Sign In</button>
                 </div>
@@ -40,7 +40,6 @@
                 </div>
             </div>
         </form>
-        <br />
     </div>
 </div><!--./col-lg-4 col-md-6 col-sm-6-->
 <!--Fim Coluna login-->

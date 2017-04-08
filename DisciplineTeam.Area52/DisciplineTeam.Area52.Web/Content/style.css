@@ -346,6 +346,12 @@ button.cor-fonte:focus {
     margin: auto;
 }
 /*Define o tamnho do slider*/
+input:invalid,
+select:invalid,
+textarea:invalid {
+  border-color: red;
+}
+/*Footer*/
 html,
       body {
         height: 100%;
@@ -358,13 +364,14 @@ html,
         height: auto !important;
         height: 100%;
         /* Negative indent footer by it's height */
-        margin: 0 auto -60px;
+        margin: 0 auto -100px;
       }
 
       /* Set the fixed height of the footer here */
       #push,
       #footer {
-        height: 60px;
+          padding-top: 50px;
+        height: 100px;
       }
 
       /* Lastly, apply responsive CSS fixes as necessary */
