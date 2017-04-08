@@ -119,7 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CadastroController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
@@ -138,6 +137,7 @@
     <Compile Include="Models\Participante.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,7 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cadastro\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

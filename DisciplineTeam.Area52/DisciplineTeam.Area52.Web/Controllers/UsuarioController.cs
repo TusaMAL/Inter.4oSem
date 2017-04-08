@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DisciplineTeam.Area52.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,10 +24,6 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
-        public ActionResult Create()
-        {
-            return View();
-        }
         public ActionResult Edit()
         {
             return View();
@@ -34,6 +31,48 @@ namespace DisciplineTeam.Area52.Web.Controllers
         public ActionResult ForgotP()
         {
             return View();
+        }
+        // GET: Usuario
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(Usuario e)
+        {
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                Usuario user = model.Read(e.Email, e.Senha);
+
+                if (user == null)
+                {
+                    ViewBag.Erro = "Informações inválidas";
+                }
+                else
+                {
+                    Session["usuario"] = user;
+                    return RedirectToAction("Index", "Produto");
+                }
+            }
+            return View();
+        }
+        // GET: Usuario
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Usuario e)
+        {
+            if (ModelState.IsValid)
+            {
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    model.Create(e);
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(e);
         }
     }
 }
