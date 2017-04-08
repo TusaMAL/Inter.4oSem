@@ -351,6 +351,10 @@ select:invalid,
 textarea:invalid {
   border-color: red;
 }
+/* padding do form de criar conta*/
+#padding-create {
+    padding-right: 20px;
+}
 /*Footer*/
 html,
       body {

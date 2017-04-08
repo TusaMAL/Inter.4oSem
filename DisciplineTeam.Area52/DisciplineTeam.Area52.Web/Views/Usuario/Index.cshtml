@@ -16,19 +16,26 @@
                 @ViewBag.Erro
             </div>
         }
-        <form action="/Usuario/Login" method="POST">
-            
+        <!--começo form auto validador usando o validator.js obs: esse script está declarado só no _LayoutIndex.cshtml no rodapé da pagina-->
+        <form data-toggle="validator" role="form" action="/Usuario/Login" method="POST">
+            <!-- classe has-feedback informa os campos que não estão preenchidos corretamente-->
             <div class="form-group has-feedback">
                 <label class="control-label">Email: </label>
+                <!-- Textbox criado pelo razor-->
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @required = "" })
-                @Html.ValidationMessageFor(m => m.Email)
+                <!--Mostra os glphicon conforme a ação-->
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <!-- mensagem de validação do razor-->
+                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Email)</div>
+        
                 @*<input type="email" name="Email" class="form-control" />*@
             </div>
 
             <div class="form-group has-feedback">
                 <label class="control-label">Password: </label>
-                @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @required = "" })
-                @Html.ValidationMessageFor(m => m.Senha)
+                @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @minlength = "6", @required = "" })
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Senha)</div>
                 @*<input type="password" name="Senha" class="form-control" />*@
             </div>
             <div class="form-group">
