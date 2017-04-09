@@ -71,7 +71,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     model.Create(e);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Login");
                 }
             }
             return View(e);
