@@ -147,11 +147,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Grupo\Members.cshtml" />
-    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\User.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
-    <Content Include="Views\Usuario\Login.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Grupo\Groups.cshtml" />
     <Content Include="Views\Grupo\Index.cshtml" />
     <Content Include="Views\Jogo\Index.cshtml" />
