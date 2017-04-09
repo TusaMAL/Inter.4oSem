@@ -1,52 +1,232 @@
-﻿@model DisciplineTeam.Area52.Web.Models.Pessoa
+﻿@model DisciplineTeam.Area52.Web.Models.Usuario
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+    ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!--Começo Menu Login-->
-<!--Colunas lg 4/12 md 6/12 sm 6/12-->
-<div class="container col-lg-4 col-md-6 col-sm-6 thumbnail">
-    <h3 class="text-center">Login to Your Account</h3>
-    <hr id="borda-footer" />
+<!--        Começo Menu Esquerdo        -->
+<!--Cria as Coluna principal da Div lg 2/12, sm 12/12 e md 3/12-->
+<div class="col-lg-2 col-sm-12 col-md-3">
+    <!-- Cria a Div interior e a deixa com borda preta-->
+    <div id="cor-borda" class="panel panel-default">
+        <!--Aplica o fundo preto e cria o head da div-->
+        <div id="cor-fundo-header" class="panel-heading no-border">
+            <!-- Escritos e icones da barra preta da div-->
+            <a id="cor-fonte" href="../Usuario/Edit"><span class="glyphicon glyphicon-user cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Profile</span></a>
+        </div><!--/panel-heading-->
+        <!--Div onde fica os textos do grupo-->
+        <div class="list-group-item no-border">
+            <a href=""> <img src="../img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+            <!--Nickname do usuario-->
+            <p class="nick-person profile-usertitle-name profile-text text-center">TusaMAL</p>
+            <center>
+                <!--tabela com os dados do usuário-->
+                <table>
+                    <tr><td class="text-right font-perfil">Name:</td> <td>&nbsp;Felipe</td></tr>
+                    <tr><td class="text-right font-perfil">Gender:</td> <td>&nbsp;Male</td></tr>
+                    <tr><td class="text-right font-perfil">Age:</td> <td>&nbsp;25</td></tr>
+                    <tr><td class="text-right font-perfil">City:</td> <td>&nbsp;São José do Rio Preto</td></tr>
+                    <tr><td class="text-right font-perfil">State:</td> <td>&nbsp;São Paulo</td></tr>
+                </table>
+            </center>
+            <br />
+            <div><a id="cor-fonte" class="btn cor-fonte efeito-fade-navbar" href="../Jogos/Index"><i class="glyphicon glyphicon-plus cor-fonte-sem-efeito"></i>Adicionar Jogos</a></div>
+        </div><!--./list-group-item-->
+        <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a><a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
+    </div><!--/list-group-->
+</div><!--/col-lg-2 col-sm-12 col-md-3-->
+<!--        Fim Menu Esquerdo       -->
+<!--        Começo Feed             -->
+<!-- Div com tamanho 7/12 lg, 12/12 sm e 6/12 md-->
+<div class="col-lg-7 col-sm-12 col-md-5">
+    <!-- Div com tamanho maximo dentro da div acima-->
     <div class="col-lg-12">
-        @if (ViewBag.Erro != null)
-        {
-            <div class="alert alert-danger">
-                @ViewBag.Erro
-            </div>
-        }
-        <!--começo form auto validador usando o validator.js obs: esse script está declarado só no _LayoutIndex.cshtml no rodapé da pagina-->
-        <form data-toggle="validator" role="form" action="/Usuario/Login" method="POST">
-            <!-- classe has-feedback informa os campos que não estão preenchidos corretamente-->
-            <div class="form-group has-feedback">
-                <label class="control-label">Email: </label>
-                <!-- Textbox criado pelo razor-->
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @required = "" })
-                <!--Mostra os glphicon conforme a ação-->
-                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                <!-- mensagem de validação do razor-->
-                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Email)</div>
-        
-                @*<input type="email" name="Email" class="form-control" />*@
-            </div>
+            <!-- Corpo do texto da div nem todas terão ele-->
+            <div id="cor-borda" class="panel-body thumbnail">
+                <!-- Coloca uma borda na div e a deixa com cor preta-->
+                <div class="">
+                    <!--Cria o corpo da mensagem-->
+                    <div class="media">
+                        <!--Alinha a foto do post a esquerda-->
+                        <div class="media-left">
+                            <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                        </div>
+                        <!--/media-left-->
+                        <!--Corpo da div media alinhada verticalmente ao centro-->
+                        <div class="media-body">
+                            <div class="vertical-align">
+                                <!--Nick do Usuario q postou a msg-->
+                                <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">TusaMAL </a></h4>
+                                <!--Data/Hora e grupo que foi postada a msg-->
+                                <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+                            </div>
+                            <!--Mensagem Postada-->
+                            <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div><!--/media-body-->
+                    </div><!--/media-->
+                </div><!--/borda-profile-->
+                <!--começo post a direita <div class="col-sm-12 col-lg-12 col-md-12"><div class="thumbnail"><div class="media"><div class="media-body vertical-align"><h4 class="nick-post media-heading text-right"><a href="#" class="cor-fonte-menu">Gust</a></h4><h6 class="fonte-post-pequena text-right">21-03-2017, 11:20 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6></div><div class="media-right"><a id="cor-fonte-menu" href="#" class=""><img src="../img/img-feed/gust.jpg" class="img-responsive media-object img-thumbnail"></a>                 </div></div><p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>fim Post a direita-->
+            </div><!-- Fim panel-body -->
+            <!-- Corpo do texto da div nem todas terão ele-->
+            <div id="cor-borda" class="panel-body thumbnail">
+                <!-- Coloca uma borda na div e a deixa com cor preta-->
+                <div class="">
+                    <!--Cria o corpo da mensagem-->
+                    <div class="media">
+                        <!--Alinha a foto do post a esquerda-->
+                        <div class="media-left">
+                            <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                        </div>
+                        <!--/media-left-->
+                        <!--Corpo da div media alinhada verticalmente ao centro-->
+                        <div class="media-body">
+                            <div class="vertical-align">
+                                <!--Nick do Usuario q postou a msg-->
+                                <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">TusaMAL </a></h4>
+                                <!--Data/Hora e grupo que foi postada a msg-->
+                                <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+                            </div>
+                            <!--Mensagem Postada-->
+                            <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div><!--/media-body-->
+                    </div><!--/media-->
+                </div><!--/borda-profile-->
+                <!--começo post a direita <div class="col-sm-12 col-lg-12 col-md-12"><div class="thumbnail"><div class="media"><div class="media-body vertical-align"><h4 class="nick-post media-heading text-right"><a href="#" class="cor-fonte-menu">Gust</a></h4><h6 class="fonte-post-pequena text-right">21-03-2017, 11:20 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6></div><div class="media-right"><a id="cor-fonte-menu" href="#" class=""><img src="../img/img-feed/gust.jpg" class="img-responsive media-object img-thumbnail"></a>                 </div></div><p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>fim Post a direita-->
+            </div><!-- Fim panel-body -->
+            <!-- Corpo do texto da div nem todas terão ele-->
+            <div id="cor-borda" class="panel-body thumbnail">
+                <!-- Coloca uma borda na div e a deixa com cor preta-->
+                <div class="">
+                    <!--Cria o corpo da mensagem-->
+                    <div class="media">
+                        <!--Alinha a foto do post a esquerda-->
+                        <div class="media-left">
+                            <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                        </div>
+                        <!--/media-left-->
+                        <!--Corpo da div media alinhada verticalmente ao centro-->
+                        <div class="media-body">
+                            <div class="vertical-align">
+                                <!--Nick do Usuario q postou a msg-->
+                                <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">TusaMAL </a></h4>
+                                <!--Data/Hora e grupo que foi postada a msg-->
+                                <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+                            </div>
+                            <!--Mensagem Postada-->
+                            <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div><!--/media-body-->
+                    </div><!--/media-->
+                </div><!--/borda-profile-->
+                <!--começo post a direita <div class="col-sm-12 col-lg-12 col-md-12"><div class="thumbnail"><div class="media"><div class="media-body vertical-align"><h4 class="nick-post media-heading text-right"><a href="#" class="cor-fonte-menu">Gust</a></h4><h6 class="fonte-post-pequena text-right">21-03-2017, 11:20 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6></div><div class="media-right"><a id="cor-fonte-menu" href="#" class=""><img src="../img/img-feed/gust.jpg" class="img-responsive media-object img-thumbnail"></a>                 </div></div><p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>fim Post a direita-->
+            </div><!-- Fim panel-body -->
+    </div><!-- Fim - col-lg-12 -->
+</div><!-- ./Div com tamanho 7/12 lg, 12/12 sm e 6/12 md-->
+<!--
 
-            <div class="form-group has-feedback">
-                <label class="control-label">Password: </label>
-                @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @minlength = "6", @required = "" })
-                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Senha)</div>
-                @*<input type="password" name="Senha" class="form-control" />*@
-            </div>
-            <div class="form-group">
-                <div class="form-group col-xs-offset-2 col-xs-5">
-                    <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Sign In</button>
+    fim Feed
+
+-->
+<!--
+
+    Começo Amigos e grupos
+
+-->
+
+<div class="col-lg-3 col-sm-12 col-md-4">
+    <!--<div id="cor-borda" class="panel panel-default">
+        <div id="cor-fundo" class="panel-heading">
+            <a id="cor-fonte" href="../Usuario/Friends"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Friends (7)</span></a>
+        </div>
+        <div class="panel-body">
+
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
+                        <img class="img-responsive center-block" src="../img/akhe.jpg" alt="">
+                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p>
+                    </a>
                 </div>
-                <div class="form-group col-xs-5">
-                    <a id="cor-fonte" href="/Usuario/Create" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Register</a>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="Gust">
+                        <img class="img-responsive center-block" src="../img/gust.jpg" alt="">
+                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Gust</p>
+                    </a>
                 </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="MXJonasV">
+                        <img class="img-responsive center-block" src="../img/john.jpg" alt="">
+                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">MXJonasV</p>
+                    </a>
+                </div>
+
+
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="MXJonasV">
+                        <img class="img-responsive center-block" src="../img/john.jpg" alt="">
+                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">MXJonasV</p>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="Gust">
+                        <img class="img-responsive center-block" src="../img/gust.jpg" alt="">
+                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Gust</p>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
+                        <img class="img-responsive center-block" src="../img/akhe.jpg" alt="">
+                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p>
+                    </a>
+                </div>
+
+            <a href="../pages/friend.html" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+        </div> fim panel-body Friends
+    </div> fim panel-default Friends -->
+    <div id="cor-borda" class="panel panel-default">
+        <div id="cor-fundo-header" class="panel-heading no-border">
+            <a id="cor-fonte" href="../Grupo/Groups"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (9)</span></a>
+        </div>
+        <div class="panel-body no-border">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="Dota 2 Rio Preto">
+                    <img class="img-responsive center-block" src="../img/dota2.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Dota 2 Rio Preto</p>
+                </a>
             </div>
-        </form>
-    </div>
-</div><!--./col-lg-4 col-md-6 col-sm-6-->
-<!--Fim Coluna login-->
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="CS:GO Brasil">
+                    <img class="img-responsive center-block" src="../img/csgo.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">CS:GO Brasil</p>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="Paladins is da best">
+                    <img class="img-responsive center-block" src="../img/overwatch.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Paladins is da best</p>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="League of Legends">
+                    <img class="img-responsive center-block" src="../img/lol.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">League of Legends</p>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="Hearthstone BR">
+                    <img class="img-responsive center-block" src="../img/heart.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Hearthstone BR</p>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="Tomates Peladeiros">
+                    <img class="img-responsive center-block" src="../img/fifa17.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Tomates Peladeiros</p>
+                </a>
+            </div>
+            <a href="#" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+        </div><!-- Fim panel-body groups -->
+    </div><!-- fim panel-default groups -->
+</div><!-- Fim col-lg-3 -->
+<!--
+
+Fim Amigos e grupos
+
+-->

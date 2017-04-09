@@ -53,7 +53,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 {
                     /*Cria a sessão do usuario e redireciona para a pagina do profile*/
                     Session["usuario"] = user;
-                    return RedirectToAction("User", "Usuario");
+                    return RedirectToAction("Index", "Usuario");
                 }
             }
             return View();
