@@ -47,7 +47,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 /*Retorna mensagem de erro caso as informações estejam diferentes no banco pois vai retornar um objeto vazio*/
                 if (user == null)
                 {
-                    ViewBag.Erro = "Informações inválidas";
+                    ViewBag.Erro = "Wrong login data!";
                 }
                 else
                 {
@@ -64,10 +64,12 @@ namespace DisciplineTeam.Area52.Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Usuario e)
+        public ActionResult Create(Usuario e, string Sucesso)
         {
             if (ModelState.IsValid)
             {
+                /* faz com que o conteudo não seja nulo para que seja exibido mensagem de confirmação na pagina login*/
+                TempData["Sucesso"] = "true";
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     model.Create(e);
