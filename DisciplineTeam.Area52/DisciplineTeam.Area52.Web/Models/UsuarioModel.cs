@@ -22,6 +22,26 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
+
+        public Boolean Check(Usuario e)
+
+        {
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT * FROM Pessoas WHERE email = @email";
+            cmd.Parameters.AddWithValue("@email", e.Email);
+            SqlDataReader reader = cmd.ExecuteReader();
+            /*Faz a validação dos dados no banco e se coincidirem autentica o usuario*/
+            if (reader.Read())
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         /* Método para fazer o login no site */
         public Usuario Read(string email, string senha)
         {

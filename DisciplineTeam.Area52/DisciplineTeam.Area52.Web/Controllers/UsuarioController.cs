@@ -72,8 +72,15 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 TempData["Sucesso"] = "true";
                 using (UsuarioModel model = new UsuarioModel())
                 {
-                    model.Create(e);
-                    return RedirectToAction("Login");
+                    if (model.Check(e))
+                    {
+                        model.Create(e);
+                        return RedirectToAction("Login");
+                    }
+                    else
+                    {
+                        ViewBag.Erro = "Usuário já cadastrado";
+                    }
                 }
             }
             return View(e);
