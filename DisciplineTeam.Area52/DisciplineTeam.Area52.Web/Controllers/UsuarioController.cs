@@ -79,7 +79,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     }
                     else
                     {
-                        ViewBag.Erro = "Usuário já cadastrado";
+                        ViewBag.Erro = "Email already in use!";
                     }
                 }
             }
