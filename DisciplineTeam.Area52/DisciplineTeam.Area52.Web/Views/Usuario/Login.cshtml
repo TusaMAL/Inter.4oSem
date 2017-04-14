@@ -29,7 +29,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label">Email: </label>
                 <!-- Textbox criado pelo razor-->
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @required = "" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email"})
                 <!--Mostra os glphicon conforme a ação-->
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <!-- mensagem de validação do razor-->
@@ -40,7 +40,7 @@
 
             <div class="form-group has-feedback">
                 <label class="control-label">Password: </label>
-                @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @minlength = "6", @required = "" })
+                @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @minlength = "6"})
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Senha)</div>
                 @*<input type="password" name="Senha" class="form-control" />*@
