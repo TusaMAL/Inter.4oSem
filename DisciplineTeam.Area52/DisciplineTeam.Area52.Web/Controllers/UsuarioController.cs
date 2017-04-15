@@ -69,11 +69,12 @@ namespace DisciplineTeam.Area52.Web.Controllers
             if (ModelState.IsValid)
             {
                 /* faz com que o conteudo não seja nulo para que seja exibido mensagem de confirmação na pagina login*/
-                TempData["Sucesso"] = "true";
+                
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     if (model.Check(e))
                     {
+                        TempData["Sucesso"] = "true";
                         model.Create(e);
                         return RedirectToAction("Login");
                     }
