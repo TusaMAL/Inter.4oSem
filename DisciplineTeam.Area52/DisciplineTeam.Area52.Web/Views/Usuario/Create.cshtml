@@ -12,9 +12,7 @@
         <!-- Mensagem de erro-->
         @if (ViewBag.Erro != null)
         {
-            <div class="alert alert-danger text-center" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error:</span>
+            <div class="alert alert-danger">
                 @ViewBag.Erro
             </div>
         }

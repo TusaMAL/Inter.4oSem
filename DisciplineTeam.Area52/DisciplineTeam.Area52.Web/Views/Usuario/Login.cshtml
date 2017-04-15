@@ -12,16 +12,14 @@
     <div class="col-lg-12">
         @if (ViewBag.Erro != null)
         {
-            <div class="alert alert-danger text-center" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error:</span>
+            <div class="alert alert-danger">
                 @ViewBag.Erro
             </div>
         }
         <!-- Mensagem de sucesso da criação da conta embutido no UsuarioController.cs-->
         @if (TempData["Sucesso"] != null)
         {
-            <div class="alert alert-success text-center">
+            <div class="alert alert-success">
                 Account created successfully!
             </div>
         }
