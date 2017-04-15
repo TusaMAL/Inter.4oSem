@@ -12,9 +12,7 @@
         <!-- Mensagem de erro-->
         @if (ViewBag.Erro != null)
         {
-            <div class="alert alert-danger text-center" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error:</span>
+            <div class="alert alert-danger">
                 @ViewBag.Erro
             </div>
         }
@@ -24,7 +22,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label">Name: </label>
                 <!-- Textbox criado pelo razor-->
-                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @type = "text", @placeholder = "Name" })
+                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @type = "text", @required = "", @placeholder = "Name" })
                 <!--Mostra os glphicon conforme a ação-->
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <!-- mensagem de validação do razor-->
@@ -32,7 +30,7 @@
             </div>
             <div class="form-group has-feedback">
                 <label class="control-label">Email: </label>
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @placeholder = "Email" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @required = "", @placeholder = "Email" })
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Email)</div>
 
@@ -42,20 +40,20 @@
                 <!-- cria uma linha para que os campos fiquem na mesma-->
                 <div class="row">
                     <div class="form-group col-sm-6 has-feedback">
-                        @Html.PasswordFor(m => m.Senha, new { @id = "inputPassword", @class = "form-control", @minlength = "6", @placeholder="Password"})
+                        @Html.PasswordFor(m => m.Senha, new { @id = "inputPassword", @class = "form-control", @minlength = "6", @placeholder="Password", @required = "" })
                         <span class="glyphicon form-control-feedback" aria-hidden="true" style="padding-right: 30px;"></span>
                         <div class="help-block">Minimum of 6 characters</div>
                     </div>
                     <div class="form-group col-sm-6 has-feedback">
                         <!-- comparação de senhas pelo id="inputPassword" com a div acima, talvez não funcione em browsers antigos-->
-                        <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Passwords must match" placeholder="Confirm">
+                        <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Passwords must match" placeholder="Confirm" required>
                         <span class="glyphicon form-control-feedback" aria-hidden="true" style="padding-right: 30px;"></span>
                         <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Senha)</div>
                     </div>
                 </div>
             <div class="form-group has-feedback">
                 <label class="control-label">Nick: </label>
-                @Html.TextBoxFor(m => m.Nick, new { @class = "form-control", @type = "text", @placeholder = "Nick" })
+                @Html.TextBoxFor(m => m.Nick, new { @class = "form-control", @type = "text", @required = "", @placeholder = "Nick" })
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Nick)</div>
             </div>

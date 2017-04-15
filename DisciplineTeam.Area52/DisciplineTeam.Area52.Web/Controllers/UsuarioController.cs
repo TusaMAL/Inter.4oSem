@@ -69,18 +69,17 @@ namespace DisciplineTeam.Area52.Web.Controllers
             if (ModelState.IsValid)
             {
                 /* faz com que o conteudo não seja nulo para que seja exibido mensagem de confirmação na pagina login*/
-                
+                TempData["Sucesso"] = "true";
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     if (model.Check(e))
                     {
-                        TempData["Sucesso"] = "true";
                         model.Create(e);
                         return RedirectToAction("Login");
                     }
                     else
                     {
-                        ViewBag.Erro = "Email already in use!";
+                        ViewBag.Erro = "Usuário já cadastrado";
                     }
                 }
             }
