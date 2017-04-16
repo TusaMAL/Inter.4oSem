@@ -14,7 +14,8 @@ namespace DisciplineTeam.Area52.Web.Models
         {
             string strConn = "Data Source = localhost; " +
                 " Initial Catalog = BDarea52;" +
-                " Integrated Security = true";
+                " Integrated Security = true;" +
+                " MultipleActiveResultSets = true";
             //"User Id = sa; Password = dba";
 
             connection = new SqlConnection(strConn);

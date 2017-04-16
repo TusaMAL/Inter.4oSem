@@ -64,22 +64,23 @@ namespace DisciplineTeam.Area52.Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Usuario e, string Sucesso)
+        public ActionResult Create(Usuario e)
         {
             if (ModelState.IsValid)
             {
                 /* faz com que o conteudo não seja nulo para que seja exibido mensagem de confirmação na pagina login*/
-                TempData["Sucesso"] = "true";
+                
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     if (model.Check(e))
                     {
+                        TempData["Sucesso"] = "true";
                         model.Create(e);
                         return RedirectToAction("Login");
                     }
                     else
                     {
-                        ViewBag.Erro = "Usuário já cadastrado";
+                        ViewBag.Erro = "Email already in use";
                     }
                 }
             }
