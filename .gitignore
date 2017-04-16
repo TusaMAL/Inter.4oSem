@@ -6,3 +6,6 @@ DisciplineTeam.Area52/DisciplineTeam.Area52.Web/bin/DisciplineTeam.Area52.Web.dl
 *.dll
 *.cache
 *.pdb
+*.pdb
+DisciplineTeam.Area52/DisciplineTeam.Area52.Web/bin/DisciplineTeam.Area52.Web.dll
+*.dll
