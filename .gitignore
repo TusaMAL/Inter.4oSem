@@ -10,3 +10,5 @@ DisciplineTeam.Area52/DisciplineTeam.Area52.Web/bin/DisciplineTeam.Area52.Web.dl
 DisciplineTeam.Area52/DisciplineTeam.Area52.Web/bin/DisciplineTeam.Area52.Web.dll
 *.dll
 *.suo
+*.dll
+*.pdb

@@ -40,7 +40,7 @@ namespace DisciplineTeam.Area52.Web.Models
             }
         }
         /* Método para fazer o login no site */
-        public Usuario Read(string email, string senha)
+        public Usuario Read(string email, string senha, int status)
         {
             Usuario e = null;
 
@@ -58,6 +58,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.IdPessoa = (int)reader["Id"];
                 e.Nome = (string)reader["Nome"];
                 e.Email = (string)reader["Email"];
+                e.Status = (int)reader["Status"];
             }
 
             return e;

@@ -19,12 +19,12 @@
             </div>
         }
         <!--começo form auto validador usando o validator.js obs: esse script está declarado só no _LayoutIndex.cshtml no rodapé da pagina-->
-        <form data-toggle="validator" role="form" action="/Usuario/Create" method="POST">
+        <form data-toggle="validator" role="form" action="../Usuario/Create" method="POST">
             <!-- classe has-feedback informa os campos que não estão preenchidos corretamente-->
             <div class="form-group has-feedback">
                 <label class="control-label">Name: </label>
                 <!-- Textbox criado pelo razor-->
-                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @type = "text", @required = "", @placeholder = "Name" })
+                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @type = "text", @placeholder = "Name", @required="required" })
                 <!--Mostra os glphicon conforme a ação-->
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <!-- mensagem de validação do razor-->
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group has-feedback">
                 <label class="control-label">Email: </label>
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @required = "", @placeholder = "Email" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @placeholder = "Email", @required = "required" })
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Email)</div>
 
@@ -42,7 +42,7 @@
                 <!-- cria uma linha para que os campos fiquem na mesma-->
                 <div class="row">
                     <div class="form-group col-sm-6 has-feedback">
-                        @Html.PasswordFor(m => m.Senha, new { @id = "inputPassword", @class = "form-control", @minlength = "6", @placeholder="Password", @required = "" })
+                        @Html.PasswordFor(m => m.Senha, new { @id = "inputPassword", @class = "form-control", @minlength = "6", @placeholder="Password", @required = "required" })
                         <span class="glyphicon form-control-feedback" aria-hidden="true" style="padding-right: 30px;"></span>
                         <div class="help-block">Minimum of 6 characters</div>
                     </div>
@@ -55,7 +55,7 @@
                 </div>
             <div class="form-group has-feedback">
                 <label class="control-label">Nick: </label>
-                @Html.TextBoxFor(m => m.Nick, new { @class = "form-control", @type = "text", @required = "", @placeholder = "Nick" })
+                @Html.TextBoxFor(m => m.Nick, new { @class = "form-control", @type = "text", @placeholder = "Nick", @required = "required" })
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Nick)</div>
             </div>

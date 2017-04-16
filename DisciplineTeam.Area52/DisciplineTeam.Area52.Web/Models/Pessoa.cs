@@ -18,7 +18,7 @@ namespace DisciplineTeam.Area52.Web.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
-        [MinLength(6, ErrorMessage = "A senha deve conter no minimo 6 caracteres")]
+        [MinLength(6, ErrorMessage = "The password must have 6 characters")]
         public string Senha { get; set; }
 
         public int Status { get; set; }
