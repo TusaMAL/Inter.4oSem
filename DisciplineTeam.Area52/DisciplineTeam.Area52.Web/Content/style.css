@@ -347,6 +347,71 @@ button.cor-fonte:focus {
 }
 /*Define o tamnho do slider*/
 
+/*Customize do slider*/
+/*Botões invisiveis antes de passar o mouse*/
+.carousel .carousel-control-custom{
+    visibility: hidden; 
+}
+
+.carousel:hover .carousel-control-custom{
+    visibility: visible; 
+}
+/* V Começo da Formatação do Carousel V */
+.carousel-control-custom {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 15%;
+  font-size: 20px;
+  color: #309393;
+  text-align: center;
+}
+
+.carousel-control-custom.right {
+  right: 0;
+  left: auto;
+}
+
+.carousel-control-custom:hover,
+.carousel-control-custom:focus {
+  color: #216666;
+  text-decoration: none;
+}
+.carousel-control-custom .icon-prev,
+.carousel-control-custom .icon-next,
+.carousel-control-custom .glyphicon-chevron-left,
+.carousel-control-custom .glyphicon-chevron-right {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+  margin-top: -10px;
+}
+.carousel-control-custom .icon-prev,
+.carousel-control-custom .glyphicon-chevron-left {
+  left: 50%;
+  margin-left: -10px;
+}
+.carousel-control-custom .icon-next,
+.carousel-control-custom .glyphicon-chevron-right {
+  right: 50%;
+  margin-right: -10px;
+}
+
+.carousel-caption-custom {
+  position: absolute;
+  bottom: 40px;
+  left: 110%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #216666;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+/*Fim Customize Carousel*/
+
 /* padding do form de criar conta*/
 #padding-create {
     padding-right: 20px;
