@@ -43,7 +43,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             using (UsuarioModel model = new UsuarioModel())
             {
-                Usuario user = model.Read(e.Email, e.Senha, e.Status);
+                Usuario user = model.Read(e.Email, e.Senha);
                 /*Retorna mensagem de erro caso as informações estejam diferentes no banco pois vai retornar um objeto vazio*/
                 if (user == null)
                 {
