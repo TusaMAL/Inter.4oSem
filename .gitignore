@@ -1,3 +1,8 @@
 *.config
 DisciplineTeam.Area52/.vs/DisciplineTeam.Area52/v14/.suo
 *.cache
+*.suo
+DisciplineTeam.Area52/DisciplineTeam.Area52.Web/bin/DisciplineTeam.Area52.Web.dll
+*.dll
+*.cache
+*.pdb
