@@ -6,7 +6,7 @@ using System.Web;
 
 namespace DisciplineTeam.Area52.Web.Models
 {
-    public abstract class Pessoa
+    public class Pessoa
     {
         public int IdPessoa { get; set; }
 
