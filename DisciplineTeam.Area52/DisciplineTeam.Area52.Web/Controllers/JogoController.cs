@@ -35,7 +35,8 @@ namespace DisciplineTeam.Area52.Web.Controllers
             {
                 using (JogoModel model = new JogoModel())
                 {
-                    model.Create(e);
+                    int id = ((Admin)Session["usuario"]).IdPessoa;
+                    model.Create(e, id);
                 }
 
                 return RedirectToAction("Index");

@@ -8,15 +8,16 @@ namespace DisciplineTeam.Area52.Web.Models
 {
     public class JogoModel : ModelBase
     {
-        public void Create(Jogo e)
+        public void Create(Jogo e, int id)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"INSERT INTO jogos VALUES(@Nome, @Descricao, @Imagem, 1)";
+            cmd.CommandText = @"INSERT INTO jogos VALUES(@Nome, @Descricao, @Imagem, @id)";
 
             cmd.Parameters.AddWithValue("@Nome", e.Nome);
             cmd.Parameters.AddWithValue("@Descricao", e.Descricao);
             cmd.Parameters.AddWithValue("@Imagem", ((object)e.Imagem ?? DBNull.Value));
+            cmd.Parameters.AddWithValue("@id", id);
 
             cmd.ExecuteNonQuery();
         }

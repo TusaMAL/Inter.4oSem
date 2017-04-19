@@ -38,7 +38,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             using (UsuarioModel model = new UsuarioModel())
             {
-                Usuario user = model.Read(e.Email, e.Senha);
+                Pessoa user = model.Read(e.Email, e.Senha);
                 /*Retorna mensagem de erro caso as informações estejam diferentes no banco pois vai retornar um objeto vazio*/
                 if (user == null)
                 {
@@ -55,9 +55,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     else if (user.Status == 2)
                     {
                         /* se user.Status = 2 redireciona para a pagina de criação de jogos*/
-                        Pessoa adm = new Admin();
-                        adm = user;
-                        Session["usuario"] = adm;
+                        Session["usuario"] = user;
                         return RedirectToAction("Index", "Jogo");
                     }
                 }

@@ -40,9 +40,9 @@ namespace DisciplineTeam.Area52.Web.Models
             }
         }
         /* Método para fazer o login no site */
-        public Usuario Read(string email, string senha)
+        public Pessoa Read(string email, string senha)
         {
-            Usuario e = null;
+            Pessoa e = null;
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
@@ -59,6 +59,14 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Nome = (string)reader["Nome"];
                 e.Email = (string)reader["Email"];
                 e.Status = (int)reader["Status"];
+                if (e.Status == 2)
+                {
+                    e = new Admin();
+                    e.IdPessoa = (int)reader["Id"];
+                    e.Nome = (string)reader["Nome"];
+                    e.Email = (string)reader["Email"];
+                    e.Status = (int)reader["Status"];
+                }
             }
 
             return e;
