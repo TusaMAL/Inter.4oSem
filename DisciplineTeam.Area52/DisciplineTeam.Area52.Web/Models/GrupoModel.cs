@@ -6,22 +6,24 @@ using System.Web;
 
 namespace DisciplineTeam.Area52.Web.Models
 {
-    public class JogoModel : ModelBase
+    public class GrupoModel : ModelBase
     {
-        public void Create(Jogo e, int id)
+        public void Create(Grupo e, int id)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"Exec cadJogo @Nome, @Descricao, @Imagem, @id";
+            cmd.CommandText = @"EXEC cadGrupo @nome, @descricao, @imagem, 2, @id"; //Passando o 2 temporariamente até conseguirmos pegar o id do combobox
 
-            cmd.Parameters.AddWithValue("@Nome", e.Nome);
-            cmd.Parameters.AddWithValue("@Descricao", e.Descricao);
-            cmd.Parameters.AddWithValue("@Imagem", ((object)e.Imagem ?? DBNull.Value));
+            cmd.Parameters.AddWithValue("@nome", e.Nome);
+            cmd.Parameters.AddWithValue("@descricao", e.Descricao);
+            cmd.Parameters.AddWithValue("@Imagem", ((object)e.Imagem ?? DBNull.Value)); //Não Vai ficar aqui imagino eu
             cmd.Parameters.AddWithValue("@id", id);
+
 
             cmd.ExecuteNonQuery();
         }
-
+        //Ctrl+C + Ctrl+V no metodo do JogoModel, não sei se da pra usar um metodo de outro model
+        //Usado pra fazer com que apareça os jogos na View de Grupo/Create dentro do combobox
         public List<Jogo> Read()
         {
             List<Jogo> lista = new List<Jogo>();

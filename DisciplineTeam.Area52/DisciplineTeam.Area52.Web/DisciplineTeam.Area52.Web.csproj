@@ -131,6 +131,7 @@
     <Compile Include="Models\Confirmado.cs" />
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Grupo.cs" />
+    <Compile Include="Models\GrupoModel.cs" />
     <Compile Include="Models\Jogo.cs" />
     <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\Mensagem.cs" />

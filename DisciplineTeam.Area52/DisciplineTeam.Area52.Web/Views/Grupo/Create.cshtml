@@ -1,4 +1,4 @@
-﻿@model DisciplineTeam.Area52.Web.Models.Grupo
+﻿@model IEnumerable<DisciplineTeam.Area52.Web.Models.Jogo>
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,22 +12,22 @@
         <!-- Body da div -->
         <div class="panel-body no-border">
             <!-- Cria o formulário -->
-            <form action="/Groups/Create" method="post">
+            <form action="../Grupo/Create" method="post">
                 <!-- input do nome do grupo-->
                 <div class="form-group">
                     <label for="nome">Group Name</label>
                     <input type="text" name="Nome" class="form-control" id="lblNomeGrupo" placeholder="Enter the group name...">
                 </div>
+                
                 <!-- input do formulario do grupo-->
                 <div class="form-group">
                     <label for="nome">Game</label>
                     <select class="form-control" id="lblJogoGrupo">
                         <option value="">Select the group game...</option>
-                        <option value="csgo">Counter-Strike: Global Offensive</option>
-                        <option value="dota2">Dota 2</option>
-                        <option value="lol">League of Legends</option>
-                        <option value="overwatch">Overwatch</option>
-                        <option value="hearthstone">Hearthstone</option>
+                        @foreach (var e in Model)
+                        {
+                            <option value="@e.Nome">@e.Nome</option>
+                        }
                     </select>
                 </div>
                 <!-- input da descrição do jogo-->

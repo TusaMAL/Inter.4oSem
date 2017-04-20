@@ -46,15 +46,16 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 else
                 {
-                    if (user.Status == 1)
+                    if (user is Usuario)
                     {
                         /*Cria a sessão do usuario e redireciona para a pagina do profile*/
+                        ViewBag.User = user;
                         Session["usuario"] = user;
                         return RedirectToAction("Index", "Usuario");
                     }
-                    else if (user.Status == 2)
+                    else if (user is Admin)
                     {
-                        /* se user.Status = 2 redireciona para a pagina de criação de jogos*/
+                        /* Cria a sessão do admin e redireciona para a pagina de criação de jogos*/
                         Session["usuario"] = user;
                         return RedirectToAction("Index", "Jogo");
                     }
