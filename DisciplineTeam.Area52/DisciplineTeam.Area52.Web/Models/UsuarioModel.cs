@@ -54,13 +54,19 @@ namespace DisciplineTeam.Area52.Web.Models
             /*Faz a validação dos dados no banco e se coincidirem autentica o usuario*/
             if (reader.Read())
             {
-                e = new Usuario();
-                e.IdPessoa = (int)reader["Id"];
-                e.Nome = (string)reader["Nome"];
-                e.Email = (string)reader["Email"];
-                e.Status = (int)reader["Status"];
-                if (e.Status == 2)
+                int status = (int)reader["Status"];
+                if (status == 1)
                 {
+                    /*Insancia objeto usuario*/
+                    e = new Usuario();
+                    e.IdPessoa = (int)reader["Id"];
+                    e.Nome = (string)reader["Nome"];
+                    e.Email = (string)reader["Email"];
+                    e.Status = (int)reader["Status"];
+                }
+                if (status == 2)
+                {
+                    /*Instancia objeto Admin*/
                     e = new Admin();
                     e.IdPessoa = (int)reader["Id"];
                     e.Nome = (string)reader["Nome"];
