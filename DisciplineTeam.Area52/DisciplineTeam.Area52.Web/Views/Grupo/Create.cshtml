@@ -12,23 +12,21 @@
         <!-- Body da div -->
         <div class="panel-body no-border">
             <!-- Cria o formulário -->
-            <form action="../Grupo/Create" method="post">
-                <!-- input do nome do grupo-->
-                <div class="form-group">
+@using (Html.BeginForm("Create", "Grupo", FormMethod.Post))
+{
+                   <!--input do nome do grupo-->
+
+
+                   <div class="form-group">
                     <label for="nome">Group Name</label>
-                    <input type="text" name="Nome" class="form-control" id="lblNomeGrupo" placeholder="Enter the group name...">
+                    <input type = "text" name= "Nome" class="form-control" id="lblNomeGrupo" placeholder="Enter the group name...">
                 </div>
-                
+
                 <!-- input do formulario do grupo-->
                 <div class="form-group">
                     <label for="nome">Game</label>
-                    <select class="form-control" id="lblJogoGrupo">
-                        <option value="">Select the group game...</option>
-                        @foreach (var e in Model)
-                        {
-                            <option value="@e.Nome">@e.Nome</option>
-                        }
-                    </select>
+                            @Html.DropDownList("JogoId", null, new { @class = "form-control" })
+                            @*<option value="@e.IdJogo">@e.Nome</option>*@
                 </div>
                 <!-- input da descrição do jogo-->
                 <div class="form-group">
@@ -36,7 +34,7 @@
                     <textarea name="Descricao" class="form-control" id="desc" rows="4" required></textarea>
                 </div>
                 <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar">Create Group</button>
-            </form>
+}
         </div><!--./panel-body-->
     </div><!--./panel-->
 </div><!--./col-lg-offset-3 col-lg-6 col-sm-12 col-md-12 col-lg-offset-3-->

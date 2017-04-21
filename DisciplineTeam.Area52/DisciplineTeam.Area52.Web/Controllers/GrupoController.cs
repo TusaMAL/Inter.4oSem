@@ -22,26 +22,37 @@ namespace DisciplineTeam.Area52.Web.Controllers
         //GET: Create
         public ActionResult Create()
         {
-            //Faz com que apareça os jogos ja cadastrados no combobox igual o henrique fez pra mostrar o negocio dos Cards lá
-            using (GrupoModel model = new GrupoModel())
-            {
-                return View(model.Read());
-            } // model.Dispose();
+            ViewBag.JogoId = new SelectList
+                (
+                    new JogoModel().Read(),
+                    "IdJogo",
+                    "Nome",
+                    "Imagem"
+                );
+
+            return View();
         }
         [HttpPost]
-        public ActionResult Create(Grupo e)
+        public ActionResult Create(Grupo e, int jogoid)
         {
             if (ModelState.IsValid)
             {
                 using (GrupoModel model = new GrupoModel())
                 {
+                    ViewBag.JogoId = new SelectList(
+                        new JogoModel().Read(),
+                        "IdJogo",
+                        "Nome",
+                        "Imagem",
+                        jogoid
+                        );
                     int id = ((Usuario)Session["usuario"]).IdPessoa;
                     //Passando o id do criador do grupo como parametro
-                    model.Create(e, id);
+                    model.Create(e, id, jogoid);
                     return RedirectToAction("Index");
                 }
             }
-            return View(e);
+            return View();
         }
         // GET: Usuario/Friends
         public ActionResult Members()
