@@ -36,11 +36,12 @@ namespace DisciplineTeam.Area52.Web.Models
                 while (reader.Read())
                 {
                     Jogo p = new Jogo();
+                    p.IdJogo = (int)reader["Id"];
                     p.Nome = (string)reader["Nome"];
                     p.Descricao = (string)reader["Descricao"];
                     p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
-                lista.Add(p);
-            }
+                    lista.Add(p);
+                }
 
             return lista;
         }

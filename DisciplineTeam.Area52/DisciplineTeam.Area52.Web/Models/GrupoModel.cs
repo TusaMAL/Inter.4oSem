@@ -23,29 +23,5 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
-        //Ctrl+C + Ctrl+V no metodo do JogoModel, não sei se da pra usar um metodo de outro model
-        //Usado pra fazer com que apareça os jogos na View de Grupo/Create dentro do combobox
-        public List<Jogo> Read()
-        {
-            List<Jogo> lista = new List<Jogo>();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM v_Jogos ORDER BY nome";
-            //cmd.CommandType = System.Data.CommandType.Text;
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                Jogo p = new Jogo();
-                p.Nome = (string)reader["Nome"];
-                p.Descricao = (string)reader["Descricao"];
-                p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
-                lista.Add(p);
-            }
-
-            return lista;
-        }
     }
 }
