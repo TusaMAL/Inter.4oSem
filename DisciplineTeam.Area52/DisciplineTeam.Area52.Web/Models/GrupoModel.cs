@@ -12,7 +12,7 @@ namespace DisciplineTeam.Area52.Web.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC cadGrupo @nome, @descricao, @imagem, 2, @id"; //Passando o 2 temporariamente até conseguirmos pegar o id do combobox
+            cmd.CommandText = @"EXEC cadGrupo @nome, @descricao, @imagem, @idjogo, @id";
 
             cmd.Parameters.AddWithValue("@nome", e.Nome);
             cmd.Parameters.AddWithValue("@descricao", e.Descricao);
