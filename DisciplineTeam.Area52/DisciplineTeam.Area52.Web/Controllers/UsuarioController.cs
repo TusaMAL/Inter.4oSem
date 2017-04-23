@@ -10,13 +10,13 @@ namespace DisciplineTeam.Area52.Web.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
-        public ActionResult Index()//Testando as informações do usuario pegadas no BD _\|/_
+        public ActionResult Index(Usuario user)//Testando as informações do usuario pegadas no BD _\|/_
         {
             using (UsuarioModel model = new UsuarioModel())
             {
-                Usuario user = (Usuario)Session["usuario"];
                 int id = user.IdPessoa;
                 user = model.ReadU(id);
+                user = (Usuario)Session["usuario"];
                 ViewBag.Xota = user;
                 
             }
