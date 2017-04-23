@@ -85,7 +85,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM v_UserTest WHERE id = id";
+            cmd.CommandText = @"SELECT * FROM v_UserTest WHERE id = @id";
             cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataReader reader = cmd.ExecuteReader();
