@@ -17,15 +17,15 @@
         <div class="list-group-item no-border">
             <a href=""> <img src="../img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <!--Nickname do usuario-->
-            <p class="nick-person profile-usertitle-name profile-text text-center">TusaMAL</p>
+            <p class="nick-person profile-usertitle-name profile-text text-center">@ViewBag.Xota.Nick</p>
             <center>
                 <!--tabela com os dados do usuário-->
                 <table>
-                    <tr><td class="text-right font-perfil">Name:</td> <td>&nbsp;@((DisciplineTeam.Area52.Web.Models.Usuario)Session["usuario"])</td></tr>
-                    <tr><td class="text-right font-perfil">Gender:</td> <td>&nbsp;@ViewBag.User<td></tr>
-                    <tr><td class="text-right font-perfil">Age:</td> <td>&nbsp;25</td></tr>
-                    <tr><td class="text-right font-perfil">City:</td> <td>&nbsp;São José do Rio Preto</td></tr>
-                    <tr><td class="text-right font-perfil">State:</td> <td>&nbsp;São Paulo</td></tr>
+                    <tr><td class="text-right font-perfil">Name:</td> <td>&nbsp;@ViewBag.Xota.Nome</td></tr>
+                    <tr><td class="text-right font-perfil">Gender:</td> <td>&nbsp;@ViewBag.Xota.Sexo<td></tr>
+                    <tr><td class="text-right font-perfil">Age:</td> <td>&nbsp;Ñ peguei</td></tr>
+                    <tr><td class="text-right font-perfil">City:</td> <td>&nbsp;@ViewBag.Xota.Cidade</td></tr>
+                    <tr><td class="text-right font-perfil">State:</td> <td>&nbsp;@ViewBag.Xota.Estado</td></tr>
                 </table>
             </center>
             <br />

@@ -77,5 +77,30 @@ namespace DisciplineTeam.Area52.Web.Models
 
             return e;
         }
+
+        //Tentando fazer a leitura dos dados do usuario para lançar na pagina do mesmo _\|/_
+        public Usuario ReadU(int id)
+        {
+            Usuario e = null;
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT * FROM v_UserTest WHERE id = id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                e = new Usuario();
+                e.IdPessoa = (int)reader["Id"];
+                e.Nome = (string)reader["Nome"];
+                e.Nick = (string)reader["Nick"];
+                e.Sexo = (string)(reader["Sexo"]!= DBNull.Value ? reader["Sexo"] : null);
+                e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
+                e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);
+            }
+            return e;
+        } 
     }
 }

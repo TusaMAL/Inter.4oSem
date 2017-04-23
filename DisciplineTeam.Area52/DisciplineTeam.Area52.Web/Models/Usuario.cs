@@ -11,6 +11,8 @@ namespace DisciplineTeam.Area52.Web.Models
         [Required(ErrorMessage = "Nick is required")]
         public string Nick { get; set; }
 
+        public string Sexo { get; set; }
+
         public string Datanasc { get; set; }
 
         public string Cidade { get; set; }
