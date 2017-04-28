@@ -94,7 +94,6 @@ C:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam
 C:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\bin\System.Web.Webpages.Razor.xml
 C:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\bin\System.Web.Helpers.xml
 C:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\bin\System.Web.Mvc.xml
-C:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\obj\Debug\DisciplineTeam.Area52.Web.csprojResolveAssemblyReference.cache
 C:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\obj\Debug\DisciplineTeam.Area52.Web.dll
 C:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\obj\Debug\DisciplineTeam.Area52.Web.pdb
 C:\Users\Gust\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\bin\roslyn\csc.exe
@@ -229,3 +228,4 @@ d:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam
 d:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\obj\Debug\DisciplineTeam.Area52.Web.csprojResolveAssemblyReference.cache
 d:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\obj\Debug\DisciplineTeam.Area52.Web.dll
 d:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\obj\Debug\DisciplineTeam.Area52.Web.pdb
+C:\Users\l1p3z\Documents\GitHub\Inter.4oSem\DisciplineTeam.Area52\DisciplineTeam.Area52.Web\obj\Debug\DisciplineTeam.Area52.Web.csprojResolveAssemblyReference.cache

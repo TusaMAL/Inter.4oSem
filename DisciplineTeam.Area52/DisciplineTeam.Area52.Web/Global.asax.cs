@@ -14,5 +14,10 @@ namespace DisciplineTeam.Area52.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+        protected void Application_Error()
+        {
+            
+        }
     }
 }

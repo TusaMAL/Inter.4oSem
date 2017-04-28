@@ -1,5 +1,4 @@
-﻿@*@model Tuple<IEnumerable<DisciplineTeam.Area52.Web.Models.Grupo>, DisciplineTeam.Area52.Web.Models.Usuario>*@
-@model  IEnumerable<DisciplineTeam.Area52.Web.Models.Grupo>
+﻿@model DisciplineTeam.Area52.Web.ViewModels.IndexUsuario
 @{
     ViewBag.Title = "User";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -185,15 +184,42 @@
             <a id="cor-fonte" href="../Grupo/Groups"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (9)</span></a>
         </div>
         <div class="panel-body no-border">
-            @foreach (var e in ViewBag.Grupos)
-                {
-                    <div class="col-sm-6 col-md-6 col-lg-6">
-                        <a id="cor-fonte-menu" href="/Grupos/Index/3" class="thumbnail" title="@e.Nome">
-                            <img class="img-responsive center-block" src="../img/dota2.png" alt="">
-                            <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">@e.Nome</p>
-                        </a>
-                    </div>
-                }
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="Dota 2 Rio Preto">
+                    <img class="img-responsive center-block" src="../img/dota2.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Dota 2 Rio Preto</p>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="CS:GO Brasil">
+                    <img class="img-responsive center-block" src="../img/csgo.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">CS:GO Brasil</p>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="Paladins is da best">
+                    <img class="img-responsive center-block" src="../img/overwatch.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Paladins is da best</p>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="League of Legends">
+                    <img class="img-responsive center-block" src="../img/lol.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">League of Legends</p>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="Hearthstone BR">
+                    <img class="img-responsive center-block" src="../img/heart.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Hearthstone BR</p>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a id="cor-fonte-menu" href="../Grupos/Index" class="thumbnail" title="Tomates Peladeiros">
+                    <img class="img-responsive center-block" src="../img/fifa17.png" alt="">
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Tomates Peladeiros</p>
+                </a>
+            </div>
             <a href="#" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
         </div><!-- Fim panel-body groups -->
     </div><!-- fim panel-default groups -->
@@ -203,5 +229,3 @@
 Fim Amigos e grupos
 
 -->
-
-

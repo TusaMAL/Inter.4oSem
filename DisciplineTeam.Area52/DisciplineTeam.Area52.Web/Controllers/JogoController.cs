@@ -9,7 +9,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
 {
     public class JogoController : Controller
     {
-        public static List<Jogo> lista = new List<Jogo>();
+        //public static List<Jogo> lista = new List<Jogo>();
 
         // GET: Jogos
         public ActionResult Index()

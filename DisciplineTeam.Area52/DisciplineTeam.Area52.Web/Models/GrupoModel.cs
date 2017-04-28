@@ -23,5 +23,27 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
+        public List<Grupo> ReadGrupo(int id)
+        {
+            List<Grupo> lista = new List<Grupo>();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT TOP 6 * FROM v_Grupo_Part WHERE @id = id";
+            
+            cmd.Parameters.AddWithValue("@id", id);
+            //cmd.CommandType = System.Data.CommandType.Text;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Grupo p = new Grupo();
+                p.Nome = (string)reader["Nome"];
+                p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                lista.Add(p);
+            }
+            return lista;
+        }
     }
 }

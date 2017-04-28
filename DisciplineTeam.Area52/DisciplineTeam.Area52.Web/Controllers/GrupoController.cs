@@ -10,7 +10,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
     public class GrupoController : Controller
     {
         // GET: Grupos
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             return View();
         }
@@ -59,5 +59,6 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
+        
     }
 }
