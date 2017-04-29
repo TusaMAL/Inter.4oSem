@@ -39,11 +39,24 @@ namespace DisciplineTeam.Area52.Web.Models
             while (reader.Read())
             {
                 Grupo p = new Grupo();
+                p.IdGrupo = (int)reader["IdGrupo"];
                 p.Nome = (string)reader["Nome"];
                 p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
                 lista.Add(p);
             }
             return lista;
+        }
+        //Retorna o Count dos grupos
+        public int QuantGruposParticipa(int id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT COUNT(usuario_id) AS GruposUser FROM Participantes WHERE usuario_id = @id";
+            
+            cmd.Parameters.AddWithValue("@id", id);
+
+            int quant = (int)cmd.ExecuteScalar();
+            return quant;
         }
     }
 }

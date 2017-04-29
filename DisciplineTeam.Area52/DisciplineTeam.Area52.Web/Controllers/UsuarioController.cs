@@ -27,6 +27,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 List<Grupo> grupo = new List<Grupo>();
                 listgrupo = model.ReadGrupo(id);
                 ViewBag.Grupos = listgrupo;
+                ViewBag.Quantgrupopart = model.QuantGruposParticipa(id);
             }
             return View(listgrupo);
         }
