@@ -10,8 +10,20 @@ namespace DisciplineTeam.Area52.Web.Controllers
     public class GrupoController : Controller
     {
         // GET: Grupos
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(Mensagem e)
+        {
+            using (GrupoModel model = new GrupoModel())
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                int id = user.IdPessoa;
+                model.PostMensagem(e, id);
+                
+            }
             return View();
         }
         //GET: Search

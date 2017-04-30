@@ -122,7 +122,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
-    <Compile Include="Controllers\IndexUsuarioController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -142,7 +141,6 @@
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\IndexUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -192,7 +190,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2183</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:2182/</IISUrl>
+          <IISUrl>http://localhost:2183/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

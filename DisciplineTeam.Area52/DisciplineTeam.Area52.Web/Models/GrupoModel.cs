@@ -58,5 +58,18 @@ namespace DisciplineTeam.Area52.Web.Models
             int quant = (int)cmd.ExecuteScalar();
             return quant;
         }
+        public void PostMensagem(Mensagem e, int iduser)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"EXEC cadMsg '2017-04-29 20:19:00', @texto, @usuario_id, @grupo_id";
+
+            //cmd.Parameters.AddWithValue("@datahora", 2017-04-29 20:19:00);
+            cmd.Parameters.AddWithValue("@texto", e.Texto);
+            cmd.Parameters.AddWithValue("@usuario_id", iduser);
+            cmd.Parameters.AddWithValue("@grupo_id", 1); // tem q pegar id do grupo
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }
