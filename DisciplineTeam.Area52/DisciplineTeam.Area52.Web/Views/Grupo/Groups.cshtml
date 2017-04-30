@@ -19,15 +19,15 @@
             <!--Link para o profile com a img junto-->
             <a href="/Usuario/Index"> <img src="../img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <!--Nick do usuario-->
-            <p class="nick-person profile-usertitle-name profile-text text-center">TusaMAL</p>
+            <p class="nick-person profile-usertitle-name profile-text text-center">@ViewBag.UserLog.Nick</p>
             <center>
                 <!--Tabela com os dados do perfil do usuário-->
                 <table>
-                    <tr><td class="text-right font-perfil">Name:</td> <td>&nbsp;Felipe</td></tr>
-                    <tr><td class="text-right font-perfil">Gender:</td> <td>&nbsp;Male</td></tr>
-                    <tr><td class="text-right font-perfil">Age:</td> <td>&nbsp;25</td></tr>
-                    <tr><td class="text-right font-perfil">City:</td> <td>&nbsp;São José do Rio Preto</td></tr>
-                    <tr><td class="text-right font-perfil">State:</td> <td>&nbsp;São Paulo</td></tr>
+                    <tr><td class="text-right font-perfil">Name:</td> <td>&nbsp;@ViewBag.UserLog.Nome</td></tr>
+                    <tr><td class="text-right font-perfil">Gender:</td> <td>&nbsp;@ViewBag.UserLog.Sexo</td></tr>
+                    <tr><td class="text-right font-perfil">Age:</td> <td>&nbsp;##</td></tr>
+                    <tr><td class="text-right font-perfil">City:</td> <td>&nbsp;@ViewBag.UserLog.Cidade</td></tr>
+                    <tr><td class="text-right font-perfil">State:</td> <td>&nbsp;@ViewBag.UserLog.Estado</td></tr>
                 </table>
             </center>
         </div><!--/list-group-item-->
@@ -42,7 +42,7 @@
         <!--Aplica o fundo preto e cria o head da div-->
         <div id="cor-fundo-header" class="panel-heading no-border">
             <!-- Escritos e icones da barra preta da div-->
-            <a id="cor-fonte" href="../Grupo/Groups"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (8)</span></a>
+            <a id="cor-fonte" href="../Grupo/Groups"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (@ViewBag.Quantgrupopart)</span></a>
         </div><!--panel-heading-->
         <!-- Corpo do texto da div nem todas terão ele-->
         <div class="panel-body no-border">
@@ -71,152 +71,25 @@
                 </div>
             </div><!-- /.row -->
             <hr class="borda-profile"><!--Divisor-->
-            <!--Começo Grupos define o tamanho da Div para 3/12-->
-            <div class="col-lg-3">
-                <!--Adiciona o thumbnail e deixa a borda preta-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o grupo-->
-                    <a href="../Grupos/Index"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link para o grupo-->
-                        <a id="cor-fonte-menu" href="../Grupos/Index">
-                            <!--Nome do grupo-->
-                            <h3 class="">CS:GO Brasil</h3>
-                            <!--Jogo do grupo-->
-                            <p>Counter Strike: Global Offensive</p>
-                        </a>
-                        <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
+
+
+            <!--Começo Grupos define o tamanho da Div para 3/12   _\|/_    -->
+            @foreach (var e in ViewBag.Grupos)
+            {
+                <div class="col-lg-3">
+                    <div id="cor-borda" class="thumbnail">
+                        <a href="../Grupos/Index"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
+                        <div class="caption text-center">
+                            <a id="cor-fonte-menu" href="../Grupos/Index">
+                                <h3 class="">@e.Nome</h3>
+                                <p>"Game(Não peguei)"</p>
+                            </a>
+                            <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
+                        </div>
                     </div>
-                </div><!--/thumbnail-->
-            </div><!-- /.col-lg-3 -->
-            <div class="col-lg-3">
-                <!--Adiciona o thumbnail-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o grupo-->
-                    <a href="../Grupos/Index"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link para o grupo-->
-                        <a id="cor-fonte-menu" href="../Grupos/Index">
-                            <!--Nome do grupo-->
-                            <h3 class="">CS:GO Brasil</h3>
-                            <!--Jogo do grupo-->
-                            <p>Counter Strike: Global Offensive</p>
-                        </a>
-                        <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
-                    </div>
-                </div><!--/thumbnail-->
-            </div><!-- /.col-lg-3 -->
-            <div class="col-lg-3">
-                <!--Adiciona o thumbnail-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o grupo-->
-                    <a href="../Grupos/Index"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link para o grupo-->
-                        <a id="cor-fonte-menu" href="../Grupos/Index">
-                            <!--Nome do grupo-->
-                            <h3 class="">CS:GO Brasil</h3>
-                            <!--Jogo do grupo-->
-                            <p>Counter Strike: Global Offensive</p>
-                        </a>
-                        <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
-                    </div>
-                </div><!--/thumbnail-->
-            </div><!-- /.col-lg-3 -->
-            <div class="col-lg-3">
-                <!--Adiciona o thumbnail-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o grupo-->
-                    <a href="../Grupos/Index"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link para o grupo-->
-                        <a id="cor-fonte-menu" href="../Grupos/Index">
-                            <!--Nome do grupo-->
-                            <h3 class="">CS:GO Brasil</h3>
-                            <!--Jogo do grupo-->
-                            <p>Counter Strike: Global Offensive</p>
-                        </a>
-                        <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
-                    </div>
-                </div><!--/thumbnail-->
-            </div><!-- /.col-lg-3 -->
-            <!--Começo Grupos define o tamanho da Div para 3/12-->
-            <div class="col-lg-3">
-                <!--Adiciona o thumbnail-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o grupo-->
-                    <a href="../Grupos/Index"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link para o grupo-->
-                        <a id="cor-fonte-menu" href="../Grupos/Index">
-                            <!--Nome do grupo-->
-                            <h3 class="">CS:GO Brasil</h3>
-                            <!--Jogo do grupo-->
-                            <p>Counter Strike: Global Offensive</p>
-                        </a>
-                        <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
-                    </div>
-                </div><!--/thumbnail-->
-            </div><!-- /.col-lg-3 -->
-            <div class="col-lg-3">
-                <!--Adiciona o thumbnail-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o grupo-->
-                    <a href="../Grupos/Index"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link para o grupo-->
-                        <a id="cor-fonte-menu" href="../Grupos/Index">
-                            <!--Nome do grupo-->
-                            <h3 class="">CS:GO Brasil</h3>
-                            <!--Jogo do grupo-->
-                            <p>Counter Strike: Global Offensive</p>
-                        </a>
-                        <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
-                    </div>
-                </div><!--/thumbnail-->
-            </div><!-- /.col-lg-3 -->
-            <div class="col-lg-3">
-                <!--Adiciona o thumbnail-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o grupo-->
-                    <a href="../Grupos/Index"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link para o grupo-->
-                        <a id="cor-fonte-menu" href="../Grupos/Index">
-                            <!--Nome do grupo-->
-                            <h3 class="">CS:GO Brasil</h3>
-                            <!--Jogo do grupo-->
-                            <p>Counter Strike: Global Offensive</p>
-                        </a>
-                        <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
-                    </div>
-                </div><!--/thumbnail-->
-            </div><!-- /.col-lg-3 -->
-            <div class="col-lg-3">
-                <!--Adiciona o thumbnail-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o grupo-->
-                    <a href="../Grupos/Index"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link para o grupo-->
-                        <a id="cor-fonte-menu" href="../Grupos/Index">
-                            <!--Nome do grupo-->
-                            <h3 class="">CS:GO Brasil</h3>
-                            <!--Jogo do grupo-->
-                            <p>Counter Strike: Global Offensive</p>
-                        </a>
-                        <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
-                    </div>
-                </div><!--/thumbnail-->
-            </div><!-- /.col-lg-3 -->
+                </div>
+            }
+            
         </div><!-- /.panel-body -->
     </div><!-- /.panel panel-default -->
 </div><!-- /.col-lg-9 -->

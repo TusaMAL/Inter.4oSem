@@ -23,6 +23,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
+        //Seleciona 6 grupos para exibir no perfil
         public List<Grupo> ReadGrupo(int id)
         {
             List<Grupo> lista = new List<Grupo>();
@@ -46,6 +47,31 @@ namespace DisciplineTeam.Area52.Web.Models
             }
             return lista;
         }
+        //Seleciona os grupos do usuario
+        public List<Grupo> ReadGrupoTotal(int id)
+        {
+            List<Grupo> lista = new List<Grupo>();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM v_Grupo_Part WHERE @id = id";
+
+            cmd.Parameters.AddWithValue("@id", id);
+            //cmd.CommandType = System.Data.CommandType.Text;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Grupo p = new Grupo();
+                p.IdGrupo = (int)reader["IdGrupo"];
+                p.Nome = (string)reader["Nome"];
+                p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                lista.Add(p);
+            }
+            return lista;
+        }
+
         //Retorna o Count dos grupos
         public int QuantGruposParticipa(int id)
         {

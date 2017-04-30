@@ -29,6 +29,22 @@ namespace DisciplineTeam.Area52.Web.Controllers
         //GET: Search
         public ActionResult Groups()
         {
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                int id = user.IdPessoa;
+                user = model.ReadU(id);
+                ViewBag.UserLog = user;
+            }
+            using (GrupoModel model = new GrupoModel())
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                int id = user.IdPessoa;
+                List<Grupo> listgrupo = new List<Grupo>();
+                listgrupo = model.ReadGrupoTotal(id);
+                ViewBag.Grupos = listgrupo;
+                ViewBag.Quantgrupopart = model.QuantGruposParticipa(id);
+            }
             return View();
         }
         //GET: Create
