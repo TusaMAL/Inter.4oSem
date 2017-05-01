@@ -12,7 +12,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Usuario
         public ActionResult Index()//Testando as informações do usuario pegadas no BD
         {
-            List<Grupo> listgrupo = new List<Grupo>();
+            
             using (UsuarioModel model = new UsuarioModel())
             {
                 Usuario user = (Usuario)Session["usuario"];
@@ -24,12 +24,12 @@ namespace DisciplineTeam.Area52.Web.Controllers
             {
                 Usuario user = (Usuario)Session["usuario"];
                 int id = user.IdPessoa;
-                List<Grupo> grupo = new List<Grupo>();
+                List<Grupo> listgrupo = new List<Grupo>();
                 listgrupo = model.ReadGrupo(id);
                 ViewBag.Grupos = listgrupo;
                 ViewBag.Quantgrupopart = model.QuantGruposParticipa(id);
             }
-            return View(listgrupo);
+            return View();
         }
         //GET: Person
         public ActionResult Person()
