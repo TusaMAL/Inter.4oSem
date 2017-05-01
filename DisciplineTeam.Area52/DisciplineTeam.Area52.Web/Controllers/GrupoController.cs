@@ -12,6 +12,12 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Grupos
         public ActionResult Index()
         {
+            using (GrupoModel model = new GrupoModel())
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                int idusuario = user.IdPessoa;
+                ViewBag.ListaMensagens = model.ReadMensagem();
+            }
             return View();
         }
         [HttpPost]
@@ -20,9 +26,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
             using (GrupoModel model = new GrupoModel())
             {
                 Usuario user = (Usuario)Session["usuario"];
-                int id = user.IdPessoa;
-                model.PostMensagem(e, id);
-                
+                int idusuario = user.IdPessoa;
+                model.PostMensagem(e, idusuario);
+                ViewBag.ListaMensagens = model.ReadMensagem();
             }
             return View();
         }

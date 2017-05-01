@@ -102,94 +102,31 @@
                 </div><!--./form-group-->
             </div><!--./collapse-->
         </div><!--/panel-default-->
-    <!--Div dos posts-->
-    <div id="cor-borda" class="panel-body thumbnail">
-            <!--Cria o corpo da mensagem-->
-            <div class="media">
-                <!--Alinha a foto do post a esquerda-->
-                <div class="media-left">
-                    <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
-                </div>
-                <!--/media-left-->
-                <!--corpo div-->
-                <div class="media-body">
-                    <div class="vertical-align">
-                        <!--Nick do Usuario q postou a msg-->
-                        <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">TusaMAL </a></h4>
-                        <!--Data/Hora e grupo que foi postada a msg-->
-                        <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">CS:GO Brasil</a></h6>
-                    </div>
-                    <!--Mensagem Postada-->
-                    <p class="text-right text-justify">Chegamos em casa e bora começar mais uma maratona de treinos.<br />Próximo desafio é a CS summit no fds da semana que vem.<br />O campeonato é aqui pertinho em Los Angeles.<br />Nessa semana temos muito jogos online, inclusive hoje, fiquem ligados!</p>
-                </div><!--Fim post/media-body-->
-            </div><!--./media-->
-        </div><!--./thumbnail-->
-        <!-- Começo Post Coloca uma borda na div e a deixa com cor-->
+        @foreach (var e in ViewBag.ListaMensagens)
+        {
+        <!--Div dos posts-->
         <div id="cor-borda" class="panel-body thumbnail">
             <!--Cria o corpo da mensagem-->
             <div class="media">
                 <!--Alinha a foto do post a esquerda-->
                 <div class="media-left">
-                    <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                    <a id="cor-fonte-menu" href="../Usuario/User/@e.IdUsuario" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
                 </div>
                 <!--/media-left-->
                 <!--corpo div-->
                 <div class="media-body">
                     <div class="vertical-align">
                         <!--Nick do Usuario q postou a msg-->
-                        <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">TusaMAL </a></h4>
+                        <h4 class="nick-post media-heading"><a href="../Usuario/User/@e.IdUsuario" class="cor-fonte-menu">@e.NickUsuario </a></h4>
                         <!--Data/Hora e grupo que foi postada a msg-->
-                        <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+                        <h6 class="fonte-post-pequena">@e.Datahora (UTC- 03:00) at <a href="../Grupos/Index/@e.IdGrupo" class="cor-fonte-menu">@e.NomeGrupo</a></h6>
                     </div>
                     <!--Mensagem Postada-->
-                    <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="text-right text-justify">@e.Texto</p>
                 </div><!--Fim post/media-body-->
             </div><!--./media-->
         </div><!--./thumbnail-->
-        <!-- Começo Post Coloca uma borda na div e a deixa com cor-->
-        <div id="cor-borda" class="panel-body thumbnail">
-            <!--Cria o corpo da mensagem-->
-            <div class="media">
-                <!--Alinha a foto do post a esquerda-->
-                <div class="media-left">
-                    <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
-                </div>
-                <!--/media-left-->
-                <!--corpo div-->
-                <div class="media-body">
-                    <div class="vertical-align">
-                        <!--Nick do Usuario q postou a msg-->
-                        <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">TusaMAL </a></h4>
-                        <!--Data/Hora e grupo que foi postada a msg-->
-                        <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">CS:GO Brasil</a></h6>
-                    </div>
-                    <!--Mensagem Postada-->
-                    <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div><!--Fim post/media-body-->
-            </div><!--./media-->
-        </div><!--./thumbnail-->
-        <!-- Começo Post Coloca uma borda na div e a deixa com cor-->
-        <div id="cor-borda" class="panel-body thumbnail">
-            <!--Cria o corpo da mensagem-->
-            <div class="media">
-                <!--Alinha a foto do post a esquerda-->
-                <div class="media-left">
-                    <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
-                </div>
-                <!--/media-left-->
-                <!--corpo div-->
-                <div class="media-body">
-                    <div class="vertical-align">
-                        <!--Nick do Usuario q postou a msg-->
-                        <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">TusaMAL </a></h4>
-                        <!--Data/Hora e grupo que foi postada a msg-->
-                        <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">CS:GO Brasil</a></h6>
-                    </div>
-                    <!--Mensagem Postada-->
-                    <p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div><!--Fim post/media-body-->
-            </div><!--./media-->
-        </div><!--./thumbnail-->
+        }
 </div><!--/col-lg-7 col-sm-12 col-md-6-->
 <!--Começo Members e Events-->
 <!--Cria a coluna para ocupar 3/12 da pagina e ocupar toda a tela em uma resolução pequena-->
