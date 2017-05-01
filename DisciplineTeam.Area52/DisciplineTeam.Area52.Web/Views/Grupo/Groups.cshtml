@@ -19,15 +19,15 @@
             <!--Link para o profile com a img junto-->
             <a href="/Usuario/Index"> <img src="../img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <!--Nick do usuario-->
-            <p class="nick-person profile-usertitle-name profile-text text-center">@ViewBag.UserLog.Nick</p>
+            <p class="nick-person profile-usertitle-name profile-text text-center break-word">@ViewBag.UserLog.Nick</p>
             <center>
-                <!--Tabela com os dados do perfil do usuário-->
+                <!--tabela com os dados do usuário-->
                 <table>
-                    <tr><td class="text-right font-perfil">Name:</td> <td>&nbsp;@ViewBag.UserLog.Nome</td></tr>
-                    <tr><td class="text-right font-perfil">Gender:</td> <td>&nbsp;@ViewBag.UserLog.Sexo</td></tr>
-                    <tr><td class="text-right font-perfil">Age:</td> <td>&nbsp;##</td></tr>
-                    <tr><td class="text-right font-perfil">City:</td> <td>&nbsp;@ViewBag.UserLog.Cidade</td></tr>
-                    <tr><td class="text-right font-perfil">State:</td> <td>&nbsp;@ViewBag.UserLog.Estado</td></tr>
+                    <tr><td class="text-right font-perfil">Name:</td><td class="font-perfil break-word">&nbsp;@ViewBag.UserLog.Nome</td></tr>
+                    <tr><td class="text-right font-perfil">Gender:</td> <td class="font-perfil break-word">&nbsp;@ViewBag.UserLog.Sexo<td></tr>
+                    <tr><td class="text-right font-perfil">Age:</td> <td class="font-perfil break-word">&nbsp;Ñ peguei</td></tr>
+                    <tr><td class="text-right font-perfil">City:</td> <td class="font-perfil break-word">&nbsp;@ViewBag.UserLog.Cidade</td></tr>
+                    <tr><td class="text-right font-perfil">State:</td> <td class="font-perfil break-word">&nbsp;@ViewBag.UserLog.Estado</td></tr>
                 </table>
             </center>
         </div><!--/list-group-item-->
@@ -81,8 +81,8 @@
                         <a href="../Grupos/Index"><img src="../img/csgo.png" alt="..." class="borda-profile"></a>
                         <div class="caption text-center">
                             <a id="cor-fonte-menu" href="../Grupos/Index">
-                                <h3 class="">@e.Nome</h3>
-                                <p>"Game(Não peguei)"</p>
+                                <h3 class="break-word">@e.Nome</h3>
+                                <p>@e.NomeJogo</p>
                             </a>
                             <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
                         </div>

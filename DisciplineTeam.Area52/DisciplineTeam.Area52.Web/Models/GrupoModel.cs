@@ -67,7 +67,9 @@ namespace DisciplineTeam.Area52.Web.Models
                 p.IdGrupo = (int)reader["IdGrupo"];
                 p.Nome = (string)reader["Nome"];
                 p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                p.NomeJogo = (string)reader["NomeJogo"];
                 lista.Add(p);
+
             }
             return lista;
         }
@@ -114,7 +116,8 @@ namespace DisciplineTeam.Area52.Web.Models
             while (reader.Read())
             {
                 Mensagem p = new Mensagem();
-                p.Datahora = (DateTime)reader["Datahora"];
+                DateTime data = (DateTime)reader["Datahora"];
+                p.Datahora = data.ToString("dd/MM/yyyy, HH:mm");
                 p.Texto = (string)(reader["Texto"]);
                 p.IdUsuario = (int)reader["IdUsuario"];
                 p.NickUsuario = (string)reader["Nickusuario"];

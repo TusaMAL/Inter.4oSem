@@ -295,6 +295,9 @@ div#cor-fundo{
 .font-perfil{
 	font-weight: bold;
 }
+.break-word{
+    word-wrap: break-word;
+}
 /*./Configs de profile*/
 .link-dentro-body:hover{
     text-decoration: underline;

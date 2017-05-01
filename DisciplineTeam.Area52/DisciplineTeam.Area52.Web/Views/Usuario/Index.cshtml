@@ -18,18 +18,17 @@
         <div class="list-group-item no-border">
             <a href=""> <img src="../img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <!--Nickname do usuario-->
-            <p class="nick-person profile-usertitle-name profile-text text-center">@ViewBag.UserLog.Nick</p>
+            <p class="nick-person profile-usertitle-name profile-text text-center break-word">@ViewBag.UserLog.Nick</p>
             <center>
                 <!--tabela com os dados do usuário-->
                 <table>
-                    <tr><td class="text-right font-perfil">Name:</td> <td>&nbsp;@ViewBag.UserLog.Nome</td></tr>
-                    <tr><td class="text-right font-perfil">Gender:</td> <td>&nbsp;@ViewBag.UserLog.Sexo<td></tr>
-                    <tr><td class="text-right font-perfil">Age:</td> <td>&nbsp;Ñ peguei</td></tr>
-                    <tr><td class="text-right font-perfil">City:</td> <td>&nbsp;@ViewBag.UserLog.Cidade</td></tr>
-                    <tr><td class="text-right font-perfil">State:</td> <td>&nbsp;@ViewBag.UserLog.Estado</td></tr>
+                    <tr><td class="text-right font-perfil">Name:</td><td class="font-perfil break-word">&nbsp;@ViewBag.UserLog.Nome</td></tr>
+                    <tr><td class="text-right font-perfil">Gender:</td> <td class="font-perfil break-word">&nbsp;@ViewBag.UserLog.Sexo<td></tr>
+                    <tr><td class="text-right font-perfil">Age:</td> <td class="font-perfil break-word">&nbsp;Ñ peguei</td></tr>
+                    <tr><td class="text-right font-perfil">City:</td> <td class="font-perfil break-word">&nbsp;@ViewBag.UserLog.Cidade</td></tr>
+                    <tr><td class="text-right font-perfil">State:</td> <td class="font-perfil break-word">&nbsp;@ViewBag.UserLog.Estado</td></tr>
                 </table>
             </center>
-            <br />
         </div><!--./list-group-item-->
         <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a><a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
     </div><!--/list-group-->
@@ -185,7 +184,13 @@
             <a id="cor-fonte" href="../Grupo/Groups"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (@ViewBag.Quantgrupopart)</span></a>
         </div>
         <div class="panel-body no-border">
-            @foreach (var e in ViewBag.Grupos)
+            @if (@ViewBag.Quantgrupopart == 0)
+            {
+                <h4 class="text-center">You haven't entered or created any groups yet.</h4>
+            }
+            else
+            {
+                foreach (var e in ViewBag.Grupos)
                 {
                     <div class="col-sm-6 col-md-6 col-lg-6">
                         <a id="cor-fonte-menu" href="../Grupo/Index/@e.IdGrupo" class="thumbnail" title="@e.Nome">
@@ -194,7 +199,11 @@
                         </a>
                     </div>
                 }
-            <a href="../Grupo/Groups" class="cor-fonte-menu col-lg-12"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+                if (@ViewBag.Quantgrupopart > 6)
+                {
+                    <a href="../Grupo/Groups" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+                }
+            }
         </div><!-- Fim panel-body groups -->
     </div><!-- fim panel-default groups -->
 </div><!-- Fim col-lg-3 -->
