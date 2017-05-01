@@ -58,18 +58,47 @@ namespace DisciplineTeam.Area52.Web.Models
             int quant = (int)cmd.ExecuteScalar();
             return quant;
         }
+        //Post da mensagem
         public void PostMensagem(Mensagem e, int iduser)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC cadMsg '2017-04-29 20:19:00', @texto, @usuario_id, @grupo_id";
-
-            //cmd.Parameters.AddWithValue("@datahora", 2017-04-29 20:19:00);
+            cmd.CommandText = @"EXEC cadMsg @texto, @usuario_id, @grupo_id";
+            
             cmd.Parameters.AddWithValue("@texto", e.Texto);
             cmd.Parameters.AddWithValue("@usuario_id", iduser);
             cmd.Parameters.AddWithValue("@grupo_id", 1); // tem q pegar id do grupo
 
             cmd.ExecuteNonQuery();
+        }
+        //Leitura das Mensagens
+        public List<Mensagem> ReadMensagem() //Falta receber os parametros do id do grupo e do usuario
+        {
+            List<Mensagem> lista = new List<Mensagem>();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT TOP 10 * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
+
+            cmd.Parameters.AddWithValue("@idgrupo", 1); // Falta receber os parametros do controller
+            //cmd.CommandType = System.Data.CommandType.Text;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Mensagem p = new Mensagem();
+                p.Datahora = (DateTime)reader["Datahora"];
+                p.Texto = (string)(reader["Texto"]);
+                p.IdUsuario = (int)reader["IdUsuario"];
+                p.NickUsuario = (string)reader["Nickusuario"];
+                p.ImagemUsuario = (string)(reader["Imagemusuario"] != DBNull.Value ? reader["Imagem"] : null); // precisa pegar a imagem tbm
+                p.IdGrupo = (int)reader["Idgrupo"];
+                p.NomeGrupo = (string)reader["Nomegrupo"];
+                
+                lista.Add(p);
+            }
+            return lista;
         }
     }
 }
