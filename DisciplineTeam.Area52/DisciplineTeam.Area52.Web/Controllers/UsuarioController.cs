@@ -36,8 +36,26 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
+        //GET: Edit
         public ActionResult Edit()
         {
+            Usuario e = new Usuario();
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                int id = user.IdPessoa;
+                e = model.ReadEditUsuario(id);
+            }
+            return View(e);
+        }
+        [HttpPost]
+        public ActionResult Edit(Usuario e)
+        {
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                int id = user.IdPessoa;
+            }
             return View();
         }
         public ActionResult ForgotP()

@@ -14,19 +14,49 @@
         </ul>
         <div id="cor-borda myTabContent" class="tab-content">
             <div class="tab-pane active" id="profile">
-                <form class="form-horizontal" method="post">
+                <form class="form-horizontal" action="../Usuario/Edit" method="post">
                     <fieldset>
                         <br/>
                         <div class="form-group">
+                            <label for="lbl_idade" class="col-sm-2 control-label">Name:</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lbl_idade" class="col-sm-2 control-label">Nick:</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.Nick, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Gender:</label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(model => model.Sexo, "M", true)@Html.Label("Male")
+
+                                </label>
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(model => model.Sexo, "F", false)@Html.Label("Female")
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="lbl_idade" class="col-sm-2 control-label">Birth Date:</label>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" id="label_city" placeholder="Birth Date">
+                                @Html.TextBoxFor(m => m.Datanasc, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control date" })
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="label_city" class="col-sm-2 control-label">City:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="label_city" placeholder="City">
+                                @Html.TextBoxFor(m => m.Cidade, new { @class = "form-control", @placeholder = "City" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="label_city" class="col-sm-2 control-label">Zip-Code:</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.Cep, new { @class = "form-control", @placeholder = "Zip-Code" })
                             </div>
                         </div>
                         <div class="form-group">
@@ -42,35 +72,22 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Gender:</label>
-                            <div class="col-sm-8">
-                                <label class="radio-inline">
-                                    <input type="radio" checked name="radio_sex" id="radio_sex1" value="m"> Male
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="radio_sex" id="radio_sex2" value="f"> Female
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Photo:</label>
-                            <div class="col-sm-4 col-md-4 col-xs-4"><img src="../img/gust.jpg" alt="..." class="img-rounded"></div>                            
-                            <div class="col-sm-4">
-                                <label>
-                                    <br/>
-                                    <button type="submit" class="btn btn-default">Upload</button>
-                                    <br />
-                                    Upload your photo here.
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="label_desc" class="col-sm-2 control-label">Description:</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control textarea-sem-resize" rows="5" id="label_desc" placeholder="Describe yourself!"></textarea>
+                                @Html.TextAreaFor(m => m.Descricao, new { rows = 4, @class = "form-control textarea-sem-resize", @required = "required", @placeholder = "Write something about you..." })
                             </div>
                         </div>
-                        <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar center-block">Save</button>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Profile Picture:</label>
+                            <div class="col-sm-4 col-md-4 col-xs-4">
+                                <img src="../img/gust.jpg" alt="..." class="img-rounded">
+                            </div>                            
+                            <div class="col-sm-4">
+                                <p class="">Upload your profile picture here.</p>
+                                <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar">Upload</button>
+                            </div>
+                        </div>
+                        <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar center-block">Save</button>
                     </fieldset>
                 </form>
             </div>

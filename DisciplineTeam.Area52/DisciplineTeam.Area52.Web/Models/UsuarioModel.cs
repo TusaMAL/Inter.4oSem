@@ -63,6 +63,7 @@ namespace DisciplineTeam.Area52.Web.Models
                     e.Nome = (string)reader["Nome"];
                     e.Email = (string)reader["Email"];
                     e.Status = (int)reader["Status"];
+                   
                 }
                 if (status == 2)
                 {
@@ -101,6 +102,46 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);
             }
             return e;
-        } 
+        }
+        public Usuario ReadEditUsuario(int idusuario)
+        {
+            Usuario e = new Usuario();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"select * from v_User_Info WHERE @idusuario = PessoaId";
+            cmd.Parameters.AddWithValue("@idusuario", idusuario);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                e.Nome = (string)reader["PessoaNome"];
+                e.Nick = (string)reader["Nick"];
+                //DateTime data = (DateTime)reader["Datanasc"];
+                //e.Datanasc = data.ToString("dd/MM/yyyy");
+                e.Sexo = (string)(reader["Sexo"] != DBNull.Value ? reader["Sexo"] : null);
+                e.Datanasc = (DateTime)(reader["Datanasc"] != DBNull.Value ? reader["Datanasc"] : null);
+                //e.Datanasc = data.ToString("dd/MM/yyyy");
+                e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
+                e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);
+                e.Cep = (string)(reader["Cep"] != DBNull.Value ? reader["Cep"] : null);
+                e.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                e.Descricao = (string)(reader["Descricao"] != DBNull.Value ? reader["Descricao"] : null);
+            }
+            return e;
+        }
+        public void EditUsuario(Usuario e)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"EXEC cadUser @nome, @email, @senha, @nick";
+
+            cmd.Parameters.AddWithValue("@nome", e.Nome);
+            cmd.Parameters.AddWithValue("@email", e.Email);
+            cmd.Parameters.AddWithValue("@senha", e.Senha);
+            cmd.Parameters.AddWithValue("@nick", e.Nick);
+
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }

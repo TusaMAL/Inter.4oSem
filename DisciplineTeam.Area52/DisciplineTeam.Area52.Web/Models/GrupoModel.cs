@@ -67,7 +67,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 p.IdGrupo = (int)reader["IdGrupo"];
                 p.Nome = (string)reader["Nome"];
                 p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
-                p.NomeJogo = (string)reader["NomeJogo"];
+                //p.NomeJogo = (string)reader["NomeJogo"];
                 lista.Add(p);
 
             }
@@ -100,9 +100,9 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.ExecuteNonQuery();
         }
         //Leitura das Mensagens
-        public List<Mensagem> ReadMensagem() //Falta receber os parametros do id do grupo e do usuario
+        public List<Object> ReadMensagem() //Falta receber os parametros do id do grupo e do usuario
         {
-            List<Mensagem> lista = new List<Mensagem>();
+            List<Object> lista = new List<Object>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
@@ -119,12 +119,11 @@ namespace DisciplineTeam.Area52.Web.Models
                 DateTime data = (DateTime)reader["Datahora"];
                 p.Datahora = data.ToString("dd/MM/yyyy, HH:mm");
                 p.Texto = (string)(reader["Texto"]);
-                p.IdUsuario = (int)reader["IdUsuario"];
-                p.NickUsuario = (string)reader["Nickusuario"];
-                p.ImagemUsuario = (string)(reader["Imagemusuario"] != DBNull.Value ? reader["Imagem"] : null); // precisa pegar a imagem tbm
-                p.IdGrupo = (int)reader["Idgrupo"];
-                p.NomeGrupo = (string)reader["Nomegrupo"];
-                
+                //int IdPessoa = (int)reader["IdUsuario"];
+                //string Nick = (string)reader["Nickusuario"];
+                //string Imagem = (string)reader["Imagemusuario"];
+                //int IdGrupo = (int)reader["Idgrupo"];
+                //string Nome = (string)reader["Nomegrupo"];
                 lista.Add(p);
             }
             return lista;

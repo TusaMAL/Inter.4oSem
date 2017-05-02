@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DisciplineTeam.Area52.Web.Models.Jogo>
+﻿@model DisciplineTeam.Area52.Web.Models.Jogo
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -25,8 +25,9 @@
                 <!-- input do formulario do grupo-->
                 <div class="form-group">
                     <label for="nome">Game</label>
-                            @Html.DropDownList("JogoId", null, new { @class = "form-control" })
-                            @*<option value="@e.IdJogo">@e.Nome</option>*@
+                       @Html.DropDownList("JogoId", null, new { @class = "form-control" })     
+                    @*@Html.DropDownListFor(m => m.Nome, new SelectList(ViewBag.JogoId, "IdJogo","Nome","Imagem"), "-- Select Status --")*@
+                          
                 </div>
                 <!-- input da descrição do jogo-->
                 <div class="form-group">
