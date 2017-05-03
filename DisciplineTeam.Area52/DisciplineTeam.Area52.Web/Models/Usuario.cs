@@ -13,7 +13,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
         public string Sexo { get; set; }
 
-        public DateTime Datanasc { get; set; }
+        public string Datanasc { get; set; }
 
         public string Cidade { get; set; }
 

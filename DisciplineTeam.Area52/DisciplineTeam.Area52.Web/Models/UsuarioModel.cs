@@ -117,10 +117,10 @@ namespace DisciplineTeam.Area52.Web.Models
             {
                 e.Nome = (string)reader["PessoaNome"];
                 e.Nick = (string)reader["Nick"];
-                //DateTime data = (DateTime)reader["Datanasc"];
-                //e.Datanasc = data.ToString("dd/MM/yyyy");
+                DateTime data = (DateTime)reader["Datanasc"];
+                e.Datanasc = data.ToString("dd/MM/yyyy");
                 e.Sexo = (string)(reader["Sexo"] != DBNull.Value ? reader["Sexo"] : null);
-                e.Datanasc = (DateTime)(reader["Datanasc"] != DBNull.Value ? reader["Datanasc"] : Convert.ToDateTime((DateTime?)null));
+                //e.Datanasc = (DateTime)(reader["Datanasc"] != DBNull.Value ? reader["Datanasc"] : Convert.ToDateTime((DateTime?)null));
                 //e.Datanasc = data.ToString("dd/MM/yyyy");
                 e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
                 e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);
@@ -130,17 +130,24 @@ namespace DisciplineTeam.Area52.Web.Models
             }
             return e;
         }
-        public void EditUsuario(Usuario e)
+        //Editar as informações ja existentes do usuário
+        public void EditUsuario(Usuario e, int id)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC cadUser @nome, @email, @senha, @nick";
+            cmd.CommandText = @"EXEC editInfo_User @IdUsuario, @nome, @nick, @sexo, @datanasc, @cidade, 'SP', @cep, @descricao";
 
+            cmd.Parameters.AddWithValue("@IdUsuario", id);
             cmd.Parameters.AddWithValue("@nome", e.Nome);
-            cmd.Parameters.AddWithValue("@email", e.Email);
-            cmd.Parameters.AddWithValue("@senha", e.Senha);
             cmd.Parameters.AddWithValue("@nick", e.Nick);
-
+            cmd.Parameters.AddWithValue("@sexo", e.Sexo);
+            DateTime date = Convert.ToDateTime(e.Datanasc);
+            cmd.Parameters.AddWithValue("@datanasc", date);
+            cmd.Parameters.AddWithValue("@cidade", e.Cidade);
+            //cmd.Parameters.AddWithValue("@estado", e.Estado); Estado ta estatico
+            cmd.Parameters.AddWithValue("@cep", e.Cep);
+            cmd.Parameters.AddWithValue("@descricao", e.Descricao);
+            //cmd.Parameters.AddWithValue("@imagem", e.Imagem);
 
             cmd.ExecuteNonQuery();
         }

@@ -48,6 +48,18 @@ namespace DisciplineTeam.Area52.Web.Controllers
             }
             return View(e);
         }
+        [HttpPost]
+        public ActionResult Edit(Usuario e)
+        {
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                int id = user.IdPessoa;
+                model.EditUsuario(e, id);
+                ViewBag.SucessoEdit = true;
+            }
+            return View(e);
+        }
         //GET: Edit
         public ActionResult EditSecurity()
         {
@@ -57,18 +69,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 Usuario user = (Usuario)Session["usuario"];
                 int id = user.IdPessoa;
                 e = model.ReadEditUsuario(id);
+                
             }
             return View(e);
-        }
-        [HttpPost]
-        public ActionResult Edit(Usuario e)
-        {
-            using (UsuarioModel model = new UsuarioModel())
-            {
-                Usuario user = (Usuario)Session["usuario"];
-                int id = user.IdPessoa;
-            }
-            return View();
         }
         public ActionResult ForgotP()
         {
