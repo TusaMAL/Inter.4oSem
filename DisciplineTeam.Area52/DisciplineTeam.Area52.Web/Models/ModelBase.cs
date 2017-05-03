@@ -12,11 +12,11 @@ namespace DisciplineTeam.Area52.Web.Models
         
         public ModelBase()
         {
-            string strConn = "Data Source = localhost; " +
+            string strConn = "Data Source = BASTION\\SQLEXPRESS; " +
                 " Initial Catalog = BDarea52;" +
                 " Integrated Security = true;" +
                 " MultipleActiveResultSets = true";
-            //"User Id = sa; Password = dba";
+                //"User Id = sa; Password = dba";
 
             connection = new SqlConnection(strConn);
 

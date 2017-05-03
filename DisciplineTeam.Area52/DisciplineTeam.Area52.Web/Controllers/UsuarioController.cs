@@ -48,6 +48,18 @@ namespace DisciplineTeam.Area52.Web.Controllers
             }
             return View(e);
         }
+        //GET: Edit
+        public ActionResult EditSecurity()
+        {
+            Usuario e = new Usuario();
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                int id = user.IdPessoa;
+                e = model.ReadEditUsuario(id);
+            }
+            return View(e);
+        }
         [HttpPost]
         public ActionResult Edit(Usuario e)
         {

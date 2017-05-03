@@ -9,8 +9,8 @@
 <div class="col-lg-offset-2 col-lg-8 col-sm-12 col-md-12 col-lg-offset-2">
     <div id="cor-borda" class="well" style="background: white">
         <ul id="efeito-form" class="nav nav-tabs">
-            <li class="active"><a href="#profile" class="btn efeito-fade-navbar borda-botao-search" onclick="MudarAba(myTabContent)" data-toggle="tab">Profile</a></li>
-            <li><a href="#security" class="btn efeito-fade-navbar borda-botao-search" onclick="MudarAba(myTabContent)" data-toggle="tab">Security</a></li>
+            <li class="active"><a href="#profile" class="btn efeito-fade-navbar borda-botao-search" data-toggle="tab">Profile</a></li>
+            <li><a class="btn efeito-fade-navbar borda-botao-search" onclick="window.location = '../Usuario/EditSecurity'" data-toggle="tab">Security</a></li>
         </ul>
         <div id="cor-borda myTabContent" class="tab-content">
             <div class="tab-pane active" id="profile">
@@ -91,7 +91,7 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="tab-pane fade in" id="security">
+            @*<div class="tab-pane active" id="security">
                 <form class="form-horizontal" action='' method="post">
                     <fieldset>
                         <br/>
@@ -116,7 +116,7 @@
                         <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar center-block">Save</button>
                     </fieldset>
                 </form>
-            </div>
+            </div>*@
         </div>
 
         <!--<div id="cor-fundo" class="panel-heading">            
@@ -133,4 +133,3 @@
             </div>-->
         </div><!--./well-->
     </div><!--./col-lg-offset-2 col-lg-8 col-sm-12 col-md-12 col-lg-offset-2-->
-      
