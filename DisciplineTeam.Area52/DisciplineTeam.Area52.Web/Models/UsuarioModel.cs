@@ -119,7 +119,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 //DateTime data = (DateTime)reader["Datanasc"];
                 //e.Datanasc = data.ToString("dd/MM/yyyy");
                 e.Sexo = (string)(reader["Sexo"] != DBNull.Value ? reader["Sexo"] : null);
-                e.Datanasc = (DateTime)(reader["Datanasc"] != DBNull.Value ? reader["Datanasc"] : null);
+                e.Datanasc = (DateTime)(reader["Datanasc"] != DBNull.Value ? reader["Datanasc"] : Convert.ToDateTime((DateTime?)null));
                 //e.Datanasc = data.ToString("dd/MM/yyyy");
                 e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
                 e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);
