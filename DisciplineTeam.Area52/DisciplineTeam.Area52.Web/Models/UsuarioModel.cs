@@ -136,7 +136,7 @@ namespace DisciplineTeam.Area52.Web.Models
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = @"EXEC editInfo_User @IdUsuario, @nome, @nick, @sexo, @datanasc, @cidade, 'SP', @cep, @descricao";
-
+           
             cmd.Parameters.AddWithValue("@IdUsuario", id);
             cmd.Parameters.AddWithValue("@nome", e.Nome);
             cmd.Parameters.AddWithValue("@nick", e.Nick);
