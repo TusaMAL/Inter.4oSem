@@ -30,7 +30,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT TOP 6 * FROM v_Grupo_Part WHERE @id = id";
+            cmd.CommandText = @"SELECT TOP 6 * FROM v_Grupo_Part WHERE @id = id";
             
             cmd.Parameters.AddWithValue("@id", id);
             //cmd.CommandType = System.Data.CommandType.Text;
@@ -47,6 +47,27 @@ namespace DisciplineTeam.Area52.Web.Models
             }
             return lista;
         }
+        public List<Grupo> BuscarGrupo(string palavra)
+        {
+            List<Grupo> lista = new List<Grupo>();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT * FROM grupos WHERE nome LIKE '%@palavra%'";
+            cmd.Parameters.AddWithValue("@palavra", palavra);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Grupo p = new Grupo();
+                p.IdGrupo = (int)reader["Id"];
+                p.Nome = (string)reader["Nome"];
+                p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                lista.Add(p);
+            }
+            return lista;
+        }
         //Seleciona os grupos do usuario
         public List<Grupo> ReadGrupoTotal(int id)
         {
@@ -54,7 +75,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM v_Grupo_Part WHERE @id = id";
+            cmd.CommandText = @"SELECT * FROM v_Grupo_Part WHERE @id = id";
 
             cmd.Parameters.AddWithValue("@id", id);
             //cmd.CommandType = System.Data.CommandType.Text;
