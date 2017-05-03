@@ -97,6 +97,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.IdPessoa = (int)reader["Id"];
                 e.Nome = (string)reader["Nome"];
                 e.Nick = (string)reader["Nick"];
+                //e.Datanasc = (DateTime)(reader["Datanasc"] != DBNull.Value ? reader["Datanasc"] : Convert.ToDateTime((DateTime?)null));
                 e.Sexo = (string)(reader["Sexo"]!= DBNull.Value ? reader["Sexo"] : null);
                 e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
                 e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);

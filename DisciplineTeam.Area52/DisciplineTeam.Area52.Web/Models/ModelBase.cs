@@ -12,7 +12,7 @@ namespace DisciplineTeam.Area52.Web.Models
         
         public ModelBase()
         {
-            string strConn = "Data Source = BASTION\\SQLEXPRESS; " +
+            string strConn = "Data Source = localhost;" +
                 " Initial Catalog = BDarea52;" +
                 " Integrated Security = true;" +
                 " MultipleActiveResultSets = true";

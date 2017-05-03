@@ -93,9 +93,15 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             return View();
         }
+        //Get Search
+        public ActionResult Search()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult Search(string busca)
         {
+            
             using (UsuarioModel model = new UsuarioModel())
             {
                 Usuario user = (Usuario)Session["usuario"];
@@ -107,7 +113,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
             {
                 List<Grupo> buscagrupo = new List<Grupo>();
                 buscagrupo = model.BuscarGrupo(busca);
-                ViewBag.BuscaGrupos = buscagrupo;
+                ViewBag.BuscaGrupo = buscagrupo;
             }
             return View();
         }

@@ -47,14 +47,14 @@ namespace DisciplineTeam.Area52.Web.Models
             }
             return lista;
         }
-        public List<Grupo> BuscarGrupo(string palavra)
+        public List<Grupo> BuscarGrupo(string busca)
         {
             List<Grupo> lista = new List<Grupo>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM grupos WHERE nome LIKE '%@palavra%'";
-            cmd.Parameters.AddWithValue("@palavra", palavra);
+            cmd.CommandText = @"SELECT * FROM grupos WHERE nome LIKE @busca";
+            cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
 
             SqlDataReader reader = cmd.ExecuteReader();
 
