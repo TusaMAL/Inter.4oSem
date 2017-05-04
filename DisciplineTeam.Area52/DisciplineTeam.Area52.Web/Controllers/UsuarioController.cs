@@ -12,7 +12,6 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Usuario
         public ActionResult Index()//Testando as informações do usuario pegadas no BD
         {
-            
             using (UsuarioModel model = new UsuarioModel())
             {
                 Usuario user = (Usuario)Session["usuario"];

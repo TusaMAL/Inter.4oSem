@@ -59,6 +59,12 @@
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Nick)</div>
             </div>
+            <div class="form-group has-feedback">
+                <label class="control-label">Date of Birth: </label>
+                @Html.TextBoxFor(m => m.Datanasc, "{0:yyyy-MM-dd}", new { @*@type = "date",*@ @class = "form-control date", @type = "text", @placeholder = "Date of Birth", @required = "required" })
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Nick)</div>
+            </div>
             <div class="form-group">
                 <div class="form-group col-xs-offset-2 col-xs-5">
                     <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Sign Up</button>

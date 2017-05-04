@@ -12,13 +12,16 @@ namespace DisciplineTeam.Area52.Web.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC cadUser @nome, @email, @senha, @nick";
+            cmd.CommandText = @"EXEC cadUser @nome, @email, @senha, @nick, @datanasc";
 
             cmd.Parameters.AddWithValue("@nome", e.Nome);
             cmd.Parameters.AddWithValue("@email", e.Email);
             cmd.Parameters.AddWithValue("@senha", e.Senha);
             cmd.Parameters.AddWithValue("@nick", e.Nick);
-            
+            DateTime data = Convert.ToDateTime(e.Datanasc);
+            cmd.Parameters.AddWithValue("@datanasc", data);
+
+
 
             cmd.ExecuteNonQuery();
         }
@@ -79,7 +82,7 @@ namespace DisciplineTeam.Area52.Web.Models
             return e;
         }
 
-        //Tentando fazer a leitura dos dados do usuario para lançar na pagina do mesmo _\|/_
+        //Tentando fazer a leitura dos dados do usuario para lançar na pagina do mesmo
         public Usuario ReadU(int id)
         {
             Usuario e = null;
