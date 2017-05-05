@@ -16,7 +16,8 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             using (JogoModel model = new JogoModel())
             {
-
+                Admin user = (Admin)Session["usuario"];
+                ViewBag.StatusAdmin = user.Status;
                 return View(model.Read());
 
             } // model.Dispose();

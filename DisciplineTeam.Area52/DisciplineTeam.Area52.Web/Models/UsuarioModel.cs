@@ -89,7 +89,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM v_UserTest WHERE id = @id";
+            cmd.CommandText = @"SELECT * FROM v_UserInfo WHERE id = @id";
             cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -100,7 +100,8 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.IdPessoa = (int)reader["Id"];
                 e.Nome = (string)reader["Nome"];
                 e.Nick = (string)reader["Nick"];
-                //e.Datanasc = (DateTime)(reader["Datanasc"] != DBNull.Value ? reader["Datanasc"] : Convert.ToDateTime((DateTime?)null));
+                DateTime data = (DateTime)reader["Datanasc"];
+                e.Datanasc = data.ToString("yyyy");
                 e.Sexo = (string)(reader["Sexo"]!= DBNull.Value ? reader["Sexo"] : null);
                 e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
                 e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);

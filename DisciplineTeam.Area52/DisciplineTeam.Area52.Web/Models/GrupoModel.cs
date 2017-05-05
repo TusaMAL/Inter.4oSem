@@ -57,16 +57,24 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
 
             SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            if (reader.HasRows == false)
             {
-                Grupo p = new Grupo();
-                p.IdGrupo = (int)reader["Id"];
-                p.Nome = (string)reader["Nome"];
-                p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
-                lista.Add(p);
+                lista = null;
+                return lista;
             }
-            return lista;
+            else
+            {
+                while (reader.Read())
+                {
+                    Grupo p = new Grupo();
+                    p.IdGrupo = (int)reader["Id"];
+                    p.Nome = (string)reader["Nome"];
+                    p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                    lista.Add(p);
+                }
+                return lista;
+            }
+            
         }
         //Seleciona os grupos do usuario
         public List<Grupo> ReadGrupoTotal(int id)

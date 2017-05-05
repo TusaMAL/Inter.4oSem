@@ -30,7 +30,11 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    @using (Html.BeginForm("Search", "Grupo", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+                    @if (ViewBag.StatusAdmin == 2)
+                    {
+                    }
+                    else { 
+                    using (Html.BeginForm("Search", "Grupo", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
                     {
                         <div class="form-group">
                             @*@Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @type = "text", @placeholder = "Search Groups", @required = "required" })*@
@@ -39,12 +43,20 @@
                                 <i class="glyphicon glyphicon-search"></i><span>&nbsp;Search</span>
                             </button>
                         </div>
+                        }
                     }
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="cor-fonte efeito-fade-navbar"><a href="../Usuario/Index"><i class="glyphicon glyphicon-home cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Home</span></a></li>
-                        <li class="cor-fonte efeito-fade-navbar"><a href="../Usuario/Edit"><i class="glyphicon glyphicon-cog cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Settings</span></a></li>
-                        <!--<li class="cor-fonte efeito-fade-navbar"><a href="#"><i class="glyphicon glyphicon-ok cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Requests</span></a></li>-->
-                        <li class="cor-fonte efeito-fade-navbar"><a href="../Usuario/Logout"><i class="glyphicon glyphicon-log-out cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Logout</span></a></li>
+                        @if (ViewBag.StatusAdmin == 2)
+                        {
+                            <li class="cor-fonte efeito-fade-navbar"><a href="../Usuario/Logout"><i class="glyphicon glyphicon-log-out cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Logout</span></a></li>
+                        }
+                        else
+                        { 
+                            <li class="cor-fonte efeito-fade-navbar"><a href="../Usuario/Index"><i class="glyphicon glyphicon-home cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Home</span></a></li>
+                            <li class="cor-fonte efeito-fade-navbar"><a href="../Usuario/Edit"><i class="glyphicon glyphicon-cog cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Settings</span></a></li>
+                            <!--<li class="cor-fonte efeito-fade-navbar"><a href="#"><i class="glyphicon glyphicon-ok cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Requests</span></a></li>-->
+                            <li class="cor-fonte efeito-fade-navbar"><a href="../Usuario/Logout"><i class="glyphicon glyphicon-log-out cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Logout</span></a></li>
+                        }
                     </ul>
                     
             </div><!-- /.navbar-collapse -->
