@@ -25,9 +25,14 @@
                 <!-- input do formulario do grupo-->
                 <div class="form-group">
                     <label for="nome">Game</label>
-                       @Html.DropDownList("JogoId", null, new { @class = "form-control" })     
-                    @*@Html.DropDownListFor(m => m.Nome, new SelectList(ViewBag.JogoId, "IdJogo","Nome","Imagem"), "-- Select Status --")*@
-                          
+                        @{List<SelectListItem> listajogos = new List<SelectListItem>();
+
+                            foreach (var p in ViewBag.ListaJogos)
+                            {
+                                listajogos.Add(new SelectListItem { Text = p.Nome, Value = p.IdJogo.ToString() });
+                            }
+                            }
+                        @Html.DropDownListFor(m => m.IdJogo, listajogos, "-- Select Group Game --", new { @class = "form-control", @required ="required" })      
                 </div>
                 <!-- input da descrição do jogo-->
                 <div class="form-group">

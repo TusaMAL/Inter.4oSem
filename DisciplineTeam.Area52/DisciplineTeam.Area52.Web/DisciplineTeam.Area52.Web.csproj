@@ -124,22 +124,26 @@
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Filtro\UsuarioFiltro.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Confirmado.cs" />
     <Compile Include="Models\Evento.cs" />
+    <Compile Include="Models\EventoModel.cs" />
     <Compile Include="Models\Grupo.cs" />
     <Compile Include="Models\GrupoModel.cs" />
     <Compile Include="Models\Jogo.cs" />
     <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\Mensagem.cs" />
+    <Compile Include="Models\MensagemModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\Participante.cs" />
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
+    <Compile Include="Models\ViewAll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -163,9 +167,9 @@
     <Content Include="Views\Usuario\ForgotP.cshtml" />
     <Content Include="Views\Evento\Index.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\IndexUsuario\Index.cshtml" />
     <Content Include="Views\Usuario\EditSecurity.cshtml" />
     <Content Include="Views\Grupo\Search.cshtml" />
+    <Content Include="Views\Grupo\Person.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

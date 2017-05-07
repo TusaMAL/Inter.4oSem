@@ -12,11 +12,11 @@
         <!--Aplica o fundo preto e cria o head da div-->
         <div id="cor-fundo-header" class="panel-heading no-border">
             <!-- Escritos e icones da barra preta da div-->
-            <a id="cor-fonte" href="../Usuario/Edit"><span class="glyphicon glyphicon-user cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Profile</span></a>
+            <a id="cor-fonte" href="~/Usuario/Edit"><span class="glyphicon glyphicon-user cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Profile</span></a>
         </div><!--/panel-heading-->
         <!--Div onde fica os textos do grupo-->
         <div class="list-group-item no-border">
-            <a href=""> <img src="../img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+            <a href=""> <img src="~/img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <!--Nickname do usuario-->
             <p class="nick-person profile-usertitle-name profile-text text-center break-word">@ViewBag.UserLog.Nick</p>
             <center>
@@ -59,84 +59,31 @@
 <div class="col-lg-7 col-sm-12 col-md-5">
     <!-- Div com tamanho maximo dentro da div acima-->
     <div class="col-lg-12">
-        <!-- Corpo do texto da div nem todas terão ele-->
-        <div id="cor-borda" class="panel-body thumbnail">
-            <!-- Coloca uma borda na div e a deixa com cor preta-->
-            <div class="">
+        @foreach (var e in ViewBag.ReadMensagemIndex)
+        {
+        <!--Div dos posts-->
+            <div id="cor-borda" class="panel-body thumbnail">
                 <!--Cria o corpo da mensagem-->
                 <div class="media">
                     <!--Alinha a foto do post a esquerda-->
                     <div class="media-left">
-                        <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                        <a id="cor-fonte-menu" href="~/Usuario/User/?UserID=@e.PIdPessoa" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
                     </div>
                     <!--/media-left-->
-                    <!--Corpo da div media alinhada verticalmente ao centro-->
+                    <!--corpo div-->
                     <div class="media-body">
                         <div class="vertical-align">
                             <!--Nick do Usuario q postou a msg-->
-                            <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">TusaMAL </a></h4>
+                            <h4 class="nick-post media-heading"><a href="~/Usuario/User/?UserID=@e.PIdPessoa" class="cor-fonte-menu">@e.UNick </a></h4>
                             <!--Data/Hora e grupo que foi postada a msg-->
-                            <h6 class="fonte-post-pequena">21-03-2017, 10:53 (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">CS:GO Brasil</a></h6>
+                            <h6 class="fonte-post-pequena">@e.MsgDatahora (UTC- 03:00) at <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo" class="cor-fonte-menu">@e.GNome</a></h6>
                         </div>
                         <!--Mensagem Postada-->
-                        <p class="text-right text-justify">Chegamos em casa e bora começar mais uma maratona de treinos. <br />Próximo desafio é a CS summit no fds da semana que vem. <br /> O campeonato é aqui pertinho em Los Angeles.<br /> Nessa semana temos muito jogos online, inclusive hoje, fiquem ligados!</p>
-                    </div><!--/media-body-->
-                </div><!--/media-->
-            </div><!--/borda-profile-->
-            <!--começo post a direita <div class="col-sm-12 col-lg-12 col-md-12"><div class="thumbnail"><div class="media"><div class="media-body vertical-align"><h4 class="nick-post media-heading text-right"><a href="#" class="cor-fonte-menu">Gust</a></h4><h6 class="fonte-post-pequena text-right">21-03-2017, 11:20 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6></div><div class="media-right"><a id="cor-fonte-menu" href="#" class=""><img src="../img/img-feed/gust.jpg" class="img-responsive media-object img-thumbnail"></a>                 </div></div><p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>fim Post a direita-->
-        </div><!-- Fim panel-body -->
-        <!-- Corpo do texto da div nem todas terão ele-->
-        <div id="cor-borda" class="panel-body thumbnail">
-            <!-- Coloca uma borda na div e a deixa com cor preta-->
-            <div class="">
-                <!--Cria o corpo da mensagem-->
-                <div class="media">
-                    <!--Alinha a foto do post a esquerda-->
-                    <div class="media-left">
-                        <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/14k.jpg" alt="..."></a>
-                    </div>
-                    <!--/media-left-->
-                    <!--Corpo da div media alinhada verticalmente ao centro-->
-                    <div class="media-body">
-                        <div class="vertical-align">
-                            <!--Nick do Usuario q postou a msg-->
-                            <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">DidUSayRazer</a></h4>
-                            <!--Data/Hora e grupo que foi postada a msg-->
-                            <h6 class="fonte-post-pequena">20-03-2017, 23:48 (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">Paladins is da best</a></h6>
-                        </div>
-                        <!--Mensagem Postada-->
-                        <p class="text-right text-justify">Vocês viram isso? "Nós reduzimos o custo da habilidade suprema “Chamar Mecha” para compensar o aumento geral do custo da habilidade suprema de todos os heróis (como mencionado acima). Jogadores de D.Va não terão uma mudança de experiência muito grande. O resto dessas mudanças ajudam a D.Va a resistir melhor a ataques, o que permitirá que ela continue a fazer pressão em seus inimigos."</p>
-                    </div><!--/media-body-->
-                </div><!--/media-->
-            </div><!--/borda-profile-->
-            <!--começo post a direita <div class="col-sm-12 col-lg-12 col-md-12"><div class="thumbnail"><div class="media"><div class="media-body vertical-align"><h4 class="nick-post media-heading text-right"><a href="#" class="cor-fonte-menu">Gust</a></h4><h6 class="fonte-post-pequena text-right">21-03-2017, 11:20 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6></div><div class="media-right"><a id="cor-fonte-menu" href="#" class=""><img src="../img/img-feed/gust.jpg" class="img-responsive media-object img-thumbnail"></a>                 </div></div><p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>fim Post a direita-->
-        </div><!-- Fim panel-body -->
-        <!-- Corpo do texto da div nem todas terão ele-->
-        <div id="cor-borda" class="panel-body thumbnail">
-            <!-- Coloca uma borda na div e a deixa com cor preta-->
-            <div class="">
-                <!--Cria o corpo da mensagem-->
-                <div class="media">
-                    <!--Alinha a foto do post a esquerda-->
-                    <div class="media-left">
-                        <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/gold.jpg" alt="..."></a>
-                    </div>
-                    <!--/media-left-->
-                    <!--Corpo da div media alinhada verticalmente ao centro-->
-                    <div class="media-body">
-                        <div class="vertical-align">
-                            <!--Nick do Usuario q postou a msg-->
-                            <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">FakeGoldenMedal</a></h4>
-                            <!--Data/Hora e grupo que foi postada a msg-->
-                            <h6 class="fonte-post-pequena">20-03-2017, 16:42 (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">Tomates Peladeiros</a></h6>
-                        </div>
-                        <!--Mensagem Postada-->
-                        <p class="text-right text-justify">Fala galera, to precisando de ajuda aqui no meu FIFA 17. <br /> Passei uns meses sem jogar e meu Mundial sumiu, acho que meu save corrompeu ou algo do tipo, já aconteceu isso com alguém?<br />Time que conquistei o Mundial: Palmeiras. <br />Por favor, me ajudem.</p>
-                    </div><!--/media-body-->
-                </div><!--/media-->
-            </div><!--/borda-profile-->
-            <!--começo post a direita <div class="col-sm-12 col-lg-12 col-md-12"><div class="thumbnail"><div class="media"><div class="media-body vertical-align"><h4 class="nick-post media-heading text-right"><a href="#" class="cor-fonte-menu">Gust</a></h4><h6 class="fonte-post-pequena text-right">21-03-2017, 11:20 (UTC- 03:00) at <a href="#" class="cor-fonte-menu">CS:GO Brasil</a></h6></div><div class="media-right"><a id="cor-fonte-menu" href="#" class=""><img src="../img/img-feed/gust.jpg" class="img-responsive media-object img-thumbnail"></a>                 </div></div><p class="text-right text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>fim Post a direita-->
-        </div><!-- Fim panel-body -->
+                        <p class="text-right text-justify">@e.MsgTexto</p>
+                    </div><!--Fim post/media-body-->
+                </div><!--./media-->
+            </div><!--./thumbnail-->
+        }
     </div><!-- Fim - col-lg-12 -->
 </div><!-- ./Div com tamanho 7/12 lg, 12/12 sm e 6/12 md-->
 <!--
@@ -153,25 +100,25 @@
 <div class="col-lg-3 col-sm-12 col-md-4">
     <!--<div id="cor-borda" class="panel panel-default">
         <div id="cor-fundo" class="panel-heading">
-            <a id="cor-fonte" href="../Usuario/Friends"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Friends (7)</span></a>
+            <a id="cor-fonte" href="~/Usuario/Friends"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Friends (7)</span></a>
         </div>
         <div class="panel-body">
 
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
-                        <img class="img-responsive center-block" src="../img/akhe.jpg" alt="">
+                        <img class="img-responsive center-block" src="~/img/akhe.jpg" alt="">
                         <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a id="cor-fonte-menu" href="#" class="thumbnail" title="Gust">
-                        <img class="img-responsive center-block" src="../img/gust.jpg" alt="">
+                        <img class="img-responsive center-block" src="~/img/gust.jpg" alt="">
                         <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Gust</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a id="cor-fonte-menu" href="#" class="thumbnail" title="MXJonasV">
-                        <img class="img-responsive center-block" src="../img/john.jpg" alt="">
+                        <img class="img-responsive center-block" src="~/img/john.jpg" alt="">
                         <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">MXJonasV</p>
                     </a>
                 </div>
@@ -179,29 +126,29 @@
 
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a id="cor-fonte-menu" href="#" class="thumbnail" title="MXJonasV">
-                        <img class="img-responsive center-block" src="../img/john.jpg" alt="">
+                        <img class="img-responsive center-block" src="~/img/john.jpg" alt="">
                         <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">MXJonasV</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a id="cor-fonte-menu" href="#" class="thumbnail" title="Gust">
-                        <img class="img-responsive center-block" src="../img/gust.jpg" alt="">
+                        <img class="img-responsive center-block" src="~/img/gust.jpg" alt="">
                         <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Gust</p>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
-                        <img class="img-responsive center-block" src="../img/akhe.jpg" alt="">
+                        <img class="img-responsive center-block" src="~/img/akhe.jpg" alt="">
                         <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p>
                     </a>
                 </div>
 
-            <a href="../pages/friend.html" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+            <a href="~/pages/friend.html" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
         </div> fim panel-body Friends
     </div> fim panel-default Friends -->
     <div id="cor-borda" class="panel panel-default">
         <div id="cor-fundo-header" class="panel-heading no-border">
-            <a id="cor-fonte" href="../Grupo/Groups"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (@ViewBag.Quantgrupopart)</span></a>
+            <a id="cor-fonte" href="~/Grupo/Groups"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (@ViewBag.Quantgrupopart)</span></a>
         </div>
         <div class="panel-body no-border">
             @if (@ViewBag.Quantgrupopart == 0)
@@ -213,15 +160,15 @@
                 foreach (var e in ViewBag.Grupos)
                 {
                     <div class="col-sm-6 col-md-6 col-lg-6">
-                        <a id="cor-fonte-menu" href="../Grupo/Index/@e.IdGrupo" class="thumbnail" title="@e.Nome">
-                            <img class="img-responsive center-block" src="../img/dota2.png" alt="">
+                        <a id="cor-fonte-menu" href="~/Grupo/Index/?GrupoId=@e.IdGrupo" class="thumbnail" title="@e.Nome">
+                            <img class="img-responsive center-block" src="~/img/dota2.png" alt="">
                             <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">@e.Nome</p>
                         </a>
                     </div>
                 }
                 if (@ViewBag.Quantgrupopart > 6)
                 {
-                    <a href="../Grupo/Groups" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+                    <a href="~/Grupo/Groups" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
                 }
             }
         </div><!-- Fim panel-body groups -->

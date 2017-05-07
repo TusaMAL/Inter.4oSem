@@ -21,6 +21,11 @@ namespace DisciplineTeam.Area52.Web.Models
         [MinLength(6, ErrorMessage = "The password must have 6 characters")]
         public string Senha { get; set; }
 
+        [Required(ErrorMessage = "New Password is required")]
+        public string NewPwd { get; set; }
+        [Required(ErrorMessage = "New Password confirmation is required")]
+        public string NewPwdConfirm { get; set; }
+
         public int Status { get; set; }
     }
 }

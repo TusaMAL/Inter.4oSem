@@ -12,29 +12,34 @@
         <!--Aplica o fundo preto e cria o head da div-->
         <div id="cor-fundo-header" class="panel-heading no-border">
             <!-- Escritos e icones da barra preta da div-->
-            <a id="cor-fonte" href="../Grupos/Index"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Group</span></a>
+            <a id="cor-fonte" href="~/Grupos/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Group</span></a>
         </div><!--/panel-heading-->
         <!--Div onde fica os textos do grupo-->
         <div class="list-group-item no-border">
-            <a href="../Grupos/Index"> <img src="../img/csgo.png" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
-            <h2 class="text-center">CS:GO Brasil</h2>
-            <p class="text-center">Counter Strike: Global Offensive</p>
-            <center>
-                <div class="joined" style="display: none;">
-                    <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button" onclick="$('.joined').hide(); $('.join').show()">
-                        <span class="glyphicon glyphicon-remove"></span> Leave Group
-                    </button>
-                </div>
-                <div class="join">
-                    <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button" onclick="$('.join').hide(); $('.joined').show()">
-                        <span class="glyphicon glyphicon-ok"></span> Join
-                    </button>
-                </div><!--./Botão join com efeito JS-->
-            </center>
-        </div><!--/list-group-item-->
-        <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a><a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
-    </div><!--/list-group-->
-</div><!--/col-lg-2 col-sm-12 col-md-3-->
+            <a href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo"> <img src="~/img/csgo.png" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+            <h2 class="text-center"><a href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo">@ViewBag.InfoGrupo.GNome</a></h2>
+            <p class="text-center">@ViewBag.InfoGrupo.JNome</p>
+            <!--Botão join com efeito JS-->
+            <div class="panel-body no-border">
+                <div class="row">
+                    <center>
+                        <div class="joined" style="display: none;">
+                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button" onclick="$('.joined').hide(); $('.join').show()">
+                                <span class="glyphicon glyphicon-minus"></span> Leave Group
+                            </button>
+                        </div>
+                        <div class="join">
+                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button" onclick="$('.join').hide(); $('.joined').show()">
+                                <span class="glyphicon glyphicon-plus"></span> Join
+                            </button>
+                        </div><!--./Botão join com efeito JS-->
+                    </center>
+                </div><!--/list-group-item-->
+                <!--<a id="cor-fonte-menu" href="#"  class="list-group-item"><span class="badge" style="color:#00FF00;">2</span><span class="profile-text glyphicon glyphicon-ok"> Requests </span> </a><a id="cor-fonte-menu" href="#" class="list-group-item"><span class="profile-text glyphicon glyphicon-thumbs-up"> Commends</span></a>-->
+            </div><!--/list-group-->
+        </div><!--/col-lg-2 col-sm-12 col-md-3-->
+    </div>
+</div>
 <!--            Fim Menu Esquerdo               -->
 <!-- Começo da tela de Members -->
 <!--Div com tamanho 10/12 lg, 12/12 sm e 9/12 md-->
@@ -44,12 +49,12 @@
         <!--Aplica o fundo preto e cria o head da div-->
         <div id="cor-fundo-header" class="panel-heading">
             <!-- Escritos e icones da barra preta da div-->
-            <a id="cor-fonte" href="../Usuario/Members"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Members (7)</span></a>
+            <a id="cor-fonte" href="#"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Members (@ViewBag.QuantUserGrupos)</span></a>
         </div><!--/panel-heading-->
         <!-- Corpo do texto da div nem todas terão ele-->
         <div class="panel-body">
             <!--Cria uma linha da div para separa-lá dos grupos-->
-            <div class="row">
+            @*<div class="row">
                 <!--Faz com que a searchbox ocupe sempre 4/12 da div em que ela está dentro-->
                 <div class="col-lg-4">
                     <!--Não sei ao certo oq faz deve ser o body do input-->
@@ -66,133 +71,28 @@
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
-            <hr class="borda-profile"><!--Divisor-->
+            <hr class="borda-profile"><!--Divisor-->*@
             <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3 col-sm-6">
+        @foreach (var e in ViewBag.ReadMembrosGrupoTotal)
+        {
+        <div class="col-lg-3 col-sm-6">
                 <!--Adiciona o thumbnail e deixa a borda preta-->
                 <div id="cor-borda" class="thumbnail">
                     <!--Link para o profile-->
-                    <a href="#"><img src="../img/gust.jpg" alt="..." class="borda-profile"></a>
+                    <a href="~/Grupo/Person/?UserID=@e.PIdPessoa"><img src="~/img/gust.jpg" alt="..." class="borda-profile"></a>
                     <!--body do thumbnail com texto centralizado-->
                     <div class="caption text-center">
                         <!--Link do usuario-->
-                        <a id="cor-fonte-menu" href="">
+                        <a id="cor-fonte-menu" href="~/Grupo/Person/?UserID=@e.PIdPessoa">
                             <!--Nick do Usuario-->
-                            <h3 class="">Gust</h3>
+                            <h3 class="">@e.UNick</h3>
                             <!--Nome do Usuário-->
-                            <p>Gustavo</p>
+                            <p>@e.PNome</p>
                         </a>
                     </div><!--/caption-->
                 </div><!--/thumbnail-->
             </div><!-- Fim membro /.col-sm-3 -->
-            <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3 col-sm-6">
-                <!--Adiciona o thumbnail e deixa a borda preta-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o profile-->
-                    <a href="#"><img src="../img/gust.jpg" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link do usuario-->
-                        <a id="cor-fonte-menu" href="">
-                            <!--Nick do Usuario-->
-                            <h3 class="">Gust</h3>
-                            <!--Nome do Usuário-->
-                            <p>Gustavo</p>
-                        </a>
-                    </div><!--/caption-->
-                </div><!--/thumbnail-->
-            </div><!-- Fim membro /.col-sm-3 -->
-            <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3 col-sm-6">
-                <!--Adiciona o thumbnail e deixa a borda preta-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o profile-->
-                    <a href="#"><img src="../img/gust.jpg" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link do usuario-->
-                        <a id="cor-fonte-menu" href="">
-                            <!--Nick do Usuario-->
-                            <h3 class="">Gust</h3>
-                            <!--Nome do Usuário-->
-                            <p>Gustavo</p>
-                        </a>
-                    </div><!--/caption-->
-                </div><!--/thumbnail-->
-            </div><!-- Fim membro /.col-sm-3 -->
-            <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3 col-sm-6">
-                <!--Adiciona o thumbnail e deixa a borda preta-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o profile-->
-                    <a href="#"><img src="../img/gust.jpg" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link do usuario-->
-                        <a id="cor-fonte-menu" href="">
-                            <!--Nick do Usuario-->
-                            <h3 class="">Gust</h3>
-                            <!--Nome do Usuário-->
-                            <p>Gustavo</p>
-                        </a>
-                    </div><!--/caption-->
-                </div><!--/thumbnail-->
-            </div><!-- Fim membro /.col-sm-3 -->
-            <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3 col-sm-6">
-                <!--Adiciona o thumbnail e deixa a borda preta-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o profile-->
-                    <a href="#"><img src="../img/gust.jpg" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link do usuario-->
-                        <a id="cor-fonte-menu" href="">
-                            <!--Nick do Usuario-->
-                            <h3 class="">Gust</h3>
-                            <!--Nome do Usuário-->
-                            <p>Gustavo</p>
-                        </a>
-                    </div><!--/caption-->
-                </div><!--/thumbnail-->
-            </div><!-- Fim membro /.col-sm-3 -->
-            <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3 col-sm-6">
-                <!--Adiciona o thumbnail e deixa a borda preta-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o profile-->
-                    <a href="#"><img src="../img/gust.jpg" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link do usuario-->
-                        <a id="cor-fonte-menu" href="">
-                            <!--Nick do Usuario-->
-                            <h3 class="">Gust</h3>
-                            <!--Nome do Usuário-->
-                            <p>Gustavo</p>
-                        </a>
-                    </div><!--/caption-->
-                </div><!--/thumbnail-->
-            </div><!-- Fim membro /.col-sm-3 -->
-            <!--Começo Membero define o tamanho da Div para 3/12-->
-            <div class="col-lg-3 col-sm-6">
-                <!--Adiciona o thumbnail e deixa a borda preta-->
-                <div id="cor-borda" class="thumbnail">
-                    <!--Link para o profile-->
-                    <a href="#"><img src="../img/gust.jpg" alt="..." class="borda-profile"></a>
-                    <!--body do thumbnail com texto centralizado-->
-                    <div class="caption text-center">
-                        <!--Link do usuario-->
-                        <a id="cor-fonte-menu" href="">
-                            <!--Nick do Usuario-->
-                            <h3 class="">Gust</h3>
-                            <!--Nome do Usuário-->
-                            <p>Gustavo</p>
-                        </a>
-                    </div><!--/caption-->
-                </div><!--/thumbnail-->
-            </div><!-- Fim membro /.col-sm-3 -->
+        }
         </div><!-- /.panel-body -->
     </div><!-- /.panel panel-default -->
 </div><!-- /.col-lg-10 col-sm-12 col-md-9 -->

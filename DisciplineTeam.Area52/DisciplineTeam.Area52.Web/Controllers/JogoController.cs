@@ -1,4 +1,5 @@
-﻿using DisciplineTeam.Area52.Web.Models;
+﻿using DisciplineTeam.Area52.Web.Filtro;
+using DisciplineTeam.Area52.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
     public class JogoController : Controller
     {
         //public static List<Jogo> lista = new List<Jogo>();
-
+        [UsuarioFiltro]
         // GET: Jogos
         public ActionResult Index()
         {
@@ -18,20 +19,23 @@ namespace DisciplineTeam.Area52.Web.Controllers
             {
                 Admin user = (Admin)Session["usuario"];
                 ViewBag.StatusAdmin = user.Status;
-                return View(model.Read());
+                return View(model.ReadJogos());
 
             } // model.Dispose();
         }
-
+        [UsuarioFiltro]
         public ActionResult Create()
         {
-
+            Admin user = (Admin)Session["usuario"];
+            ViewBag.StatusAdmin = user.Status;
             return View();
         }
-
+        [UsuarioFiltro]
         [HttpPost]
         public ActionResult Create(Jogo e)
         {
+            Admin user = (Admin)Session["usuario"];
+            ViewBag.StatusAdmin = user.Status;
             if (ModelState.IsValid)
             {
                 using (JogoModel model = new JogoModel())

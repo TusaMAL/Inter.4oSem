@@ -8,7 +8,7 @@ namespace DisciplineTeam.Area52.Web.Models
 {
     public class GrupoModel : ModelBase
     {
-        public void Create(Grupo e, int id, int idjogo)
+        public void Create(Grupo e, int iduser, int idjogo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
@@ -18,7 +18,7 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.Parameters.AddWithValue("@descricao", e.Descricao);
             cmd.Parameters.AddWithValue("@Imagem", ((object)e.Imagem ?? DBNull.Value)); //Não Vai ficar aqui imagino eu
             cmd.Parameters.AddWithValue("@idjogo", idjogo);
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@id", iduser);
 
 
             cmd.ExecuteNonQuery();
@@ -31,7 +31,7 @@ namespace DisciplineTeam.Area52.Web.Models
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = @"SELECT TOP 6 * FROM v_Grupo_Part WHERE @id = id";
-            
+
             cmd.Parameters.AddWithValue("@id", id);
             //cmd.CommandType = System.Data.CommandType.Text;
 
@@ -47,13 +47,13 @@ namespace DisciplineTeam.Area52.Web.Models
             }
             return lista;
         }
-        public List<Grupo> BuscarGrupo(string busca)
+        public List<ViewAll> BuscarGrupo(string busca)
         {
-            List<Grupo> lista = new List<Grupo>();
+            List<ViewAll> lista = new List<ViewAll>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM grupos WHERE nome LIKE @busca";
+            cmd.CommandText = @"SELECT * FROM v_Info_Grupo WHERE NomeGrupo LIKE  @busca";
             cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -66,20 +66,21 @@ namespace DisciplineTeam.Area52.Web.Models
             {
                 while (reader.Read())
                 {
-                    Grupo p = new Grupo();
-                    p.IdGrupo = (int)reader["Id"];
-                    p.Nome = (string)reader["Nome"];
-                    p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                    ViewAll p = new ViewAll();
+                    p.GIdGrupo = (int)reader["IdGrupo"];
+                    p.GNome = (string)reader["NomeGrupo"];
+                    p.GImagem = (string)(reader["ImagemGrupo"] != DBNull.Value ? reader["Imagem"] : null);
+                    p.JNome = (string)reader["NomeJogo"];
                     lista.Add(p);
                 }
                 return lista;
             }
-            
+
         }
         //Seleciona os grupos do usuario
-        public List<Grupo> ReadGrupoTotal(int id)
+        public List<ViewAll> ReadGrupoTotal(int id)
         {
-            List<Grupo> lista = new List<Grupo>();
+            List<ViewAll> lista = new List<ViewAll>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
@@ -92,70 +93,114 @@ namespace DisciplineTeam.Area52.Web.Models
 
             while (reader.Read())
             {
-                Grupo p = new Grupo();
-                p.IdGrupo = (int)reader["IdGrupo"];
-                p.Nome = (string)reader["Nome"];
-                p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
-                //p.NomeJogo = (string)reader["NomeJogo"];
+                ViewAll p = new ViewAll();
+                p.GIdGrupo = (int)reader["IdGrupo"];
+                p.GNome = (string)reader["Nome"];
+                p.GImagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                p.JNome = (string)reader["NomeJogo"];
                 lista.Add(p);
 
             }
             return lista;
         }
-
         //Retorna o Count dos grupos
         public int QuantGruposParticipa(int id)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = @"SELECT COUNT(usuario_id) AS GruposUser FROM Participantes WHERE usuario_id = @id";
-            
+
             cmd.Parameters.AddWithValue("@id", id);
 
             int quant = (int)cmd.ExecuteScalar();
             return quant;
         }
-        //Post da mensagem
-        public void PostMensagem(Mensagem e, int iduser)
+        //Retorna o Count dos usuarios dentro dos grupos
+        public int QuantUserGrupos(int id)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC cadMsg @texto, @usuario_id, @grupo_id";
-            
-            cmd.Parameters.AddWithValue("@texto", e.Texto);
-            cmd.Parameters.AddWithValue("@usuario_id", iduser);
-            cmd.Parameters.AddWithValue("@grupo_id", 1); // tem q pegar id do grupo
+            cmd.CommandText = @"SELECT COUNT(usuario_id) AS GruposUser FROM Participantes WHERE grupo_id = @id";
 
-            cmd.ExecuteNonQuery();
+            cmd.Parameters.AddWithValue("@id", id);
+
+            int quant = (int)cmd.ExecuteScalar();
+            return quant;
         }
-        //Leitura das Mensagens
-        public List<Object> ReadMensagem() //Falta receber os parametros do id do grupo e do usuario
+        //Seleciona os 6 participantes do grupo TODO: Precisamos criar uma regra pra selecionar 6 pessoas
+        public List<ViewAll> ReadPartGrupo(int idgrupo)
         {
-            List<Object> lista = new List<Object>();
+            List<ViewAll> lista = new List<ViewAll>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT TOP 10 * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
+            cmd.CommandText = @"SELECT TOP 6 * FROM v_User_Grupo_Part WHERE PartIdGrupo = @idgrupo";
 
-            cmd.Parameters.AddWithValue("@idgrupo", 1); // Falta receber os parametros do controller
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
             //cmd.CommandType = System.Data.CommandType.Text;
 
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                Mensagem p = new Mensagem();
-                DateTime data = (DateTime)reader["Datahora"];
-                p.Datahora = data.ToString("dd/MM/yyyy, HH:mm");
-                p.Texto = (string)(reader["Texto"]);
-                //int IdPessoa = (int)reader["IdUsuario"];
-                //string Nick = (string)reader["Nickusuario"];
-                //string Imagem = (string)reader["Imagemusuario"];
-                //int IdGrupo = (int)reader["Idgrupo"];
-                //string Nome = (string)reader["Nomegrupo"];
+                ViewAll p = new ViewAll();
+                p.PartIdGrupo = (int)reader["PartIdGrupo"];
+                p.PIdPessoa = (int)reader["IdPessoa"];
+                p.UNick = (string)reader["Nick"];
+                p.UImagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
                 lista.Add(p);
             }
             return lista;
+        }
+        //Retorna a quantidade de membros participantes do grupo
+        public List<ViewAll> ReadMembrosGrupoTotal(int idgrupo)
+        {
+            List<ViewAll> lista = new List<ViewAll>();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT * FROM v_User_Grupo_Part WHERE PartIdGrupo = @idgrupo";
+
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+            //cmd.CommandType = System.Data.CommandType.Text;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ViewAll p = new ViewAll();
+                p.PartIdUsuario = (int)reader["PartIdGrupo"];
+                p.PIdPessoa = (int)reader["IdPessoa"];
+                p.UNick = (string)reader["Nick"];
+                p.UImagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                p.PNome = (string)reader["Nome"];
+                lista.Add(p);
+            }
+            return lista;
+        }
+        //Retorna as Informações do Grupo
+        public ViewAll InfoGrupo(int idgrupo)
+        {
+            ViewAll e = null;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT * FROM v_Info_Grupo WHERE IdGrupo = @idgrupo";
+
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                e = new ViewAll();
+                e.GIdGrupo = (int)reader["IdGrupo"];
+                e.GIdJogo = (int)reader["IdJogo"];
+                e.GNome = (string)reader["NomeGrupo"];
+                e.GImagem = (string)(reader["ImagemGrupo"] != DBNull.Value ? reader["ImagemGrupo"] : null);
+                e.GDescricao = (string)reader["Descricao"];
+                e.JNome = (string)reader["NomeJogo"];
+            }
+            return e;
         }
     }
 }

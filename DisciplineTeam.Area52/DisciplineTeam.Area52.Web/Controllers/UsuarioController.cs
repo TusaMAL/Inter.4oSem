@@ -4,74 +4,95 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DisciplineTeam.Area52.Web.Filtro;
 
 namespace DisciplineTeam.Area52.Web.Controllers
 {
     public class UsuarioController : Controller
     {
+        [UsuarioFiltro]
         // GET: Usuario
         public ActionResult Index()//Testando as informações do usuario pegadas no BD
         {
+            Usuario user = (Usuario)Session["usuario"];
             using (UsuarioModel model = new UsuarioModel())
             {
-                Usuario user = (Usuario)Session["usuario"];
-                int id = user.IdPessoa;
-                user = model.ReadU(id);
-                ViewBag.UserLog = user;
+                ViewBag.UserLog = model.ReadU(user.IdPessoa);                           //Pega informações do usuario que logou e manda paraa view
             }
             using (GrupoModel model = new GrupoModel())
             {
-                Usuario user = (Usuario)Session["usuario"];
-                int id = user.IdPessoa;
-                List<Grupo> listgrupo = new List<Grupo>();
-                listgrupo = model.ReadGrupo(id);
-                ViewBag.Grupos = listgrupo;
-                ViewBag.Quantgrupopart = model.QuantGruposParticipa(id);
+                ViewBag.Grupos = model.ReadGrupo(user.IdPessoa);                        //Retorna os grupos em que o usuario está participando
+                ViewBag.Quantgrupopart = model.QuantGruposParticipa(user.IdPessoa);     //Retorna o count de grupos em que o usuario participa
             }
-            return View();
+            using (MensagemModel model = new MensagemModel())
+            {
+                ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(user.IdPessoa);     //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
+            }
+                return View();
         }
+        [UsuarioFiltro]
         //GET: Person
         public ActionResult Person()
         {
             return View();
         }
         //GET: Edit
+        [UsuarioFiltro]
         public ActionResult Edit()
         {
             Usuario e = new Usuario();
             using (UsuarioModel model = new UsuarioModel())
             {
-                Usuario user = (Usuario)Session["usuario"];
-                int id = user.IdPessoa;
-                e = model.ReadEditUsuario(id);
+                e = model.ReadEditUsuario(((Usuario)Session["usuario"]).IdPessoa);      //Lê os dados do usuario no BD e mostra no Formulário para poder ser editado
             }
             return View(e);
         }
+        [UsuarioFiltro]
         [HttpPost]
         public ActionResult Edit(Usuario e)
         {
-            using (UsuarioModel model = new UsuarioModel())
-            {
-                Usuario user = (Usuario)Session["usuario"];
-                int id = user.IdPessoa;
-                model.EditUsuario(e, id);
-                ViewBag.SucessoEdit = true;
-            }
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    model.EditUsuario(e, ((Usuario)Session["usuario"]).IdPessoa);       //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
+                    ViewBag.SucessoEdit = true;                                         //Usado para exibir mensagem de confirmação na view
+                }
             return View(e);
         }
         //GET: Edit
+        [UsuarioFiltro]
         public ActionResult EditSecurity()
         {
-            Usuario e = new Usuario();
+            return View();
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult EditSecurity(string Senha, string NewPwd)               /* Recebe como parametros a senha atual e nova OBS: Tive que criar atributos na classe pessoa pq o VS dava pau 
+                                                                                    creio que por causa do form no estilo abas mas pra nao mudar coloquei os atributos*/ 
+        {
             using (UsuarioModel model = new UsuarioModel())
             {
                 Usuario user = (Usuario)Session["usuario"];
-                int id = user.IdPessoa;
-                e = model.ReadEditUsuario(id);
-                
+                user.Senha = model.GetSenha(user.IdPessoa);                         //Consulta o banco para pegar senha do usuário
+                if (Senha != user.Senha)
+                {
+                    ViewBag.ChangePwdFail = "This is not your current password";
+                }
+                else
+                {
+                    if (NewPwd != Senha)
+                    {
+                        model.ChangePwd(user.IdPessoa, NewPwd);                     //Se o teste chegar aqui a senha do usuario será trocada pela nova
+                        ViewBag.ChangePwdSucess = "Password changed successfull.";
+                    }
+                    else
+                    {
+                        ViewBag.ChangePwdFail = "This is your current password, for changing please enter a different one.";
+                    }
+                } 
             }
-            return View(e);
+            return View();
         }
+        [UsuarioFiltro]
         public ActionResult ForgotP()
         {
             return View();
@@ -122,14 +143,12 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                /* faz com que o conteudo não seja nulo para que seja exibido mensagem de confirmação na pagina login*/
-                
                 using (UsuarioModel model = new UsuarioModel())
                 {
-                    if (model.Check(e))
+                    if (model.Check(e))                             //Checa se o email não está em uso
                     {
-                        TempData["Sucesso"] = "true";
-                        model.Create(e);
+                        TempData["Sucesso"] = "true";               /* faz com que o conteudo não seja nulo para que seja exibido mensagem de confirmação na pagina login*/
+                        model.Create(e);                            //Cria a conta do usuario
                         return RedirectToAction("Login");
                     }
                     else
@@ -140,7 +159,8 @@ namespace DisciplineTeam.Area52.Web.Controllers
             }
             return View(e);
         }
-        public ActionResult Logout()
+        [UsuarioFiltro]
+        public ActionResult Logout()                                //Action para fazer logout
         {
             Session.Abandon();
             return RedirectToAction("Login");

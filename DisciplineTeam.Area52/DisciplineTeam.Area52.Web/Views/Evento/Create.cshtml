@@ -1,4 +1,4 @@
-﻿
+﻿@model DisciplineTeam.Area52.Web.Models.Evento
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,24 +11,26 @@
         </div>
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
             <form class="form-horizontal" method="post">
-                <fieldset>
                     <br />
                     <div class="form-group">
                         <label for="label_name_event" class="col-sm-2 control-label">Name:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="label_name_event" placeholder="Event name">
+                            @Html.TextBoxFor(m=>m.Nome, new { @class = "form-control", @placeholder = "Event Name...", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.Nome)
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="label_date" class="col-sm-2 control-label">Date:</label>
                         <div class="col-sm-3">
-                            <input type="date" class="form-control" id="label_date" placeholder="DD/MM/AAAA">
+                            @Html.TextBoxFor(m => m.Data, "{0:dd-MM-yyyy}", new { @type = "date", @class = "form-control date", @title = "Event Date", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.Data)
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="label_time" class="col-sm-2 control-label">Time:</label>
                         <div class="col-sm-3">
-                            <input type="time" class="form-control" id="label_time" placeholder="HH:MM">
+                            @Html.TextBoxFor(m => m.Hora, "{0:HH:MM}", new { @type = "time", @class = "form-control date", @title = "Event Date", @required = "required" })
+                            @Html.ValidationMessageFor(m => m.Hora)
                         </div>
                     </div>
                     <div class="form-group">
@@ -36,32 +38,35 @@
                         <div class="col-sm-8">
                             <div class="col-sm-3">
                                 <label class="radio-inline">
-                                    <input type="radio" checked name="radio_loc" id="radio_loc1" value="online"> Online
+                                    @Html.RadioButtonFor(m => m.Tipo, "0", false)@Html.Label("Online")
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    <input type="radio" name="radio_loc" id="radio_loc2" value="presential"> Presential
+                                    @Html.RadioButtonFor(m => m.Tipo, "1", false)@Html.Label("LAN")
                                 </label>
-                                <input type="text" class="form-control" id="label_loc" placeholder="Address">
+                                @Html.ValidationMessageFor(m => m.Tipo)
+                                @Html.TextBoxFor(m => m.Endereco, new { @class = "form-control", @placeholder = "Address", @required = "required" })
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="label_desc" class="col-sm-2 control-label">Description:</label>
+                        <label for="label_desc" class="col-sm-2 control-label">About Event:</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control textarea-sem-resize" rows="5" id="label_desc" placeholder="Describe your event!"></textarea>
+                            @Html.TextAreaFor(m => m.Descricao, new { rows = 4, @class = "form-control textarea-sem-resize", @placeholder = "About Event..." })
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-xs-6">
-                            <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar center-block">Cancel</button>
+                    <div class="form-group text-center">
+                        <div class="form-group col-lg-6">
+                            <a id="cor-fonte" href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Back</a>
                         </div>
-                        <div class="col-xs-6">
-                            <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar center-block">Save</button>
+                        <div class="form-group col-lg-1">
+                            <button id="cor-fonte" type="reset" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Clear</button>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Create Event</button>
                         </div>
                     </div>
-                </fieldset>
             </form>
         </div>
     </div>

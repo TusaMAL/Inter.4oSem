@@ -81,7 +81,6 @@ namespace DisciplineTeam.Area52.Web.Models
 
             return e;
         }
-
         //Tentando fazer a leitura dos dados do usuario para lançar na pagina do mesmo
         public Usuario ReadU(int id)
         {
@@ -89,7 +88,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM v_UserInfo WHERE id = @id";
+            cmd.CommandText = @"SELECT * FROM v_User_Info WHERE id = @id";
             cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -97,7 +96,7 @@ namespace DisciplineTeam.Area52.Web.Models
             if (reader.Read())
             {
                 e = new Usuario();
-                e.IdPessoa = (int)reader["Id"];
+                e.IdPessoa = (int)reader["PessoaId"];
                 e.Nome = (string)reader["Nome"];
                 e.Nick = (string)reader["Nick"];
                 DateTime data = (DateTime)reader["Datanasc"];
@@ -105,15 +104,17 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Sexo = (string)(reader["Sexo"]!= DBNull.Value ? reader["Sexo"] : null);
                 e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
                 e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);
+                e.Descricao = (string)(reader["Descricao"] != DBNull.Value ? reader["Descricao"] : null);
             }
             return e;
         }
+        //Faz a leitura dos dados do usuario para exibir na tela Settings
         public Usuario ReadEditUsuario(int idusuario)
         {
             Usuario e = new Usuario();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"select * from v_User_Info WHERE @idusuario = PessoaId";
+            cmd.CommandText = @"select * from v_User_Info_Edit WHERE @idusuario = PessoaId";
             cmd.Parameters.AddWithValue("@idusuario", idusuario);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -139,21 +140,57 @@ namespace DisciplineTeam.Area52.Web.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC editInfo_User @IdUsuario, @nome, @nick, @sexo, @datanasc, @cidade, 'SP', @cep, @descricao";
+            cmd.CommandText = @"EXEC editInfo_User @IdUsuario, @nome, @nick, @sexo, @datanasc, @cidade, @estado, @cep, @descricao, @imagem";
            
             cmd.Parameters.AddWithValue("@IdUsuario", id);
             cmd.Parameters.AddWithValue("@nome", e.Nome);
             cmd.Parameters.AddWithValue("@nick", e.Nick);
+            e.Sexo = (e.Sexo != null ? e.Sexo : "");
             cmd.Parameters.AddWithValue("@sexo", e.Sexo);
             DateTime date = Convert.ToDateTime(e.Datanasc);
             cmd.Parameters.AddWithValue("@datanasc", date);
-            cmd.Parameters.AddWithValue("@cidade", e.Cidade);
-            //cmd.Parameters.AddWithValue("@estado", e.Estado); Estado ta estatico
+            e.Cep = (e.Cep != null ? e.Cep : "");
             cmd.Parameters.AddWithValue("@cep", e.Cep);
+            e.Cidade = (e.Cidade != null ? e.Cidade : "");
+            cmd.Parameters.AddWithValue("@cidade", e.Cidade);
+            e.Estado = (e.Estado != null ? e.Estado : "");
+            cmd.Parameters.AddWithValue("@estado", e.Estado);
+            e.Descricao = (e.Descricao != null ? e.Descricao : "");
             cmd.Parameters.AddWithValue("@descricao", e.Descricao);
-            //cmd.Parameters.AddWithValue("@imagem", e.Imagem);
+            e.Imagem = (e.Imagem != null ? e.Imagem : "");
+            cmd.Parameters.AddWithValue("@imagem", e.Imagem);
 
             cmd.ExecuteNonQuery();
+        }
+        //Mudar senha usuario
+        public void ChangePwd(int iduser, string newpwd)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"EXEC editPwd @IdUsuario, @newpwd";
+
+            cmd.Parameters.AddWithValue("@IdUsuario", iduser);
+            cmd.Parameters.AddWithValue("@newpwd", newpwd);
+            
+            cmd.ExecuteNonQuery();
+        }
+        //Método para pegar senha do usuario do banco pra poder comparar na hora de muda-la
+        public string GetSenha(int iduser)
+        {
+            Usuario e = null;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT * FROM pessoas WHERE @iduser = pessoas.id";
+
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                e = new Usuario();
+                e.Senha = (string)reader["senha"];
+            }
+            return e.Senha;
         }
     }
 }

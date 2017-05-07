@@ -22,7 +22,7 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.ExecuteNonQuery();
         }
 
-        public List<Jogo> Read()
+        public List<Jogo> ReadJogos()
         {
             List<Jogo> lista = new List<Jogo>();
 

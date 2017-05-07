@@ -12,13 +12,13 @@
         <!--Aplica o fundo preto e cria o head da div-->
         <div id="cor-fundo-header" class="panel-heading no-border">
             <!-- Escritos e icones da barra preta da div-->
-            <a id="cor-fonte" href="../Grupos/Index"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Group</span></a>
+            <a id="cor-fonte" href="~/Grupos/Index"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Group</span></a>
         </div><!--/panel-heading-->
         <!--Div onde fica os textos do grupo-->
         <div class="list-group-item no-border">
-            <a href=""> <img src="../img/csgo.png" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
-            <h2 class="text-center"><a href="../Grupos/Index">CS:GO Brasil</a></h2>
-            <p class="text-center">Counter Strike: Global Offensive</p>
+            <a href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo"> <img src="~/img/csgo.png" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+            <h2 class="text-center"><a href="~/Grupos/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo">@ViewBag.InfoGrupo.GNome</a></h2>
+            <p class="text-center">@ViewBag.InfoGrupo.JNome</p>
                 <!--Botão join com efeito JS-->
                     <div class="panel-body no-border">
                         <div class="row">
@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <br />
                                     <!--Botão create event-->
-                                    <a id="cor-fonte" href="../Eventos/Create" class="btn cor-fonte efeito-fade-navbar">
+                                    <a id="cor-fonte" href="~/Evento/Create/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo" class="btn cor-fonte efeito-fade-navbar">
                                         <i class="glyphicon glyphicon-flash"></i><span>&nbsp;Add New Event</span>
                                     </a>
                                 </div>
@@ -72,12 +72,12 @@
                                 <!--div alinhada verticalmente ao centro-->
                                 <div class="vertical-align">
                                     <!--nome do Grupo-->
-                                    <h2 class="media-heading"><a href="#" class="cor-fonte-menu">CS:GO Brasil </a></h2>
+                                    <h2 class="media-heading"><a href="#" class="cor-fonte-menu">@ViewBag.InfoGrupo.GNome</a></h2>
                                     <!--Titulo de descrição-->
                                     <h4 class="">About Group:</h4>
                                 </div><!--./vertical-align-->
                                 <!--Descrição do grupo-->
-                                <p class="text-right text-justify">Grupo de jogadores de CS:GO de todo o Brasil!<br /><br />aqui vocês podem criar discussões, postar suas plays, enfim o grupo é de vocês, só não pode fazer apologia aos cheats !<br /><br />Nosso grupo no <font color="#660066">Discord</font>
+                                <p class="text-right text-justify">@ViewBag.InfoGrupo.GDescricao</p>
                             </div><!--./media-body-->
                         </div><!--./media-->
                     </div><!--/thumbnail-->
@@ -94,7 +94,7 @@
             <!-- Div com collapse ja ativado ao entrar na pagina-->
             <div id="collapse2" class="panel-body panel-collapse collapse in">
                 <div class="form-group">
-                    <form role="form" action="../Grupo/Index" method="post">
+                    <form role="form" action="@HttpContext.Current.Request.Url.PathAndQuery" method="post">
                         @Html.TextAreaFor(m => m.Texto, new { rows = 4, @class = "form-control textarea-sem-resize", @required = "required", @placeholder = "Write something..." })
                         <br />
                         <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar"><i class="glyphicon glyphicon-check">&nbsp;</i>Post New Message</button>
@@ -102,7 +102,7 @@
                 </div><!--./form-group-->
             </div><!--./collapse-->
         </div><!--/panel-default-->
-        @foreach (var e in ViewBag.ListaMensagens)
+        @foreach (var e in ViewBag.ReadMensagem)
         {
         <!--Div dos posts-->
         <div id="cor-borda" class="panel-body thumbnail">
@@ -110,19 +110,19 @@
             <div class="media">
                 <!--Alinha a foto do post a esquerda-->
                 <div class="media-left">
-                    <a id="cor-fonte-menu" href="../Usuario/User" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                    <a id="cor-fonte-menu" href="~/Usuario/User/?UserID=@e.PIdPessoa" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
                 </div>
                 <!--/media-left-->
                 <!--corpo div-->
                 <div class="media-body">
                     <div class="vertical-align">
                         <!--Nick do Usuario q postou a msg-->
-                        <h4 class="nick-post media-heading"><a href="../Usuario/User" class="cor-fonte-menu">Falta pegar nick </a></h4>
+                        <h4 class="nick-post media-heading"><a href="~/Usuario/User/?UserID=@e.PIdPessoa" class="cor-fonte-menu">@e.UNick </a></h4>
                         <!--Data/Hora e grupo que foi postada a msg-->
-                        <h6 class="fonte-post-pequena">@e.Datahora (UTC- 03:00) at <a href="../Grupos/Index" class="cor-fonte-menu">Falta pegar nome</a></h6>
+                        <h6 class="fonte-post-pequena">@e.MsgDatahora (UTC- 03:00) at <a href="~/Grupos/Index/?GrupoId=@e.GIdGrupo" class="cor-fonte-menu">@e.GNome</a></h6>
                     </div>
                     <!--Mensagem Postada-->
-                    <p class="text-right text-justify">@e.Texto</p>
+                    <p class="text-right text-justify">@e.MsgTexto</p>
                 </div><!--Fim post/media-body-->
             </div><!--./media-->
         </div><!--./thumbnail-->
@@ -136,62 +136,29 @@
         <!-- Escritos e icones da barra preta da div-->
         <div id="cor-fundo-header" class="panel-heading no-border">
             <!-- Escritos e icones da barra preta da div-->
-            <a id="cor-fonte" href="../Usuario/Members"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Members (7)</span></a>
+            <a id="cor-fonte" href="~/Grupo/Members/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Members (@ViewBag.QuantUserGrupos)</span></a>
         </div><!--/panel-heading-->
         <!-- Corpo do texto da div nem todas terão ele-->
         <div class="panel-body no-border">
+        @foreach (var e in ViewBag.ReadPartGrupo)
+        {
             <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
             <div class="col-sm-12 col-md-6 col-lg-6">
-                <a id="cor-fonte-menu" href="../Grupos/Person" class="thumbnail" title="Akhenathon">
+                <a id="cor-fonte-menu" href="~/Grupo/Person/?UserID=@e.PIdPessoa" class="thumbnail" title="@e.UNick">
                     <!--Anchor ou link do membro em questão-->
-                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
-                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
+                    <img class="img-responsive center-block" src="~/img/akhe.jpg" alt=""><!--Img do membro-->
+                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">@e.UNick</p><!--Nickname do cidadão-->
                 </a>
             </div><!--/col-sm-12 col-md-6 col-lg-4-->
-            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a id="cor-fonte-menu" href="../Usuario/User" class="thumbnail" title="TusaMal">
-                    <!--Anchor ou link do membro em questão-->
-                    <img class="img-responsive center-block" src="../img/pp.jpg" alt=""><!--Img do membro-->
-                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">TusaMAL</p><!--Nickname do cidadão-->
-                </a>
-            </div><!--/col-sm-12 col-md-6 col-lg-4-->
-            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a id="cor-fonte-menu" href="../Grupos/Person" class="thumbnail" title="Akhenathon">
-                    <!--Anchor ou link do membro em questão-->
-                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
-                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
-                </a>
-            </div><!--/col-sm-12 col-md-6 col-lg-4-->
-            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a id="cor-fonte-menu" href="../Grupos/Person" class="thumbnail" title="Akhenathon">
-                    <!--Anchor ou link do membro em questão-->
-                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
-                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
-                </a>
-            </div><!--/col-sm-12 col-md-6 col-lg-4-->
-            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a id="cor-fonte-menu" href="../Grupos/Person" class="thumbnail" title="Akhenathon">
-                    <!--Anchor ou link do membro em questão-->
-                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
-                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
-                </a>
-            </div><!--/col-sm-12 col-md-6 col-lg-4-->
-            <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a id="cor-fonte-menu" href="../Grupos/Person" class="thumbnail" title="Akhenathon">
-                    <!--Anchor ou link do membro em questão-->
-                    <img class="img-responsive center-block" src="../img/akhe.jpg" alt=""><!--Img do membro-->
-                    <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
-                </a>
-            </div><!--/col-sm-12 col-md-6 col-lg-4-->
+        }
             <!-- Coluna criada pra evitar que o See more nao fique sem ser no final da coluna-->
+        @if (ViewBag.QuantUserGrupos > 6)
+        {
             <div class="col-lg-12">
-                <a href="../pages/friend.html" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+                <a href="~/Usuario/Members/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
             </div><!--/col-lg-12-->
+        }
+            
         </div> <!--fim panel-body Members-->
     </div> <!--fim panel-default Members -->
     <!--Começo Coluna Events-->
@@ -206,7 +173,7 @@
             <div class="panel-body no-border">
                 <!--Começo Evento-->
                 <div id="cor-borda" class="thumbnail">
-                    <h4><a href="../Eventos/Index">13º Amadorzão de CS:GO</a></h4>
+                    <h4><a href="~/Evento/Index">13º Amadorzão de CS:GO</a></h4>
                     <h6 class="fonte-post-pequena">15-04-2017, 00:00 (UTC- 03:00) <a href="#" class="cor-fonte-menu">Online Event</a></h6>
                 </div><!--Fim Evento-->
                 <!--Começo Evento-->
