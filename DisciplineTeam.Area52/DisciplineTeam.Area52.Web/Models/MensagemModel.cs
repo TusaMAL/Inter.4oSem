@@ -17,12 +17,12 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.Parameters.AddWithValue("@texto", e.Texto);
             cmd.Parameters.AddWithValue("@usuario_id", iduser);
-            cmd.Parameters.AddWithValue("@grupo_id", idgrupo); // tem q pegar id do grupo
+            cmd.Parameters.AddWithValue("@grupo_id", idgrupo); 
 
             cmd.ExecuteNonQuery();
         }
         //Leitura das Mensagens dentro do grupo
-        public List<ViewAll> ReadMensagem(int idgrupo, int idusuario)
+        public List<ViewAll> ReadMensagem(int idgrupo)
         {
             List<ViewAll> lista = new List<ViewAll>();
 
@@ -57,7 +57,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT TOP 10 * FROM v_Grupo_Msg_Part WHERE @iduser = PartUser ORDER BY Datahora DESC";
+            cmd.CommandText = "SELECT TOP 10 * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo ORDER BY Datahora DESC";
 
             cmd.Parameters.AddWithValue("@iduser", iduser);
             //cmd.CommandType = System.Data.CommandType.Text;

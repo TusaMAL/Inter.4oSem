@@ -24,15 +24,15 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.ExecuteNonQuery();
         }
         //Seleciona 6 grupos para exibir no perfil
-        public List<Grupo> ReadGrupo(int id)
+        public List<Grupo> ReadGrupo(int iduser)
         {
             List<Grupo> lista = new List<Grupo>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT TOP 6 * FROM v_Grupo_Part WHERE @id = id";
+            cmd.CommandText = @"SELECT TOP 6 * FROM v_Grupo_Part WHERE @iduser = id";
 
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@iduser", iduser);
             //cmd.CommandType = System.Data.CommandType.Text;
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -144,8 +144,8 @@ namespace DisciplineTeam.Area52.Web.Models
             while (reader.Read())
             {
                 ViewAll p = new ViewAll();
+                p.PartIdUsuario = (int)reader["PartIdUser"];
                 p.PartIdGrupo = (int)reader["PartIdGrupo"];
-                p.PIdPessoa = (int)reader["IdPessoa"];
                 p.UNick = (string)reader["Nick"];
                 p.UImagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
                 lista.Add(p);
@@ -169,8 +169,7 @@ namespace DisciplineTeam.Area52.Web.Models
             while (reader.Read())
             {
                 ViewAll p = new ViewAll();
-                p.PartIdUsuario = (int)reader["PartIdGrupo"];
-                p.PIdPessoa = (int)reader["IdPessoa"];
+                p.PartIdUsuario = (int)reader["PartIdUser"];
                 p.UNick = (string)reader["Nick"];
                 p.UImagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
                 p.PNome = (string)reader["Nome"];

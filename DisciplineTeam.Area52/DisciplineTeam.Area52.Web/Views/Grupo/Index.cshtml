@@ -144,7 +144,7 @@
         {
             <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
             <div class="col-sm-12 col-md-6 col-lg-6">
-                <a id="cor-fonte-menu" href="~/Grupo/Person/?UserID=@e.PIdPessoa" class="thumbnail" title="@e.UNick">
+                <a id="cor-fonte-menu" href="~/Grupo/Person/?UserID=@e.PartIdUsuario" class="thumbnail" title="@e.UNick">
                     <!--Anchor ou link do membro em questão-->
                     <img class="img-responsive center-block" src="~/img/akhe.jpg" alt=""><!--Img do membro-->
                     <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">@e.UNick</p><!--Nickname do cidadão-->
@@ -171,16 +171,32 @@
         <div id="collapse3" class="panel-collapse collapse in">
             <!--Corpo da Div Events-->
             <div class="panel-body no-border">
-                <!--Começo Evento-->
-                <div id="cor-borda" class="thumbnail">
-                    <h4><a href="~/Evento/Index">13º Amadorzão de CS:GO</a></h4>
-                    <h6 class="fonte-post-pequena">15-04-2017, 00:00 (UTC- 03:00) <a href="#" class="cor-fonte-menu">Online Event</a></h6>
-                </div><!--Fim Evento-->
-                <!--Começo Evento-->
-                <div id="cor-borda" class="thumbnail">
-                    <h4><a href="">1º Campeonato Brasileiro de CS:GO</a></h4>
-                    <h6 class="fonte-post-pequena">30-04-2017, 00:00 (UTC- 03:00) <a href="#" class="cor-fonte-menu">Lan Event</a></h6>
-                </div><!--Fim Evento-->
+            @if(ViewBag.ViewEventos == null)
+            {
+                    <h5>This group haven't created or have any recent events</h5>
+            }
+            else
+            { 
+                foreach (var e in ViewBag.ViewEventos)
+                {
+                    <!--Começo Evento-->
+                    <div id="cor-borda" class="thumbnail">
+                        <h4><a href="~/Evento/Index/?GrupoId=@e.IdGrupo&EventoId=@e.IdEvento">@e.Nome</a></h4>
+                        <h4 class="fonte-post-pequena">
+                            @e.Data, @e.Hora (UTC- 03:00)
+                            @if (e.Tipo == 1)
+                            {
+                                <span>Online</span>
+                            }
+                            else
+                            {
+                                <span>LAN</span>
+                            }
+                        </h4>
+                    </div>
+                    <!--Fim Evento-->
+                }
+            }
             </div><!-- Fim panel-body groups -->
         </div><!--./collapse-->
     </div><!-- /panel-default Events -->

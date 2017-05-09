@@ -14,21 +14,21 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Usuario
         public ActionResult Index()//Testando as informações do usuario pegadas no BD
         {
-            Usuario user = (Usuario)Session["usuario"];
+            int idusuario = ((Usuario)Session["usuario"]).IdPessoa;
             using (UsuarioModel model = new UsuarioModel())
             {
-                ViewBag.UserLog = model.ReadU(user.IdPessoa);                           //Pega informações do usuario que logou e manda paraa view
+                ViewBag.ReadU = model.ReadU(idusuario);                           //Pega informações do usuario que logou e manda paraa view
             }
             using (GrupoModel model = new GrupoModel())
             {
-                ViewBag.Grupos = model.ReadGrupo(user.IdPessoa);                        //Retorna os grupos em que o usuario está participando
-                ViewBag.Quantgrupopart = model.QuantGruposParticipa(user.IdPessoa);     //Retorna o count de grupos em que o usuario participa
+                ViewBag.ReadGrupo = model.ReadGrupo(idusuario);                        //Retorna os grupos em que o usuario está participando
+                ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(idusuario);     //Retorna o count de grupos em que o usuario participa
             }
             using (MensagemModel model = new MensagemModel())
             {
-                ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(user.IdPessoa);     //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
+                ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(idusuario);     //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
             }
-                return View();
+            return View();
         }
         [UsuarioFiltro]
         //GET: Person
@@ -51,11 +51,11 @@ namespace DisciplineTeam.Area52.Web.Controllers
         [HttpPost]
         public ActionResult Edit(Usuario e)
         {
-                using (UsuarioModel model = new UsuarioModel())
-                {
-                    model.EditUsuario(e, ((Usuario)Session["usuario"]).IdPessoa);       //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
-                    ViewBag.SucessoEdit = true;                                         //Usado para exibir mensagem de confirmação na view
-                }
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                model.EditUsuario(e, ((Usuario)Session["usuario"]).IdPessoa);       //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
+                ViewBag.SucessoEdit = true;                                         //Usado para exibir mensagem de confirmação na view
+            }
             return View(e);
         }
         //GET: Edit
@@ -67,7 +67,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult EditSecurity(string Senha, string NewPwd)               /* Recebe como parametros a senha atual e nova OBS: Tive que criar atributos na classe pessoa pq o VS dava pau 
-                                                                                    creio que por causa do form no estilo abas mas pra nao mudar coloquei os atributos*/ 
+                                                                                    creio que por causa do form no estilo abas mas pra nao mudar coloquei os atributos*/
         {
             using (UsuarioModel model = new UsuarioModel())
             {
@@ -88,7 +88,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     {
                         ViewBag.ChangePwdFail = "This is your current password, for changing please enter a different one.";
                     }
-                } 
+                }
             }
             return View();
         }
