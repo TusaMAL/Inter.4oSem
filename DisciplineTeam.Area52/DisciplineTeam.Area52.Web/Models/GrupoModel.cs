@@ -30,7 +30,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT TOP 6 * FROM v_Grupo_Part WHERE @iduser = id";
+            cmd.CommandText = @"SELECT TOP 6 * FROM v_Grupo_Part WHERE @iduser = id AND (PartStatus = 1 OR PartStatus = 2)";
 
             cmd.Parameters.AddWithValue("@iduser", iduser);
             //cmd.CommandType = System.Data.CommandType.Text;
@@ -84,7 +84,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM v_Grupo_Part WHERE @id = id";
+            cmd.CommandText = @"SELECT * FROM v_Grupo_Part WHERE @id = id AND (PartStatus = 1 OR PartStatus = 2)";
 
             cmd.Parameters.AddWithValue("@id", id);
             //cmd.CommandType = System.Data.CommandType.Text;
@@ -104,13 +104,13 @@ namespace DisciplineTeam.Area52.Web.Models
             return lista;
         }
         //Retorna o Count dos grupos
-        public int QuantGruposParticipa(int id)
+        public int QuantGruposParticipa(int iduser)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT COUNT(usuario_id) AS GruposUser FROM Participantes WHERE usuario_id = @id";
+            cmd.CommandText = @"SELECT COUNT(usuario_id) AS GruposUser FROM Participantes WHERE usuario_id = @iduser AND (status = 1 OR status = 2)";
 
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@iduser", iduser);
 
             int quant = (int)cmd.ExecuteScalar();
             return quant;
@@ -120,7 +120,7 @@ namespace DisciplineTeam.Area52.Web.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT COUNT(usuario_id) AS GruposUser FROM Participantes WHERE grupo_id = @id";
+            cmd.CommandText = @"SELECT COUNT(usuario_id) AS GruposUser FROM Participantes WHERE grupo_id = @id AND (status = 1 OR status = 2)";
 
             cmd.Parameters.AddWithValue("@id", id);
 
@@ -134,7 +134,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT TOP 6 * FROM v_User_Grupo_Part WHERE PartIdGrupo = @idgrupo";
+            cmd.CommandText = @"SELECT TOP 6 * FROM v_User_Grupo_Part WHERE PartIdGrupo = @idgrupo AND (PartStatus = 1 OR PartStatus = 2)";
 
             cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
             //cmd.CommandType = System.Data.CommandType.Text;
@@ -159,7 +159,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM v_User_Grupo_Part WHERE PartIdGrupo = @idgrupo";
+            cmd.CommandText = @"SELECT * FROM v_User_Grupo_Part WHERE PartIdGrupo = @idgrupo AND PartStatus = 1 OR PartStatus = 2";
 
             cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
             //cmd.CommandType = System.Data.CommandType.Text;
@@ -200,6 +200,45 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.JNome = (string)reader["NomeJogo"];
             }
             return e;
+        }
+        //Recebe os parametros e insere os dados do usuario
+        public void PartGrupo (int iduser, int idgrupo)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"EXEC partGrupo @idgrupo, @iduser";
+
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+            
+
+            cmd.ExecuteNonQuery();
+        }
+        //Altera o status do membro para null
+        public void SairGrupo(int iduser, int idgrupo)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"EXEC sairGrupo @idgrupo, @iduser";
+
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+
+
+            cmd.ExecuteNonQuery();
+        }
+        //Altera o status do membro para 1
+        public void VoltarGrupo(int iduser, int idgrupo)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"EXEC voltarGrupo @idgrupo, @iduser";
+
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+
+
+            cmd.ExecuteNonQuery();
         }
     }
 }

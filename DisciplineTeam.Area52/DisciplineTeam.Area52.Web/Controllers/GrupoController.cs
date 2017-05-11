@@ -15,6 +15,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
         public ActionResult Index()
         {
             int idgrupo = int.Parse(Request.QueryString[0]);            //Converte o Id da URL para poder ser usado
+            ViewBag.IdUsuario = ((Usuario)Session["usuario"]).IdPessoa;
             using (GrupoModel model = new GrupoModel())
             {
                 ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);             //Seleciona 6 primeiros usuarios e mostra na lista do grupo
@@ -38,7 +39,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                int idgrupo = int.Parse(Request.QueryString[0]);                        //Converte o Id da URL para poder ser usado
+                int idgrupo = int.Parse(Request.QueryString["GrupoId"]);                        //Converte o Id da URL para poder ser usado
                 using (GrupoModel model = new GrupoModel())
                 {
                     ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);               //Seleciona 6 primeiros usuarios e mostra na lista do grupo
@@ -62,20 +63,14 @@ namespace DisciplineTeam.Area52.Web.Controllers
         public ActionResult Groups()
         {
             using (UsuarioModel model = new UsuarioModel())
-            {
-                Usuario user = (Usuario)Session["usuario"];
-                int id = user.IdPessoa;
-                user = model.ReadU(id);                                             //Lê informações do usuario para jogar na ViewBag
-                ViewBag.UserLog = user;
+            {                                   
+                ViewBag.UserLog = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);          //Lê informações do usuario para jogar na ViewBag
             }
             using (GrupoModel model = new GrupoModel())
-            {
-                Usuario user = (Usuario)Session["usuario"];
-                int id = user.IdPessoa;
-                List<ViewAll> listgrupo = new List<ViewAll>();                      //Cria lista de Grupo na Classe ViewAll que tem todos os atributos das classes
-                listgrupo = model.ReadGrupoTotal(id);                               //Lê os grupos que o usuario participa e coloca na lista
-                ViewBag.Grupos = listgrupo;                                         //Coloca a lista na viewBag pra mostrar na view
-                ViewBag.Quantgrupopart = model.QuantGruposParticipa(id);            //Retorna o count de grupos que o usuario está
+            {                          
+                int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+                ViewBag.Grupos = model.ReadGrupoTotal(iduser);   //Coloca a lista na viewBag pra mostrar na view
+                ViewBag.Quantgrupopart = model.QuantGruposParticipa(iduser);                        //Retorna o count de grupos que o usuario está
             }
             return View();
         }
@@ -84,24 +79,22 @@ namespace DisciplineTeam.Area52.Web.Controllers
         public ActionResult Create()
         {
             using (JogoModel model = new JogoModel())
-            {
-                List<Jogo> lista = new List<Jogo>();
-                lista = model.ReadJogos();                                          //Lê os jogos que estão cadastrados e joga na lista
-                ViewBag.ListaJogos = lista;                                         //Manda a lista de jogos para a SelectList da View para aparecer o dropdownbox com os jogos
+            { 
+                ViewBag.ReadJogos = model.ReadJogos();     //Manda a lista de jogos para a SelectList da View para aparecer o dropdownbox com os jogos
             }
             return View();
         }
         [UsuarioFiltro]
         [HttpPost]
-        public ActionResult Create(Grupo e ,int IdJogo)
+        public ActionResult Create(Grupo e, int IdJogo)
         {
             if (ModelState.IsValid)
             {
                 using (GrupoModel model = new GrupoModel())
                 {
                     int iduser = ((Usuario)Session["usuario"]).IdPessoa;
-                    //Passando o id do criador do grupo como parametro
-                    model.Create(e, iduser, IdJogo);                                
+                    
+                    model.Create(e, iduser, IdJogo);                    //Passando o id do criador do grupo como parametro
                     return RedirectToAction("Groups", "Grupo");
                 }
             }
@@ -128,16 +121,27 @@ namespace DisciplineTeam.Area52.Web.Controllers
         [UsuarioFiltro]
         public ActionResult Search()
         {
-            string busca = (Request.QueryString[0]);                                    //Recebe o primeiro parametro da URL
-            using (UsuarioModel model = new UsuarioModel())
+            if((Request.QueryString[0]) == null)
             {
-                ViewBag.UserLog = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    ViewBag.UserLog = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                }
+                return View();
             }
-            using (GrupoModel model = new GrupoModel())
-            {         
-                ViewBag.BuscaGrupo = model.BuscarGrupo(busca);                           //Busca e retorna informações de busca do jogo
+            else
+            {
+                string busca = (Request.QueryString[0]);                                    //Recebe o primeiro parametro da URL
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    ViewBag.UserLog = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
+                    ViewBag.BuscaGrupo = model.BuscarGrupo(busca);                           //Busca e retorna informações de busca do jogo
+                }
+                return View();
             }
-            return View();
         }
         //GET
         [UsuarioFiltro]
@@ -146,15 +150,50 @@ namespace DisciplineTeam.Area52.Web.Controllers
             int iduser = int.Parse(Request.QueryString["UserID"]);
             using (UsuarioModel model = new UsuarioModel())
             {
-                ViewBag.UserLog = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
+                ViewBag.ReadU = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
             }
             using (GrupoModel model = new GrupoModel())
             {
-                ViewBag.Grupos = model.ReadGrupo(iduser);                               //Lê os grupos em que o usuario escolhido participa para mostrar na view
-                ViewBag.Quantgrupopart = model.QuantGruposParticipa(iduser);            //Retorna o count dos grupos em que o usuario escolhido participa pra mostrar
+                ViewBag.ReadGrupo = model.ReadGrupo(iduser);                               //Lê os grupos em que o usuario escolhido participa para mostrar na view
+                ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(iduser);            //Retorna o count dos grupos em que o usuario escolhido participa pra mostrar
             }
             return View();
         }
-        
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult BtnPartGrupo()
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int iduser = int.Parse(Request.QueryString[1]);
+            using (GrupoModel model = new GrupoModel())
+            {
+                model.PartGrupo(iduser, idgrupo);
+            }
+            return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult BtnSairGrupo()
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int iduser = int.Parse(Request.QueryString[1]);
+            using (GrupoModel model = new GrupoModel())
+            {
+                model.SairGrupo(iduser, idgrupo);
+            }
+            return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult BtnVoltarGrupo()
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int iduser = int.Parse(Request.QueryString[1]);
+            using (GrupoModel model = new GrupoModel())
+            {
+                model.VoltarGrupo(iduser, idgrupo);
+            }
+            return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
+        }
     }
 }

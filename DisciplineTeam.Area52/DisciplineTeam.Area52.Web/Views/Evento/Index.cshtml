@@ -1,4 +1,4 @@
-﻿
+﻿@model DisciplineTeam.Area52.Web.Models.ViewAll
 @{
     ViewBag.Title = "Index Eventos";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -36,9 +36,22 @@
                 </table>
                 <div class="panel-body no-border">
                     <center>
-                        <a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button">
-                            <i id="menu-toggle" class="glyphicon glyphicon-ok"></i><span>&nbsp;Going</span>
-                        </a>
+                        <form method="post" action="~/Evento/BtnPartEvento/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento&IdUser=@ViewBag.IdUsuario">                         
+                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                            </button>
+                        </form>
+                    </center>
+                    <center>
+                        <form method="post" action="~/Evento/BtnSairEvento/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento&IdUser=@ViewBag.IdUsuario">
+                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                            </button>
+                        </form>
+                    </center>
+                    <center>
+                        <form method="post" action="~/Evento/BtnPartEventoUpdate/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento&IdUser=@ViewBag.IdUsuario">
+                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                            </button>
+                        </form>
                     </center>
                 </div>
             </center>
@@ -104,62 +117,27 @@
             <!-- Escritos e icones da barra preta da div-->
             <div id="cor-fundo-header" class="panel-heading no-border">
                 <!-- Escritos e icones da barra preta da div-->
-                <a id="cor-fonte" href="~/Usuario/Members"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Going Members (7)</span></a>
+                <a id="cor-fonte" href="~/Usuario/Members"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Going Members (@ViewBag.QuantUserPartEvento)</span></a>
             </div><!--/panel-heading-->
             <!-- Corpo do texto da div nem todas terão ele-->
             <div class="panel-body no-border">
-                <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <a id="cor-fonte-menu" href="~/Grupos/Person" class="thumbnail" title="Akhenathon">
-                        <!--Anchor ou link do membro em questão-->
-                        <img class="img-responsive center-block" src="~/img/akhe.jpg" alt=""><!--Img do membro-->
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
-                    </a>
-                </div><!--/col-sm-12 col-md-6 col-lg-4-->
-                <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <a id="cor-fonte-menu" href="~/Usuario/User" class="thumbnail" title="TusaMal">
-                        <!--Anchor ou link do membro em questão-->
-                        <img class="img-responsive center-block" src="~/img/pp.jpg" alt=""><!--Img do membro-->
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">TusaMAL</p><!--Nickname do cidadão-->
-                    </a>
-                </div><!--/col-sm-12 col-md-6 col-lg-4-->
-                <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <a id="cor-fonte-menu" href="~/Grupos/Person" class="thumbnail" title="Akhenathon">
-                        <!--Anchor ou link do membro em questão-->
-                        <img class="img-responsive center-block" src="~/img/akhe.jpg" alt=""><!--Img do membro-->
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
-                    </a>
-                </div><!--/col-sm-12 col-md-6 col-lg-4-->
-                <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <a id="cor-fonte-menu" href="~/Grupos/Person" class="thumbnail" title="Akhenathon">
-                        <!--Anchor ou link do membro em questão-->
-                        <img class="img-responsive center-block" src="~/img/akhe.jpg" alt=""><!--Img do membro-->
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
-                    </a>
-                </div><!--/col-sm-12 col-md-6 col-lg-4-->
-                <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <a id="cor-fonte-menu" href="~/Grupos/Person" class="thumbnail" title="Akhenathon">
-                        <!--Anchor ou link do membro em questão-->
-                        <img class="img-responsive center-block" src="~/img/akhe.jpg" alt=""><!--Img do membro-->
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
-                    </a>
-                </div><!--/col-sm-12 col-md-6 col-lg-4-->
-                <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <a id="cor-fonte-menu" href="~/Grupos/Person" class="thumbnail" title="Akhenathon">
-                        <!--Anchor ou link do membro em questão-->
-                        <img class="img-responsive center-block" src="~/img/akhe.jpg" alt=""><!--Img do membro-->
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p><!--Nickname do cidadão-->
-                    </a>
-                </div><!--/col-sm-12 col-md-6 col-lg-4-->
-                <!-- Coluna criada pra evitar que o See more nao fique sem ser no final da coluna-->
-                <div class="col-lg-12">
-                    <a href="~/pages/friend.html" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
-                </div><!--/col-lg-12-->
+                @foreach (var e in ViewBag.ViewConfUserEvento)
+                {
+                    <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <a id="cor-fonte-menu" href="~/Grupo/Person/?UserID=@e.CIdUsuario" class="thumbnail" title="@e.UNick">
+                            <!--Anchor ou link do membro em questão-->
+                            <img class="img-responsive center-block" src="~/img/akhe.jpg" alt=""><!--Img do membro-->
+                            <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">@e.UNick</p><!--Nickname do cidadão-->
+                        </a>
+                    </div><!--/col-sm-12 col-md-6 col-lg-4-->
+                }
+                {
+                    <!-- Coluna criada pra evitar que o See more nao fique sem ser no final da coluna-->
+                    <div class="col-lg-12">
+                        <a href="~/pages/friend.html" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+                    </div><!--/col-lg-12-->
+                }
             </div> <!--fim panel-body Members-->
         </div> <!--fim panel-default Members -->
     </div>

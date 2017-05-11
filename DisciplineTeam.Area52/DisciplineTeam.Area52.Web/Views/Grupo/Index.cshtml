@@ -23,20 +23,32 @@
                     <div class="panel-body no-border">
                         <div class="row">
                             <center>
-                                <div class="joined" style="display: none;">
-                                    <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button" onclick="$('.joined').hide(); $('.join').show()">
-                                        <span class="glyphicon glyphicon-minus"></span> Leave Group
-                                    </button>
-                                </div>
-                                <div class="join">
-                                    <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="button" onclick="$('.join').hide(); $('.joined').show()">
-                                        <span class="glyphicon glyphicon-plus"></span> Join
-                                    </button>
-                                </div><!--./Botão join com efeito JS-->
+                                <!-- Botão para retornar ao grupo -->
+                                <form method="post" action="~/Grupo/BtnVoltarGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
+                                    <div class="joined" style="">
+                                        <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                            <span class="glyphicon glyphicon-minus"></span> Join
+                                        </button>
+                                    </div>
+                                </form>
+                                <form method="post" action="~/Grupo/BtnSairGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
+                                    <div class="joined" style="">
+                                        <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                            <span class="glyphicon glyphicon-minus"></span> Leave Group
+                                        </button>
+                                    </div>
+                                </form>
+                                <form method="post" action="~/Grupo/BtnPartGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
+                                    <div class="join">
+                                        <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                            <span class="glyphicon glyphicon-plus"></span> Join
+                                        </button>
+                                    </div><!--./Botão join com efeito JS-->
+                                </form>
                                 <div class="row">
                                     <br />
                                     <!--Botão create event-->
-                                    <a id="cor-fonte" href="~/Evento/Create/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo" class="btn cor-fonte efeito-fade-navbar">
+                                    <a id="cor-fonte" href="~/Evento/Create/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario" class="btn cor-fonte efeito-fade-navbar">
                                         <i class="glyphicon glyphicon-flash"></i><span>&nbsp;Add New Event</span>
                                     </a>
                                 </div>

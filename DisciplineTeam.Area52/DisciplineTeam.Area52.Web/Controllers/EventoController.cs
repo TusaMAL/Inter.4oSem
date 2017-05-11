@@ -16,9 +16,13 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             int idgrupo = int.Parse(Request.QueryString[0]);                        //Converte o primeiro parametro que vem da URL
             int idevento = int.Parse(Request.QueryString[1]);                       //Converte o segundo parametro que vem da URL
+
+            ViewBag.IdUsuario = ((Usuario)Session["usuario"]).IdPessoa;
             using (EventoModel model = new EventoModel())
             {
-                ViewBag.ReadEvento = model.ReadEvento(idevento, idgrupo);           //Pega as informações do evento       
+                ViewBag.ReadEvento = model.ReadEvento(idevento, idgrupo);                       //Pega as informações do evento  
+                ViewBag.ViewConfUserEvento = model.ViewConfUserEvento(idgrupo, idevento);       //Mostra os usuarios com presença confirmada
+                ViewBag.QuantUserPartEvento = model.QuantUserPartEvento(idgrupo, idevento);
             }
             using (GrupoModel model = new GrupoModel())
             {
@@ -54,6 +58,48 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
             }
             return RedirectToAction("Index", "Grupo", new { GrupoId = idgrupo });
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult BtnPartEvento()
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int idevento = int.Parse(Request.QueryString[1]);
+            int iduser = int.Parse(Request.QueryString[2]);
+
+            using (EventoModel model = new EventoModel())
+            {
+                model.PartEvento(idgrupo, iduser, idevento);
+            }
+                return RedirectToAction("Index", "Evento", new { GrupoId = idgrupo, EventoId = idevento });
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult BtnSairEvento()
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int idevento = int.Parse(Request.QueryString[1]);
+            int iduser = int.Parse(Request.QueryString[2]);
+
+            using (EventoModel model = new EventoModel())
+            {
+                model.SairEvento(idgrupo, iduser, idevento);
+            }
+            return RedirectToAction("Index", "Evento", new { GrupoId = idgrupo, EventoId = idevento });
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult BtnPartEventoUpdate()
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int idevento = int.Parse(Request.QueryString[1]);
+            int iduser = int.Parse(Request.QueryString[2]);
+
+            using (EventoModel model = new EventoModel())
+            {
+                model.PartEventoUpdate(idgrupo, iduser, idevento);
+            }
+            return RedirectToAction("Index", "Evento", new { GrupoId = idgrupo, EventoId = idevento });
         }
     }
 }

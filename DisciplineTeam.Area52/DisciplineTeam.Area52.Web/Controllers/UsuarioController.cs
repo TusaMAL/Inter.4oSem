@@ -12,21 +12,21 @@ namespace DisciplineTeam.Area52.Web.Controllers
     {
         [UsuarioFiltro]
         // GET: Usuario
-        public ActionResult Index()//Testando as informações do usuario pegadas no BD
+        public ActionResult Index() //Testando as informações do usuario pegadas no BD
         {
             int idusuario = ((Usuario)Session["usuario"]).IdPessoa;
             using (UsuarioModel model = new UsuarioModel())
             {
-                ViewBag.ReadU = model.ReadU(idusuario);                           //Pega informações do usuario que logou e manda paraa view
+                ViewBag.ReadU = model.ReadU(idusuario);                                 //Pega informações do usuario que logou e manda paraa view
             }
             using (GrupoModel model = new GrupoModel())
             {
-                ViewBag.ReadGrupo = model.ReadGrupo(idusuario);                        //Retorna os grupos em que o usuario está participando
-                ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(idusuario);     //Retorna o count de grupos em que o usuario participa
+                ViewBag.ReadGrupo = model.ReadGrupo(idusuario);                         //Retorna os grupos em que o usuario está participando
+                ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(idusuario);   //Retorna o count de grupos em que o usuario participa
             }
             using (MensagemModel model = new MensagemModel())
             {
-                ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(idusuario);     //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
+                ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(idusuario);         //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
             }
             return View();
         }
@@ -141,8 +141,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
         [HttpPost]
         public ActionResult Create(Usuario e)
         {
-            if (ModelState.IsValid)
-            {
+            
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     if (model.Check(e))                             //Checa se o email não está em uso
@@ -156,7 +155,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                         ViewBag.Erro = "Email already in use";
                     }
                 }
-            }
+            
             return View(e);
         }
         [UsuarioFiltro]

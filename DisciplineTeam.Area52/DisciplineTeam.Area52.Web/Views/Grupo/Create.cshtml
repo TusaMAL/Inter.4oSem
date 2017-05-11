@@ -25,19 +25,19 @@
                 <!-- input do formulario do grupo-->
                 <div class="form-group">
                     <label for="nome">Game</label>
-                        @{List<SelectListItem> listajogos = new List<SelectListItem>();
+                        @{List<SelectListItem> ReadJogos = new List<SelectListItem>();
 
-                            foreach (var p in ViewBag.ListaJogos)
+                            foreach (var p in ViewBag.ReadJogos)
                             {
-                                listajogos.Add(new SelectListItem { Text = p.Nome, Value = p.IdJogo.ToString() });
+                                ReadJogos.Add(new SelectListItem { Text = p.Nome, Value = p.IdJogo.ToString() });
                             }
                             }
-                        @Html.DropDownListFor(m => m.IdJogo, listajogos, "-- Select Group Game --", new { @class = "form-control", @required ="required" })      
+                        @Html.DropDownListFor(m => m.IdJogo, ReadJogos, "-- Select Group Game --", new { @class = "form-control", @required ="required" })      
                 </div>
                 <!-- input da descrição do jogo-->
                 <div class="form-group">
                     <label for="desc">Description</label>
-                    <textarea name="Descricao" class="form-control" id="desc" rows="4" required></textarea>
+                    <textarea name="Descricao" class="form-control textarea-sem-resize" id="desc" rows="4" required></textarea>
                 </div>
                 <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar">Create Group</button>
 }

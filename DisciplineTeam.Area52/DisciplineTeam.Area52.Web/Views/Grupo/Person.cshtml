@@ -18,18 +18,18 @@
         <div class="list-group-item no-border">
             <a href=""> <img src="~/img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <!--Nickname do usuario-->
-            <p class="nick-person profile-usertitle-name profile-text text-center break-word">@ViewBag.UserLog.Nick</p>
+            <p class="nick-person profile-usertitle-name profile-text text-center break-word">@ViewBag.ReadU.Nick</p>
             <center>
                 <!--tabela com os dados do usuário-->
                 <table>
-                    <tr><td class="text-right font-perfil">Name:</td><td class="break-word">&nbsp;@ViewBag.UserLog.Nome</td></tr>
+                    <tr><td class="text-right font-perfil">Name:</td><td class="break-word">&nbsp;@ViewBag.ReadU.Nome</td></tr>
                     <tr>
                         <td class="text-right font-perfil">Gender:</td>
-                        @if (ViewBag.UserLog.Sexo == "M")
+                        @if (ViewBag.ReadU.Sexo == "M")
                         {
                             <td class="break-word">&nbsp;Male</td>
                         }
-                        else if (ViewBag.UserLog.Sexo == "F")
+                        else if (ViewBag.ReadU.Sexo == "F")
                         {
                             <td class="break-word">&nbsp;Female</td>
                         }
@@ -40,16 +40,16 @@
                     </tr>
                     <tr>
                         <td class="text-right font-perfil">Age:</td>
-                        @if (ViewBag.UserLog.Datanasc != null)
+                        @if (ViewBag.ReadU.Datanasc != null)
                         {
                             int age = DateTime.Today.Year;
-                            int ageuser = Convert.ToInt32(ViewBag.UserLog.Datanasc);
-                            ViewBag.UserLog.Datanasc = (age - ageuser).ToString(); ;
-                            <td class="break-word">&nbsp;@ViewBag.UserLog.Datanasc</td>
+                            int ageuser = Convert.ToInt32(ViewBag.ReadU.Datanasc);
+                            ViewBag.ReadU.Datanasc = (age - ageuser).ToString(); ;
+                            <td class="break-word">&nbsp;@ViewBag.ReadU.Datanasc</td>
                         }
                     </tr>
-                    <tr><td class="text-right font-perfil">City:</td> <td class="break-word">&nbsp;@ViewBag.UserLog.Cidade</td></tr>
-                    <tr><td class="text-right font-perfil">State:</td> <td class="break-word">&nbsp;@ViewBag.UserLog.Estado</td></tr>
+                    <tr><td class="text-right font-perfil">City:</td> <td class="break-word">&nbsp;@ViewBag.ReadU.Cidade</td></tr>
+                    <tr><td class="text-right font-perfil">State:</td> <td class="break-word">&nbsp;@ViewBag.ReadU.Estado</td></tr>
                 </table>
             </center>
         </div><!--./list-group-item-->
@@ -81,10 +81,10 @@
                                 <!--nome do Grupo-->
                                 <h2 class="media-heading"><a href="#" class="cor-fonte-menu"></a></h2>
                                 <!--Titulo de descrição-->
-                                <h4 class="">About @ViewBag.UserLog.Nome:</h4>
+                                <h4 class="">About @ViewBag.ReadU.Nome:</h4>
                             </div><!--./vertical-align-->
                             <!--Descrição do grupo-->
-                            <p class="text-right text-justify">@ViewBag.UserLog.Descricao</p>
+                            <p class="text-right text-justify">@ViewBag.ReadU.Descricao</p>
                         </div><!--./media-body-->
                     </div><!--./media-->
                 </div><!--/thumbnail-->
@@ -99,33 +99,33 @@
 -->
 <!--
 
-    Começo Amigos e grupos
+    Começo Amigos e ReadGrupo
 
 -->
 <div class="col-lg-3 col-sm-12 col-md-4">
     <div id="cor-borda" class="panel panel-default">
         <div id="cor-fundo-header" class="panel-heading no-border">
-            <a id="cor-fonte" href="~/Grupo/Groups/?UserID=@ViewBag.UserLog.IdPessoa"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups from @ViewBag.UserLog.Nick (@ViewBag.Quantgrupopart)</span></a>
+            <a id="cor-fonte" href="~/Grupo/Groups/?UserID=@ViewBag.ReadU.IdPessoa"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups from @ViewBag.ReadU.Nick (@ViewBag.QuantGruposParticipa)</span></a>
         </div>
         <div class="panel-body no-border">
-            @if (@ViewBag.Quantgrupopart == 0)
+            @if (@ViewBag.QuantGruposParticipa == 0)
             {
                 <h4 class="text-center">This user haven't entered or created at any groups yet.</h4>
             }
             else
             {
-                foreach (var e in ViewBag.Grupos)
+                foreach (var e in ViewBag.ReadGrupo)
                 {
                     <div class="col-sm-6 col-md-6 col-lg-6">
                         <a id="cor-fonte-menu" href="~/Grupo/Index/?GrupoId=@e.IdGrupo" class="thumbnail" title="@e.Nome">
                             <img class="img-responsive center-block" src="~/img/dota2.png" alt="">
-                            <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">@e.Nome</p>
+                            <p class="nick-friendgroup text-center fonte-responsiva-ReadGrupo-amigos text-overflow">@e.Nome</p>
                         </a>
                     </div>
                 }
-                if (@ViewBag.Quantgrupopart > 6)
+                if (@ViewBag.QuantGruposParticipa > 6)
                 {
-                    <a href="~/Grupo/Groups" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+                    <a href="~/Grupo/Groups" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-ReadGrupo-amigos">See more...</p></a>
                 }
             }
         </div><!-- Fim panel-body groups -->
@@ -133,6 +133,6 @@
 </div><!-- Fim col-lg-3 -->
 <!--
 
-Fim Amigos e grupos
+Fim Amigos e ReadGrupo
 
 -->
