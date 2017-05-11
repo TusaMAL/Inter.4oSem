@@ -38,18 +38,21 @@
                     <center>
                         <form method="post" action="~/Evento/BtnPartEvento/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento&IdUser=@ViewBag.IdUsuario">                         
                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                <i id="menu-toggle" class="glyphicon glyphicon-ok"></i><span>&nbsp;Join Event</span>    @*Entrar no evento pela 1ª vez*@
                             </button>
                         </form>
                     </center>
                     <center>
                         <form method="post" action="~/Evento/BtnSairEvento/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento&IdUser=@ViewBag.IdUsuario">
                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                <i id="menu-toggle" class="glyphicon glyphicon-remove"></i><span>&nbsp;Cancel Attendance</span> @*Mudar Status para 2*@
                             </button>
                         </form>
                     </center>
                     <center>
                         <form method="post" action="~/Evento/BtnPartEventoUpdate/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento&IdUser=@ViewBag.IdUsuario">
                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                <i id="menu-toggle" class="glyphicon glyphicon-thumbs-up"></i><span>&nbsp;Confirm Attendance</span> @*Mudar Status para 1*@
                             </button>
                         </form>
                     </center>
@@ -132,6 +135,7 @@
                         </a>
                     </div><!--/col-sm-12 col-md-6 col-lg-4-->
                 }
+                @if (ViewBag.QuantUserPartEvento > 6)
                 {
                     <!-- Coluna criada pra evitar que o See more nao fique sem ser no final da coluna-->
                     <div class="col-lg-12">
