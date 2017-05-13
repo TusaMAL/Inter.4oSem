@@ -105,6 +105,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
                 e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);
                 e.Descricao = (string)(reader["Descricao"] != DBNull.Value ? reader["Descricao"] : null);
+                e.Imagem = (string)reader["Imagem"];
             }
             return e;
         }
@@ -130,7 +131,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
                 e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);
                 e.Cep = (string)(reader["Cep"] != DBNull.Value ? reader["Cep"] : null);
-                e.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                e.Imagem = (string)reader["Imagem"];
                 e.Descricao = (string)(reader["Descricao"] != DBNull.Value ? reader["Descricao"] : null);
             }
             return e;

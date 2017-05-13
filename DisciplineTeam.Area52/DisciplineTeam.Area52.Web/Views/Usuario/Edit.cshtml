@@ -89,18 +89,20 @@
                                 @Html.TextAreaFor(m => m.Descricao, new { rows = 4, @class = "form-control textarea-sem-resize", @placeholder = "Write something about you..." })
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Profile Picture:</label>
-                            <div class="col-sm-4 col-md-4 col-xs-4">
-                                <img src="../img/gust.jpg" alt="..." class="img-rounded">
-                            </div>                            
-                            <div class="col-sm-4">
-                                <p class="">Upload your profile picture here.</p>
-                                <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar">Upload</button>
-                            </div>
-                        </div>
                         <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar center-block">Save</button>
                     </fieldset>
+                </form>
+                <form action="~/Usuario/Upload" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Profile Picture:</label>
+                        <div class="col-sm-4 col-md-4 col-xs-4">
+                            <img src="../img/gust.jpg" alt="..." class="img-rounded">
+                        </div>
+                        <div class="col-sm-4">
+                            <p class="">Upload your profile picture here.</p>
+                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar">Upload</button>
+                        </div>
+                    </div>
                 </form>
             </div>
             @*<div class="tab-pane active" id="security">

@@ -16,7 +16,7 @@
         </div><!--/panel-heading-->
         <!--Div onde fica os textos do grupo-->
         <div class="list-group-item no-border">
-            <a href=""> <img src="~/img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+            <a href="~/Usuario/Index"><img src="@ViewBag.ReadU.Imagem" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <!--Nickname do usuario-->
             <p class="nick-person profile-usertitle-name profile-text text-center break-word">@ViewBag.ReadU.Nick</p>
             <center>
@@ -65,18 +65,15 @@
             <div id="cor-borda" class="panel-body thumbnail">
                 <!--Cria o corpo da mensagem-->
                 <div class="media">
-                    <!--Alinha a foto do post a esquerda-->
-                    <div class="media-left">
-                        <a id="cor-fonte-menu" href="~/Usuario/User/?UserID=@e.PIdPessoa" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
+                    <div class="col-sm-2">
+                        <img class="img-responsive img-thumbnail borda-profile" src="@e.UImagem" alt="...">
                     </div>
-                    <!--/media-left-->
-                    <!--corpo div-->
                     <div class="media-body">
                         <div class="vertical-align">
-                            <!--Nick do Usuario q postou a msg-->
-                            <h4 class="nick-post media-heading"><a href="~/Usuario/User/?UserID=@e.PIdPessoa" class="cor-fonte-menu">@e.UNick </a></h4>
-                            <!--Data/Hora e grupo que foi postada a msg-->
-                            <h6 class="fonte-post-pequena">@e.MsgDatahora (UTC- 03:00) at <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo" class="cor-fonte-menu">@e.GNome</a></h6>
+                                <!--Nick do Usuario q postou a msg-->
+                                <h4 class="nick-post media-heading"><a href="~/Usuario/User/?UserID=@e.PIdPessoa" class="cor-fonte-menu">@e.UNick </a></h4>
+                                <!--Data/Hora e grupo que foi postada a msg-->
+                                <h6 class="fonte-post-pequena">@e.MsgDatahora (UTC- 03:00) at <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo" class="cor-fonte-menu">@e.GNome</a></h6>
                         </div>
                         <!--Mensagem Postada-->
                         <p class="text-right text-justify">@e.MsgTexto</p>
@@ -151,7 +148,7 @@
             <a id="cor-fonte" href="~/Grupo/Groups"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (@ViewBag.QuantGruposParticipa)</span></a>
         </div>
         <div class="panel-body no-border">
-            @if (@ViewBag.QuantGruposParticipa == 0)
+            @if (ViewBag.QuantGruposParticipa == 0)
             {
                 <h4 class="text-center">You haven't entered or created any groups yet.</h4>
             }
@@ -161,12 +158,12 @@
                 {
                     <div class="col-sm-6 col-md-6 col-lg-6">
                         <a id="cor-fonte-menu" href="~/Grupo/Index/?GrupoId=@e.IdGrupo" class="thumbnail" title="@e.Nome">
-                            <img class="img-responsive center-block" src="~/img/dota2.png" alt="">
+                            <img class="img-responsive center-block" src="@e.Imagem" alt="">
                             <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">@e.Nome</p>
                         </a>
                     </div>
                 }
-                if (@ViewBag.QuantGruposParticipa > 6)
+                if (ViewBag.QuantGruposParticipa > 6)
                 {
                     <a href="~/Grupo/Groups" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
                 }

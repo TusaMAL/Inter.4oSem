@@ -90,11 +90,15 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                string img;
+                using (JogoModel model = new JogoModel())
+                {
+                    img = model.ReadJogoImg(IdJogo);
+                }
                 using (GrupoModel model = new GrupoModel())
                 {
                     int iduser = ((Usuario)Session["usuario"]).IdPessoa;
-                    
-                    model.Create(e, iduser, IdJogo);                    //Passando o id do criador do grupo como parametro
+                    model.Create(e, iduser, IdJogo, img);                    //Passando o id do criador do grupo como parametro
                     return RedirectToAction("Groups", "Grupo");
                 }
             }

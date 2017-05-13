@@ -16,7 +16,7 @@
         </div><!--/panel-heading-->
         <!--Div onde fica os textos do grupo-->
         <div class="list-group-item no-border">
-            <a href=""> <img src="~/img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+            <a href=""> <img src="@ViewBag.ReadU.Imagem" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <!--Nickname do usuario-->
             <p class="nick-person profile-usertitle-name profile-text text-center break-word">@ViewBag.ReadU.Nick</p>
             <center>
@@ -118,7 +118,7 @@
                 {
                     <div class="col-sm-6 col-md-6 col-lg-6">
                         <a id="cor-fonte-menu" href="~/Grupo/Index/?GrupoId=@e.IdGrupo" class="thumbnail" title="@e.Nome">
-                            <img class="img-responsive center-block" src="~/img/dota2.png" alt="">
+                            <img class="img-responsive center-block" src="@e.Imagem" alt="">
                             <p class="nick-friendgroup text-center fonte-responsiva-ReadGrupo-amigos text-overflow">@e.Nome</p>
                         </a>
                     </div>

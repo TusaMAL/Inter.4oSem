@@ -16,7 +16,7 @@
         </div><!--/panel-heading-->
         <!--Div onde fica os textos do grupo-->
         <div class="list-group-item no-border">
-            <a href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo"> <img src="~/img/csgo.png" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+            <a href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo"> <img src="@ViewBag.InfoGrupo.GImagem" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <h2 class="text-center"><a href="~/Grupos/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo">@ViewBag.InfoGrupo.GNome</a></h2>
             <p class="text-center">@ViewBag.InfoGrupo.JNome</p>
                 <!--Botão join com efeito JS-->
@@ -43,7 +43,7 @@
                                         <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
                                             <span class="glyphicon glyphicon-plus"></span> Join
                                         </button>
-                                    </div><!--./Botão join com efeito JS-->
+                                    </div>
                                 </form>
                                 <div class="row">
                                     <br />
@@ -117,27 +117,24 @@
         @foreach (var e in ViewBag.ReadMensagem)
         {
         <!--Div dos posts-->
-        <div id="cor-borda" class="panel-body thumbnail">
-            <!--Cria o corpo da mensagem-->
-            <div class="media">
-                <!--Alinha a foto do post a esquerda-->
-                <div class="media-left">
-                    <a id="cor-fonte-menu" href="~/Usuario/User/?UserID=@e.PIdPessoa" class=""><img class="img-responsive media-object img-thumbnail borda-profile" src="~/img/img-feed/pp.jpg" alt="..."></a>
-                </div>
-                <!--/media-left-->
-                <!--corpo div-->
-                <div class="media-body">
-                    <div class="vertical-align">
-                        <!--Nick do Usuario q postou a msg-->
-                        <h4 class="nick-post media-heading"><a href="~/Usuario/User/?UserID=@e.PIdPessoa" class="cor-fonte-menu">@e.UNick </a></h4>
-                        <!--Data/Hora e grupo que foi postada a msg-->
-                        <h6 class="fonte-post-pequena">@e.MsgDatahora (UTC- 03:00) at <a href="~/Grupos/Index/?GrupoId=@e.GIdGrupo" class="cor-fonte-menu">@e.GNome</a></h6>
+            <div id="cor-borda" class="panel-body thumbnail">
+                <!--Cria o corpo da mensagem-->
+                <div class="media">
+                    <div class="col-sm-2">
+                        <img class="img-responsive img-thumbnail borda-profile" src="@e.UImagem" alt="...">
                     </div>
-                    <!--Mensagem Postada-->
-                    <p class="text-right text-justify">@e.MsgTexto</p>
-                </div><!--Fim post/media-body-->
-            </div><!--./media-->
-        </div><!--./thumbnail-->
+                    <div class="media-body">
+                        <div class="vertical-align">
+                            <!--Nick do Usuario q postou a msg-->
+                            <h4 class="nick-post media-heading"><a href="~/Usuario/User/?UserID=@e.PIdPessoa" class="cor-fonte-menu">@e.UNick </a></h4>
+                            <!--Data/Hora e grupo que foi postada a msg-->
+                            <h6 class="fonte-post-pequena">@e.MsgDatahora (UTC- 03:00) at <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo" class="cor-fonte-menu">@e.GNome</a></h6>
+                        </div>
+                        <!--Mensagem Postada-->
+                        <p class="text-right text-justify">@e.MsgTexto</p>
+                    </div><!--Fim post/media-body-->
+                </div><!--./media-->
+            </div><!--./thumbnail-->
         }
 </div><!--/col-lg-7 col-sm-12 col-md-6-->
 <!--Começo Members e Events-->
@@ -158,7 +155,7 @@
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a id="cor-fonte-menu" href="~/Grupo/Person/?UserID=@e.PartIdUsuario" class="thumbnail" title="@e.UNick">
                     <!--Anchor ou link do membro em questão-->
-                    <img class="img-responsive center-block" src="~/img/akhe.jpg" alt=""><!--Img do membro-->
+                    <img class="img-responsive center-block" src="@e.UImagem" alt=""><!--Img do membro-->
                     <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">@e.UNick</p><!--Nickname do cidadão-->
                 </a>
             </div><!--/col-sm-12 col-md-6 col-lg-4-->

@@ -43,7 +43,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 p.MsgTexto = (string)(reader["Texto"]);
                 p.PIdPessoa = (int)reader["IdUsuario"];
                 p.UNick = (string)reader["Nickusuario"];
-                //p.ImagemUsuario = (string)reader["Imagemusuario"];
+                p.UImagem = (string)reader["Imagemusuario"];
                 p.GIdGrupo = (int)reader["Idgrupo"];
                 p.GNome = (string)reader["Nomegrupo"];
                 lista.Add(p);
@@ -72,7 +72,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 p.MsgTexto = (string)(reader["Texto"]);
                 p.PIdPessoa = (int)reader["IdUsuario"];
                 p.UNick = (string)reader["Nickusuario"];
-                //p.ImagemUsuario = (string)reader["Imagemusuario"];
+                p.UImagem = (string)reader["Imagemusuario"];
                 p.GIdGrupo = (int)reader["Idgrupo"];
                 p.GNome = (string)reader["Nomegrupo"];
                 lista.Add(p);

@@ -22,14 +22,14 @@
                     <div class="form-group">
                         <label for="label_date" class="col-sm-2 control-label">Date:</label>
                         <div class="col-sm-3">
-                            @Html.TextBoxFor(m => m.Data, "{0:dd-MM-yyyy}", new { @type = "date", @class = "form-control date", @title = "Event Date", @required = "required" })
+                            @Html.TextBoxFor(m => m.Data, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control date", @title = "Event Date", @required = "required", min = "1900-01-01", max = "2022-12-31" })
                             @Html.ValidationMessageFor(m => m.Data)
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="label_time" class="col-sm-2 control-label">Time:</label>
                         <div class="col-sm-3">
-                            @Html.TextBoxFor(m => m.Hora, "{0:HH:MM}", new { @type = "time", @class = "form-control date", @title = "Event Date", @required = "required" })
+                            @Html.TextBoxFor(m => m.Hora, "{0:HH:MM}", new { @type = "time", @class = "form-control date", @title = "Event Date", @required = "required"})
                             @Html.ValidationMessageFor(m => m.Hora)
                         </div>
                     </div>

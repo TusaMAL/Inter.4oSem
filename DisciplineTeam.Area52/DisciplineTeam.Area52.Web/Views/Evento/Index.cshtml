@@ -16,7 +16,7 @@
         </div><!--/panel-heading-->
         <!--Div onde fica os textos do grupo-->
         <div class="list-group-item no-border">
-            <a href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo"> <img src="~/img/csgo.png" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+            <a href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo"> <img src="@ViewBag.InfoGrupo.GImagem" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <!--Nickname do usuario-->
             <p class="nick-person profile-usertitle-name profile-text text-center">@ViewBag.ReadEvento.Nome</p>
             <center>
@@ -124,16 +124,25 @@
             </div><!--/panel-heading-->
             <!-- Corpo do texto da div nem todas terão ele-->
             <div class="panel-body no-border">
-                @foreach (var e in ViewBag.ViewConfUserEvento)
+                @if (ViewBag.QuantUserPartEvento == 0)
                 {
+                    <h4 class="text-center">No one have entered or confirmed presence on this event yet. Become the first!</h4>
+                }
+                else
+                {
+                    foreach (var e in ViewBag.ViewConfUserEvento)
+                    {
+
+
                     <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <a id="cor-fonte-menu" href="~/Grupo/Person/?UserID=@e.CIdUsuario" class="thumbnail" title="@e.UNick">
                             <!--Anchor ou link do membro em questão-->
-                            <img class="img-responsive center-block" src="~/img/akhe.jpg" alt=""><!--Img do membro-->
+                            <img class="img-responsive center-block" src="@e.UImagem" alt=""><!--Img do membro-->
                             <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">@e.UNick</p><!--Nickname do cidadão-->
                         </a>
                     </div><!--/col-sm-12 col-md-6 col-lg-4-->
+                    }
                 }
                 @if (ViewBag.QuantUserPartEvento > 6)
                 {

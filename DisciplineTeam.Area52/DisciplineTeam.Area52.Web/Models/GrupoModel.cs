@@ -8,7 +8,7 @@ namespace DisciplineTeam.Area52.Web.Models
 {
     public class GrupoModel : ModelBase
     {
-        public void Create(Grupo e, int iduser, int idjogo)
+        public void Create(Grupo e, int iduser, int idjogo, string img)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
@@ -16,7 +16,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.Parameters.AddWithValue("@nome", e.Nome);
             cmd.Parameters.AddWithValue("@descricao", e.Descricao);
-            cmd.Parameters.AddWithValue("@Imagem", ((object)e.Imagem ?? DBNull.Value)); //Não Vai ficar aqui imagino eu
+            cmd.Parameters.AddWithValue("@Imagem", img);
             cmd.Parameters.AddWithValue("@idjogo", idjogo);
             cmd.Parameters.AddWithValue("@id", iduser);
 
@@ -42,7 +42,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 Grupo p = new Grupo();
                 p.IdGrupo = (int)reader["IdGrupo"];
                 p.Nome = (string)reader["Nome"];
-                p.Imagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                p.Imagem = (string)reader["Imagem"];
                 lista.Add(p);
             }
             return lista;
@@ -69,7 +69,7 @@ namespace DisciplineTeam.Area52.Web.Models
                     ViewAll p = new ViewAll();
                     p.GIdGrupo = (int)reader["IdGrupo"];
                     p.GNome = (string)reader["NomeGrupo"];
-                    p.GImagem = (string)(reader["ImagemGrupo"] != DBNull.Value ? reader["Imagem"] : null);
+                    p.GImagem = (string)reader["ImagemGrupo"];
                     p.JNome = (string)reader["NomeJogo"];
                     lista.Add(p);
                 }
@@ -96,7 +96,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 ViewAll p = new ViewAll();
                 p.GIdGrupo = (int)reader["IdGrupo"];
                 p.GNome = (string)reader["Nome"];
-                p.GImagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                p.GImagem = (string)reader["Imagem"];
                 p.JNome = (string)reader["NomeJogo"];
                 lista.Add(p);
 
@@ -147,7 +147,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 p.PartIdUsuario = (int)reader["PartIdUser"];
                 p.PartIdGrupo = (int)reader["PartIdGrupo"];
                 p.UNick = (string)reader["Nick"];
-                p.UImagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                p.UImagem = (string)reader["Imagem"];
                 lista.Add(p);
             }
             return lista;
@@ -171,7 +171,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 ViewAll p = new ViewAll();
                 p.PartIdUsuario = (int)reader["PartIdUser"];
                 p.UNick = (string)reader["Nick"];
-                p.UImagem = (string)(reader["Imagem"] != DBNull.Value ? reader["Imagem"] : null);
+                p.UImagem = (string)reader["Imagem"];
                 p.PNome = (string)reader["Nome"];
                 lista.Add(p);
             }
@@ -195,7 +195,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.GIdGrupo = (int)reader["IdGrupo"];
                 e.GIdJogo = (int)reader["IdJogo"];
                 e.GNome = (string)reader["NomeGrupo"];
-                e.GImagem = (string)(reader["ImagemGrupo"] != DBNull.Value ? reader["ImagemGrupo"] : null);
+                e.GImagem = (string)reader["ImagemGrupo"];
                 e.GDescricao = (string)reader["Descricao"];
                 e.JNome = (string)reader["NomeJogo"];
             }
