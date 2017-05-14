@@ -102,8 +102,6 @@ namespace DisciplineTeam.Area52.Web.Models
                 DateTime data = (DateTime)reader["Datanasc"];
                 e.Datanasc = data.ToString("yyyy");
                 e.Sexo = (string)(reader["Sexo"]!= DBNull.Value ? reader["Sexo"] : null);
-                e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
-                e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);
                 e.Descricao = (string)(reader["Descricao"] != DBNull.Value ? reader["Descricao"] : null);
                 e.Imagem = (string)reader["Imagem"];
             }
@@ -128,9 +126,6 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Sexo = (string)(reader["Sexo"] != DBNull.Value ? reader["Sexo"] : null);
                 //e.Datanasc = (DateTime)(reader["Datanasc"] != DBNull.Value ? reader["Datanasc"] : Convert.ToDateTime((DateTime?)null));
                 //e.Datanasc = data.ToString("dd/MM/yyyy");
-                e.Cidade = (string)(reader["Cidade"] != DBNull.Value ? reader["Cidade"] : null);
-                e.Estado = (string)(reader["Estado"] != DBNull.Value ? reader["Estado"] : null);
-                e.Cep = (string)(reader["Cep"] != DBNull.Value ? reader["Cep"] : null);
                 e.Imagem = (string)reader["Imagem"];
                 e.Descricao = (string)(reader["Descricao"] != DBNull.Value ? reader["Descricao"] : null);
             }
@@ -141,7 +136,7 @@ namespace DisciplineTeam.Area52.Web.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC editInfo_User @IdUsuario, @nome, @nick, @sexo, @datanasc, @cidade, @estado, @cep, @descricao, @imagem";
+            cmd.CommandText = @"EXEC editInfo_User @IdUsuario, @nome, @nick, @sexo, @datanasc, @descricao";
            
             cmd.Parameters.AddWithValue("@IdUsuario", id);
             cmd.Parameters.AddWithValue("@nome", e.Nome);
@@ -150,16 +145,8 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.Parameters.AddWithValue("@sexo", e.Sexo);
             DateTime date = Convert.ToDateTime(e.Datanasc);
             cmd.Parameters.AddWithValue("@datanasc", date);
-            e.Cep = (e.Cep != null ? e.Cep : "");
-            cmd.Parameters.AddWithValue("@cep", e.Cep);
-            e.Cidade = (e.Cidade != null ? e.Cidade : "");
-            cmd.Parameters.AddWithValue("@cidade", e.Cidade);
-            e.Estado = (e.Estado != null ? e.Estado : "");
-            cmd.Parameters.AddWithValue("@estado", e.Estado);
             e.Descricao = (e.Descricao != null ? e.Descricao : "");
             cmd.Parameters.AddWithValue("@descricao", e.Descricao);
-            e.Imagem = (e.Imagem != null ? e.Imagem : "");
-            cmd.Parameters.AddWithValue("@imagem", e.Imagem);
 
             cmd.ExecuteNonQuery();
         }
@@ -192,6 +179,17 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Senha = (string)reader["senha"];
             }
             return e.Senha;
+        }
+        public void ChangePicture(Usuario e, int iduser)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"UPDATE usuarios SET imagem = @img WHERE @iduser = pessoa_id";
+
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+            cmd.Parameters.AddWithValue("@img", e.Imagem);
+
+            cmd.ExecuteNonQuery();
         }
     }
 }

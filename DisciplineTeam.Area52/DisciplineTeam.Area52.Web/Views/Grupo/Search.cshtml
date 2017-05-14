@@ -17,20 +17,20 @@
         <!--Div onde fica os textos do grupo-->
         <div class="list-group-item no-border">
             <!--Link para o profile com a img junto-->
-            <a href="/Usuario/Index"> <img src="~/img/pp.jpg" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
+            <a href="/Usuario/Index"> <img src="@ViewBag.ReadU.Imagem" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
             <!--Nick do usuario-->
-            <p class="nick-person profile-usertitle-name profile-text text-center break-word">@ViewBag.UserLog.Nick</p>
+            <p class="nick-person profile-usertitle-name profile-text text-center break-word">@ViewBag.ReadU.Nick</p>
             <center>
                 <!--tabela com os dados do usuário-->
                 <table>
-                    <tr><td class="text-right font-perfil">Name:</td><td class="break-word">&nbsp;@ViewBag.UserLog.Nome</td></tr>
+                    <tr><td class="text-right font-perfil">Name:</td><td class="break-word">&nbsp;@ViewBag.ReadU.Nome</td></tr>
                     <tr>
                         <td class="text-right font-perfil">Gender:</td>
-                        @if (ViewBag.UserLog.Sexo == "M")
+                        @if (ViewBag.ReadU.Sexo == "M")
                         {
                             <td class="break-word">&nbsp;Male</td>
                         }
-                        else if (ViewBag.UserLog.Sexo == "F")
+                        else if (ViewBag.ReadU.Sexo == "F")
                         {
                             <td class="break-word">&nbsp;Female</td>
                         }
@@ -41,16 +41,14 @@
                     </tr>
                     <tr>
                         <td class="text-right font-perfil">Age:</td>
-                        @if (ViewBag.UserLog.Datanasc != null)
+                        @if (ViewBag.ReadU.Datanasc != null)
                         {
                             int age = DateTime.Today.Year;
-                            int ageuser = Convert.ToInt32(ViewBag.UserLog.Datanasc);
-                            ViewBag.UserLog.Datanasc = (age - ageuser).ToString(); ;
-                            <td class="break-word">&nbsp;@ViewBag.UserLog.Datanasc</td>
+                            int ageuser = Convert.ToInt32(ViewBag.ReadU.Datanasc);
+                            ViewBag.ReadU.Datanasc = (age - ageuser).ToString(); ;
+                            <td class="break-word">&nbsp;@ViewBag.ReadU.Datanasc</td>
                         }
                     </tr>
-                    <tr><td class="text-right font-perfil">City:</td> <td class="break-word">&nbsp;@ViewBag.UserLog.Cidade</td></tr>
-                    <tr><td class="text-right font-perfil">State:</td> <td class="break-word">&nbsp;@ViewBag.UserLog.Estado</td></tr>
                 </table>
             </center>
         </div><!--/list-group-item-->
@@ -102,7 +100,7 @@
             {
                 <div class="col-lg-3">
                     <div id="cor-borda" class="thumbnail">
-                        <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo"><img src="~/img/csgo.png" alt="..." class="borda-profile"></a>
+                        <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo"><img src="@e.GImagem" alt="..." class="borda-profile"></a>
                         <div class="caption text-center">
                             <a id="cor-fonte-menu" href="~/Grupo/Index/?GrupoId=@e.GIdGrupo">
                                 <h3 class="break-word">@e.GNome</h3>

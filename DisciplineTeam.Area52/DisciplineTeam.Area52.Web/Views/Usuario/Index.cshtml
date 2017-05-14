@@ -45,8 +45,6 @@
                             <td class="break-word">&nbsp;@ViewBag.ReadU.Datanasc</td>
                         }
                             </tr>
-                    <tr><td class="text-right font-perfil">City:</td> <td class="break-word">&nbsp;@ViewBag.ReadU.Cidade</td></tr>
-                    <tr><td class="text-right font-perfil">State:</td> <td class="break-word">&nbsp;@ViewBag.ReadU.Estado</td></tr>
                 </table>
             </center>
         </div><!--./list-group-item-->
@@ -65,13 +63,15 @@
             <div id="cor-borda" class="panel-body thumbnail">
                 <!--Cria o corpo da mensagem-->
                 <div class="media">
-                    <div class="col-sm-2">
-                        <img class="img-responsive img-thumbnail borda-profile" src="@e.UImagem" alt="...">
+                    <div class="col-sm-3">
+                        <a href="~/Grupo/Person/?UserID=@e.PIdPessoa">
+                            <img id="img-resize" class="img-responsive img-thumbnail borda-profile" src="@e.UImagem" alt="...">
+                        </a>
                     </div>
                     <div class="media-body">
                         <div class="vertical-align">
                                 <!--Nick do Usuario q postou a msg-->
-                                <h4 class="nick-post media-heading"><a href="~/Usuario/User/?UserID=@e.PIdPessoa" class="cor-fonte-menu">@e.UNick </a></h4>
+                                <h4 class="nick-post media-heading"><a href="~/Grupo/Person/?UserID=@e.PIdPessoa" class="cor-fonte-menu">@e.UNick </a></h4>
                                 <!--Data/Hora e grupo que foi postada a msg-->
                                 <h6 class="fonte-post-pequena">@e.MsgDatahora (UTC- 03:00) at <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo" class="cor-fonte-menu">@e.GNome</a></h6>
                         </div>

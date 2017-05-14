@@ -179,6 +179,7 @@
     <Content Include="Views\Usuario\EditSecurity.cshtml" />
     <Content Include="Views\Grupo\Search.cshtml" />
     <Content Include="Views\Grupo\Person.cshtml" />
+    <Content Include="Views\Usuario\EditPicture.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

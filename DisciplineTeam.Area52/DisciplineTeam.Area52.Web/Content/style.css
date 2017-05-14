@@ -454,4 +454,10 @@ button.cor-fonte:focus {
 .input:invalid {
     box-shadow: none;
 }
+#img.resize{
+   width:256px; /* or whatever width you want. */
+   max-width:256px; /* or whatever width you want. */
+   display: inline-block;
+}
+
 

@@ -18,14 +18,8 @@ namespace DisciplineTeam.Area52.Web.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public string Datanasc { get; set; }
 
-        public string Cidade { get; set; }
-
-        public string Estado { get; set; }
-
-        public string Cep { get; set; }
-
         public string Descricao { get; set; }
-
+        [Required(ErrorMessage = "Profile picture is required")]
         public string Imagem { get; set; }
     }
 }

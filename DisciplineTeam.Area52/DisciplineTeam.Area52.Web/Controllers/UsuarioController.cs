@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DisciplineTeam.Area52.Web.Filtro;
+using System.Web.Hosting;
 
 namespace DisciplineTeam.Area52.Web.Controllers
 {
@@ -89,6 +90,67 @@ namespace DisciplineTeam.Area52.Web.Controllers
                         ViewBag.ChangePwdFail = "This is your current password, for changing please enter a different one.";
                     }
                 }
+            }
+            return View();
+        }
+        [UsuarioFiltro]
+        public ActionResult EditPicture()
+        {
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);                                 //Pega informações do usuario que logou e manda paraa view
+            }
+            return View();
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult EditPicture(Usuario e)
+        {
+            
+            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+            HttpPostedFileBase arquivo = Request.Files[0];                                          //Recebe o primeiro parametro de arquivo
+
+            using (System.Drawing.Image pic = System.Drawing.Image.FromStream(arquivo.InputStream)) //Converte a arquivo para imagem para poder comparar a as dimensões
+            {
+                if (pic.Height != 256 && pic.Width != 256)
+                {
+                    TempData["ErroDimensao"] = "Please use a picture with 256x256 pixels.";         //Semelhante a viewbag porem ela "vive" fora da pagina que foi criada
+                    return RedirectToAction("EditPicture");
+                }
+                else if (arquivo.ContentType != "image/png" && arquivo.ContentType != "image/jpeg" && arquivo.ContentType != "image/jpg")           //Verifica o formato do arquivo
+                {
+                    TempData["ErroFormato"] = "Application only supports PNG or JPG image types.";
+                    return RedirectToAction("EditPicture");
+                }
+                else if (arquivo.ContentLength > 2097152)                                              //Verifica se o arquivo não é > que 2 MiB
+                {
+                    TempData["ErroTamanho"] = "Please upload picture with less than 2MiB.";
+                    return RedirectToAction("EditPicture");
+                }
+            }
+            DateTime today = DateTime.Now;                                                          //cria uma variavel da hora atual
+
+            string nome = today.ToString("yyyyMMddhhmmss");                                         //converte a hora e data atual para ser usado como nome da imagem do perfil
+            if (Request.Files.Count > 0)                                                            // Verifica se recebe algum arquivo
+            {
+                if (arquivo.ContentLength > 0)                                                      //verifica se ele possui algo
+                {
+                    //arquivo.FileName pegar nome arquivo
+                    //string caminho = "C:/Users/Felipe/Pictures/testebd/" + arquivo.FileName;    //Uso apenas de protótipo
+                    //String que vai para o banco, se tiver o caminho todo da imagem o site não mostra
+                    string img = "/img/userpics/" + nome + System.IO.Path.GetExtension(arquivo.FileName);
+                    string path = HostingEnvironment.ApplicationPhysicalPath;                        //Pega o diretório em que o projeto está
+                    //Onde vai ser armazenado
+                    string caminho = path + "\\img\\userpics\\" + nome + System.IO.Path.GetExtension(arquivo.FileName);
+                    arquivo.SaveAs(caminho);
+                    e.Imagem = img;
+                    TempData["SucessoImg"] = "Profile picture updated successfully.";
+                }
+            }
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                model.ChangePicture(e, iduser);
+                ViewBag.ReadU = model.ReadU(iduser);                                 //Pega informações do usuario que logou e manda paraa view
             }
             return View();
         }

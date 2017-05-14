@@ -62,13 +62,13 @@ namespace DisciplineTeam.Area52.Web.Controllers
         //GET: Search
         public ActionResult Groups()
         {
+            int iduser = int.Parse(Request.QueryString["UserID"]);
             using (UsuarioModel model = new UsuarioModel())
-            {                                   
-                ViewBag.UserLog = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);          //Lê informações do usuario para jogar na ViewBag
+            {
+                ViewBag.ReadU = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
             }
             using (GrupoModel model = new GrupoModel())
             {                          
-                int iduser = ((Usuario)Session["usuario"]).IdPessoa;
                 ViewBag.Grupos = model.ReadGrupoTotal(iduser);   //Coloca a lista na viewBag pra mostrar na view
                 ViewBag.Quantgrupopart = model.QuantGruposParticipa(iduser);                        //Retorna o count de grupos que o usuario está
             }
@@ -115,10 +115,6 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
                 ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Retorna o count de usuarios do grupo
             }
-            using (UsuarioModel modeluser = new UsuarioModel())
-            {
-                ViewBag.UserLog = modeluser.ReadU(((Usuario)Session["usuario"]).IdPessoa);    //Pega o Id do usuario pela URL com a QueryString e Joga as informações lidas na ViewBag para mostrar na view
-            }
             return View();
         }
         //Get Search
@@ -129,7 +125,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
             {
                 using (UsuarioModel model = new UsuarioModel())
                 {
-                    ViewBag.UserLog = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                    ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
                 }
                 return View();
             }
@@ -138,7 +134,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 string busca = (Request.QueryString[0]);                                    //Recebe o primeiro parametro da URL
                 using (UsuarioModel model = new UsuarioModel())
                 {
-                    ViewBag.UserLog = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                    ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
                 }
                 using (GrupoModel model = new GrupoModel())
                 {

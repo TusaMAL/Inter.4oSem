@@ -48,8 +48,6 @@
                             <td class="break-word">&nbsp;@ViewBag.ReadU.Datanasc</td>
                         }
                     </tr>
-                    <tr><td class="text-right font-perfil">City:</td> <td class="break-word">&nbsp;@ViewBag.ReadU.Cidade</td></tr>
-                    <tr><td class="text-right font-perfil">State:</td> <td class="break-word">&nbsp;@ViewBag.ReadU.Estado</td></tr>
                 </table>
             </center>
         </div><!--./list-group-item-->
@@ -119,13 +117,13 @@
                     <div class="col-sm-6 col-md-6 col-lg-6">
                         <a id="cor-fonte-menu" href="~/Grupo/Index/?GrupoId=@e.IdGrupo" class="thumbnail" title="@e.Nome">
                             <img class="img-responsive center-block" src="@e.Imagem" alt="">
-                            <p class="nick-friendgroup text-center fonte-responsiva-ReadGrupo-amigos text-overflow">@e.Nome</p>
+                            <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">@e.Nome</p>
                         </a>
                     </div>
                 }
                 if (@ViewBag.QuantGruposParticipa > 6)
                 {
-                    <a href="~/Grupo/Groups" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-ReadGrupo-amigos">See more...</p></a>
+                    <a href="~/Grupo/Groups/?UserID=@ViewBag.ReadU.IdPessoa" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-ReadGrupo-amigos">See more...</p></a>
                 }
             }
         </div><!-- Fim panel-body groups -->

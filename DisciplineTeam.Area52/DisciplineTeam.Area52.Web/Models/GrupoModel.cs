@@ -159,7 +159,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM v_User_Grupo_Part WHERE PartIdGrupo = @idgrupo AND PartStatus = 1 OR PartStatus = 2";
+            cmd.CommandText = @"SELECT * FROM v_User_Grupo_Part WHERE PartIdGrupo = @idgrupo AND (PartStatus = 1 OR PartStatus = 2)";
 
             cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
             //cmd.CommandType = System.Data.CommandType.Text;

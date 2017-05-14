@@ -140,7 +140,7 @@ namespace DisciplineTeam.Area52.Web.Models
             List<ViewAll> lista = new List<ViewAll>();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM v_Conf_Evento_Grupo WHERE ConfGrupoId = @idgrupo AND ConfEventoId = @idevento AND ConfStatus = 1";
+            cmd.CommandText = @"SELECT TOP 6 * FROM v_Conf_Evento_Grupo WHERE ConfGrupoId = @idgrupo AND ConfEventoId = @idevento AND ConfStatus = 1";
 
             cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
             cmd.Parameters.AddWithValue("@idevento", idevento);
