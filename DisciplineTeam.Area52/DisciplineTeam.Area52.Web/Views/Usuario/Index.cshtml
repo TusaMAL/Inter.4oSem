@@ -145,7 +145,7 @@
     </div> fim panel-default Friends -->
     <div id="cor-borda" class="panel panel-default">
         <div id="cor-fundo-header" class="panel-heading no-border">
-            <a id="cor-fonte" href="~/Grupo/Groups"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (@ViewBag.QuantGruposParticipa)</span></a>
+            <a id="cor-fonte" href="~/Grupo/Groups/?UserId=@ViewBag.ReadU.IdPessoa"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (@ViewBag.QuantGruposParticipa)</span></a>
         </div>
         <div class="panel-body no-border">
             @if (ViewBag.QuantGruposParticipa == 0)
@@ -165,7 +165,7 @@
                 }
                 if (ViewBag.QuantGruposParticipa > 6)
                 {
-                    <a href="~/Grupo/Groups" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+                    <a href="~/Grupo/Groups/?UserId=@ViewBag.ReadU.IdPessoa" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
                 }
             }
         </div><!-- Fim panel-body groups -->

@@ -172,5 +172,30 @@ namespace DisciplineTeam.Area52.Web.Models
             int quant = (int)cmd.ExecuteScalar();
             return quant;
         }
+        //Retorna o status do usuário para mostrar os botões na view do evento
+        public int UserStatusEvento(int idgrupo, int iduser, int idevento)
+        {
+            int status = 0;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT * FROM v_Conf_Evento_Grupo WHERE ConfGrupoId = @idgrupo AND ConfUserId = @iduser AND ConfEventoId = @idevento";
+
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+            cmd.Parameters.AddWithValue("@idevento", idevento);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows == false)
+            {
+                status = 3;
+                return status;
+            }
+            else if (reader.Read())
+            {
+                status = (int)reader["ConfStatus"];
+            }
+            return status;
+        }
     }
 }

@@ -102,11 +102,11 @@
                     <div id="cor-borda" class="thumbnail">
                         <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo"><img src="@e.GImagem" alt="..." class="borda-profile"></a>
                         <div class="caption text-center">
-                            <a id="cor-fonte-menu" href="~/Grupo/Index/?GrupoId=@e.GIdGrupo">
-                                <h3 class="break-word">@e.GNome</h3>
-                                <p>@e.JNome</p>
+                            <a id="cor-fonte-menu" href="~/Grupo/Index/?GrupoId=@e.GIdGrupo" title="@e.GNome">
+                                <h3 class="text-overflow">@e.GNome</h3>
+                                <p class="text-overflow">@e.JNome</p>
                             </a>
-                            <p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>
+                            @*<p><a id="cor-fonte" href="#" class="btn cor-fonte efeito-fade-navbar remover-amigo" role="button"><span class="glyphicon glyphicon-remove"></span> Leave Group</a></p>*@
                         </div>
                     </div>
                 </div>

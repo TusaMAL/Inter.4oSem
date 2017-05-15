@@ -14,13 +14,15 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Grupos
         public ActionResult Index()
         {
+            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
             int idgrupo = int.Parse(Request.QueryString[0]);            //Converte o Id da URL para poder ser usado
-            ViewBag.IdUsuario = ((Usuario)Session["usuario"]).IdPessoa;
+            ViewBag.IdUsuario = iduser;
             using (GrupoModel model = new GrupoModel())
             {
                 ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);             //Seleciona 6 primeiros usuarios e mostra na lista do grupo
                 ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
                 ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Mostra o count de usuarios na div de grupos
+                ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Pega o status do usuario para mostrar os botões para interagir no site
             }
             using (MensagemModel model = new MensagemModel())
             {
@@ -37,6 +39,8 @@ namespace DisciplineTeam.Area52.Web.Controllers
         [HttpPost]
         public ActionResult Index(Mensagem e)
         {
+            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+            ViewBag.IdUsuario = iduser;
             if (ModelState.IsValid)
             {
                 int idgrupo = int.Parse(Request.QueryString["GrupoId"]);                        //Converte o Id da URL para poder ser usado
@@ -45,10 +49,11 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);               //Seleciona 6 primeiros usuarios e mostra na lista do grupo
                     ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
                     ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Mostra o count de usuarios na div de grupos
+                    ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Retorna o status pra mostra o botão pro usuario
                 }
                 using (MensagemModel model = new MensagemModel())
                 {
-                    model.PostMensagem(e, ((Usuario)Session["usuario"]).IdPessoa, idgrupo);                          //Model pra fazer post da mensagem
+                    model.PostMensagem(e, iduser, idgrupo);                          //Model pra fazer post da mensagem
                     ViewBag.ReadMensagem = model.ReadMensagem(idgrupo);                 //Ler as mensagens já postadas no grupo
                 }
                 using (EventoModel model = new EventoModel())
@@ -108,12 +113,15 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Usuario/Friends
         public ActionResult Members()
         {
+            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
             int idgrupo = int.Parse(Request.QueryString[0]);
             using (GrupoModel model = new GrupoModel())
             {
                 ViewBag.ReadMembrosGrupoTotal = model.ReadMembrosGrupoTotal(idgrupo); //Retorna a quantidade de membros participantes do grupo
                 ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
                 ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Retorna o count de usuarios do grupo
+                ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Retorna o status pra mostra o botão pro usuario
+                ViewBag.IdUsuario = iduser;
             }
             return View();
         }
@@ -126,6 +134,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+
                 }
                 return View();
             }
@@ -192,6 +201,19 @@ namespace DisciplineTeam.Area52.Web.Controllers
             using (GrupoModel model = new GrupoModel())
             {
                 model.VoltarGrupo(iduser, idgrupo);
+            }
+            return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult BtnDeleteMsgUser()
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int iduser = int.Parse(Request.QueryString[1]);
+            int idmsg = int.Parse(Request.QueryString[2]);
+            using (MensagemModel model = new MensagemModel())
+            {
+                model.DeleteMsgUser(iduser, idgrupo, idmsg);
             }
             return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
         }

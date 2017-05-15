@@ -17,34 +17,45 @@
         <!--Div onde fica os textos do grupo-->
         <div class="list-group-item no-border">
             <a href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo"> <img src="@ViewBag.InfoGrupo.GImagem" class="img-responsive thumbnail borda-profile center-block" alt=""></a>
-            <h2 class="text-center"><a href="~/Grupos/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo">@ViewBag.InfoGrupo.GNome</a></h2>
+            <h2 class="text-center"><a href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo">@ViewBag.InfoGrupo.GNome</a></h2>
             <p class="text-center">@ViewBag.InfoGrupo.JNome</p>
                 <!--Botão join com efeito JS-->
                     <div class="panel-body no-border">
                         <div class="row">
                             <center>
                                 <!-- Botão para retornar ao grupo -->
-                                <form method="post" action="~/Grupo/BtnVoltarGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
-                                    <div class="joined" style="">
-                                        <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
-                                            <span class="glyphicon glyphicon-minus"></span> Join
-                                        </button>
-                                    </div>
-                                </form>
-                                <form method="post" action="~/Grupo/BtnSairGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
-                                    <div class="joined" style="">
-                                        <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
-                                            <span class="glyphicon glyphicon-minus"></span> Leave Group
-                                        </button>
-                                    </div>
-                                </form>
-                                <form method="post" action="~/Grupo/BtnPartGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
-                                    <div class="join">
-                                        <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
-                                            <span class="glyphicon glyphicon-plus"></span> Join
-                                        </button>
-                                    </div>
-                                </form>
+                                @if (ViewBag.StatusUserGrupo == 4)
+                                {
+                                    <form method="post" action="~/Grupo/BtnVoltarGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
+                                        <div class="joined" style="">
+                                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                                <span class="glyphicon glyphicon-plus"></span> Join
+                                            </button>
+                                        </div>
+                                    </form>
+                                }
+                                else if (ViewBag.StatusUserGrupo == 1)
+                                {
+                                    <form method="post" action="~/Grupo/BtnSairGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
+                                        <div class="joined" style="">
+                                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                                <span class="glyphicon glyphicon-minus"></span> Leave Group
+                                            </button>
+                                        </div>
+                                    </form>
+                                }
+                                else if (ViewBag.StatusUserGrupo == 5)
+                                {
+                                    <form method="post" action="~/Grupo/BtnPartGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
+                                        <div class="join">
+                                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                                <span class="glyphicon glyphicon-plus"></span> Join
+                                            </button>
+                                        </div>
+                                    </form>
+                                }
+                                else if (ViewBag.StatusUserGrupo == 2)
+                                {
                                 <div class="row">
                                     <br />
                                     <!--Botão create event-->
@@ -52,6 +63,7 @@
                                         <i class="glyphicon glyphicon-flash"></i><span>&nbsp;Add New Event</span>
                                     </a>
                                 </div>
+                                }
                             </center>
                         </div>
                     </div>
@@ -120,13 +132,41 @@
             <div id="cor-borda" class="panel-body thumbnail">
                 <!--Cria o corpo da mensagem-->
                 <div class="media">
-                    <div class="col-sm-2">
+                    @if (e.PIdPessoa == ViewBag.IdUsuario || ViewBag.StatusUserGrupo == 2)
+                    {
+                    <div class="dropdown pull-right flexnav">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="glyphicon glyphicon-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu" style="z-index: 9999; overflow: visible;">
+                            
+                            <li>
+                                <form method="post" action="~/Grupo/BtnDeleteMsgUser/?IdGrupo=@e.GIdGrupo&IdUser=@e.PIdPessoa&IdMsg=@e.MsgIdMensagem">
+                                    <div class="join">
+                                        <button class="btn-dropmenu" type="submit">
+                                            <i class="icon-pencil"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete Message
+                                        </button>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    }
+                    <div class="col-sm-3">
                         <img class="img-responsive img-thumbnail borda-profile" src="@e.UImagem" alt="...">
                     </div>
                     <div class="media-body">
                         <div class="vertical-align">
                             <!--Nick do Usuario q postou a msg-->
-                            <h4 class="nick-post media-heading"><a href="~/Usuario/User/?UserID=@e.PIdPessoa" class="cor-fonte-menu">@e.UNick </a></h4>
+                            <h4 class="nick-post media-heading">
+                                @if (ViewBag.StatusUserGrupo == 2 && ViewBag.IdUsuario == e.PIdPessoa)
+                                {
+                                    <i class="glyphicon glyphicon-user" title="Group Admin"></i>
+                                }
+                                <a href="~/Usuario/User/?UserID=@e.PIdPessoa" class="cor-fonte-menu">
+                                    @e.UNick
+                                </a>
+                            </h4>
                             <!--Data/Hora e grupo que foi postada a msg-->
                             <h6 class="fonte-post-pequena">@e.MsgDatahora (UTC- 03:00) at <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo" class="cor-fonte-menu">@e.GNome</a></h6>
                         </div>

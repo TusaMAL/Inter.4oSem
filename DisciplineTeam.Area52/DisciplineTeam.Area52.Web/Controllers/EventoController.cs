@@ -14,15 +14,17 @@ namespace DisciplineTeam.Area52.Web.Controllers
         [UsuarioFiltro]
         public ActionResult Index()
         {
+            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
             int idgrupo = int.Parse(Request.QueryString[0]);                        //Converte o primeiro parametro que vem da URL
             int idevento = int.Parse(Request.QueryString[1]);                       //Converte o segundo parametro que vem da URL
 
-            ViewBag.IdUsuario = ((Usuario)Session["usuario"]).IdPessoa;
+            ViewBag.IdUsuario = iduser;
             using (EventoModel model = new EventoModel())
             {
                 ViewBag.ReadEvento = model.ReadEvento(idevento, idgrupo);                       //Pega as informações do evento  
                 ViewBag.ViewConfUserEvento = model.ViewConfUserEvento(idgrupo, idevento);       //Mostra os usuarios com presença confirmada
-                ViewBag.QuantUserPartEvento = model.QuantUserPartEvento(idgrupo, idevento);
+                ViewBag.QuantUserPartEvento = model.QuantUserPartEvento(idgrupo, idevento);     //Retorna o count de usuarios que vão ao evento
+                ViewBag.UserStatusEvento = model.UserStatusEvento(idgrupo, iduser, idevento);   //Pega o status do usuario no evento para mostrar na view
             }
             using (GrupoModel model = new GrupoModel())
             {

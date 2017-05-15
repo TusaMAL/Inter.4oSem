@@ -454,10 +454,15 @@ button.cor-fonte:focus {
 .input:invalid {
     box-shadow: none;
 }
-#img.resize{
-   width:256px; /* or whatever width you want. */
-   max-width:256px; /* or whatever width you want. */
-   display: inline-block;
-}
 
+.btn-dropmenu {
+    background:none!important;
+     border:none; 
+     padding:2px !important;
+    
+    /*optional*/
+     color:#000000;
+     text-decoration:none;
+     cursor:pointer;
+}
 

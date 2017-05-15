@@ -240,5 +240,29 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
+        //Lê o status do usuario no grupo para mostrar os botões na view Grupo/Index
+        public int StatusUserGrupo(int iduser, int idgrupo)
+        {
+            int status = 0;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT p.status PartStatus FROM participantes p WHERE p.usuario_id = @iduser AND p.grupo_id = @idgrupo";
+
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows == false)
+            {
+                status = 5;
+                return status;
+            }
+            else if (reader.Read())
+            {
+                status = (int)reader["PartStatus"];
+            }
+            return status;
+        }
     }
 }

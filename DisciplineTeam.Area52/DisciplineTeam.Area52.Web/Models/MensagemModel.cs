@@ -38,6 +38,7 @@ namespace DisciplineTeam.Area52.Web.Models
             while (reader.Read())
             {
                 ViewAll p = new ViewAll();
+                p.MsgIdMensagem = (int)reader["MsgId"];
                 DateTime data = (DateTime)reader["Datahora"];
                 p.MsgDatahora = data.ToString("dd/MM/yyyy, HH:mm");
                 p.MsgTexto = (string)(reader["Texto"]);
@@ -78,6 +79,18 @@ namespace DisciplineTeam.Area52.Web.Models
                 lista.Add(p);
             }
             return lista;
+        }
+        public void DeleteMsgUser(int iduser, int idgrupo, int idmsg)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"DELETE FROM mensagens WHERE usuario_id = @iduser AND grupo_id = @idgrupo AND id = @idmsg";
+
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+            cmd.Parameters.AddWithValue("@idmsg", idmsg);
+
+            cmd.ExecuteNonQuery();
         }
     }
 }
