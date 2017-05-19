@@ -100,7 +100,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Nome = (string)reader["Nome"];
                 e.Nick = (string)reader["Nick"];
                 DateTime data = (DateTime)reader["Datanasc"];
-                e.Datanasc = data.ToString("yyyy");
+                e.Datanasc = data.ToString("dd/MM/yyyy");
                 e.Sexo = (string)(reader["Sexo"]!= DBNull.Value ? reader["Sexo"] : null);
                 e.Descricao = (string)(reader["Descricao"] != DBNull.Value ? reader["Descricao"] : null);
                 e.Imagem = (string)reader["Imagem"];
@@ -190,6 +190,26 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.Parameters.AddWithValue("@img", e.Imagem);
 
             cmd.ExecuteNonQuery();
+        }
+        public int GetAgeUser(int iduser)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT DATEDIFF(month, datanasc, GETDATE()) / 12 AnoNasc FROM usuarios WHERE pessoa_id = @iduser";
+
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                iduser = (int)reader["AnoNasc"]; 
+            }
+            else
+            {
+                iduser = 200;
+            }
+            return iduser;
+
         }
     }
 }

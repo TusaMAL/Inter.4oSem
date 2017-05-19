@@ -98,6 +98,36 @@
         <div class="col-lg-3 col-sm-6">
                 <!--Adiciona o thumbnail e deixa a borda preta-->
                 <div id="cor-borda" class="thumbnail">
+                    @if (e.PIdPessoa == ViewBag.IdUsuario || ViewBag.StatusUserGrupo == 2)
+                    {
+                        if(e.PartIdUsuario != ViewBag.IdUsuario)
+                        { 
+                        <div class="dropdown pull-right flexnav">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="glyphicon glyphicon-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu" style="z-index: 9999; overflow: visible;">
+                                <li>
+                                    <form method="post" action="~/Grupo/BtnBanUser/?IdGrupo=@e.PartIdGrupo&IdUser=@e.PartIdUsuario">
+                                        <div class="join">
+                                            <button class="btn-dropmenu" type="submit">
+                                                <i class="icon-pencil"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ban User
+                                            </button>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="dropdown pull-right flexnav">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="glyphicon glyphicon-chevron-down"></i>
+                            </a>
+                        </div>
+                        }
+                    }
                     <!--Link para o profile-->
                     <a href="~/Grupo/Person/?UserID=@e.PartIdUsuario"><img src="@e.UImagem" alt="..." class="borda-profile"></a>
                     <!--body do thumbnail com texto centralizado-->
@@ -109,7 +139,28 @@
                             <!--Nome do Usuário-->
                             <p class="text-overflow">@e.PNome</p>
                         </a>
-                    </div><!--/caption-->
+                        @if (ViewBag.StatusUserGrupo == 2)
+                        {
+                            if (e.PartStatus != 2)
+                            {
+                            <form method="post" action="~/Grupo/BtnAddMod/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@e.PartIdUsuario">
+                                <div class="" style="">
+                                    <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                        <span class="glyphicon glyphicon-plus"></span> Add Mod
+                                    </button>
+                                </div>
+                            </form>
+                            }
+                            else
+                            {
+                                <div class="" style="">
+                                    <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" disabled>
+                                        <span class="glyphicon glyphicon-user"></span> Already Mod
+                                    </button>
+                                </div>
+                            }
+                        }
+                                </div><!--/caption-->
                 </div><!--/thumbnail-->
             </div><!-- Fim membro /.col-sm-3 -->
         }

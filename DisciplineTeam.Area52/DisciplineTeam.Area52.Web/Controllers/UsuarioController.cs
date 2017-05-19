@@ -15,19 +15,20 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Usuario
         public ActionResult Index() //Testando as informações do usuario pegadas no BD
         {
-            int idusuario = ((Usuario)Session["usuario"]).IdPessoa;
+            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
             using (UsuarioModel model = new UsuarioModel())
             {
-                ViewBag.ReadU = model.ReadU(idusuario);                                 //Pega informações do usuario que logou e manda paraa view
+                ViewBag.ReadU = model.ReadU(iduser);                                 //Pega informações do usuario que logou e manda paraa view
+                ViewBag.GetAgeUser = model.GetAgeUser(iduser);
             }
             using (GrupoModel model = new GrupoModel())
             {
-                ViewBag.ReadGrupo = model.ReadGrupo(idusuario);                         //Retorna os grupos em que o usuario está participando
-                ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(idusuario);   //Retorna o count de grupos em que o usuario participa
+                ViewBag.ReadGrupo = model.ReadGrupo(iduser);                         //Retorna os grupos em que o usuario está participando
+                ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(iduser);   //Retorna o count de grupos em que o usuario participa
             }
             using (MensagemModel model = new MensagemModel())
             {
-                ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(idusuario);         //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
+                ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(iduser);         //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
             }
             return View();
         }
@@ -138,10 +139,10 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     //arquivo.FileName pegar nome arquivo
                     //string caminho = "C:/Users/Felipe/Pictures/testebd/" + arquivo.FileName;    //Uso apenas de protótipo
                     //String que vai para o banco, se tiver o caminho todo da imagem o site não mostra
-                    string img = "/img/userpics/" + nome + System.IO.Path.GetExtension(arquivo.FileName);
+                    string img = "/img/userpics/" + iduser.ToString() + System.IO.Path.GetExtension(arquivo.FileName);
                     string path = HostingEnvironment.ApplicationPhysicalPath;                        //Pega o diretório em que o projeto está
                     //Onde vai ser armazenado
-                    string caminho = path + "\\img\\userpics\\" + nome + System.IO.Path.GetExtension(arquivo.FileName);
+                    string caminho = path + "\\img\\userpics\\" + iduser.ToString() + System.IO.Path.GetExtension(arquivo.FileName);
                     arquivo.SaveAs(caminho);
                     e.Imagem = img;
                     TempData["SucessoImg"] = "Profile picture updated successfully.";

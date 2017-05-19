@@ -19,7 +19,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
             ViewBag.IdUsuario = iduser;
             using (GrupoModel model = new GrupoModel())
             {
-                ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);             //Seleciona 6 primeiros usuarios e mostra na lista do grupo
+                ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);               //Seleciona 6 primeiros usuarios e mostra na lista do grupo
                 ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
                 ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Mostra o count de usuarios na div de grupos
                 ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Pega o status do usuario para mostrar os botões para interagir no site
@@ -67,15 +67,28 @@ namespace DisciplineTeam.Area52.Web.Controllers
         //GET: Search
         public ActionResult Groups()
         {
-            int iduser = int.Parse(Request.QueryString["UserID"]);
+            int iduser = 0;
+
+            if (Request.QueryString["UserID"] != null)
+            {
+                iduser = int.Parse(Request.QueryString["UserID"]);
+            }
+            else
+            {
+                iduser = ((Usuario)Session["usuario"]).IdPessoa;
+            }
+            
+
             using (UsuarioModel model = new UsuarioModel())
             {
                 ViewBag.ReadU = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
+                ViewBag.GetAgeUser = model.GetAgeUser(iduser);                      //Pegar idade
             }
             using (GrupoModel model = new GrupoModel())
             {                          
                 ViewBag.Grupos = model.ReadGrupoTotal(iduser);   //Coloca a lista na viewBag pra mostrar na view
                 ViewBag.Quantgrupopart = model.QuantGruposParticipa(iduser);                        //Retorna o count de grupos que o usuario está
+
             }
             return View();
         }
@@ -129,12 +142,13 @@ namespace DisciplineTeam.Area52.Web.Controllers
         [UsuarioFiltro]
         public ActionResult Search()
         {
-            if((Request.QueryString[0]) == null)
+            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+            if ((Request.QueryString[0]) == null)
             {
                 using (UsuarioModel model = new UsuarioModel())
                 {
-                    ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
-
+                    ViewBag.ReadU = model.ReadU(iduser);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                    ViewBag.GetAgeUser = model.GetAgeUser(iduser);
                 }
                 return View();
             }
@@ -144,6 +158,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                    ViewBag.GetAgeUser = model.GetAgeUser(iduser);
                 }
                 using (GrupoModel model = new GrupoModel())
                 {
@@ -160,6 +175,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
             using (UsuarioModel model = new UsuarioModel())
             {
                 ViewBag.ReadU = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
+                ViewBag.GetAgeUser = model.GetAgeUser(iduser);
             }
             using (GrupoModel model = new GrupoModel())
             {
@@ -216,6 +232,30 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 model.DeleteMsgUser(iduser, idgrupo, idmsg);
             }
             return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult BtnAddMod()
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int iduser = int.Parse(Request.QueryString[1]);
+            using (GrupoModel model = new GrupoModel())
+            {
+                model.AddMod(idgrupo, iduser);
+            }
+            return RedirectToAction("Members", "Grupo", new { GrupoID = idgrupo });
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult BtnBanUser()
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int iduser = int.Parse(Request.QueryString[1]);
+            using (GrupoModel model = new GrupoModel())
+            {
+                model.BanUser(idgrupo, iduser);
+            }
+            return RedirectToAction("Members", "Grupo", new { GrupoID = idgrupo });
         }
     }
 }

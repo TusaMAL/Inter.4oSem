@@ -47,6 +47,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 p.UImagem = (string)reader["Imagemusuario"];
                 p.GIdGrupo = (int)reader["Idgrupo"];
                 p.GNome = (string)reader["Nomegrupo"];
+                p.PartStatus = (int)reader["PartStatus"];
                 lista.Add(p);
             }
             return lista;

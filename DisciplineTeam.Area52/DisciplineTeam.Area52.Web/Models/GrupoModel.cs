@@ -170,6 +170,8 @@ namespace DisciplineTeam.Area52.Web.Models
             {
                 ViewAll p = new ViewAll();
                 p.PartIdUsuario = (int)reader["PartIdUser"];
+                p.PartStatus = (int)reader["PartStatus"];
+                p.PartIdGrupo = (int)reader["PartIdGrupo"];
                 p.UNick = (string)reader["Nick"];
                 p.UImagem = (string)reader["Imagem"];
                 p.PNome = (string)reader["Nome"];
@@ -214,7 +216,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
-        //Altera o status do membro para null
+        //Altera o status do membro para 4, quando o usuario sai do grupo após ter entrado
         public void SairGrupo(int iduser, int idgrupo)
         {
             SqlCommand cmd = new SqlCommand();
@@ -264,5 +266,30 @@ namespace DisciplineTeam.Area52.Web.Models
             }
             return status;
         }
+        // Adiciona outro moderador no grupo
+        public void AddMod(int idgrupo, int iduser)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"UPDATE participantes SET status = 2 WHERE grupo_id = @idgrupo AND usuario_id = @iduser";
+
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+
+            cmd.ExecuteNonQuery();
+        }
+        // Muda o status do usuario para 3
+        public void BanUser(int idgrupo, int iduser)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"UPDATE participantes SET status = 3 WHERE grupo_id = @idgrupo AND usuario_id = @iduser";
+
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+
+            cmd.ExecuteNonQuery();
+        }
+
     }
 }
