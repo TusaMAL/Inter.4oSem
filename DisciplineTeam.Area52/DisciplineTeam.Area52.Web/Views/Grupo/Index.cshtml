@@ -119,7 +119,7 @@
             <div id="collapse2" class="panel-body panel-collapse collapse in">
                 <div class="form-group">
                     <form role="form" action="@HttpContext.Current.Request.Url.PathAndQuery" method="post">
-                        @Html.TextAreaFor(m => m.Texto, new { rows = 4, @class = "form-control textarea-sem-resize", @required = "required", @placeholder = "Write something..." })
+                        @Html.TextAreaFor(m => m.Texto, new { rows = 4, @class = "form-control textarea-sem-resize", @required = "required", @placeholder = "Write something...", @maxlength = "350" })
                         <br />
                         <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar"><i class="glyphicon glyphicon-check">&nbsp;</i>Post New Message</button>
                     </form>

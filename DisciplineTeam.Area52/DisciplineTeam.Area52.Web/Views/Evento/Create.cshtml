@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label for="label_name_event" class="col-sm-2 control-label">Name:</label>
                         <div class="col-sm-9">
-                            @Html.TextBoxFor(m=>m.Nome, new { @class = "form-control", @placeholder = "Event Name...", @required = "required" })
+                            @Html.TextBoxFor(m=>m.Nome, new { @class = "form-control", @placeholder = "Event Name...", @required = "required", @maxlength = "30"})
                             @Html.ValidationMessageFor(m => m.Nome)
                         </div>
                     </div>
@@ -38,15 +38,15 @@
                         <div class="col-sm-8">
                             <div class="col-sm-3">
                                 <label class="radio-inline">
-                                    @Html.RadioButtonFor(m => m.Tipo, "1", false)@Html.Label("Online")
+                                    @Html.RadioButtonFor(m => m.Tipo, "1", new { @id = "Online", @onclick="disableRadio()" })@Html.Label("Online")
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    @Html.RadioButtonFor(m => m.Tipo, "2", false)@Html.Label("LAN")
+                                    @Html.RadioButtonFor(m => m.Tipo, "2", new { @id = "LAN", @onclick="enableRadio()" })@Html.Label("LAN")
                                 </label>
                                 @Html.ValidationMessageFor(m => m.Tipo)
-                                @Html.TextBoxFor(m => m.Endereco, new { @class = "form-control", @placeholder = "Address"})
+                                @Html.TextBoxFor(m => m.Endereco, new { @class = "form-control", @placeholder = "Address", @id="txtLAN"})
                             </div>
                         </div>
                     </div>
@@ -73,3 +73,25 @@
 </div>
 
 
+<script>
+    var enableRadio = function () {
+        document.getElementById('txtLAN').style.visibility = 'visible';
+    }
+
+    var disableRadio = function () {
+        document.getElementById('txtLAN').style.visibility = 'hidden';
+    }
+
+    disableRadio();
+    //    alert('abc');
+    //    if ($("#Online").is(":checked")) {
+    //        alert('teste');
+    //        $('#Endereco').prop('disabled', 'disabled');
+    //    }
+    //    else {
+    //        $('#Endereco').prop('disabled', false);
+    //    }
+    //};
+    //$(enableRadio);
+    //$("#Online").change(enableRadio);
+</script>
