@@ -39,7 +39,7 @@
                     using (Html.BeginForm("Search", "Grupo", new { Search = "Find" }, FormMethod.Get, new { @class = "navbar-form navbar-left" }))
                     {
                         <div class="form-group">
-                            @Html.TextBox("Find", "", new { @class = "form-control", @type = "text", @placeholder = "Search Groups", @required = "required" })
+                            @Html.TextBox("Find", "", new { @class = "form-control", @type = "text", @placeholder = "Search Groups", @required = "required", maxlength = "30" })
                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
                                 <i class="glyphicon glyphicon-search"></i><span>&nbsp;Search</span>
                             </button>

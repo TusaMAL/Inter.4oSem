@@ -44,7 +44,7 @@
                                         <label class="col-sm-2 control-label">Old Password: </label>
                                         <div class="col-sm-9">
                                             <!-- Textbox criado pelo razor-->
-                                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @minlength = "6", @placeholder = "Old Password...", @required = "required" })
+                                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @minlength = "6", @maxlength = "20", @placeholder = "Old Password...", @required = "required"})
                                             <!--Mostra os glphicon conforme a ação-->
                                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                             <!-- mensagem de validação do razor-->
@@ -56,7 +56,7 @@
                                         <label class="col-sm-2 control-label">New Password: </label>
                                         <div class="col-sm-9">
                                             <!-- Textbox criado pelo razor-->
-                                            @Html.PasswordFor(m => m.NewPwd, new { @id = "inputPassword", @class = "form-control", @minlength = "6", @placeholder = "New Password...", @required = "required" })
+                                            @Html.PasswordFor(m => m.NewPwd, new { @id = "inputPassword", @class = "form-control", @minlength = "6", @placeholder = "New Password...", @required = "required", @maxlength = "20"})
                                             <!--Mostra os glphicon conforme a ação-->
                                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                             <!-- mensagem de validação do razor-->
@@ -67,7 +67,7 @@
                                         <label class="col-sm-2 control-label">Confirm New Password: </label>
                                         <div class="col-sm-9">
                                             <!-- Textbox criado pelo razor-->
-                                            <input type="password" class="form-control" id="NewPwdConfirm" data-match="#inputPassword" data-match-error="Passwords must match" placeholder="Confirm New Password..." required>
+                                            <input type="password" class="form-control" id="NewPwdConfirm" data-match="#inputPassword" data-match-error="Passwords must match" placeholder="Confirm New Password..." required maxlength="20">
                                             <!--Mostra os glphicon conforme a ação-->
                                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                             <!-- mensagem de validação do razor-->
