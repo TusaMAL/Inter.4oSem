@@ -15,7 +15,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
         [Required(ErrorMessage = "Date of birth is required")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public string Datanasc { get; set; }
 
         public string Descricao { get; set; }

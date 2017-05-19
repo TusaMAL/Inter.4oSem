@@ -41,12 +41,9 @@
                     </tr>
                     <tr>
                         <td class="text-right font-perfil">Age:</td>
-                        @if (ViewBag.ReadU.Datanasc != null)
+                        @if (ViewBag.GetAgeUser != 200)
                         {
-                            int age = DateTime.Today.Year;
-                            int ageuser = Convert.ToInt32(ViewBag.ReadU.Datanasc);
-                            ViewBag.ReadU.Datanasc = (age - ageuser).ToString(); ;
-                            <td class="break-word">&nbsp;@ViewBag.ReadU.Datanasc</td>
+                            <td class="break-word">&nbsp;@ViewBag.GetAgeUser</td>
                         }
                     </tr>
                 </table>

@@ -54,9 +54,9 @@
                         <div class="form-group">
                             <label for="lbl_idade" class="col-sm-2 control-label">Birth Date:</label>
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(m => m.Datanasc, new { @class = "form-control", @required = "required" })
-                                @*@Html.TextBoxFor(m => m.Datanasc, new { @type = "date", @class = "form-control date" })
-                                    @Html.TextBoxFor(m => m.Datanasc, "{0:MM-dd-yyyy}", new { @Value = Model.Datanasc, @type = "date" })*@
+                                @Html.TextBoxFor(m => m.Datanasc, "{0:yyyy-MM-dd}", new {@class = "form-control", @disabled = "disabled" })
+                                <br/>
+                                @Html.TextBoxFor(m => m.Datanasc, "{0:MM/dd/yyyy}", new { @class = "form-control", @required = "required", @type = "date", min = "1900-01-01", max = "2017-12-31" })
                                 @Html.ValidationMessageFor(m => m.Datanasc)
                             </div>
                         </div>
