@@ -96,41 +96,41 @@ namespace DisciplineTeam.Area52.Web.Models
             }
         }
         //Faz o insert dos dados do usuário no banco
-        public void PartEvento(int grupo_id, int usuario_id, int evento_id)
+        public void PartEvento(int idgrupo, int iduser, int idevento)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = @"EXEC partEvento @grupo_id, @usuario_id, @evento_id";
 
-            cmd.Parameters.AddWithValue("@grupo_id", grupo_id);
-            cmd.Parameters.AddWithValue("@usuario_id", usuario_id);
-            cmd.Parameters.AddWithValue("@evento_id", evento_id);
+            cmd.Parameters.AddWithValue("@grupo_id", idgrupo);
+            cmd.Parameters.AddWithValue("@usuario_id", iduser);
+            cmd.Parameters.AddWithValue("@evento_id", idevento);
 
             cmd.ExecuteNonQuery();
         }
-        //Faz o update do status do usuario no evento para 2
-        public void SairEvento(int grupo_id, int usuario_id, int evento_id)
+        //Faz o update do status do usuario no evento para 0
+        public void SairEvento(int idgrupo, int iduser, int idevento)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = @"EXEC sairEvento @grupo_id, @usuario_id, @evento_id";
 
-            cmd.Parameters.AddWithValue("@grupo_id", grupo_id);
-            cmd.Parameters.AddWithValue("@usuario_id", usuario_id);
-            cmd.Parameters.AddWithValue("@evento_id", evento_id);
+            cmd.Parameters.AddWithValue("@grupo_id", idgrupo);
+            cmd.Parameters.AddWithValue("@usuario_id", iduser);
+            cmd.Parameters.AddWithValue("@evento_id", idevento);
 
             cmd.ExecuteNonQuery();
         }
         //Faz o update do status do usuario no evento para 1
-        public void PartEventoUpdate(int grupo_id, int usuario_id, int evento_id)
+        public void PartEventoUpdate(int idgrupo, int iduser, int idevento)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = @"EXEC partEventoUpdate @grupo_id, @usuario_id, @evento_id";
 
-            cmd.Parameters.AddWithValue("@grupo_id", grupo_id);
-            cmd.Parameters.AddWithValue("@usuario_id", usuario_id);
-            cmd.Parameters.AddWithValue("@evento_id", evento_id);
+            cmd.Parameters.AddWithValue("@grupo_id", idgrupo);
+            cmd.Parameters.AddWithValue("@usuario_id", iduser);
+            cmd.Parameters.AddWithValue("@evento_id", idevento);
 
             cmd.ExecuteNonQuery();
         }

@@ -180,6 +180,8 @@
     <Content Include="Views\Grupo\Search.cshtml" />
     <Content Include="Views\Grupo\Person.cshtml" />
     <Content Include="Views\Usuario\EditPicture.cshtml" />
+    <Content Include="Views\Usuario\EditDob.cshtml" />
+    <Content Include="Views\Jogo\EditJogo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

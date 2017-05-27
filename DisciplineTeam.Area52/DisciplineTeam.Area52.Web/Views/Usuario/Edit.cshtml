@@ -12,6 +12,7 @@
             <li class="active"><a href="#profile" class="btn efeito-fade-navbar borda-botao-search" data-toggle="tab">Profile</a></li>
             <li><a class="btn efeito-fade-navbar borda-botao-search" onclick="window.location = '../Usuario/EditSecurity'" data-toggle="tab">Security</a></li>
             <li><a class="btn efeito-fade-navbar borda-botao-search" onclick="window.location = '../Usuario/EditPicture'" data-toggle="tab">Picture</a></li>
+            <li><a class="btn efeito-fade-navbar borda-botao-search" onclick="window.location = '../Usuario/EditDob'" data-toggle="tab">Date of Birth</a></li>
         </ul>
         <div id="cor-borda myTabContent" class="tab-content">
             <div class="tab-pane active" id="profile">
@@ -51,17 +52,17 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label for="lbl_idade" class="col-sm-2 control-label">Birth Date:</label>
                             <div class="col-sm-9">
                                 @Html.TextBoxFor(m => m.Datanasc, "{0:yyyy-MM-dd}", new {@class = "form-control", @disabled = "disabled" })
                                 <br/>
-                                @Html.TextBoxFor(m => m.Datanasc, "{0:MM/dd/yyyy}", new { @class = "form-control", @required = "required", @type = "date", min = "1900-01-01", max = "2017-12-31" })
+                                @Html.TextBoxFor(m => m.Datanasc, "{0:yyyy-MM-dd}", new { @class = "form-control jquery_datepicker", @required = "required", @type = "date", min = "1900-01-01", max = "2017-12-31" })
                                 @Html.ValidationMessageFor(m => m.Datanasc)
                             </div>
-                        </div>
+                        </div>*@
                         <div class="form-group">
-                            <label for="label_desc" class="col-sm-2 control-label">Description:</label>
+                            <label for="label_desc" class="col-sm-2 control-label">About:</label>
                             <div class="col-sm-9">
                                 @Html.TextAreaFor(m => m.Descricao, new { rows = 4, @class = "form-control textarea-sem-resize", @placeholder = "Write something about you...", maxlength = "500" })
                             </div>

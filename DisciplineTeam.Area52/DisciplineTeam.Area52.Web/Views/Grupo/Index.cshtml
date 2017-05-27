@@ -24,7 +24,7 @@
                         <div class="row">
                             <center>
                                 <!-- Botão para retornar ao grupo -->
-                                @if (ViewBag.StatusUserGrupo == 4)
+                                @if (ViewBag.StatusUserGrupo == 0)
                                 {
                                     <form method="post" action="~/Grupo/BtnVoltarGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
                                         <div class="joined" style="">
@@ -56,6 +56,26 @@
                                 }
                                 else if (ViewBag.StatusUserGrupo == 2)
                                 {
+                                    
+                                    if (ViewBag.QuantModGrupo > 1)
+                                    {
+                                        <form method="post" action="~/Grupo/BtnSairGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
+                                            <div class="joined" style="">
+                                                <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                                    <span class="glyphicon glyphicon-minus"></span> Leave Group
+                                                </button>
+                                            </div>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-justify">You cannot leave the group being the only moderator left, please add another user as moderator to leave the group.</p>
+                                        <div class="joined" style="">
+                                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit" disabled title="You cannot leave the group">
+                                                <span class="glyphicon glyphicon-minus"></span> Leave Group
+                                            </button>
+                                        </div>
+                                    }
                                 <div class="row">
                                     <br />
                                     <!--Botão create event-->
@@ -63,6 +83,36 @@
                                         <i class="glyphicon glyphicon-flash"></i><span>&nbsp;Add New Event</span>
                                     </a>
                                 </div>
+                                <!-- Button trigger modal -->
+                                    <div>
+                                        <br/>
+                                        <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" data-toggle="modal" data-target="#myModal">
+                                            <span class="glyphicon glyphicon-edit"></span>&nbsp; Edit Group About
+                                        </button>
+                                    </div>
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" style="padding-top: 50px;">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">Edit Group About</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <form method="post" action="~/Grupo/BtnEditAboutGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario" enctype="multipart/form-data">
+                                                            <p>About:</p>
+                                                            <textarea name="descricao" class="form-control textarea-sem-resize" required maxlength="500" rows="4">@ViewBag.InfoGrupo.GDescricao</textarea>
+                                                            <br />
+                                                            <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar"><i class="glyphicon glyphicon-check">&nbsp;</i>Edit</button>
+                                                        </form>
+                                                    </div><!--./form-group-->
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
                                 }
                             </center>
                         </div>
@@ -101,6 +151,14 @@
                                     <h4 class="">About Group:</h4>
                                 </div><!--./vertical-align-->
                                 <!--Descrição do grupo-->
+                                @if (TempData["SucessoAbout"] != null)
+                                {
+                                    <div class="alert alert-success text-center" role="alert">
+                                        <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                                        <span class="sr-only">Success:</span>
+                                        @TempData["SucessoAbout"]
+                                    </div>
+                                }
                                 <p class="text-right text-justify">@ViewBag.InfoGrupo.GDescricao</p>
                             </div><!--./media-body-->
                         </div><!--./media-->
@@ -116,15 +174,29 @@
                 <a id="cor-fonte" data-toggle="collapse" href="#collapse2"><span class="glyphicon glyphicon-envelope cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Messages</span></a>
             </div><!--/panel-heading-->
             <!-- Div com collapse ja ativado ao entrar na pagina-->
-            <div id="collapse2" class="panel-body panel-collapse collapse in">
-                <div class="form-group">
-                    <form role="form" action="@HttpContext.Current.Request.Url.PathAndQuery" method="post">
-                        @Html.TextAreaFor(m => m.Texto, new { rows = 4, @class = "form-control textarea-sem-resize", @required = "required", @placeholder = "Write something...", @maxlength = "350" })
-                        <br />
-                        <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar"><i class="glyphicon glyphicon-check">&nbsp;</i>Post New Message</button>
-                    </form>
-                </div><!--./form-group-->
-            </div><!--./collapse-->
+
+            @if (ViewBag.StatusUserGrupo == 5 || ViewBag.StatusUserGrupo == 0)
+            {
+                <div id="collapse2" class="panel-body panel-collapse collapse in">
+                    <div class="form-group">
+                            @Html.TextAreaFor(m => m.Texto, new { rows = 4, @class = "form-control textarea-sem-resize", @disabled = "disabled", @required = "required", @placeholder = "Only group users are allowed to post messages.", @maxlength = "350" })
+                            <br />
+                            <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar" disabled><i class="glyphicon glyphicon-check">&nbsp;</i>Post New Message</button>
+                    </div><!--./form-group-->
+                </div><!--./collapse-->
+            }
+            else
+            {
+                <div id = "collapse2" class="panel-body panel-collapse collapse in">
+                    <div class="form-group">
+                        <form role="form" action="@HttpContext.Current.Request.Url.PathAndQuery" method="post">
+                            @Html.TextAreaFor(m => m.Texto, new { rows = 4, @class = "form-control textarea-sem-resize", @required = "required", @placeholder = "Write something...", @maxlength = "350" })
+                            <br />
+                            <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar"><i class="glyphicon glyphicon-check">&nbsp;</i>Post New Message</button>
+                        </form>
+                    </div><!--./form-group-->
+                </div><!--./collapse-->
+            }
         </div><!--/panel-default-->
         @foreach (var e in ViewBag.ReadMensagem)
         {
@@ -132,7 +204,7 @@
             <div id="cor-borda" class="panel-body thumbnail">
                 <!--Cria o corpo da mensagem-->
                 <div class="media">
-                    @if (e.PIdPessoa == ViewBag.IdUsuario || ViewBag.StatusUserGrupo == 2)
+                    @if (ViewBag.StatusUserGrupo == 2)
                     {
                     <div class="dropdown pull-right flexnav">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -154,6 +226,25 @@
                                     <div class="join">
                                         <button class="btn-dropmenu" type="submit">
                                             <i class="icon-pencil"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ban User
+                                        </button>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    }
+                    else if (e.PIdPessoa == ViewBag.IdUsuario)
+                    {
+                    <div class="dropdown pull-right flexnav">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="glyphicon glyphicon-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu" style="z-index: 9999; overflow: visible;">
+                            <li>
+                                <form method="post" action="~/Grupo/BtnDeleteMsgUser/?IdGrupo=@e.GIdGrupo&IdUser=@e.PIdPessoa&IdMsg=@e.MsgIdMensagem">
+                                    <div class="join">
+                                        <button class="btn-dropmenu" type="submit">
+                                            <i class="icon-pencil"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete Message
                                         </button>
                                     </div>
                                 </form>
@@ -259,3 +350,5 @@
         </div><!--./collapse-->
     </div><!-- /panel-default Events -->
 </div><!-- Fim col-lg-3 Members e Events -->
+<!-- Modal de editar grupo-->
+

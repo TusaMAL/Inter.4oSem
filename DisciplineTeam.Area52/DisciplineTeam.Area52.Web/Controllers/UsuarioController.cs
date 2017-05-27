@@ -156,9 +156,25 @@ namespace DisciplineTeam.Area52.Web.Controllers
             return View();
         }
         [UsuarioFiltro]
-        public ActionResult ForgotP()
+        public ActionResult EditDob()
         {
-            return View();
+            Usuario e = new Usuario();
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                e = model.ReadEditUsuario(((Usuario)Session["usuario"]).IdPessoa);      //Lê os dados do usuario no BD e mostra no Formulário para poder ser editado
+            }
+            return View(e);
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult EditDob(Usuario e)
+        {
+            using (UsuarioModel model = new UsuarioModel())
+            {
+                model.ChangeDob(e, ((Usuario)Session["usuario"]).IdPessoa);       //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
+                ViewBag.SucessoEdit = true;                                         //Usado para exibir mensagem de confirmação na view
+            }
+            return View(e);
         }
         // GET: Usuario
         public ActionResult Login()

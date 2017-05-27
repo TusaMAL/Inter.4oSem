@@ -29,6 +29,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
             using (GrupoModel model = new GrupoModel())
             {
                 ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar 
+                ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);
             }
             return View();
         }

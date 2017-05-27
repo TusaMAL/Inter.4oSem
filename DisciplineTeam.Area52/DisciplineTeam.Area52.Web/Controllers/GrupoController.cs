@@ -23,6 +23,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
                 ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Mostra o count de usuarios na div de grupos
                 ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Pega o status do usuario para mostrar os botões para interagir no site
+                ViewBag.QuantModGrupo = model.QuantModGrupo(idgrupo);               //Retora o count de moderadores do grupo
             }
             using (MensagemModel model = new MensagemModel())
             {
@@ -256,6 +257,20 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 model.BanUser(idgrupo, iduser);
             }
             return RedirectToAction("Members", "Grupo", new { GrupoID = idgrupo });
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult BtnEditAboutGrupo(FormCollection form)
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int iduser = int.Parse(Request.QueryString[1]);
+            string desc = form["descricao"];
+            using (GrupoModel model = new GrupoModel())
+            {
+                model.EditarGrupo(idgrupo, iduser, desc);
+                TempData["SucessoAbout"] = "Group about updated successfully!";
+    }
+                return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
         }
     }
 }

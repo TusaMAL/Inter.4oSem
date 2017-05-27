@@ -36,7 +36,7 @@
                 </table>
                 <div class="panel-body no-border">
                     <center>
-                        @if (ViewBag.UserStatusEvento == 3)
+                        @if (ViewBag.UserStatusEvento == 3 && (ViewBag.StatusUserGrupo == 1 || ViewBag.StatusUserGrupo == 2))
                         {
                         <form method="post" action="~/Evento/BtnPartEvento/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento&IdUser=@ViewBag.IdUsuario">                         
                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
@@ -44,19 +44,28 @@
                             </button>
                         </form>
                         }
-                        else if (ViewBag.UserStatusEvento == 1)
+                        else if (ViewBag.UserStatusEvento == 1 && (ViewBag.StatusUserGrupo == 1 || ViewBag.StatusUserGrupo == 2))
                         {
                         <form method="post" action="~/Evento/BtnSairEvento/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento&IdUser=@ViewBag.IdUsuario">
                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
-                                <i id="menu-toggle" class="glyphicon glyphicon-remove"></i><span>&nbsp;Cancel Attendance</span> @*Mudar Status para 2*@
+                                <i id="menu-toggle" class="glyphicon glyphicon-remove"></i><span>&nbsp;Cancel Attendance</span> @*Mudar Status para 0*@
                             </button>
                         </form>
                         }
-                        else if (ViewBag.UserStatusEvento == 2)
+                        else if (ViewBag.UserStatusEvento == 0 && (ViewBag.StatusUserGrupo == 1 || ViewBag.StatusUserGrupo == 2))
                         {
                         <form method="post" action="~/Evento/BtnPartEventoUpdate/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento&IdUser=@ViewBag.IdUsuario">
                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
                                 <i id="menu-toggle" class="glyphicon glyphicon-thumbs-up"></i><span>&nbsp;Confirm Attendance</span> @*Mudar Status para 1*@
+                            </button>
+                        </form>
+                        }
+                        else
+                        {
+                        <p>To join in a event please join on the group first</p>
+                        <form method="post" action="#">
+                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit" disabled title="To join a group event please join on the group first">
+                                <i id="menu-toggle" class="glyphicon glyphicon-ok"></i><span>&nbsp;Join Event</span>
                             </button>
                         </form>
                         }

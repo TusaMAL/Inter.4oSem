@@ -82,14 +82,14 @@ namespace DisciplineTeam.Area52.Web.Models
             return e;
         }
         //Tentando fazer a leitura dos dados do usuario para lançar na pagina do mesmo
-        public Usuario ReadU(int id)
+        public Usuario ReadU(int iduser)
         {
             Usuario e = null;
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = @"SELECT * FROM v_User_Info WHERE id = @id";
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@id", iduser);
 
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -100,7 +100,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Nome = (string)reader["Nome"];
                 e.Nick = (string)reader["Nick"];
                 DateTime data = (DateTime)reader["Datanasc"];
-                e.Datanasc = data.ToString("dd/MM/yyyy");
+                e.Datanasc = data.ToString("MM/dd/yyyy");
                 e.Sexo = (string)(reader["Sexo"]!= DBNull.Value ? reader["Sexo"] : null);
                 e.Descricao = (string)(reader["Descricao"] != DBNull.Value ? reader["Descricao"] : null);
                 e.Imagem = (string)reader["Imagem"];
@@ -108,13 +108,13 @@ namespace DisciplineTeam.Area52.Web.Models
             return e;
         }
         //Faz a leitura dos dados do usuario para exibir na tela Settings
-        public Usuario ReadEditUsuario(int idusuario)
+        public Usuario ReadEditUsuario(int iduser)
         {
             Usuario e = new Usuario();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = @"select * from v_User_Info_Edit WHERE @idusuario = PessoaId";
-            cmd.Parameters.AddWithValue("@idusuario", idusuario);
+            cmd.Parameters.AddWithValue("@idusuario", iduser);
 
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
@@ -122,7 +122,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Nome = (string)reader["PessoaNome"];
                 e.Nick = (string)reader["Nick"];
                 DateTime data = (DateTime)reader["Datanasc"];
-                e.Datanasc = data.ToString("dd/MM/yyyy");
+                e.Datanasc = data.ToString("MM/dd/yyyy");
                 e.Sexo = (string)(reader["Sexo"] != DBNull.Value ? reader["Sexo"] : null);
                 //e.Datanasc = (DateTime)(reader["Datanasc"] != DBNull.Value ? reader["Datanasc"] : Convert.ToDateTime((DateTime?)null));
                 //e.Datanasc = data.ToString("dd/MM/yyyy");
@@ -132,19 +132,19 @@ namespace DisciplineTeam.Area52.Web.Models
             return e;
         }
         //Editar as informações ja existentes do usuário
-        public void EditUsuario(Usuario e, int id)
+        public void EditUsuario(Usuario e, int iduser)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC editInfo_User @IdUsuario, @nome, @nick, @sexo, @datanasc, @descricao";
+            cmd.CommandText = @"EXEC editInfo_User @IdUsuario, @nome, @nick, @sexo, @descricao";
            
-            cmd.Parameters.AddWithValue("@IdUsuario", id);
+            cmd.Parameters.AddWithValue("@IdUsuario", iduser);
             cmd.Parameters.AddWithValue("@nome", e.Nome);
             cmd.Parameters.AddWithValue("@nick", e.Nick);
             e.Sexo = (e.Sexo != null ? e.Sexo : "");
             cmd.Parameters.AddWithValue("@sexo", e.Sexo);
-            DateTime date = Convert.ToDateTime(e.Datanasc);
-            cmd.Parameters.AddWithValue("@datanasc", date);
+            //DateTime date = Convert.ToDateTime(e.Datanasc);
+            //cmd.Parameters.AddWithValue("@datanasc", date);
             e.Descricao = (e.Descricao != null ? e.Descricao : "");
             cmd.Parameters.AddWithValue("@descricao", e.Descricao);
 
@@ -180,6 +180,7 @@ namespace DisciplineTeam.Area52.Web.Models
             }
             return e.Senha;
         }
+        //Muda a foto de perfil do usuario
         public void ChangePicture(Usuario e, int iduser)
         {
             SqlCommand cmd = new SqlCommand();
@@ -191,6 +192,20 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
+        //Muda a Data de aniversário do usuario
+        public void ChangeDob(Usuario e, int iduser)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"UPDATE usuarios SET datanasc = @datanasc WHERE @iduser = pessoa_id";
+
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+            DateTime date = Convert.ToDateTime(e.Datanasc);
+            cmd.Parameters.AddWithValue("@datanasc", date);
+
+            cmd.ExecuteNonQuery();
+        }
+        //Pega a idade do banco ja convertida para mostrar
         public int GetAgeUser(int iduser)
         {
             SqlCommand cmd = new SqlCommand();

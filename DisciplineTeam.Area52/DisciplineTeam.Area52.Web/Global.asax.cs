@@ -17,7 +17,7 @@ namespace DisciplineTeam.Area52.Web
 
         protected void Application_Error()
         {
-            
+            Response.Redirect("/Usuario");
         }
     }
 }

@@ -78,7 +78,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
         }
         //Seleciona os grupos do usuario
-        public List<ViewAll> ReadGrupoTotal(int id)
+        public List<ViewAll> ReadGrupoTotal(int iduser)
         {
             List<ViewAll> lista = new List<ViewAll>();
 
@@ -86,7 +86,7 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.Connection = connection;
             cmd.CommandText = @"SELECT * FROM v_Grupo_Part WHERE @id = id AND (PartStatus = 1 OR PartStatus = 2)";
 
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@id", iduser);
             //cmd.CommandType = System.Data.CommandType.Text;
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -116,13 +116,13 @@ namespace DisciplineTeam.Area52.Web.Models
             return quant;
         }
         //Retorna o Count dos usuarios dentro dos grupos
-        public int QuantUserGrupos(int id)
+        public int QuantUserGrupos(int idgrupo)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = @"SELECT COUNT(usuario_id) AS GruposUser FROM Participantes WHERE grupo_id = @id AND (status = 1 OR status = 2)";
 
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@id", idgrupo);
 
             int quant = (int)cmd.ExecuteScalar();
             return quant;
@@ -216,7 +216,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
-        //Altera o status do membro para 4, quando o usuario sai do grupo após ter entrado
+        //Altera o status do membro para 0, quando o usuario sai do grupo após ter entrado
         public void SairGrupo(int iduser, int idgrupo)
         {
             SqlCommand cmd = new SqlCommand();
@@ -290,6 +290,30 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
+        //Retorna a quantidade de moderadores do grupo pois se o grupo só tiver um moderador ele não poderá sair do mesmo
+        public int QuantModGrupo(int idgrupo)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT COUNT(status) AS ModeradoresGrupo FROM participantes p WHERE p.grupo_id = @idgrupo AND p.status = 2";
 
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+
+            int quant = (int)cmd.ExecuteScalar();
+            return quant;
+        }
+        //Editar a Descrição do grupo
+        public void EditarGrupo(int idgrupo, int iduser, string descricao)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"Exec editarGrupo @idgrupo, @iduser, @descricao";
+
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+            cmd.Parameters.AddWithValue("@descricao", descricao);
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }

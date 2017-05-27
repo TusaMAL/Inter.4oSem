@@ -465,4 +465,6 @@ button.cor-fonte:focus {
      text-decoration:none;
      cursor:pointer;
 }
-
+.paddingmodal{
+    padding-top: 50px;
+}

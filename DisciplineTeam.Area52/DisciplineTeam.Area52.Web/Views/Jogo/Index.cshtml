@@ -32,6 +32,11 @@
                         <td class="text-center"><img style="max-height: 30%; height: auto; border: 1px solid #000000;" class="img-circle" src="@e.Imagem" /></td>
                         <td class="text-center vertical-align">@e.Nome</td>
                         <td class="text-center vertical-align">@e.Descricao</td>
+                        <td>
+                            <a href="~/Jogo/EditJogo/?JogoId=@e.IdJogo" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search">
+                                <i id="menu-toggle" class="glyphicon glyphicon-edit"></i><span>&nbsp;Edit</span> @*Mudar Status para 1*@
+                            </a>
+                        </td>
                     </tr>
                 }
                 
