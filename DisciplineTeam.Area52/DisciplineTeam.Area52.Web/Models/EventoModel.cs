@@ -48,7 +48,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 p.IdEvento = (int)reader["IdEvento"];
                 p.Nome = (string)reader["NomeEvento"];
                 DateTime data = (DateTime)reader["DataEvento"];
-                p.Data = data.ToString("dd/MM/yyyy");
+                p.Data = data.ToString(@"yyyy-MM-dd");
                 TimeSpan hora = (TimeSpan)reader["HoraEvento"];
                 p.Hora = hora.ToString(@"hh\:mm");
                 p.Tipo = (int)reader["TipoEvento"];
@@ -64,7 +64,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT TOP 6 * FROM v_Event_Grupo WHERE IdGrupo = EventoIdGrupo AND EventoIdGrupo = @idgrupo ORDER BY DataEvento DESC"; //TODO: Achar uma regra pra selecionar os eventos que estão mais proximos
+            cmd.CommandText = @"SELECT * FROM v_Event_Grupo WHERE IdGrupo = EventoIdGrupo AND EventoIdGrupo = @idgrupo ORDER BY DataEvento ASC"; //TODO: Achar uma regra pra selecionar os eventos que estão mais proximos
 
             cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
             //cmd.CommandType = System.Data.CommandType.Text;
@@ -85,7 +85,45 @@ namespace DisciplineTeam.Area52.Web.Models
                     p.IdEvento = (int)reader["IdEvento"];
                     p.Nome = (string)reader["NomeEvento"];
                     DateTime data = (DateTime)reader["DataEvento"];
-                    p.Data = data.ToString("dd/MM/yyyy");
+                    p.Data = data.ToString(@"dd-MM-yyyy");
+                    TimeSpan hora = (TimeSpan)reader["HoraEvento"];
+                    p.Hora = hora.ToString(@"hh\:mm");
+                    p.Tipo = (int)reader["TipoEvento"];
+                    lista.Add(p);
+                }
+
+                return lista;
+            }
+        }
+        //Retorna lista de eventos do grupo
+        public List<Evento> ViewEventosIndex(int idgrupo)
+        {
+            List<Evento> lista = new List<Evento>();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT TOP 6 * FROM v_Event_Grupo WHERE IdGrupo = EventoIdGrupo AND EventoIdGrupo = @idgrupo ORDER BY DataEvento ASC"; //TODO: Achar uma regra pra selecionar os eventos que estão mais proximos
+
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+            //cmd.CommandType = System.Data.CommandType.Text;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows == false)
+            {
+                lista = null;
+                return lista;
+            }
+            else
+            {
+                while (reader.Read())
+                {
+                    Evento p = new Evento();
+                    p.IdGrupo = (int)reader["IdGrupo"];
+                    p.IdEvento = (int)reader["IdEvento"];
+                    p.Nome = (string)reader["NomeEvento"];
+                    DateTime data = (DateTime)reader["DataEvento"];
+                    p.Data = data.ToString(@"dd-MM-yyyy");
                     TimeSpan hora = (TimeSpan)reader["HoraEvento"];
                     p.Hora = hora.ToString(@"hh\:mm");
                     p.Tipo = (int)reader["TipoEvento"];
@@ -196,6 +234,25 @@ namespace DisciplineTeam.Area52.Web.Models
                 status = (int)reader["ConfStatus"];
             }
             return status;
+        }
+        //Edita as informações do evento
+        public void EditInfoEvento(Evento e)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"EXEC editarEvento @grupo_id, @id , @nome, @data, @horario, @tipo, @endereco, @descricao";
+
+
+            cmd.Parameters.AddWithValue("@grupo_id", e.IdGrupo);
+            cmd.Parameters.AddWithValue("@id", e.IdEvento);
+            cmd.Parameters.AddWithValue("@nome", e.Nome);
+            cmd.Parameters.AddWithValue("@data", e.Data);
+            cmd.Parameters.AddWithValue("@horario", e.Hora);
+            cmd.Parameters.AddWithValue("@tipo", e.Tipo);
+            cmd.Parameters.AddWithValue("@endereco", e.Endereco);
+            cmd.Parameters.AddWithValue("@descricao", e.Descricao);
+
+            cmd.ExecuteNonQuery();
         }
     }
 }

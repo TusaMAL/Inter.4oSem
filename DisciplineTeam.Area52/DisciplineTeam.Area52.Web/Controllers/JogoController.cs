@@ -129,17 +129,17 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     if (pic.Height != 256 && pic.Width != 256)
                     {
                         TempData["ErroDimensao"] = "Please use a picture with 256x256 pixels.";         //Semelhante a viewbag porem ela "vive" fora da pagina que foi criada
-                        return RedirectToAction("EditJogo");
+                        return RedirectToAction("EditJogo", new { JogoId = e.IdJogo });
                     }
                     else if (arquivo.ContentType != "image/png" && arquivo.ContentType != "image/jpeg" && arquivo.ContentType != "image/jpg")           //Verifica o formato do arquivo
                     {
                         TempData["ErroFormato"] = "Application only supports PNG or JPG image types.";
-                        return RedirectToAction("EditJogo");
+                        return RedirectToAction("EditJogo", new { JogoId = e.IdJogo });
                     }
                     else if (arquivo.ContentLength > 2097152)                                              //Verifica se o arquivo não é > que 2 MiB
                     {
                         TempData["ErroTamanho"] = "Please upload picture with less than 2MiB.";
-                        return RedirectToAction("EditJogo");
+                        return RedirectToAction("EditJogo", new { JogoId = e.IdJogo });
                     }
                 }
                 DateTime today = DateTime.Now;                                                          //cria uma variavel da hora atual
@@ -156,7 +156,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                         string path = HostingEnvironment.ApplicationPhysicalPath;                        //Pega o diretório em que o projeto está
                         //Onde vai ser armazenado
                         string caminho = path + "\\img\\imgjogo\\" + nome + System.IO.Path.GetExtension(arquivo.FileName);
-                        arquivo.SaveAs(caminho);
+                        arquivo.SaveAs(caminho);            //Salva o arquivo de fato no HD
                         e.Imagem = img;
                         TempData["SucessoImgChange"] = "Image Changed Successfully!";
                     }

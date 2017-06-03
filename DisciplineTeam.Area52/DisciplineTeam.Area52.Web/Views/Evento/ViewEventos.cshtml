@@ -1,0 +1,47 @@
+﻿@model DisciplineTeam.Area52.Web.Models.Evento
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-offset-2 col-lg-8 col-xs-12 col-sm-12 col-md-12 col-lg-offset-2">
+    <div id="cor-borda" class="panel panel-default">
+        <div id="cor-fundo-header" class="panel-heading no-border">
+            <a id="cor-fonte"><i class="glyphicon glyphicon-flash"></i><span>&nbsp;Events from @ViewBag.InfoGrupo.GNome</span></a>
+        </div>
+        <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+            <br />
+            <div>
+                @if (ViewBag.ViewEventos == null)
+                {
+                    <h5>This group haven't created or have any recent events</h5>
+                }
+                else
+                {
+                    foreach (var e in ViewBag.ViewEventos)
+                    {
+                    <!--Começo Evento-->
+                        <div id="cor-borda" class="thumbnail">
+                            <h4><a href="~/Evento/Index/?GrupoId=@e.IdGrupo&EventoId=@e.IdEvento">@e.Nome</a></h4>
+                            <h4 class="fonte-post-pequena">
+                                @e.Data, @e.Hora (UTC- 03:00)
+                                @if (e.Tipo == 1)
+                                {
+                                    <span>Online</span>
+                                }
+                                else
+                                {
+                                    <span>LAN</span>
+                                }
+                            </h4>
+                        </div>
+                    <!--Fim Evento-->
+                    }
+                    <div class="text-center" style="padding-bottom: 10px;">
+                        <a href="~/Grupo/Index/?GroupId=@ViewBag.InfoGrupo.GIdGrupo" id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Back</a>  
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

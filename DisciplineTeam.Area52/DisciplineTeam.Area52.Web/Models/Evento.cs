@@ -13,7 +13,7 @@ namespace DisciplineTeam.Area52.Web.Models
         [Required(ErrorMessage = "Event name is required")]
         public string Nome { get; set; }
         [Required]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public string Data { get; set; }
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]

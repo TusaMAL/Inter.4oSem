@@ -100,7 +100,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Nome = (string)reader["Nome"];
                 e.Nick = (string)reader["Nick"];
                 DateTime data = (DateTime)reader["Datanasc"];
-                e.Datanasc = data.ToString("MM/dd/yyyy");
+                e.Datanasc = data.ToString(@"yyyy-MM-dd");
                 e.Sexo = (string)(reader["Sexo"]!= DBNull.Value ? reader["Sexo"] : null);
                 e.Descricao = (string)(reader["Descricao"] != DBNull.Value ? reader["Descricao"] : null);
                 e.Imagem = (string)reader["Imagem"];
@@ -122,7 +122,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 e.Nome = (string)reader["PessoaNome"];
                 e.Nick = (string)reader["Nick"];
                 DateTime data = (DateTime)reader["Datanasc"];
-                e.Datanasc = data.ToString("MM/dd/yyyy");
+                e.Datanasc = data.ToString(@"yyyy-MM-dd");
                 e.Sexo = (string)(reader["Sexo"] != DBNull.Value ? reader["Sexo"] : null);
                 //e.Datanasc = (DateTime)(reader["Datanasc"] != DBNull.Value ? reader["Datanasc"] : Convert.ToDateTime((DateTime?)null));
                 //e.Datanasc = data.ToString("dd/MM/yyyy");
@@ -132,19 +132,19 @@ namespace DisciplineTeam.Area52.Web.Models
             return e;
         }
         //Editar as informações ja existentes do usuário
-        public void EditUsuario(Usuario e, int iduser)
+        public void EditUsuario(Usuario e)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC editInfo_User @IdUsuario, @nome, @nick, @sexo, @descricao";
+            cmd.CommandText = @"EXEC editInfo_User @IdUsuario, @nome, @nick, @sexo, @datanasc, @descricao";
            
-            cmd.Parameters.AddWithValue("@IdUsuario", iduser);
+            cmd.Parameters.AddWithValue("@IdUsuario", e.IdPessoa);
             cmd.Parameters.AddWithValue("@nome", e.Nome);
             cmd.Parameters.AddWithValue("@nick", e.Nick);
             e.Sexo = (e.Sexo != null ? e.Sexo : "");
             cmd.Parameters.AddWithValue("@sexo", e.Sexo);
             //DateTime date = Convert.ToDateTime(e.Datanasc);
-            //cmd.Parameters.AddWithValue("@datanasc", date);
+            cmd.Parameters.AddWithValue("@datanasc", e.Datanasc);
             e.Descricao = (e.Descricao != null ? e.Descricao : "");
             cmd.Parameters.AddWithValue("@descricao", e.Descricao);
 
@@ -189,19 +189,6 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.Parameters.AddWithValue("@iduser", iduser);
             cmd.Parameters.AddWithValue("@img", e.Imagem);
-
-            cmd.ExecuteNonQuery();
-        }
-        //Muda a Data de aniversário do usuario
-        public void ChangeDob(Usuario e, int iduser)
-        {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = connection;
-            cmd.CommandText = @"UPDATE usuarios SET datanasc = @datanasc WHERE @iduser = pessoa_id";
-
-            cmd.Parameters.AddWithValue("@iduser", iduser);
-            DateTime date = Convert.ToDateTime(e.Datanasc);
-            cmd.Parameters.AddWithValue("@datanasc", date);
 
             cmd.ExecuteNonQuery();
         }

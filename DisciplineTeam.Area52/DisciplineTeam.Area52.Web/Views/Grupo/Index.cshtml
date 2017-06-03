@@ -320,13 +320,13 @@
         <div id="collapse3" class="panel-collapse collapse in">
             <!--Corpo da Div Events-->
             <div class="panel-body no-border">
-            @if(ViewBag.ViewEventos == null)
+            @if(ViewBag.ViewEventosIndex == null)
             {
                     <h5>This group haven't created or have any recent events</h5>
             }
             else
             { 
-                foreach (var e in ViewBag.ViewEventos)
+                foreach (var e in ViewBag.ViewEventosIndex)
                 {
                     <!--Começo Evento-->
                     <div id="cor-borda" class="thumbnail">
@@ -345,6 +345,7 @@
                     </div>
                     <!--Fim Evento-->
                 }
+                <a href="~/Evento/ViewEventos/?GroupId=@ViewBag.InfoGrupo.GIdGrupo" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-grupos-amigos">See all...</p></a>
             }
             </div><!-- Fim panel-body groups -->
         </div><!--./collapse-->

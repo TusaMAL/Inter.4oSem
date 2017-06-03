@@ -23,23 +23,47 @@
                         @TempData["SucessoImgChange"]
                     </div>
                 }
-                <div class="form-group">
+                else if (TempData["ErroDimensao"] != null)
+                {
+                <div class="alert alert-danger text-center col-lg-offset-2 col-lg-8 col-lg-offset-2" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    @TempData["ErroDimensao"]
+                </div>
+                }
+                else if (TempData["ErroFormato"] != null)
+                {
+                <div class="alert alert-danger text-center col-lg-offset-2 col-lg-8 col-lg-offset-2" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    @TempData["ErroFormato"]
+                </div>
+                }
+                else if (TempData["ErroTamanho"] != null)
+                {
+                <div class="alert alert-danger text-center col-lg-offset-2 col-lg-8 col-lg-offset-2" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    @TempData["ErroTamanho"]
+                </div>
+                }
+                <div class="form-group col-lg-12">
                     <label for="nome">Name:</label>
                     @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @required = "required", maxlength = "100" })
                     @Html.ValidationMessageFor(m => m.Nome)
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-12">
                     <label for="desc">About:</label>
                     @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control textarea-sem-resize", rows = "4", @required = "required", maxlength = "500" })
                     @Html.ValidationMessageFor(m => m.Descricao)
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Current Pic:</label>
-                    <div class="col-sm-4 col-md-4 col-xs-4">
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-2 col-md-2 col-xs-2 col-lg-2 control-label">Current Pic:</label>
+                    <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">
                         <img src="@ViewBag.ReadJogoImg" alt="..." class="img-rounded borda-profile">
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
                         <p class="help-block">Please select a picture with dimensions equal to 256x256.</p>
                         <p class="help-block">Formats accepted .jpg, .png and .jpeg.</p>
                         <p class="help-block">Picture must have less than 2 MiB</p>
@@ -51,10 +75,10 @@
                         <!-- Modal -->
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <section class="col-lg-offset-3">
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                    <section class="col-lg-offset-3 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
                         <br/>
-                        <a href="~/Jogo/Index" id="cor-fonte" class="col-lg-2 center-block btn cor-fonte efeito-fade-navbar borda-botao-search"><i class="glyphicon glyphicon-floppy-remove"></i>&nbsp;Back</a>
+                        <a href="~/Jogo/Index" id="cor-fonte" class="col-lg-2 col-sm-2 col-xs-2 col-md-2 center-block btn cor-fonte efeito-fade-navbar borda-botao-search"><i class="glyphicon glyphicon-floppy-remove"></i>&nbsp;Back</a>
                         <button id="cor-fonte" class="center-block btn cor-fonte efeito-fade-navbar borda-botao-search"><i class="glyphicon glyphicon-floppy-saved"></i>&nbsp;Save Changes</button>
                     </section>
                 </div>

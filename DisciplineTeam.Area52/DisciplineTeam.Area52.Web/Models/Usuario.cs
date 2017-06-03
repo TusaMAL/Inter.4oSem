@@ -10,14 +10,11 @@ namespace DisciplineTeam.Area52.Web.Models
     {
         [Required(ErrorMessage = "Nick is required")]
         public string Nick { get; set; }
-
         public string Sexo { get; set; }
-
         [Required(ErrorMessage = "Date of birth is required")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public string Datanasc { get; set; }
-
         public string Descricao { get; set; }
         [Required(ErrorMessage = "Profile picture is required")]
         public string Imagem { get; set; }

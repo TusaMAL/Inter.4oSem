@@ -32,7 +32,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
 
             using (EventoModel model = new EventoModel())
             {
-                ViewBag.ViewEventos = model.ViewEventos(idgrupo);               //Mostra os eventos cadastrados no grupo
+                ViewBag.ViewEventosIndex = model.ViewEventosIndex(idgrupo);               //Mostra os eventos cadastrados no grupo
             }
             return View();
         }
@@ -59,7 +59,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 using (EventoModel model = new EventoModel())
                 {
-                    ViewBag.ViewEventos = model.ViewEventos(idgrupo);                   //Mostra os eventos cadastrados no grupo
+                    ViewBag.ViewEventosIndex = model.ViewEventosIndex(idgrupo);                   //Mostra os eventos cadastrados no grupo
                 }
             }
             return View();

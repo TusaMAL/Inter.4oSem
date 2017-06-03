@@ -53,9 +53,10 @@ namespace DisciplineTeam.Area52.Web.Controllers
         [HttpPost]
         public ActionResult Edit(Usuario e)
         {
+            e.IdPessoa = ((Usuario)Session["usuario"]).IdPessoa;
             using (UsuarioModel model = new UsuarioModel())
             {
-                model.EditUsuario(e, ((Usuario)Session["usuario"]).IdPessoa);       //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
+                model.EditUsuario(e);       //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
                 ViewBag.SucessoEdit = true;                                         //Usado para exibir mensagem de confirmação na view
             }
             return View(e);
@@ -162,17 +163,6 @@ namespace DisciplineTeam.Area52.Web.Controllers
             using (UsuarioModel model = new UsuarioModel())
             {
                 e = model.ReadEditUsuario(((Usuario)Session["usuario"]).IdPessoa);      //Lê os dados do usuario no BD e mostra no Formulário para poder ser editado
-            }
-            return View(e);
-        }
-        [UsuarioFiltro]
-        [HttpPost]
-        public ActionResult EditDob(Usuario e)
-        {
-            using (UsuarioModel model = new UsuarioModel())
-            {
-                model.ChangeDob(e, ((Usuario)Session["usuario"]).IdPessoa);       //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
-                ViewBag.SucessoEdit = true;                                         //Usado para exibir mensagem de confirmação na view
             }
             return View(e);
         }
