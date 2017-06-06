@@ -20,8 +20,13 @@ namespace DisciplineTeam.Area52.Web.Models
         [DataType(DataType.Time)]
         public string Hora { get; set; }
         public int Tipo { get; set; }
-        public string Endereco { get; set; }
+        public string Cep { get; set; }
+        public string Numero { get; set; }
         public string Descricao { get; set; }
+        public string Logradouro { get; set; }
+        public string Bairro { get; set; }
+        public string Localidade { get; set; }
+        public string Uf { get; set; }
 
     }
 }

@@ -16,6 +16,20 @@ namespace DisciplineTeam.Area52.Web.Controllers
         public ActionResult Index() //Testando as informações do usuario pegadas no BD
         {
             int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+            int quant;
+            if (Request.QueryString.Keys.Count > 0)
+            {
+                quant = int.Parse(Request.QueryString[0]);
+                if (quant != 10 && quant != 25 && quant != 50 && quant != 999)
+                {
+                    ViewBag.ErroQuant = true;
+                    quant = 10;
+                }
+            }
+            else
+            {
+                quant = 10;
+            }
             using (UsuarioModel model = new UsuarioModel())
             {
                 ViewBag.ReadU = model.ReadU(iduser);                                 //Pega informações do usuario que logou e manda paraa view
@@ -28,7 +42,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
             }
             using (MensagemModel model = new MensagemModel())
             {
-                ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(iduser);         //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
+                ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(iduser, quant);         //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
             }
             return View();
         }

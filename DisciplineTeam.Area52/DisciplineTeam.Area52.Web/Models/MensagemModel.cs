@@ -22,13 +22,29 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.ExecuteNonQuery();
         }
         //Leitura das Mensagens dentro do grupo
-        public List<ViewAll> ReadMensagem(int idgrupo)
+        public List<ViewAll> ReadMensagem(int idgrupo, int quant)
         {
             List<ViewAll> lista = new List<ViewAll>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT TOP 10 * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
+
+            switch (quant)
+            {
+                case 10:
+                    cmd.CommandText = @"SELECT TOP 10 * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
+                    break;
+                case 25:
+                    cmd.CommandText = @"SELECT TOP 25 * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
+                    break;
+                case 50:
+                    cmd.CommandText = @"SELECT TOP 50 * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
+                    break;
+                case 999:
+                    cmd.CommandText = @"SELECT * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
+                    break;
+            }
+
 
             cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
             //cmd.CommandType = System.Data.CommandType.Text;
@@ -53,13 +69,27 @@ namespace DisciplineTeam.Area52.Web.Models
             return lista;
         }
         //Retorna as ultimas 10 mensagens postadas ordenadas por data
-        public List<ViewAll> ReadMensagemIndex(int iduser)
+        public List<ViewAll> ReadMensagemIndex(int iduser, int quant)
         {
             List<ViewAll> lista = new List<ViewAll>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT TOP 10 * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Datahora DESC";
+            switch(quant)
+                {
+                    case 10:
+                    cmd.CommandText = @"SELECT TOP 10 * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Datahora DESC";
+                    break;
+                    case 25:
+                    cmd.CommandText = @"SELECT TOP 25 * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Datahora DESC";
+                    break;
+                    case 50:
+                    cmd.CommandText = @"SELECT TOP 50 * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Datahora DESC";
+                    break;
+                    case 999:
+                    cmd.CommandText = @"SELECT * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Datahora DESC";
+                    break;
+                }
 
             cmd.Parameters.AddWithValue("@iduser", iduser);
             //cmd.CommandType = System.Data.CommandType.Text;

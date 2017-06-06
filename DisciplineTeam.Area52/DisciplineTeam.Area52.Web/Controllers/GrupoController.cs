@@ -14,6 +14,20 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Grupos
         public ActionResult Index()
         {
+            int quant;
+            if (Request.QueryString.Keys.Count > 1)
+            {
+                quant = int.Parse(Request.QueryString[1]);
+                if (quant != 10 && quant != 25 && quant != 50 && quant != 999)
+                {
+                    ViewBag.ErroQuant = true;
+                    quant = 10;
+                }
+            }
+            else
+            {
+                quant = 10;
+            }
             int iduser = ((Usuario)Session["usuario"]).IdPessoa;
             int idgrupo = int.Parse(Request.QueryString[0]);            //Converte o Id da URL para poder ser usado
             ViewBag.IdUsuario = iduser;
@@ -27,7 +41,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
             }
             using (MensagemModel model = new MensagemModel())
             {
-                ViewBag.ReadMensagem = model.ReadMensagem(idgrupo);      //Ler as mensagens já postadas no grupo
+                ViewBag.ReadMensagem = model.ReadMensagem(idgrupo, quant);      //Ler as mensagens já postadas no grupo
             }
 
             using (EventoModel model = new EventoModel())
@@ -55,7 +69,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 using (MensagemModel model = new MensagemModel())
                 {
                     model.PostMensagem(e, iduser, idgrupo);                          //Model pra fazer post da mensagem
-                    ViewBag.ReadMensagem = model.ReadMensagem(idgrupo);                 //Ler as mensagens já postadas no grupo
+                    ViewBag.ReadMensagem = model.ReadMensagem(idgrupo, 10);                 //Ler as mensagens já postadas no grupo
                 }
                 using (EventoModel model = new EventoModel())
                 {
@@ -70,7 +84,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
         {
             int iduser = 0;
 
-            if (Request.QueryString["UserID"] != null)
+            if (Request.QueryString.Keys.Count > 0)
             {
                 iduser = int.Parse(Request.QueryString["UserID"]);
             }
@@ -144,16 +158,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
         public ActionResult Search()
         {
             int iduser = ((Usuario)Session["usuario"]).IdPessoa;
-            if ((Request.QueryString[0]) == null)
-            {
-                using (UsuarioModel model = new UsuarioModel())
-                {
-                    ViewBag.ReadU = model.ReadU(iduser);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
-                    ViewBag.GetAgeUser = model.GetAgeUser(iduser);
-                }
-                return View();
-            }
-            else
+            if (Request.QueryString.Keys.Count > 0)
             {
                 string busca = (Request.QueryString[0]);                                    //Recebe o primeiro parametro da URL
                 using (UsuarioModel model = new UsuarioModel())
@@ -164,6 +169,15 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 using (GrupoModel model = new GrupoModel())
                 {
                     ViewBag.BuscaGrupo = model.BuscarGrupo(busca);                           //Busca e retorna informações de busca do jogo
+                }
+                return View();
+            }
+            else
+            {
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    ViewBag.ReadU = model.ReadU(iduser);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                    ViewBag.GetAgeUser = model.GetAgeUser(iduser);
                 }
                 return View();
             }

@@ -3,8 +3,11 @@ using DisciplineTeam.Area52.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace DisciplineTeam.Area52.Web.Controllers
 {
@@ -46,6 +49,8 @@ namespace DisciplineTeam.Area52.Web.Controllers
             {
                 ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                   //Pega as informações do grupo pra mostrar       
             }
+            Evento e = new Evento();
+            ViewBag.Endereco = e;
 
             return View();
         }
@@ -119,7 +124,24 @@ namespace DisciplineTeam.Area52.Web.Controllers
             {
                 model.EditInfoEvento(e);
             }
-            return RedirectToAction("Index", "Evento", new { GrupoId = e.IdGrupo, EventoId = e.IdEvento });
+            return RedirectToAction("Index", "Evento", new { GrupoId = e.IdGrupo, EventoId = e.IdEvento, e });
+        }
+        [UsuarioFiltro]
+        public ActionResult EditEvento()
+        {
+            Evento e = new Evento();
+            e.IdGrupo = int.Parse(Request.QueryString[0]);
+            e.IdEvento = int.Parse(Request.QueryString[1]);
+            using (EventoModel model = new EventoModel())
+            {
+                e = model.ReadEvento(e.IdEvento, e.IdGrupo);
+                ViewBag.EventoId = e.IdEvento;
+            }
+            using (GrupoModel model = new GrupoModel())
+            {
+                ViewBag.InfoGrupo = model.InfoGrupo(e.IdGrupo);
+            }
+            return View(e);
         }
         [UsuarioFiltro]
         //GET
@@ -136,5 +158,60 @@ namespace DisciplineTeam.Area52.Web.Controllers
             }
                 return View();
         }
+        [HttpPost]
+        public async Task<ActionResult> Endereco(FormCollection endereco)
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            string CEP = endereco["Cep"];
+            string url = "http://viacep.com.br/ws/" + CEP + "/json/";
+
+            if (Validacoes.VerificarValidadeDoCep(CEP) == false)
+            {
+                TempData["CepInvalido"] = "Invalid Zip-Code!";
+                return RedirectToAction("Create", "Evento", new { GrupoId = idgrupo });
+            }
+                Evento e = new Evento();
+            //using System.Net.Http;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(url);
+
+            e = await response.Content.ReadAsAsync<Evento>();
+            TempData["Cep"] = e.Cep;
+            TempData["Localidade"] = e.Localidade + " - " + e.Uf;
+            TempData["Bairro"] = e.Bairro;
+            TempData["Logradouro"] = e.Logradouro;
+
+
+            return RedirectToAction("Create", "Evento", new { GrupoId = idgrupo });
+        }
+        [HttpPost]
+        public async Task<ActionResult> EnderecoEdit(FormCollection endereco)
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int idevento = int.Parse(Request.QueryString[1]);
+            string CEP = endereco["Cep"];
+            string url = "http://viacep.com.br/ws/" + CEP + "/json/";
+            Evento e = new Evento();
+            if (Validacoes.VerificarValidadeDoCep(CEP) == false)
+            {
+                TempData["CepInvalido"] = "Invalid Zip-Code!";
+                return RedirectToAction("EditEvento", "Evento", new { GrupoId = idgrupo, EventoId = idevento });
+            }
+            
+            //using System.Net.Http;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(url);
+
+            e = await response.Content.ReadAsAsync<Evento>();
+            TempData["Cep"] = e.Cep;
+            TempData["Localidade"] = e.Localidade + " - " + e.Uf;
+            TempData["Bairro"] = e.Bairro;
+            TempData["Logradouro"] = e.Logradouro;
+
+
+            return RedirectToAction("EditEvento", "Evento", new { GrupoId = idgrupo, EventoId = idevento });
+        }
+
+
     }
 }

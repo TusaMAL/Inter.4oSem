@@ -53,6 +53,14 @@
 <!-- Div com tamanho 7/12 lg, 12/12 sm e 6/12 md-->
 <div class="col-lg-7 col-sm-12 col-md-5">
     <!-- Div com tamanho maximo dentro da div acima-->
+    @if (ViewBag.ErroQuant == true)
+            {
+        <div class="alert alert-danger text-center col-lg-12" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span><h3 class="text-center">Invalid message load parameters! Please enter a valid value.</h3>
+
+        </div>
+    }
     <div class="col-lg-12">
         @foreach (var e in ViewBag.ReadMensagemIndex)
         {
@@ -79,67 +87,23 @@
             </div><!--./thumbnail-->
         }
     </div><!-- Fim - col-lg-12 -->
+    <section class="text-center">
+        @using (Html.BeginForm("Index", "Usuario", new { Mensagem = "Msg" }, FormMethod.Get, new { @class = "" }))
+        {
+            <div class="col-lg-12 form-inline">
+                @Html.DropDownList("Msg", new List<SelectListItem> {
+                       new SelectListItem { Value = "10" , Text = "10" },
+                       new SelectListItem { Value = "25" , Text = "25" },
+                       new SelectListItem { Value = "50" , Text = "50" },
+                       new SelectListItem { Value = "999" , Text = "All" }
+                    }, new { @class = "form-control", @required = "required" })&nbsp;<button id="cor-fonte" class="form-control btn cor-fonte efeito-fade-navbar">Load Messages</button>
+
+            </div>
+        }
+    </section>
 </div><!-- ./Div com tamanho 7/12 lg, 12/12 sm e 6/12 md-->
-<!--
-
-    fim Feed
-
--->
-<!--
-
-    Começo Amigos e grupos
-
--->
-
 <div class="col-lg-3 col-sm-12 col-md-4">
-    <!--<div id="cor-borda" class="panel panel-default">
-        <div id="cor-fundo" class="panel-heading">
-            <a id="cor-fonte" href="~/Usuario/Friends"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Friends (7)</span></a>
-        </div>
-        <div class="panel-body">
-
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
-                        <img class="img-responsive center-block" src="~/img/akhe.jpg" alt="">
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="Gust">
-                        <img class="img-responsive center-block" src="~/img/gust.jpg" alt="">
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Gust</p>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="MXJonasV">
-                        <img class="img-responsive center-block" src="~/img/john.jpg" alt="">
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">MXJonasV</p>
-                    </a>
-                </div>
-
-
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="MXJonasV">
-                        <img class="img-responsive center-block" src="~/img/john.jpg" alt="">
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">MXJonasV</p>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="Gust">
-                        <img class="img-responsive center-block" src="~/img/gust.jpg" alt="">
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Gust</p>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a id="cor-fonte-menu" href="#" class="thumbnail" title="Akhenathon">
-                        <img class="img-responsive center-block" src="~/img/akhe.jpg" alt="">
-                        <p class="nick-friendgroup text-center fonte-responsiva-grupos-amigos text-overflow">Akhenathon</p>
-                    </a>
-                </div>
-
-            <a href="~/pages/friend.html" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
-        </div> fim panel-body Friends
-    </div> fim panel-default Friends -->
+    
     <div id="cor-borda" class="panel panel-default">
         <div id="cor-fundo-header" class="panel-heading no-border">
             <a id="cor-fonte" href="~/Grupo/Groups/?UserId=@ViewBag.ReadU.IdPessoa"><span class="glyphicon glyphicon-list cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Groups (@ViewBag.QuantGruposParticipa)</span></a>

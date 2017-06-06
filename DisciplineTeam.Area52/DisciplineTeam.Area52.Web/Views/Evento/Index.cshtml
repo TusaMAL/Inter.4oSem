@@ -75,80 +75,10 @@
                         }
                         @if (ViewBag.StatusUserGrupo == 2)
                         {
-                        <!-- Button trigger modal -->
                             <br />
-                            <button type="button" id="cor-fonte" class="center-block btn cor-fonte efeito-fade-navbar borda-botao-search" data-toggle="modal" data-target="#myModal">
-                                <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Event Info
-                            </button>
-                        <!-- Modal -->
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="padding-top: 50px;">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Edit Event Settings</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form class="form-horizontal" action="~/Evento/BtnEditEvento/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento" method="post" enctype="multipart/form-data">
-                                                <br />
-                                                <div class="form-group">
-                                                    <label for="label_name_event" class="col-sm-2 control-label">Name:</label>
-                                                    <div class="col-sm-9">
-                                                        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @placeholder = "Event Name...", @required = "required", @maxlength = "30" })
-                                                        @Html.ValidationMessageFor(m => m.Nome)
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="label_date" class="col-sm-2 control-label">Date:</label>
-                                                    <div class="col-sm-4">
-                                                        @Html.TextBoxFor(m => m.Data, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control date", @title = "Event Date", @required = "required", min = "1900-01-01", max = "2022-12-31" })
-                                                        @Html.ValidationMessageFor(m => m.Data)
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="label_time" class="col-sm-2 control-label">Time:</label>
-                                                    <div class="col-sm-3">
-                                                        @Html.TextBoxFor(m => m.Hora, "{0:HH:MM}", new { @type = "time", @class = "form-control date", @title = "Event Date", @required = "required" })
-                                                        @Html.ValidationMessageFor(m => m.Hora)
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Location:</label>
-                                                    <div class="col-sm-8">
-                                                        <div class="col-sm-3">
-                                                            <label class="radio-inline">
-                                                                @Html.RadioButtonFor(m => m.Tipo, "1", new { @id = "Online", @onclick = "disableRadio()" })@Html.Label("Online")
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-sm-9">
-                                                            <label class="radio-inline">
-                                                                @Html.RadioButtonFor(m => m.Tipo, "2", new { @id = "LAN", @onclick = "enableRadio()" })@Html.Label("LAN")
-                                                            </label>
-                                                            <div class="col-sm-offset-4 col-sm-8">
-                                                                @Html.ValidationMessageFor(m => m.Tipo)
-                                                                @Html.TextBoxFor(m => m.Endereco, new { @class = "form-control", @placeholder = "ZipCode", @id = "txtLAN" })
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="label_desc" class="col-sm-2 control-label">About Event:</label>
-                                                    <div class="col-sm-9">
-                                                        @Html.TextAreaFor(m => m.Descricao, new { rows = 4, @class = "form-control textarea-sem-resize", @placeholder = "About Event...", @maxlength = "500" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group center-block">
-                                                    <section class="col-lg-12">
-                                                        <button id="cor-fonte" class="col-lg-offset-2 col-lg-3 btn cor-fonte efeito-fade-navbar borda-botao-search" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-remove"></span>&nbsp;Close</button>
-
-                                                        <button id="cor-fonte" type="submit" class="col-lg-offset-2 col-lg-3 btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-floppy-saved"></span>&nbsp;Edit Event</button>
-                                                    </section>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <a href="~/Evento/EditEvento/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento" id="cor-fonte" class="col-lg-offset-2 btn cor-fonte efeito-fade-navbar borda-botao-search col-lg-8">
+                                    <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Event Info
+                                </a>
                         }
                     </center>
                 </div>
@@ -189,11 +119,14 @@
                                     <tr><td class="text-right font-perfil">State:</td><td>&nbsp;São Paulo</td></tr>*@
                                 @if (ViewBag.ReadEvento.Tipo == 1)
                                 {
-
+                                    <tr><td class="text-right font-perfil">Online Event</td></tr>
                                 }
                                 else
                                 {
-                                    <tr><td class="text-right font-perfil">Event Host:</td><td>&nbsp;@ViewBag.ReadEvento.Endereco</td></tr>
+                                    <tr><td class="text-right font-perfil">Address:</td><td>&nbsp;@ViewBag.ReadEvento.Logradouro, @ViewBag.ReadEvento.Numero</td></tr>
+                                    <tr><td class="text-right font-perfil">District:</td><td>&nbsp;@ViewBag.ReadEvento.Bairro</td></tr>
+                                    <tr><td class="text-right font-perfil">Zip-Code:</td><td>&nbsp;@ViewBag.ReadEvento.Cep</td></tr>
+                                    <tr><td class="text-right font-perfil">City:</td><td>&nbsp;@ViewBag.ReadEvento.Localidade</td></tr>
                                 }
                             </table>
                             </p>
@@ -258,7 +191,7 @@
         document.getElementById('txtLAN').style.visibility = 'hidden';
     }
 
-    disableRadio();
+    enableRadio();
     //    alert('abc');
     //    if ($("#Online").is(":checked")) {
     //        alert('teste');
@@ -271,8 +204,3 @@
     //$(enableRadio);
     //$("#Online").change(enableRadio);
 </script>
-<!--
-
-   Fim Amigos e grupos
-
-   -->

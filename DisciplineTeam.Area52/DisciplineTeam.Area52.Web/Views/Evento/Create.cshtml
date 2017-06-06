@@ -10,12 +10,82 @@
             <a id="cor-fonte"><i class="glyphicon glyphicon-flash"></i><span>&nbsp;Create Event</span></a>
         </div>
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
-            <form class="form-horizontal" method="post">
+            <form id="endereco" action="/Evento/Endereco/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo" method="post"></form>
+                <form id="myform" action="/Evento/Create/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo" class="form-horizontal" method="post">
+
                     <br />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Type:</label>
+                        <div class="col-sm-8">
+                            <div class="col-sm-3">
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(m => m.Tipo, "1", new { @id = "Online", @onclick = "disableRadio()" })@Html.Label("Online")
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(m => m.Tipo, "2", new { @id = "LAN", @onclick = "enableRadio()", @checked = "checked" })@Html.Label("LAN")
+                                </label>
+                                @Html.ValidationMessageFor(m => m.Tipo)
+                            </div>
+                        </div>
+                    </div>
+                    <div id="txtLAN">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Zip-Code:</label>
+                            <div class="col-sm-3">
+                                @Html.Hidden("Cep", (string)TempData["Cep"], new { @form = "myform", @required = "required" })
+                                @Html.TextBox("Cep", (string)TempData["Cep"], new { @id = "cep", @form = "endereco", @class = "form-control", @placeholder = "Zip-Code", @required = "required", @maxlength = "9" })
+                            </div>
+                            <div class="col-sm-3">
+                                <button id="cor-fonte" name="botao" class="btn cor-fonte efeito-fade-navbar borda-botao-search" form="endereco">Get Address</button>
+                            </div>
+                            @if (TempData["CepInvalido"] != null)
+                            {
+                                <div class="form-group col-sm-12">
+                                    <br />
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-9 alert alert-danger text-center form-group" role="alert">
+                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                        <span class="sr-only">Error:</span>
+                                        @TempData["CepInvalido"]
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Number:</label>
+                            <div class="col-sm-3">
+                                @Html.TextBoxFor(m => m.Numero, new { @form = "myform", @class = "form-control", @placeholder = "Number" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Address:</label>
+                            <div class="col-sm-6">
+                                @Html.Hidden("Logradouro", (string)TempData["Logradouro"], new { @form = "myform", @required = "required" })
+                                @Html.TextBox("Logradouro", (string)TempData["Logradouro"], new { @disabled = "disabled", @class = "form-control", @placeholder = "Address" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">District:</label>
+                            <div class="col-sm-6">
+                                @Html.Hidden("Bairro", (string)TempData["Bairro"], new { @form = "myform", @required = "required" })
+                                @Html.TextBox("Bairro", (string)TempData["Bairro"], new { @disabled = "disabled", @class = "form-control", @placeholder = "District" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">City:</label>
+                            <div class="col-sm-6">
+                                @Html.Hidden("Localidade", (string)TempData["Localidade"], new { @form = "myform", @required = "required" })
+                                @Html.TextBox("Localidade", (string)TempData["Localidade"], new { @disabled = "disabled", @class = "form-control", @placeholder = "City" })
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="label_name_event" class="col-sm-2 control-label">Name:</label>
                         <div class="col-sm-9">
-                            @Html.TextBoxFor(m=>m.Nome, new { @class = "form-control", @placeholder = "Event Name...", @required = "required", @maxlength = "30"})
+                            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @placeholder = "Event Name...", @required = "required", @maxlength = "30" })
                             @Html.ValidationMessageFor(m => m.Nome)
                         </div>
                     </div>
@@ -29,31 +99,15 @@
                     <div class="form-group">
                         <label for="label_time" class="col-sm-2 control-label">Time:</label>
                         <div class="col-sm-3">
-                            @Html.TextBoxFor(m => m.Hora, "{0:HH:MM}", new { @type = "time", @class = "form-control date", @title = "Event Date", @required = "required"})
+                            @Html.TextBoxFor(m => m.Hora, "{0:HH:MM}", new { @type = "time", @class = "form-control date", @title = "Event Date", @required = "required" })
                             @Html.ValidationMessageFor(m => m.Hora)
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Location:</label>
-                        <div class="col-sm-8">
-                            <div class="col-sm-3">
-                                <label class="radio-inline">
-                                    @Html.RadioButtonFor(m => m.Tipo, "1", new { @id = "Online", @onclick="disableRadio()" })@Html.Label("Online")
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline">
-                                    @Html.RadioButtonFor(m => m.Tipo, "2", new { @id = "LAN", @onclick="enableRadio()" })@Html.Label("LAN")
-                                </label>
-                                @Html.ValidationMessageFor(m => m.Tipo)
-                                @Html.TextBoxFor(m => m.Endereco, new { @class = "form-control", @placeholder = "Address", @id="txtLAN"})
-                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="label_desc" class="col-sm-2 control-label">About Event:</label>
                         <div class="col-sm-9">
-                            @Html.TextAreaFor(m => m.Descricao, new { rows = 4, @class = "form-control textarea-sem-resize", @placeholder = "About Event..." })
+                            @Html.TextAreaFor(m => m.Descricao, new { @rows = 4, @class = "form-control textarea-sem-resize", @placeholder = "About Event..." })
+                            @Html.ValidationMessageFor(m => m.Descricao)
                         </div>
                     </div>
                     <div class="form-group text-center">
@@ -67,22 +121,37 @@
                             <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Create Event</button>
                         </div>
                     </div>
-            </form>
-        </div>
+                </form>
+
+</div>
     </div>
 </div>
 
 
 <script>
     var enableRadio = function () {
-        document.getElementById('txtLAN').style.visibility = 'visible';
+        document.getElementById('txtLAN').style.display = 'block';
     }
 
     var disableRadio = function () {
-        document.getElementById('txtLAN').style.visibility = 'hidden';
+        document.getElementById('txtLAN').style.display = 'none';
     }
 
-    disableRadio();
+    var radios = document.getElementsByName('Tipo');
+
+    for (var i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+            // do whatever you want with the checked radio
+            if (radios[i].value == 1) {
+                disableRadio();
+                break;
+            }
+            else
+                enableRadio();
+            break;
+            // only one radio can be logically checked, don't check the rest
+        }
+    }
     //    alert('abc');
     //    if ($("#Online").is(":checked")) {
     //        alert('teste');
