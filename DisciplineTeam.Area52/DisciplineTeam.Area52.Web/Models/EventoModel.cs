@@ -210,6 +210,31 @@ namespace DisciplineTeam.Area52.Web.Models
             }
             return lista;
         }
+        //Mostra os usuarios que tem presença confirmada no evento
+        public List<ViewAll> ViewConfUserEventoAll(int idgrupo, int idevento)
+        {
+            List<ViewAll> lista = new List<ViewAll>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT * FROM v_Conf_Evento_Grupo WHERE ConfGrupoId = @idgrupo AND ConfEventoId = @idevento AND ConfStatus = 1";
+
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+            cmd.Parameters.AddWithValue("@idevento", idevento);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ViewAll p = new ViewAll();
+                p.CIdGrupo = (int)reader["ConfGrupoId"];
+                p.CIdUsuario = (int)reader["ConfUserId"];
+                p.CIdEvento = (int)reader["ConfEventoId"];
+                p.UNick = (string)reader["UserNick"];
+                p.UImagem = (string)(reader["UserImg"] != DBNull.Value ? reader["UserImg"] : null);
+                lista.Add(p);
+            }
+            return lista;
+        }
         //Retorna o Count dos usuarios que vão para o evento
         public int QuantUserPartEvento(int idgrupo, int idevento)
         {

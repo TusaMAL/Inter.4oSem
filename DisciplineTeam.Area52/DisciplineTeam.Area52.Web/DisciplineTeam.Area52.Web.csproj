@@ -185,6 +185,7 @@
     <Content Include="Views\Jogo\EditJogo.cshtml" />
     <Content Include="Views\Evento\EditEvento.cshtml" />
     <Content Include="Views\Evento\ViewEventos.cshtml" />
+    <Content Include="Views\Evento\Members.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -29,22 +29,7 @@ namespace DisciplineTeam.Area52.Web.Models
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
 
-            switch (quant)
-            {
-                case 10:
-                    cmd.CommandText = @"SELECT TOP 10 * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
-                    break;
-                case 25:
-                    cmd.CommandText = @"SELECT TOP 25 * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
-                    break;
-                case 50:
-                    cmd.CommandText = @"SELECT TOP 50 * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
-                    break;
-                case 999:
-                    cmd.CommandText = @"SELECT * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
-                    break;
-            }
-
+            cmd.CommandText = @"SELECT TOP " + quant + " * FROM v_Grupo_Msg WHERE @idgrupo = grupo_id ORDER BY Datahora DESC";
 
             cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
             //cmd.CommandType = System.Data.CommandType.Text;
@@ -75,21 +60,9 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            switch(quant)
-                {
-                    case 10:
-                    cmd.CommandText = @"SELECT TOP 10 * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Datahora DESC";
-                    break;
-                    case 25:
-                    cmd.CommandText = @"SELECT TOP 25 * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Datahora DESC";
-                    break;
-                    case 50:
-                    cmd.CommandText = @"SELECT TOP 50 * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Datahora DESC";
-                    break;
-                    case 999:
-                    cmd.CommandText = @"SELECT * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Datahora DESC";
-                    break;
-                }
+
+            cmd.CommandText = @"SELECT TOP " + quant + " * FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Datahora DESC";
+                   
 
             cmd.Parameters.AddWithValue("@iduser", iduser);
             //cmd.CommandType = System.Data.CommandType.Text;

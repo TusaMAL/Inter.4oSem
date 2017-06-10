@@ -158,6 +158,27 @@ namespace DisciplineTeam.Area52.Web.Controllers
             }
                 return View();
         }
+        public ActionResult Members()
+        {
+            int idgrupo = int.Parse(Request.QueryString[0]);
+            int idevento = int.Parse(Request.QueryString[1]);
+
+            Evento e = new Evento();
+            using (EventoModel model = new EventoModel())
+            {
+                e = model.ReadEvento(idevento, idgrupo);                                            //Pega as informações do evento 
+                ViewBag.ReadEvento = e;
+                DateTime date = Convert.ToDateTime(e.Data);
+                ViewBag.DataFormatada = date.ToString(@"dd-MM-yyyy");                               //Converte a data pro formato de dia/mes/ano
+                ViewBag.ViewConfUserEventoAll = model.ViewConfUserEventoAll(idgrupo, idevento);     //Mostra os usuarios com presença confirmada
+                ViewBag.QuantUserPartEvento = model.QuantUserPartEvento(idgrupo, idevento);         //Retorna o count de usuarios que vão ao evento
+            }
+            using (GrupoModel model = new GrupoModel())
+            {
+                ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar 
+            }
+            return View(e);
+        }
         [HttpPost]
         public async Task<ActionResult> Endereco(FormCollection endereco)
         {
@@ -211,6 +232,8 @@ namespace DisciplineTeam.Area52.Web.Controllers
 
             return RedirectToAction("EditEvento", "Evento", new { GrupoId = idgrupo, EventoId = idevento });
         }
+        //Get Usuario dos eventos
+        
 
 
     }

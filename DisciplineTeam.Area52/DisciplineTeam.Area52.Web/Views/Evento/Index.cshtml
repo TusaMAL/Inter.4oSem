@@ -75,11 +75,16 @@
                         }
                         @if (ViewBag.StatusUserGrupo == 2)
                         {
-                            <br />
+                            <div style="padding-top: 10px; padding-bottom: 45px;">
                                 <a href="~/Evento/EditEvento/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento" id="cor-fonte" class="col-lg-offset-2 btn cor-fonte efeito-fade-navbar borda-botao-search col-lg-8">
                                     <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Event Info
                                 </a>
+                            </div>
                         }
+                            <a href="~/Grupo/Index/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo" id="cor-fonte" class="col-lg-offset-2 btn cor-fonte efeito-fade-navbar borda-botao-search col-lg-8">
+                                    <span class="glyphicon glyphicon-remove"></span>&nbsp;Back
+                            </a>
+                        <br />
                     </center>
                 </div>
             </center>
@@ -129,7 +134,6 @@
                                     <tr><td class="text-right font-perfil">City:</td><td>&nbsp;@ViewBag.ReadEvento.Localidade</td></tr>
                                 }
                             </table>
-                            </p>
                         </div><!--./media-body-->
                     </div><!--./media-->
                 </div><!--/thumbnail-->
@@ -148,7 +152,7 @@
         <!-- Escritos e icones da barra preta da div-->
         <div id="cor-fundo-header" class="panel-heading no-border">
             <!-- Escritos e icones da barra preta da div-->
-            <a id="cor-fonte" href="~/Usuario/Members"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Going Members (@ViewBag.QuantUserPartEvento)</span></a>
+            <a id="cor-fonte" href="~/Evento/Members/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento"><span class="glyphicon glyphicon-star cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Going Members (@ViewBag.QuantUserPartEvento)</span></a>
         </div><!--/panel-heading-->
         <!-- Corpo do texto da div nem todas terão ele-->
         <div class="panel-body no-border">
@@ -176,7 +180,7 @@
             {
                     <!-- Coluna criada pra evitar que o See more nao fique sem ser no final da coluna-->
                 <div class="col-lg-12">
-                    <a href="~/pages/friend.html" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
+                    <a href="~/Evento/Members/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento" class="cor-fonte-menu"><p class="text-right fonte-responsiva-grupos-amigos">See more...</p></a>
                 </div><!--/col-lg-12-->
             }
         </div> <!--fim panel-body Members-->
