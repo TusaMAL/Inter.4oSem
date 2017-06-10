@@ -67,6 +67,13 @@ namespace DisciplineTeam.Area52.Web.Controllers
             {
                 using (EventoModel model = new EventoModel())
                 {
+                    DateTime date = DateTime.Now;
+                    DateTime dataevento = Convert.ToDateTime(e.Data);
+                    if (dataevento < date)
+                    {
+                        TempData["DataInvalida"] = "Your event date is older than the current date, for creating an event please use a newer date.";
+                        return View(e);
+                    }
                     model.Create(e, idgrupo);                                   //Cria o evento
                 }
             }

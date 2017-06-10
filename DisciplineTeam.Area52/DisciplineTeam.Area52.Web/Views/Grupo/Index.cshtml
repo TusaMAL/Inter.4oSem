@@ -108,7 +108,7 @@
                                                     </div><!--./form-group-->
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" data-dismiss="modal">Close</button>
+                                                    <button type="button" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;Close</button>
                                                 </div>
                                             </div><!-- /.modal-content -->
                                         </div><!-- /.modal-dialog -->
@@ -221,6 +221,8 @@
                                     </div>
                                 </form>
                             </li>
+                            @if (e.PIdPessoa != ViewBag.IdUsuario)
+                            {
                             <li>
                                 <form method="post" action="~/Grupo/BtnBanUser/?IdGrupo=@e.GIdGrupo&IdUser=@e.PIdPessoa">
                                     <div class="join">
@@ -230,6 +232,7 @@
                                     </div>
                                 </form>
                             </li>
+                            }
                         </ul>
                     </div>
                     }
@@ -331,22 +334,23 @@
         <!-- Escritos e icones da barra preta da div-->
         <div id="cor-fundo-header" class="panel-heading no-border">
             <!-- Escritos e icones da barra, e ativador do collapse-->
-            <a id="cor-fonte" data-toggle="collapse" href="#collapse3"><span class="glyphicon glyphicon-pushpin cor-fonte-sem-efeito">&nbsp;</span><span class="cor-fonte-sem-efeito">Events</span></a>
+            <a id="cor-fonte" data-toggle="collapse" href="#collapse3"><span class="glyphicon glyphicon-pushpin cor-fonte-sem-efeito">&nbsp;</span><span class="cor-fonte-sem-efeito">Recent Events</span></a>
         </div>
         <div id="collapse3" class="panel-collapse collapse in">
             <!--Corpo da Div Events-->
             <div class="panel-body no-border">
             @if(ViewBag.ViewEventosIndex == null)
             {
-                    <h5>This group haven't created or have any recent events</h5>
+                    <h5>This group haven't created or have any recent events. </h5>
+                    <a href="~/Evento/ViewEventos/?GroupId=@ViewBag.InfoGrupo.GIdGrupo" class="cor-fonte-menu col-sm-12 col-lg-12"><p class="text-right fonte-responsiva-grupos-amigos">Click here to see all events...</p></a>
             }
             else
-            { 
+            {
                 foreach (var e in ViewBag.ViewEventosIndex)
                 {
                     <!--Começo Evento-->
                     <div id="cor-borda" class="thumbnail">
-                        <h4><a href="~/Evento/Index/?GrupoId=@e.IdGrupo&EventoId=@e.IdEvento">@e.Nome</a></h4>
+                        <h4 class="break-word"><a href="~/Evento/Index/?GrupoId=@e.IdGrupo&EventoId=@e.IdEvento">@e.Nome</a></h4>
                         <h4 class="fonte-post-pequena">
                             @e.Data, @e.Hora (UTC- 03:00)
                             @if (e.Tipo == 1)

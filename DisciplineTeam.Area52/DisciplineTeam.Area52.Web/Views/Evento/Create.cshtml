@@ -38,7 +38,7 @@
                                 @Html.TextBox("Cep", (string)TempData["Cep"], new { @id = "cep", @form = "endereco", @class = "form-control", @placeholder = "Zip-Code", @required = "required", @maxlength = "9" })
                             </div>
                             <div class="col-sm-3">
-                                <button id="cor-fonte" name="botao" class="btn cor-fonte efeito-fade-navbar borda-botao-search" form="endereco">Get Address</button>
+                                <button id="cor-fonte" name="botao" class="btn cor-fonte efeito-fade-navbar borda-botao-search" form="endereco"><span class="glyphicon glyphicon-download"></span>&nbsp;Get Address</button>
                             </div>
                             @if (TempData["CepInvalido"] != null)
                             {
@@ -89,6 +89,18 @@
                             @Html.ValidationMessageFor(m => m.Nome)
                         </div>
                     </div>
+                    @if (TempData["DataInvalida"] != null)
+                    {
+                        <div class="form-group col-sm-12">
+                            <br />
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-9 alert alert-danger text-center form-group" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                @TempData["DataInvalida"]
+                            </div>
+                        </div>
+                    }
                     <div class="form-group">
                         <label for="label_date" class="col-sm-2 control-label">Date:</label>
                         <div class="col-sm-3">
@@ -112,13 +124,10 @@
                     </div>
                     <div class="form-group text-center">
                         <div class="form-group col-lg-6">
-                            <a id="cor-fonte" href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Back</a>
-                        </div>
-                        <div class="form-group col-lg-1">
-                            <button id="cor-fonte" type="reset" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Clear</button>
+                            <a id="cor-fonte" href="~/Grupo/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-floppy-remove"></span>&nbsp;Back</a>
                         </div>
                         <div class="form-group col-lg-6">
-                            <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Create Event</button>
+                            <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-floppy-saved"></span>&nbsp;Create Event</button>
                         </div>
                     </div>
                 </form>
