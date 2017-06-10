@@ -1,8 +1,8 @@
 # Inter.4oSem
 
-Para executar o projeto executar o script BD_Area52
+Para executar o projeto executar o script do banco BD_Area52.sql primeiro
 
-Inserts no banco executar o script de Inserts
+Logo após para o banco não ficar vazio e vc povoa-lo execute o script de Inserts.sql que ele fará os inserts para que vc possa testar.
 
 Qualquer bug ou problema conhecido está na seção "Issues"
 
