@@ -49,7 +49,7 @@
                             @Html.TextBox("Cep", (string)TempData["Cep"], new { @id = "cep", @form = "endereco", @class = "form-control", @placeholder = "Zip-Code", @required = "required", @maxlength = "9" })
                         </div>
                         <div class="col-sm-3 cep">
-                            <button id="cor-fonte" name="botao" class="btn cor-fonte efeito-fade-navbar borda-botao-search" form="endereco">Get Address</button>
+                            <button id="cor-fonte" name="botao" class="btn cor-fonte efeito-fade-navbar borda-botao-search" form="endereco"><span class="glyphicon glyphicon-download"></span>&nbsp;Get Address</button>
                         </div>
                         
                     </div>
@@ -111,10 +111,10 @@
                 </div>
                 <div class="form-group text-center">
                     <div class="form-group col-lg-6">
-                        <a id="cor-fonte" href="~/Evento/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo&EventoId=@ViewBag.EventoId" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Back</a>
+                        <a id="cor-fonte" href="~/Evento/Index/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo&EventoId=@ViewBag.EventoId" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-remove"></span>&nbsp;Back</a>
                     </div>
                     <div class="form-group col-lg-6">
-                        <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Edit Event</button>
+                        <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-floppy-saved"></span>&nbsp;Edit Event</button>
                     </div>
                 </div>
             </form>
