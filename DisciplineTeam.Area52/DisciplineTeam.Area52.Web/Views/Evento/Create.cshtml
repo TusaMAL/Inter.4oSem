@@ -19,12 +19,12 @@
                         <div class="col-sm-8">
                             <div class="col-sm-3">
                                 <label class="radio-inline">
-                                    @Html.RadioButtonFor(m => m.Tipo, "1", new { @id = "Online", @onclick = "disableRadio()" })@Html.Label("Online")
+                                    @Html.RadioButtonFor(m => m.Tipo, "1", new { @id = "Online", @onclick = "disableRadio()", @required = "required" })@Html.Label("Online")
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    @Html.RadioButtonFor(m => m.Tipo, "2", new { @id = "LAN", @onclick = "enableRadio()", @checked = "checked" })@Html.Label("LAN")
+                                    @Html.RadioButtonFor(m => m.Tipo, "2", new { @id = "LAN", @onclick = "enableRadio()", @required = "required" })@Html.Label("LAN")
                                 </label>
                                 @Html.ValidationMessageFor(m => m.Tipo)
                             </div>

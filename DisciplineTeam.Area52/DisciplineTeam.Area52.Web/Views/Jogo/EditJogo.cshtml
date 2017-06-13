@@ -55,7 +55,7 @@
 
                 <div class="form-group col-lg-12">
                     <label for="desc">About:</label>
-                    @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control textarea-sem-resize", rows = "4", @required = "required", maxlength = "500" })
+                    @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control textarea-sem-resize", rows = "4", @required = "required", maxlength = "20" })
                     @Html.ValidationMessageFor(m => m.Descricao)
                 </div>
                 <div class="form-group col-lg-12">
