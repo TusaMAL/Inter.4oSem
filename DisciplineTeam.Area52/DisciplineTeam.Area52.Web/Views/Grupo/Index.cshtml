@@ -69,7 +69,9 @@
                                     }
                                     else
                                     {
-                                        <p class="text-justify">You cannot leave the group being the only moderator left, please add another user as moderator to leave the group.</p>
+                                        <div class="text-center">
+                                            <p class="">You cannot leave the group being the only moderator left, please add another user as moderator to leave the group.</p>
+                                        </div>
                                         <div class="joined" style="">
                                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit" disabled title="You cannot leave the group">
                                                 <span class="glyphicon glyphicon-minus"></span> Leave Group
@@ -266,7 +268,7 @@
                                 {
                                     <i class="glyphicon glyphicon-user" title="Group Admin"></i>
                                 }
-                                <a href="~/Grupo/Person/?UserID=@e.PartIdUsuario" class="cor-fonte-menu">
+                                <a href="~/Grupo/Person/?UserID=@e.PIdPessoa" class="cor-fonte-menu">
                                     @e.UNick
                                 </a>
                             </h4>
@@ -280,19 +282,20 @@
             </div><!--./thumbnail-->
         }
     <section class="text-center">
-        @using (Html.BeginForm("Index", "Grupo", new { Mensagem = "Msg" }, FormMethod.Get))
+        @if (ViewBag.QuantMsgGrupo >= 10)
         {
-
-            <div class="col-lg-12 form-inline">
-                <input type="hidden" name="GrupoId" value="@ViewBag.InfoGrupo.GIdGrupo" />
-                 @Html.DropDownList("Msg", new List<SelectListItem> {
+            using (Html.BeginForm("Index", "Usuario", new { Mensagem = "Msg" }, FormMethod.Get, new { @class = "" }))
+            {
+                <div class="col-lg-12 col-sm-12 text-center form-inline" style="padding-bottom: 20px;">
+                    @Html.DropDownList("Msg", new List<SelectListItem> {
                        new SelectListItem { Value = "10" , Text = "10" },
                        new SelectListItem { Value = "25" , Text = "25" },
                        new SelectListItem { Value = "50" , Text = "50" },
                        new SelectListItem { Value = "999" , Text = "All" }
                     }, new { @class = "form-control", @required = "required" })&nbsp;<button id="cor-fonte" class="form-control btn cor-fonte efeito-fade-navbar">Load Messages</button>
 
-            </div>
+                </div>
+            }
         }
     </section>
 </div><!--/col-lg-7 col-sm-12 col-md-6-->

@@ -42,6 +42,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
             using (MensagemModel model = new MensagemModel())
             {
                 ViewBag.ReadMensagem = model.ReadMensagem(idgrupo, quant);      //Ler as mensagens já postadas no grupo
+                ViewBag.QuantMsgGrupo = model.QuantMsgGrupo(idgrupo);
             }
 
             using (EventoModel model = new EventoModel())
@@ -70,6 +71,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 {
                     model.PostMensagem(e, iduser, idgrupo);                          //Model pra fazer post da mensagem
                     ViewBag.ReadMensagem = model.ReadMensagem(idgrupo, 10);                 //Ler as mensagens já postadas no grupo
+                    ViewBag.QuantMsgGrupo = model.QuantMsgGrupo(idgrupo);
                 }
                 using (EventoModel model = new EventoModel())
                 {

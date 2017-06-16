@@ -43,6 +43,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
             using (MensagemModel model = new MensagemModel())
             {
                 ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(iduser, quant);         //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
+                ViewBag.QuantMsgUser = model.QuantMsgUser(iduser);
             }
             return View();
         }
@@ -92,14 +93,14 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 user.Senha = model.GetSenha(user.IdPessoa);                         //Consulta o banco para pegar senha do usuário
                 if (Senha != user.Senha)
                 {
-                    ViewBag.ChangePwdFail = "This is not your current password";
+                    ViewBag.ChangePwdFail = "This is not your current password.";
                 }
                 else
                 {
                     if (NewPwd != Senha)
                     {
                         model.ChangePwd(user.IdPessoa, NewPwd);                     //Se o teste chegar aqui a senha do usuario será trocada pela nova
-                        ViewBag.ChangePwdSucess = "Password changed successfull.";
+                        ViewBag.ChangePwdSucess = "Password changed successfully.";
                     }
                     else
                     {

@@ -86,20 +86,24 @@
                 </div><!--./media-->
             </div><!--./thumbnail-->
         }
-    </div><!-- Fim - col-lg-12 -->
-    <section class="text-center">
-        @using (Html.BeginForm("Index", "Usuario", new { Mensagem = "Msg" }, FormMethod.Get, new { @class = "" }))
+        @if (ViewBag.QuantMsgUser >= 10)
         {
-            <div class="col-lg-12 form-inline">
-                @Html.DropDownList("Msg", new List<SelectListItem> {
+        using (Html.BeginForm("Index", "Usuario", new { Mensagem = "Msg" }, FormMethod.Get, new { @class = "" }))
+        {
+        <div class="col-lg-12 col-sm-12 text-center form-inline" style="padding-bottom: 20px;">
+            @Html.DropDownList("Msg", new List<SelectListItem> {
                        new SelectListItem { Value = "10" , Text = "10" },
                        new SelectListItem { Value = "25" , Text = "25" },
                        new SelectListItem { Value = "50" , Text = "50" },
                        new SelectListItem { Value = "999" , Text = "All" }
                     }, new { @class = "form-control", @required = "required" })&nbsp;<button id="cor-fonte" class="form-control btn cor-fonte efeito-fade-navbar">Load Messages</button>
 
-            </div>
+        </div>
         }
+        }
+    </div><!-- Fim - col-lg-12 -->
+    <section class="text-center">
+        
     </section>
 </div><!-- ./Div com tamanho 7/12 lg, 12/12 sm e 6/12 md-->
 <div class="col-lg-3 col-sm-12 col-md-4">

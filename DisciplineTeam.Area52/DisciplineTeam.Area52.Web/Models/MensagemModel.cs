@@ -80,9 +80,34 @@ namespace DisciplineTeam.Area52.Web.Models
                 p.UImagem = (string)reader["Imagemusuario"];
                 p.GIdGrupo = (int)reader["Idgrupo"];
                 p.GNome = (string)reader["Nomegrupo"];
+
                 lista.Add(p);
             }
             return lista;
+        }
+        //Retorna a quantidade de mensagens do usuario para mostrar o load de mensagens
+        public int QuantMsgUser(int iduser)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT COUNT (*) FROM v_Grupo_Msg_Part WHERE PartIdUser = @iduser AND PartIdGrupo = Idgrupo AND (PartStatus = 1 OR PartStatus = 2)";
+
+            cmd.Parameters.AddWithValue("@iduser", iduser);
+
+            int quant = (int)cmd.ExecuteScalar();
+            return quant;
+        }
+        //Retorna a quantidade de mensagens do grupo para mostrar o load de mensagens
+        public int QuantMsgGrupo(int idgrupo)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT COUNT (*) FROM v_Grupo_Msg WHERE @idgrupo = grupo_id";
+
+            cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
+
+            int quant = (int)cmd.ExecuteScalar();
+            return quant;
         }
         public void DeleteMsgUser(int iduser, int idgrupo, int idmsg)
         {
