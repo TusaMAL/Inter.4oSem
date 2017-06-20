@@ -3,16 +3,25 @@
     body{
         font-size: 175%;
     }
+    .nick-post{
+        font-size: 125%;
+    }
+    p.nick-person{
+        font-size:125%;
+    }
+    p.nick-friendgroup{
+        font-size:75%;
+    }
 }
 @media screen and (min-width: 481px) and (max-width: 1360px){
     body{
         font-size: 125%;
     }
     .nick-post{
-        font-size: 75%;
+        font-size: 150%;
     }
     p.nick-person{
-        font-size:75%;
+        font-size:150%;
     }
     p.nick-friendgroup{
         font-size:75%;
@@ -47,7 +56,7 @@
     }
 }
 .fonte-post-pequena{
-    font-size: 0.7em;
+    font-size: 1em;
 }
 .tabela-grupos-amigos{
     width: 30em;

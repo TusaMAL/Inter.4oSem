@@ -58,12 +58,12 @@
                     @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control textarea-sem-resize", rows = "4", @required = "required", maxlength = "20" })
                     @Html.ValidationMessageFor(m => m.Descricao)
                 </div>
-                <div class="form-group col-lg-12">
-                    <label class="col-sm-2 col-md-2 col-xs-2 col-lg-2 control-label">Current Pic:</label>
-                    <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">
-                        <img src="@ViewBag.ReadJogoImg" alt="..." class="img-rounded borda-profile">
+                <div class="form-group col-xs-12">
+                    <label class="col-xs-2 control-label">Current Pic:</label>
+                    <div class="col-xs-5">
+                        <img src="@ViewBag.ReadJogoImg" alt="..." class="img-rounded borda-profile img-responsive">
                     </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+                    <div class="col-xs-5">
                         <p class="help-block">Please select a picture with dimensions equal to 256x256.</p>
                         <p class="help-block">Formats accepted .jpg, .png and .jpeg.</p>
                         <p class="help-block">Picture must have less than 2 MiB</p>

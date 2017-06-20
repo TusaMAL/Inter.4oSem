@@ -17,7 +17,8 @@ namespace DisciplineTeam.Area52.Web
 
         protected void Application_Error()
         {
-            //Response.Redirect("/Usuario"); //TODO criar uma pagina
+            Console.WriteLine("Erro global!");
+            Response.Redirect("/Error/Erro404"); //TODO criar uma pagina
         }
     }
 }

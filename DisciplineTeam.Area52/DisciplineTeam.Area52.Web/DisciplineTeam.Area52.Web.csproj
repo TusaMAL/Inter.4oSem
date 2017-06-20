@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
@@ -186,6 +187,7 @@
     <Content Include="Views\Evento\EditEvento.cshtml" />
     <Content Include="Views\Evento\ViewEventos.cshtml" />
     <Content Include="Views\Evento\Members.cshtml" />
+    <Content Include="Views\Error\Erro404.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

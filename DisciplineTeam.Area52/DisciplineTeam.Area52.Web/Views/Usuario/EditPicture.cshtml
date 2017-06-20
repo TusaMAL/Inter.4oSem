@@ -52,15 +52,17 @@
                             </div>
                         }
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Current Pic:</label>
-                            <div class="col-sm-4 col-md-4 col-xs-4">
-                                <img src="@ViewBag.ReadU.Imagem" alt="..." class="img-rounded">
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="help-block">Please select a picture with dimensions equal to 256x256.</p>
-                                <p class="help-block">Formats accepted .jpg, .png and .jpeg.</p>
-                                <p class="help-block">Picture must have less than 2 MiB</p>
-                                @Html.TextBoxFor(m => m.Imagem, new { @type = "file", @placeholder = "Upload", @required = "required", @accept = ".png, .jpg, .jpeg" })
+                            <div class="col-xs-12">
+                                <label class="col-xs-2 control-label">Current Pic:</label>
+                                <div class="col-xs-4">
+                                    <img src="@ViewBag.ReadU.Imagem" alt="..." class="img-rounded img-responsive">
+                                </div>
+                                <div class="col-xs-6">
+                                    <p class="help-block">Please select a picture with dimensions equal to 256x256.</p>
+                                    <p class="help-block">Formats accepted .jpg, .png and .jpeg.</p>
+                                    <p class="help-block">Picture must have less than 2 MiB</p>
+                                    @Html.TextBoxFor(m => m.Imagem, new { @type = "file", @placeholder = "Upload", @required = "required", @accept = ".png, .jpg, .jpeg" })
+                                </div>
                             </div>
                         </div>
                         <div class="form-group col-lg-12">
