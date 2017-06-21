@@ -115,7 +115,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT TOP 6 DATEDIFF(n, GETDATE(), DataEvento), * FROM v_Event_Grupo WHERE 86400 >= DATEDIFF(n, GETDATE(), DataEvento) AND IdGrupo = EventoIdGrupo AND EventoIdGrupo = @idgrupo ORDER BY DataEvento ASC";
+            cmd.CommandText = @"SELECT TOP 6 DATEDIFF(n, GETDATE(), DataEvento), * FROM v_Event_Grupo WHERE DATEDIFF(n, GETDATE(), DataEvento) <= 86400 AND DATEDIFF(n, GETDATE(), DataEvento) > 0 AND IdGrupo = EventoIdGrupo AND EventoIdGrupo = @idgrupo ORDER BY DataEvento ASC";
 
             cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
             //cmd.CommandType = System.Data.CommandType.Text;
