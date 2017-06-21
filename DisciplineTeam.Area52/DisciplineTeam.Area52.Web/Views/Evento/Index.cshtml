@@ -75,12 +75,13 @@
                         }
                         @if (ViewBag.StatusUserGrupo == 2)
                         {
-                            <div style="padding-top: 10px; padding-bottom: 45px;">
+                            <br />
                                 <a href="~/Evento/EditEvento/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdEvento=@ViewBag.ReadEvento.IdEvento" id="cor-fonte" class="col-lg-offset-2 btn cor-fonte efeito-fade-navbar borda-botao-search col-lg-8">
                                     <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Event Info
                                 </a>
-                            </div>
+                            
                         }
+                        <div><br /><br /><br /></div>
                             <a href="~/Grupo/Index/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo" id="cor-fonte" class="col-lg-offset-2 btn cor-fonte efeito-fade-navbar borda-botao-search col-lg-8">
                                     <span class="glyphicon glyphicon-remove"></span>&nbsp;Back
                             </a>
@@ -167,7 +168,7 @@
 
 
                     <!--Coluna para caber 1 membro por linha no sm, 2 membros por linha no md e 3 membros por linha no lg-->
-                    <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="col-sm-6 col-md-6 col-lg-6">
                         <a id="cor-fonte-menu" href="~/Grupo/Person/?UserID=@e.CIdUsuario" class="thumbnail" title="@e.UNick">
                             <!--Anchor ou link do membro em questão-->
                             <img class="img-responsive center-block" src="@e.UImagem" alt=""><!--Img do membro-->

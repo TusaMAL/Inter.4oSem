@@ -14,279 +14,399 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Grupos
         public ActionResult Index()
         {
-            int quant;
-            if (Request.QueryString.Keys.Count > 1)
+            try
             {
-                quant = int.Parse(Request.QueryString[1]);
-                if (quant != 10 && quant != 25 && quant != 50 && quant != 999)
+                int quant;
+                if (Request.QueryString.Keys.Count > 1)
                 {
-                    ViewBag.ErroQuant = true;
+                    quant = int.Parse(Request.QueryString[1]);
+                    if (quant != 10 && quant != 25 && quant != 50 && quant != 999)
+                    {
+                        ViewBag.ErroQuant = true;
+                        quant = 10;
+                    }
+                }
+                else
+                {
                     quant = 10;
                 }
-            }
-            else
-            {
-                quant = 10;
-            }
-            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
-            int idgrupo = int.Parse(Request.QueryString[0]);            //Converte o Id da URL para poder ser usado
-            ViewBag.IdUsuario = iduser;
-            using (GrupoModel model = new GrupoModel())
-            {
-                ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);               //Seleciona 6 primeiros usuarios e mostra na lista do grupo
-                ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
-                ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Mostra o count de usuarios na div de grupos
-                ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Pega o status do usuario para mostrar os botões para interagir no site
-                ViewBag.QuantModGrupo = model.QuantModGrupo(idgrupo);               //Retora o count de moderadores do grupo
-            }
-            using (MensagemModel model = new MensagemModel())
-            {
-                ViewBag.ReadMensagem = model.ReadMensagem(idgrupo, quant);      //Ler as mensagens já postadas no grupo
-                ViewBag.QuantMsgGrupo = model.QuantMsgGrupo(idgrupo);
-            }
-
-            using (EventoModel model = new EventoModel())
-            {
-                ViewBag.ViewEventosIndex = model.ViewEventosIndex(idgrupo);               //Mostra os eventos cadastrados no grupo
-            }
-            return View();
-        }
-        [UsuarioFiltro]
-        [HttpPost]
-        public ActionResult Index(Mensagem e)
-        {
-            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
-            ViewBag.IdUsuario = iduser;
-            if (ModelState.IsValid)
-            {
-                int idgrupo = int.Parse(Request.QueryString["GrupoId"]);                        //Converte o Id da URL para poder ser usado
+                int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+                int idgrupo = int.Parse(Request.QueryString[0]);            //Converte o Id da URL para poder ser usado
+                ViewBag.IdUsuario = iduser;
                 using (GrupoModel model = new GrupoModel())
                 {
                     ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);               //Seleciona 6 primeiros usuarios e mostra na lista do grupo
                     ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
                     ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Mostra o count de usuarios na div de grupos
-                    ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Retorna o status pra mostra o botão pro usuario
+                    ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Pega o status do usuario para mostrar os botões para interagir no site
+                    ViewBag.QuantModGrupo = model.QuantModGrupo(idgrupo);               //Retora o count de moderadores do grupo
                 }
                 using (MensagemModel model = new MensagemModel())
                 {
-                    model.PostMensagem(e, iduser, idgrupo);                          //Model pra fazer post da mensagem
-                    ViewBag.ReadMensagem = model.ReadMensagem(idgrupo, 10);                 //Ler as mensagens já postadas no grupo
+                    ViewBag.ReadMensagem = model.ReadMensagem(idgrupo, quant);      //Ler as mensagens já postadas no grupo
                     ViewBag.QuantMsgGrupo = model.QuantMsgGrupo(idgrupo);
                 }
+
                 using (EventoModel model = new EventoModel())
                 {
-                    ViewBag.ViewEventosIndex = model.ViewEventosIndex(idgrupo);                   //Mostra os eventos cadastrados no grupo
+                    ViewBag.ViewEventosIndex = model.ViewEventosIndex(idgrupo);               //Mostra os eventos cadastrados no grupo
                 }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
+        }
+        [UsuarioFiltro]
+        [HttpPost]
+        public ActionResult Index(Mensagem e)
+        {
+            try
+            {
+                int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+                ViewBag.IdUsuario = iduser;
+                if (ModelState.IsValid)
+                {
+                    int idgrupo = int.Parse(Request.QueryString["GrupoId"]);                        //Converte o Id da URL para poder ser usado
+                    using (GrupoModel model = new GrupoModel())
+                    {
+                        ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);               //Seleciona 6 primeiros usuarios e mostra na lista do grupo
+                        ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
+                        ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Mostra o count de usuarios na div de grupos
+                        ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Retorna o status pra mostra o botão pro usuario
+                    }
+                    using (MensagemModel model = new MensagemModel())
+                    {
+                        model.PostMensagem(e, iduser, idgrupo);                          //Model pra fazer post da mensagem
+                        ViewBag.ReadMensagem = model.ReadMensagem(idgrupo, 10);                 //Ler as mensagens já postadas no grupo
+                        ViewBag.QuantMsgGrupo = model.QuantMsgGrupo(idgrupo);
+                    }
+                    using (EventoModel model = new EventoModel())
+                    {
+                        ViewBag.ViewEventosIndex = model.ViewEventosIndex(idgrupo);                   //Mostra os eventos cadastrados no grupo
+                    }
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         //GET: Search
         public ActionResult Groups()
         {
-            int iduser = 0;
-
-            if (Request.QueryString.Keys.Count > 0)
+            try
             {
-                iduser = int.Parse(Request.QueryString["UserID"]);
-            }
-            else
-            {
-                iduser = ((Usuario)Session["usuario"]).IdPessoa;
-            }
-            
+                int iduser = 0;
 
-            using (UsuarioModel model = new UsuarioModel())
-            {
-                ViewBag.ReadU = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
-                ViewBag.GetAgeUser = model.GetAgeUser(iduser);                      //Pegar idade
-            }
-            using (GrupoModel model = new GrupoModel())
-            {                          
-                ViewBag.Grupos = model.ReadGrupoTotal(iduser);   //Coloca a lista na viewBag pra mostrar na view
-                ViewBag.Quantgrupopart = model.QuantGruposParticipa(iduser);                        //Retorna o count de grupos que o usuario está
+                if (Request.QueryString.Keys.Count > 0)
+                {
+                    iduser = int.Parse(Request.QueryString["UserID"]);
+                }
+                else
+                {
+                    iduser = ((Usuario)Session["usuario"]).IdPessoa;
+                }
 
+
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    ViewBag.ReadU = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
+                    ViewBag.GetAgeUser = model.GetAgeUser(iduser);                      //Pegar idade
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
+                    ViewBag.Grupos = model.ReadGrupoTotal(iduser);   //Coloca a lista na viewBag pra mostrar na view
+                    ViewBag.Quantgrupopart = model.QuantGruposParticipa(iduser);                        //Retorna o count de grupos que o usuario está
+
+                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         //GET: Create
         public ActionResult Create()
         {
-            using (JogoModel model = new JogoModel())
-            { 
-                ViewBag.ReadJogos = model.ReadJogos();     //Manda a lista de jogos para a SelectList da View para aparecer o dropdownbox com os jogos
+            try
+            {
+                using (JogoModel model = new JogoModel())
+                {
+                    ViewBag.ReadJogos = model.ReadJogos();     //Manda a lista de jogos para a SelectList da View para aparecer o dropdownbox com os jogos
+                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult Create(Grupo e, int IdJogo)
         {
-            if (ModelState.IsValid)
+            try
             {
-                string img;
-                using (JogoModel model = new JogoModel())
+                if (ModelState.IsValid)
                 {
-                    img = model.ReadJogoImg(IdJogo);
+                    string img;
+                    using (JogoModel model = new JogoModel())
+                    {
+                        img = model.ReadJogoImg(IdJogo);
+                    }
+                    using (GrupoModel model = new GrupoModel())
+                    {
+                        int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+                        model.Create(e, iduser, IdJogo, img);                    //Passando o id do criador do grupo como parametro
+                        return RedirectToAction("Groups", "Grupo");
+                    }
                 }
-                using (GrupoModel model = new GrupoModel())
-                {
-                    int iduser = ((Usuario)Session["usuario"]).IdPessoa;
-                    model.Create(e, iduser, IdJogo, img);                    //Passando o id do criador do grupo como parametro
-                    return RedirectToAction("Groups", "Grupo");
-                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         // GET: Usuario/Friends
         public ActionResult Members()
         {
-            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
-            int idgrupo = int.Parse(Request.QueryString[0]);
-            using (GrupoModel model = new GrupoModel())
+            try
             {
-                ViewBag.ReadMembrosGrupoTotal = model.ReadMembrosGrupoTotal(idgrupo); //Retorna a quantidade de membros participantes do grupo
-                ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
-                ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Retorna o count de usuarios do grupo
-                ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Retorna o status pra mostra o botão pro usuario
-                ViewBag.IdUsuario = iduser;
+                int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+                int idgrupo = int.Parse(Request.QueryString[0]);
+                using (GrupoModel model = new GrupoModel())
+                {
+                    ViewBag.ReadMembrosGrupoTotal = model.ReadMembrosGrupoTotal(idgrupo); //Retorna a quantidade de membros participantes do grupo
+                    ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
+                    ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Retorna o count de usuarios do grupo
+                    ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Retorna o status pra mostra o botão pro usuario
+                    ViewBag.IdUsuario = iduser;
+                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         //Get Search
         [UsuarioFiltro]
         public ActionResult Search()
         {
-            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
-            if (Request.QueryString.Keys.Count > 0)
+            try
             {
-                string busca = (Request.QueryString[0]);                                    //Recebe o primeiro parametro da URL
-                using (UsuarioModel model = new UsuarioModel())
+                int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+                if (Request.QueryString.Keys.Count > 0)
                 {
-                    ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
-                    ViewBag.GetAgeUser = model.GetAgeUser(iduser);
+                    string busca = (Request.QueryString[0]);                                    //Recebe o primeiro parametro da URL
+                    using (UsuarioModel model = new UsuarioModel())
+                    {
+                        ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                        ViewBag.GetAgeUser = model.GetAgeUser(iduser);
+                    }
+                    using (GrupoModel model = new GrupoModel())
+                    {
+                        ViewBag.BuscaGrupo = model.BuscarGrupo(busca);                           //Busca e retorna informações de busca do jogo
+                    }
+                    return View();
                 }
-                using (GrupoModel model = new GrupoModel())
+                else
                 {
-                    ViewBag.BuscaGrupo = model.BuscarGrupo(busca);                           //Busca e retorna informações de busca do jogo
+                    using (UsuarioModel model = new UsuarioModel())
+                    {
+                        ViewBag.ReadU = model.ReadU(iduser);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                        ViewBag.GetAgeUser = model.GetAgeUser(iduser);
+                    }
+                    return View();
                 }
-                return View();
             }
-            else
+            catch (Exception ex)
             {
-                using (UsuarioModel model = new UsuarioModel())
-                {
-                    ViewBag.ReadU = model.ReadU(iduser);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
-                    ViewBag.GetAgeUser = model.GetAgeUser(iduser);
-                }
-                return View();
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
             }
         }
         //GET
         [UsuarioFiltro]
         public ActionResult Person()
         {
-            int iduser = int.Parse(Request.QueryString["UserID"]);
-            using (UsuarioModel model = new UsuarioModel())
+            try
             {
-                ViewBag.ReadU = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
-                ViewBag.GetAgeUser = model.GetAgeUser(iduser);
+                int iduser = int.Parse(Request.QueryString["UserID"]);
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    ViewBag.ReadU = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
+                    ViewBag.GetAgeUser = model.GetAgeUser(iduser);
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
+                    ViewBag.ReadGrupo = model.ReadGrupo(iduser);                               //Lê os grupos em que o usuario escolhido participa para mostrar na view
+                    ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(iduser);            //Retorna o count dos grupos em que o usuario escolhido participa pra mostrar
+                }
+                return View();
             }
-            using (GrupoModel model = new GrupoModel())
+            catch (Exception ex)
             {
-                ViewBag.ReadGrupo = model.ReadGrupo(iduser);                               //Lê os grupos em que o usuario escolhido participa para mostrar na view
-                ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(iduser);            //Retorna o count dos grupos em que o usuario escolhido participa pra mostrar
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
             }
-            return View();
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult BtnPartGrupo()
         {
-            int idgrupo = int.Parse(Request.QueryString[0]);
-            int iduser = int.Parse(Request.QueryString[1]);
-            using (GrupoModel model = new GrupoModel())
+            try
             {
-                model.PartGrupo(iduser, idgrupo);
+                int idgrupo = int.Parse(Request.QueryString[0]);
+                int iduser = int.Parse(Request.QueryString[1]);
+                using (GrupoModel model = new GrupoModel())
+                {
+                    model.PartGrupo(iduser, idgrupo);
+                }
+                return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
             }
-            return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult BtnSairGrupo()
         {
-            int idgrupo = int.Parse(Request.QueryString[0]);
-            int iduser = int.Parse(Request.QueryString[1]);
-            using (GrupoModel model = new GrupoModel())
+            try
             {
-                model.SairGrupo(iduser, idgrupo);
+                int idgrupo = int.Parse(Request.QueryString[0]);
+                int iduser = int.Parse(Request.QueryString[1]);
+                using (GrupoModel model = new GrupoModel())
+                {
+                    model.SairGrupo(iduser, idgrupo);
+                }
+                return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
             }
-            return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult BtnVoltarGrupo()
         {
-            int idgrupo = int.Parse(Request.QueryString[0]);
-            int iduser = int.Parse(Request.QueryString[1]);
-            using (GrupoModel model = new GrupoModel())
+            try
             {
-                model.VoltarGrupo(iduser, idgrupo);
+                int idgrupo = int.Parse(Request.QueryString[0]);
+                int iduser = int.Parse(Request.QueryString[1]);
+                using (GrupoModel model = new GrupoModel())
+                {
+                    model.VoltarGrupo(iduser, idgrupo);
+                }
+                return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
             }
-            return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult BtnDeleteMsgUser()
         {
-            int idgrupo = int.Parse(Request.QueryString[0]);
-            int iduser = int.Parse(Request.QueryString[1]);
-            int idmsg = int.Parse(Request.QueryString[2]);
-            using (MensagemModel model = new MensagemModel())
+            try
             {
-                model.DeleteMsgUser(iduser, idgrupo, idmsg);
+                int idgrupo = int.Parse(Request.QueryString[0]);
+                int iduser = int.Parse(Request.QueryString[1]);
+                int idmsg = int.Parse(Request.QueryString[2]);
+                using (MensagemModel model = new MensagemModel())
+                {
+                    model.DeleteMsgUser(iduser, idgrupo, idmsg);
+                }
+                return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
             }
-            return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult BtnAddMod()
         {
-            int idgrupo = int.Parse(Request.QueryString[0]);
-            int iduser = int.Parse(Request.QueryString[1]);
-            using (GrupoModel model = new GrupoModel())
+            try
             {
-                model.AddMod(idgrupo, iduser);
+                int idgrupo = int.Parse(Request.QueryString[0]);
+                int iduser = int.Parse(Request.QueryString[1]);
+                using (GrupoModel model = new GrupoModel())
+                {
+                    model.AddMod(idgrupo, iduser);
+                }
+                return RedirectToAction("Members", "Grupo", new { GrupoID = idgrupo });
             }
-            return RedirectToAction("Members", "Grupo", new { GrupoID = idgrupo });
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult BtnBanUser()
         {
-            int idgrupo = int.Parse(Request.QueryString[0]);
-            int iduser = int.Parse(Request.QueryString[1]);
-            using (GrupoModel model = new GrupoModel())
+            try
             {
-                model.BanUser(idgrupo, iduser);
+                int idgrupo = int.Parse(Request.QueryString[0]);
+                int iduser = int.Parse(Request.QueryString[1]);
+                using (GrupoModel model = new GrupoModel())
+                {
+                    model.BanUser(idgrupo, iduser);
+                }
+                return RedirectToAction("Members", "Grupo", new { GrupoID = idgrupo });
             }
-            return RedirectToAction("Members", "Grupo", new { GrupoID = idgrupo });
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult BtnEditAboutGrupo(FormCollection form)
         {
-            int idgrupo = int.Parse(Request.QueryString[0]);
-            int iduser = int.Parse(Request.QueryString[1]);
-            string desc = form["descricao"];
-            using (GrupoModel model = new GrupoModel())
+            try
             {
-                model.EditarGrupo(idgrupo, iduser, desc);
-                TempData["SucessoAbout"] = "Group about updated successfully!";
-    }
+                int idgrupo = int.Parse(Request.QueryString[0]);
+                int iduser = int.Parse(Request.QueryString[1]);
+                string desc = form["descricao"];
+                using (GrupoModel model = new GrupoModel())
+                {
+                    model.EditarGrupo(idgrupo, iduser, desc);
+                    TempData["SucessoAbout"] = "Group about updated successfully!";
+                }
                 return RedirectToAction("Index", "Grupo", new { GrupoID = idgrupo });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
     }
 }

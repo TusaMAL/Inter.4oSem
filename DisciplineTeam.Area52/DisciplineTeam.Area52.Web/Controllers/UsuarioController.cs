@@ -15,217 +15,281 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Usuario
         public ActionResult Index() //Testando as informações do usuario pegadas no BD
         {
-            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
-            int quant;
-            if (Request.QueryString.Keys.Count > 0)
+            try
             {
-                quant = int.Parse(Request.QueryString[0]);
-                if (quant != 10 && quant != 25 && quant != 50 && quant != 999)
+                int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+                int quant;
+                if (Request.QueryString.Keys.Count > 0)
                 {
-                    ViewBag.ErroQuant = true;
+                    quant = int.Parse(Request.QueryString[0]);
+                    if (quant != 10 && quant != 25 && quant != 50 && quant != 999)
+                    {
+                        ViewBag.ErroQuant = true;
+                        quant = 10;
+                    }
+                }
+                else
+                {
                     quant = 10;
                 }
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    ViewBag.ReadU = model.ReadU(iduser);                                 //Pega informações do usuario que logou e manda paraa view
+                    ViewBag.GetAgeUser = model.GetAgeUser(iduser);
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
+                    ViewBag.ReadGrupo = model.ReadGrupo(iduser);                         //Retorna os grupos em que o usuario está participando
+                    ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(iduser);   //Retorna o count de grupos em que o usuario participa
+                }
+                using (MensagemModel model = new MensagemModel())
+                {
+                    ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(iduser, quant);         //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
+                    ViewBag.QuantMsgUser = model.QuantMsgUser(iduser);
+                }
+                return View();
             }
-            else
+            catch (Exception ex)
             {
-                quant = 10;
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
             }
-            using (UsuarioModel model = new UsuarioModel())
-            {
-                ViewBag.ReadU = model.ReadU(iduser);                                 //Pega informações do usuario que logou e manda paraa view
-                ViewBag.GetAgeUser = model.GetAgeUser(iduser);
-            }
-            using (GrupoModel model = new GrupoModel())
-            {
-                ViewBag.ReadGrupo = model.ReadGrupo(iduser);                         //Retorna os grupos em que o usuario está participando
-                ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(iduser);   //Retorna o count de grupos em que o usuario participa
-            }
-            using (MensagemModel model = new MensagemModel())
-            {
-                ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(iduser, quant);         //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
-                ViewBag.QuantMsgUser = model.QuantMsgUser(iduser);
-            }
-            return View();
-        }
-        [UsuarioFiltro]
-        //GET: Person
-        public ActionResult Person()
-        {
-            return View();
         }
         //GET: Edit
         [UsuarioFiltro]
         public ActionResult Edit()
         {
-            Usuario e = new Usuario();
-            using (UsuarioModel model = new UsuarioModel())
+            try
             {
-                e = model.ReadEditUsuario(((Usuario)Session["usuario"]).IdPessoa);      //Lê os dados do usuario no BD e mostra no Formulário para poder ser editado
+                Usuario e = new Usuario();
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    e = model.ReadEditUsuario(((Usuario)Session["usuario"]).IdPessoa);      //Lê os dados do usuario no BD e mostra no Formulário para poder ser editado
+                }
+                return View(e);
             }
-            return View(e);
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult Edit(Usuario e)
         {
-            e.IdPessoa = ((Usuario)Session["usuario"]).IdPessoa;
-            using (UsuarioModel model = new UsuarioModel())
+            try
             {
-                model.EditUsuario(e);       //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
-                ViewBag.SucessoEdit = true;                                         //Usado para exibir mensagem de confirmação na view
+                e.IdPessoa = ((Usuario)Session["usuario"]).IdPessoa;
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    model.EditUsuario(e);       //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
+                    ViewBag.SucessoEdit = true;                                         //Usado para exibir mensagem de confirmação na view
+                }
+                return View(e);
             }
-            return View(e);
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         //GET: Edit
         [UsuarioFiltro]
         public ActionResult EditSecurity()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult EditSecurity(string Senha, string NewPwd)               /* Recebe como parametros a senha atual e nova OBS: Tive que criar atributos na classe pessoa pq o VS dava pau 
                                                                                     creio que por causa do form no estilo abas mas pra nao mudar coloquei os atributos*/
         {
-            using (UsuarioModel model = new UsuarioModel())
+            try
             {
-                Usuario user = (Usuario)Session["usuario"];
-                user.Senha = model.GetSenha(user.IdPessoa);                         //Consulta o banco para pegar senha do usuário
-                if (Senha != user.Senha)
+                using (UsuarioModel model = new UsuarioModel())
                 {
-                    ViewBag.ChangePwdFail = "This is not your current password.";
-                }
-                else
-                {
-                    if (NewPwd != Senha)
+                    Usuario user = (Usuario)Session["usuario"];
+                    user.Senha = model.GetSenha(user.IdPessoa);                         //Consulta o banco para pegar senha do usuário
+                    if (Senha != user.Senha)
                     {
-                        model.ChangePwd(user.IdPessoa, NewPwd);                     //Se o teste chegar aqui a senha do usuario será trocada pela nova
-                        ViewBag.ChangePwdSucess = "Password changed successfully.";
+                        ViewBag.ChangePwdFail = "This is not your current password.";
                     }
                     else
                     {
-                        ViewBag.ChangePwdFail = "This is your current password, for changing please enter a different one.";
+                        if (NewPwd != Senha)
+                        {
+                            model.ChangePwd(user.IdPessoa, NewPwd);                     //Se o teste chegar aqui a senha do usuario será trocada pela nova
+                            ViewBag.ChangePwdSucess = "Password changed successfully.";
+                        }
+                        else
+                        {
+                            ViewBag.ChangePwdFail = "This is your current password, for changing please enter a different one.";
+                        }
                     }
                 }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         public ActionResult EditPicture()
         {
-            using (UsuarioModel model = new UsuarioModel())
+            try
             {
-                ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);                                 //Pega informações do usuario que logou e manda paraa view
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);                                 //Pega informações do usuario que logou e manda paraa view
+                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         [HttpPost]
         public ActionResult EditPicture(Usuario e)
         {
-            
-            int iduser = ((Usuario)Session["usuario"]).IdPessoa;
-            HttpPostedFileBase arquivo = Request.Files[0];                                          //Recebe o primeiro parametro de arquivo
+            try
+            {
+                int iduser = ((Usuario)Session["usuario"]).IdPessoa;
+                HttpPostedFileBase arquivo = Request.Files[0];                                          //Recebe o primeiro parametro de arquivo
 
-            using (System.Drawing.Image pic = System.Drawing.Image.FromStream(arquivo.InputStream)) //Converte a arquivo para imagem para poder comparar a as dimensões
-            {
-                if (pic.Height != 256 && pic.Width != 256)
+                using (System.Drawing.Image pic = System.Drawing.Image.FromStream(arquivo.InputStream)) //Converte a arquivo para imagem para poder comparar a as dimensões
                 {
-                    TempData["ErroDimensao"] = "Please use a picture with 256x256 pixels.";         //Semelhante a viewbag porem ela "vive" fora da pagina que foi criada
-                    return RedirectToAction("EditPicture");
+                    if (pic.Height != 256 && pic.Width != 256)
+                    {
+                        TempData["ErroDimensao"] = "Please use a picture with 256x256 pixels.";         //Semelhante a viewbag porem ela "vive" fora da pagina que foi criada
+                        return RedirectToAction("EditPicture");
+                    }
+                    else if (arquivo.ContentType != "image/png" && arquivo.ContentType != "image/jpeg" && arquivo.ContentType != "image/jpg")           //Verifica o formato do arquivo
+                    {
+                        TempData["ErroFormato"] = "Application only supports PNG or JPG image types.";
+                        return RedirectToAction("EditPicture");
+                    }
+                    else if (arquivo.ContentLength > 2097152)                                              //Verifica se o arquivo não é > que 2 MiB
+                    {
+                        TempData["ErroTamanho"] = "Please upload picture with less than 2MiB.";
+                        return RedirectToAction("EditPicture");
+                    }
                 }
-                else if (arquivo.ContentType != "image/png" && arquivo.ContentType != "image/jpeg" && arquivo.ContentType != "image/jpg")           //Verifica o formato do arquivo
-                {
-                    TempData["ErroFormato"] = "Application only supports PNG or JPG image types.";
-                    return RedirectToAction("EditPicture");
-                }
-                else if (arquivo.ContentLength > 2097152)                                              //Verifica se o arquivo não é > que 2 MiB
-                {
-                    TempData["ErroTamanho"] = "Please upload picture with less than 2MiB.";
-                    return RedirectToAction("EditPicture");
-                }
-            }
-            DateTime today = DateTime.Now;                                                          //cria uma variavel da hora atual
+                DateTime today = DateTime.Now;                                                          //cria uma variavel da hora atual
 
-            string nome = today.ToString("yyyyMMddhhmmss");                                         //converte a hora e data atual para ser usado como nome da imagem do perfil
-            if (Request.Files.Count > 0)                                                            // Verifica se recebe algum arquivo
-            {
-                if (arquivo.ContentLength > 0)                                                      //verifica se ele possui algo
+                string nome = today.ToString("yyyyMMddhhmmss");                                         //converte a hora e data atual para ser usado como nome da imagem do perfil
+                if (Request.Files.Count > 0)                                                            // Verifica se recebe algum arquivo
                 {
-                    //arquivo.FileName pegar nome arquivo
-                    //string caminho = "C:/Users/Felipe/Pictures/testebd/" + arquivo.FileName;    //Uso apenas de protótipo
-                    //String que vai para o banco, se tiver o caminho todo da imagem o site não mostra
-                    string img = "/img/userpics/" + iduser.ToString() + System.IO.Path.GetExtension(arquivo.FileName);
-                    string path = HostingEnvironment.ApplicationPhysicalPath;                        //Pega o diretório em que o projeto está
-                    //Onde vai ser armazenado
-                    string caminho = path + "\\img\\userpics\\" + iduser.ToString() + System.IO.Path.GetExtension(arquivo.FileName);
-                    arquivo.SaveAs(caminho);
-                    e.Imagem = img;
-                    TempData["SucessoImg"] = "Profile picture updated successfully.";
+                    if (arquivo.ContentLength > 0)                                                      //verifica se ele possui algo
+                    {
+                        //arquivo.FileName pegar nome arquivo
+                        //string caminho = "C:/Users/Felipe/Pictures/testebd/" + arquivo.FileName;    //Uso apenas de protótipo
+                        //String que vai para o banco, se tiver o caminho todo da imagem o site não mostra
+                        string img = "/img/userpics/" + iduser.ToString() + System.IO.Path.GetExtension(arquivo.FileName);
+                        string path = HostingEnvironment.ApplicationPhysicalPath;                        //Pega o diretório em que o projeto está
+                                                                                                         //Onde vai ser armazenado
+                        string caminho = path + "\\img\\userpics\\" + iduser.ToString() + System.IO.Path.GetExtension(arquivo.FileName);
+                        arquivo.SaveAs(caminho);
+                        e.Imagem = img;
+                        TempData["SucessoImg"] = "Profile picture updated successfully.";
+                    }
                 }
+                using (UsuarioModel model = new UsuarioModel())
+                {
+                    model.ChangePicture(e, iduser);
+                    ViewBag.ReadU = model.ReadU(iduser);                                 //Pega informações do usuario que logou e manda paraa view
+                }
+                return View();
             }
-            using (UsuarioModel model = new UsuarioModel())
+            catch (Exception ex)
             {
-                model.ChangePicture(e, iduser);
-                ViewBag.ReadU = model.ReadU(iduser);                                 //Pega informações do usuario que logou e manda paraa view
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
             }
-            return View();
-        }
-        [UsuarioFiltro]
-        public ActionResult EditDob()
-        {
-            Usuario e = new Usuario();
-            using (UsuarioModel model = new UsuarioModel())
-            {
-                e = model.ReadEditUsuario(((Usuario)Session["usuario"]).IdPessoa);      //Lê os dados do usuario no BD e mostra no Formulário para poder ser editado
-            }
-            return View(e);
         }
         // GET: Usuario
         public ActionResult Login()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         /* Faz o login e chama o metodo .Read do UsuarioModel para ler os dados do banco*/
         [HttpPost]
         public ActionResult Login(Usuario e)
         {
-            using (UsuarioModel model = new UsuarioModel())
+            try
             {
-                Pessoa user = model.Read(e.Email, e.Senha);
-                /*Retorna mensagem de erro caso as informações estejam diferentes no banco pois vai retornar um objeto vazio*/
-                if (user == null)
+                using (UsuarioModel model = new UsuarioModel())
                 {
-                    ViewBag.Erro = "Wrong login data!";
-                }
-                else
-                {
-                    if (user is Usuario)
+                    Pessoa user = model.Read(e.Email, e.Senha);
+                    /*Retorna mensagem de erro caso as informações estejam diferentes no banco pois vai retornar um objeto vazio*/
+                    if (user == null)
                     {
-                        /*Cria a sessão do usuario e redireciona para a pagina do profile*/
-                        ViewBag.User = user;
-                        Session["usuario"] = user;
-                        return RedirectToAction("Index", "Usuario");
+                        ViewBag.Erro = "Wrong login data!";
                     }
-                    else if (user is Admin)
+                    else
                     {
-                        /* Cria a sessão do admin e redireciona para a pagina de criação de jogos*/
-                        Session["usuario"] = user;
-                        return RedirectToAction("Index", "Jogo");
+                        if (user is Usuario)
+                        {
+                            /*Cria a sessão do usuario e redireciona para a pagina do profile*/
+                            ViewBag.User = user;
+                            Session["usuario"] = user;
+                            return RedirectToAction("Index", "Usuario");
+                        }
+                        else if (user is Admin)
+                        {
+                            /* Cria a sessão do admin e redireciona para a pagina de criação de jogos*/
+                            Session["usuario"] = user;
+                            return RedirectToAction("Index", "Jogo");
+                        }
                     }
                 }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         // GET: Usuario
         public ActionResult Create()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [HttpPost]
         public ActionResult Create(Usuario e)
         {
-            
+            try
+            {
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     if (model.Check(e))                             //Checa se o email não está em uso
@@ -239,14 +303,28 @@ namespace DisciplineTeam.Area52.Web.Controllers
                         ViewBag.Erro = "Email already in use";
                     }
                 }
-            
-            return View(e);
+
+                return View(e);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
         [UsuarioFiltro]
         public ActionResult Logout()                                //Action para fazer logout
         {
-            Session.Abandon();
-            return RedirectToAction("Login");
+            try
+            {
+                Session.Abandon();
+                return RedirectToAction("Login");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Exception caught", ex);
+                return RedirectToAction("Erro404", "Error");
+            }
         }
     }
 }

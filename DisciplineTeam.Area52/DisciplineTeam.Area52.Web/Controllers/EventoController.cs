@@ -42,9 +42,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 return View(e);
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Falha ao mostrar dados da index do evento!");
+                Console.WriteLine("{0} Exception caught", ex);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -64,9 +64,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
 
                 return View();
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Erro ao carregar dados de criação de evento!");
+                Console.WriteLine("{0} Exception caught", ex);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -97,9 +97,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 return RedirectToAction("Index", "Grupo", new { GrupoId = idgrupo });
             }
-            catch
+            catch (Exception f)
             {
-                Console.WriteLine("Falha ao criar evento!");
+                Console.WriteLine("{0} Exception caught", f);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -119,9 +119,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 return RedirectToAction("Index", "Evento", new { GrupoId = idgrupo, EventoId = idevento });
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Falha ao participar do evento!");
+                Console.WriteLine("{0} Exception caught", ex);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -141,9 +141,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 return RedirectToAction("Index", "Evento", new { GrupoId = idgrupo, EventoId = idevento });
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Falha ao sair do evento!");
+                Console.WriteLine("{0} Exception caught", ex);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -163,9 +163,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 return RedirectToAction("Index", "Evento", new { GrupoId = idgrupo, EventoId = idevento });
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Falha ao mudar status do evento!");
+                Console.WriteLine("{0} Exception caught", ex);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -183,9 +183,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 return RedirectToAction("Index", "Evento", new { GrupoId = e.IdGrupo, EventoId = e.IdEvento, e });
             }
-            catch
+            catch (Exception f)
             {
-                Console.WriteLine("Falha ao editar informações do evento");
+                Console.WriteLine("{0} Exception caught", f);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -208,9 +208,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 return View(e);
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Falha ao pegar as informações do evento!");
+                Console.WriteLine("{0} Exception caught", ex);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -231,9 +231,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 return View();
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Falha ao criar a lista de eventos!");
+                Console.WriteLine("{0} Exception caught", ex);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -261,9 +261,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 return View(e);
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Falha ao mostrar a lista de membros do evento");
+                Console.WriteLine("{0} Exception caught", ex);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -296,9 +296,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
 
                 return RedirectToAction("Create", "Evento", new { GrupoId = idgrupo });
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Falha ao consultar a API viacep!");
+                Console.WriteLine("{0} Exception caught", ex);
                 return RedirectToAction("Erro404", "Error");
             }
         }
@@ -332,9 +332,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
 
                 return RedirectToAction("EditEvento", "Evento", new { GrupoId = idgrupo, EventoId = idevento });
             }
-            catch
+            catch(Exception e)
             {
-                Console.WriteLine("Falha ao consultar a API viacep!");
+                Console.WriteLine("{0} Exception caught.", e);
                 return RedirectToAction("Erro404", "Error");
             }
         }
