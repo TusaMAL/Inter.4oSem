@@ -120,6 +120,7 @@ namespace DisciplineTeam.Area52.Web.Models
             if (reader.Read())
             {
                 e.Nome = (string)reader["PessoaNome"];
+                e.Email = (string)reader["PessoaEmail"];
                 e.Nick = (string)reader["Nick"];
                 DateTime data = (DateTime)reader["Datanasc"];
                 e.Datanasc = data.ToString(@"yyyy-MM-dd");

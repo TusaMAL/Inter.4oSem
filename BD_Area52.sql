@@ -407,10 +407,11 @@ SELECT		m.grupo_id,
 GO
 
 
-CREATE VIEW v_User_Info_Edit		-- View Utilizada no Método ReadEditUsuario, dentro de UsuarioModel.cs
+ALTER VIEW v_User_Info_Edit		-- View Utilizada no Método ReadEditUsuario, dentro de UsuarioModel.cs
 AS
 	SELECT	p.id				PessoaId,
 			p.nome				PessoaNome,
+			p.email				PessoaEmail,
 			u.pessoa_id			UserId,
 			u.nick				Nick,
 			u.datanasc			Datanasc,

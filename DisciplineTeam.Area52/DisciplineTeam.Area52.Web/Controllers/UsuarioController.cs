@@ -83,8 +83,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 e.IdPessoa = ((Usuario)Session["usuario"]).IdPessoa;
                 using (UsuarioModel model = new UsuarioModel())
                 {
-                    model.EditUsuario(e);       //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
+                    model.EditUsuario(e);                                               //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
                     ViewBag.SucessoEdit = true;                                         //Usado para exibir mensagem de confirmação na view
+                    e = model.ReadEditUsuario(((Usuario)Session["usuario"]).IdPessoa);      //Lê os dados do usuario no BD e mostra no Formulário para poder ser editado
                 }
                 return View(e);
             }

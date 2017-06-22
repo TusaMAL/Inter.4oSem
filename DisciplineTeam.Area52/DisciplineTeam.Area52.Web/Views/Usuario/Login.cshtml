@@ -49,12 +49,12 @@
                 <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Senha)</div>
                 @*<input type="password" name="Senha" class="form-control" />*@
             </div>
-            <div class="form-group">
-                <div class="form-group col-xs-offset-2 col-xs-5">
-                    <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Sign In</button>
+            <div class="form-group text-center">
+                <div class="form-group col-xs-6">
+                    <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-log-in"></span>&nbsp; Sign In</button>
                 </div>
-                <div class="form-group col-xs-5">
-                    <a id="cor-fonte" href="/Usuario/Create" class="btn cor-fonte efeito-fade-navbar borda-botao-search">Register</a>
+                <div class="form-group col-xs-6">
+                    <a id="cor-fonte" href="/Usuario/Create" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-check"></span>&nbsp; Register</a>
                 </div>
             </div>
         </form>
