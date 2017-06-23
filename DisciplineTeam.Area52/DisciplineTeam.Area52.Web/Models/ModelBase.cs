@@ -12,11 +12,13 @@ namespace DisciplineTeam.Area52.Web.Models
         
         public ModelBase()
         {
-            string strConn = "Data Source = localhost;" +
-                " Initial Catalog = BDarea52;" +
-                " Integrated Security = true;" +
-                " MultipleActiveResultSets = true";
-                //"User Id = sa; Password = dba";
+            //string strConn = "Data Source = localhost;" +
+            //    " Initial Catalog = BDarea52;" +
+            //    " Integrated Security = true;" +
+            //    " MultipleActiveResultSets = true";
+            //"User Id = sa; Password = dba";
+
+            string strConn = "Server=tcp:area52.database.windows.net,1433;Initial Catalog=BDarea52;Persist Security Info=False;User ID=felipe;Password=m9p13ku2jM;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
             connection = new SqlConnection(strConn);
 

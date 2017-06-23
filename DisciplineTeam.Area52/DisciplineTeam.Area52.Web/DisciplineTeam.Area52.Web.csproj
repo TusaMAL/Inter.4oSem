@@ -114,6 +114,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\area52 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\area52 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -186,6 +188,7 @@
     <Content Include="Views\Evento\ViewEventos.cshtml" />
     <Content Include="Views\Evento\Members.cshtml" />
     <Content Include="Views\Error\Erro404.cshtml" />
+    <Content Include="Views\Shared\LayoutError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

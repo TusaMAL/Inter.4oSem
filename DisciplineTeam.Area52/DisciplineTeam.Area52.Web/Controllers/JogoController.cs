@@ -56,6 +56,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 using (JogoModel model = new JogoModel())
                 {
                     e = model.ReadJogoEdit(idjogo);
+                }
+                using (JogoModel model = new JogoModel())
+                {
                     ViewBag.ReadJogoImg = model.ReadJogoImg(idjogo);
                 }
                 return View(e);

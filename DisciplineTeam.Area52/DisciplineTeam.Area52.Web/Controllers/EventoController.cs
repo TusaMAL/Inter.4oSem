@@ -31,13 +31,25 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     ViewBag.ReadEvento = e;
                     DateTime date = Convert.ToDateTime(e.Data);
                     ViewBag.DataFormatada = date.ToString(@"dd-MM-yyyy");                           //Converte a data pro formato de dia/mes/ano
+                }
+                using (EventoModel model = new EventoModel())
+                {
                     ViewBag.ViewConfUserEvento = model.ViewConfUserEvento(idgrupo, idevento);       //Mostra os usuarios com presença confirmada
+                }
+                using (EventoModel model = new EventoModel())
+                {
                     ViewBag.QuantUserPartEvento = model.QuantUserPartEvento(idgrupo, idevento);     //Retorna o count de usuarios que vão ao evento
+                }
+                using (EventoModel model = new EventoModel())
+                {
                     ViewBag.UserStatusEvento = model.UserStatusEvento(idgrupo, iduser, idevento);   //Pega o status do usuario no evento para mostrar na view
                 }
                 using (GrupoModel model = new GrupoModel())
                 {
                     ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar 
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);
                 }
                 return View(e);
@@ -83,7 +95,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 if (ModelState.IsValid)
                 {
-                    using (EventoModel model = new EventoModel())
+                    using (EventoModel model2 = new EventoModel())
                     {
                         DateTime date = DateTime.Now;
                         DateTime dataevento = Convert.ToDateTime(e.Data);
@@ -92,7 +104,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                             TempData["DataInvalida"] = "Your event date is older than the current date, for creating an event please use a newer date.";
                             return View(e);
                         }
-                        model.Create(e, idgrupo);                                   //Cria o evento
+                        model2.Create(e, idgrupo);                                   //Cria o evento
                     }
                 }
                 return RedirectToAction("Index", "Grupo", new { GrupoId = idgrupo });
@@ -252,7 +264,13 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     ViewBag.ReadEvento = e;
                     DateTime date = Convert.ToDateTime(e.Data);
                     ViewBag.DataFormatada = date.ToString(@"dd-MM-yyyy");                               //Converte a data pro formato de dia/mes/ano
+                }
+                using (EventoModel model = new EventoModel())
+                {
                     ViewBag.ViewConfUserEventoAll = model.ViewConfUserEventoAll(idgrupo, idevento);     //Mostra os usuarios com presença confirmada
+                }
+                using (EventoModel model = new EventoModel())
+                {
                     ViewBag.QuantUserPartEvento = model.QuantUserPartEvento(idgrupo, idevento);         //Retorna o count de usuarios que vão ao evento
                 }
                 using (GrupoModel model = new GrupoModel())

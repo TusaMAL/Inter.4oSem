@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <!-- Teste -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Nosso CSS -->
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link rel="icon" href="~/img/icon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+</head>
+<body>
+    <!--        Começo NavBAR        -->
+    <nav class="navbar navbar-default navbar-static-top fixed-nav-bar">
+        <div id="cor-fundo" class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="~/Usuario/Index"><img id="logoarea52" class="img-responsive" src="~/img/area52.png" alt=""></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class=""><a href="#"><i class="cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Disciplina Team</span></a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!--    FimNavBAR    -->
+    <!--Div's pra fazer o footer ficar sempre embaixo-->
+    <div id="wrap">
+        <div id="main" class="col-lg-12 col-sm-12 col-md-12">
+            @RenderBody()
+        </div>
+    </div>
+    <!--./Div's pra fazer o footer ficar sempre embaixo-->
+    <!-- Começo Footer -->
+    <div id="footer">
+        <!-- usado pra deixar a coluna para fixar o footer do tamanho da tela, se não usar as 3 colunas o navegador vai usar o
+            padrão do container e dar uma encolhida no footer-->
+        <div class="container col-lg-12 col-sm-12 col-md-12">
+            <!-- adiciona o separador-->
+            <hr id="borda-footer" />
+            <ul class="nav nav-pills nav-justified">
+                <li><a id="cor-fonte-menu" href="#">© 2017 Disciplina Team</a></li>
+                @*<li><a id="cor-fonte-menu" href="#">Terms of Service</a></li>
+                    <li><a id="cor-fonte-menu" href="#">Privacy</a></li>*@
+            </ul>
+            <div id="push"></div>
+        </div><!-- /.col-lg-12 -->
+    </div><!--    fim Footer    -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!--Credits to https://github.com/1000hz/bootstrap-validator -->
+    <script src="~/Scripts/validator.js"></script>
+</body>
+</html>

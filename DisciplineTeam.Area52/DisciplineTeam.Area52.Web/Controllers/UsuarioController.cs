@@ -34,17 +34,26 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 }
                 using (UsuarioModel model = new UsuarioModel())
                 {
-                    ViewBag.ReadU = model.ReadU(iduser);                                 //Pega informações do usuario que logou e manda paraa view
+                    ViewBag.ReadU = model.ReadU(iduser);
+                }
+                using (UsuarioModel model = new UsuarioModel())
+                {//Pega informações do usuario que logou e manda paraa view
                     ViewBag.GetAgeUser = model.GetAgeUser(iduser);
                 }
                 using (GrupoModel model = new GrupoModel())
                 {
                     ViewBag.ReadGrupo = model.ReadGrupo(iduser);                         //Retorna os grupos em que o usuario está participando
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(iduser);   //Retorna o count de grupos em que o usuario participa
                 }
                 using (MensagemModel model = new MensagemModel())
                 {
                     ViewBag.ReadMensagemIndex = model.ReadMensagemIndex(iduser, quant);         //Exibe no feed as mensagens dos grupos em que o usuario participa TODO: ainda nao sei se mostra de todos que estão no grupo
+                }
+                using (MensagemModel model = new MensagemModel())
+                {
                     ViewBag.QuantMsgUser = model.QuantMsgUser(iduser);
                 }
                 return View();
@@ -85,6 +94,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 {
                     model.EditUsuario(e);                                               //Recebe como parametro os dados editados do form e pega o id do usuario da sessão para rodar o update no banco
                     ViewBag.SucessoEdit = true;                                         //Usado para exibir mensagem de confirmação na view
+                }
+                using (UsuarioModel model = new UsuarioModel())
+                {
                     e = model.ReadEditUsuario(((Usuario)Session["usuario"]).IdPessoa);      //Lê os dados do usuario no BD e mostra no Formulário para poder ser editado
                 }
                 return View(e);
@@ -128,8 +140,11 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     {
                         if (NewPwd != Senha)
                         {
-                            model.ChangePwd(user.IdPessoa, NewPwd);                     //Se o teste chegar aqui a senha do usuario será trocada pela nova
-                            ViewBag.ChangePwdSucess = "Password changed successfully.";
+                            using (UsuarioModel model2 = new UsuarioModel())
+                            {
+                                model2.ChangePwd(user.IdPessoa, NewPwd);                     //Se o teste chegar aqui a senha do usuario será trocada pela nova
+                                ViewBag.ChangePwdSucess = "Password changed successfully.";
+                            }
                         }
                         else
                         {
@@ -167,7 +182,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
         public ActionResult EditPicture(Usuario e)
         {
             try
-            {
+            {                
                 int iduser = ((Usuario)Session["usuario"]).IdPessoa;
                 HttpPostedFileBase arquivo = Request.Files[0];                                          //Recebe o primeiro parametro de arquivo
 
@@ -211,6 +226,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     model.ChangePicture(e, iduser);
+                }
+                using (UsuarioModel model = new UsuarioModel())
+                {
                     ViewBag.ReadU = model.ReadU(iduser);                                 //Pega informações do usuario que logou e manda paraa view
                 }
                 return View();
@@ -296,7 +314,10 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     if (model.Check(e))                             //Checa se o email não está em uso
                     {
                         TempData["Sucesso"] = "true";               /* faz com que o conteudo não seja nulo para que seja exibido mensagem de confirmação na pagina login*/
-                        model.Create(e);                            //Cria a conta do usuario
+                        using (UsuarioModel model2 = new UsuarioModel())
+                        {
+                            model2.Create(e);                            //Cria a conta do usuario
+                        }
                         return RedirectToAction("Login");
                     }
                     else

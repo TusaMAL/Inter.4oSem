@@ -1,0 +1,47 @@
+﻿@model DisciplineTeam.Area52.Web.Models.Jogo
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-offset-3 col-lg-6 col-sm-12 col-md-12 col-lg-offset-3">
+    <div id="cor-borda" class="panel panel-default">
+        <div id="cor-fundo-header" class="panel-heading no-border">
+            <a id="cor-fonte"><span class="glyphicon glyphicon-plus cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Create Group</span></a>
+        </div>
+        <!-- Body da div -->
+        <div class="panel-body no-border">
+            <!-- Cria o formulário -->
+@using (Html.BeginForm("Create", "Grupo", FormMethod.Post))
+{
+                   <!--input do nome do grupo-->
+
+
+                   <div class="form-group">
+                    <label for="nome">Group Name</label>
+                    <input type = "text" name= "Nome" class="form-control" id="lblNomeGrupo" placeholder="Enter the group name..." maxlength="30">
+                </div>
+
+                <!-- input do formulario do grupo-->
+                <div class="form-group">
+                    <label for="nome">Game</label>
+                        @{List<SelectListItem> ReadJogos = new List<SelectListItem>();
+
+                            foreach (var p in ViewBag.ReadJogos)
+                            {
+                                ReadJogos.Add(new SelectListItem { Text = p.Nome, Value = p.IdJogo.ToString() });
+                            }
+                            }
+                        @Html.DropDownListFor(m => m.IdJogo, ReadJogos, "-- Select Group Game --", new { @class = "form-control", @required ="required" })      
+                </div>
+                <!-- input da descrição do jogo-->
+                <div class="form-group">
+                    <label for="desc">Description</label>
+                    <textarea name="Descricao" class="form-control textarea-sem-resize" id="desc" rows="4" required maxlength="500"></textarea>
+                </div>
+                <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar">Create Group</button>
+}
+        </div><!--./panel-body-->
+    </div><!--./panel-->
+</div><!--./col-lg-offset-3 col-lg-6 col-sm-12 col-md-12 col-lg-offset-3-->
+

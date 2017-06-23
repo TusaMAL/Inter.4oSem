@@ -36,14 +36,29 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 using (GrupoModel model = new GrupoModel())
                 {
                     ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);               //Seleciona 6 primeiros usuarios e mostra na lista do grupo
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Mostra o count de usuarios na div de grupos
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Pega o status do usuario para mostrar os botões para interagir no site
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.QuantModGrupo = model.QuantModGrupo(idgrupo);               //Retora o count de moderadores do grupo
                 }
                 using (MensagemModel model = new MensagemModel())
                 {
                     ViewBag.ReadMensagem = model.ReadMensagem(idgrupo, quant);      //Ler as mensagens já postadas no grupo
+                }
+                using (MensagemModel model = new MensagemModel())
+                {
                     ViewBag.QuantMsgGrupo = model.QuantMsgGrupo(idgrupo);
                 }
 
@@ -73,14 +88,29 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     using (GrupoModel model = new GrupoModel())
                     {
                         ViewBag.ReadPartGrupo = model.ReadPartGrupo(idgrupo);               //Seleciona 6 primeiros usuarios e mostra na lista do grupo
+                    }
+                    using (GrupoModel model = new GrupoModel())
+                    {
                         ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
+                    }
+                    using (GrupoModel model = new GrupoModel())
+                    {
                         ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Mostra o count de usuarios na div de grupos
+                    }
+                    using (GrupoModel model = new GrupoModel())
+                    {
                         ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Retorna o status pra mostra o botão pro usuario
                     }
                     using (MensagemModel model = new MensagemModel())
                     {
                         model.PostMensagem(e, iduser, idgrupo);                          //Model pra fazer post da mensagem
+                    }
+                    using (MensagemModel model = new MensagemModel())
+                    {
                         ViewBag.ReadMensagem = model.ReadMensagem(idgrupo, 10);                 //Ler as mensagens já postadas no grupo
+                    }
+                    using (MensagemModel model = new MensagemModel())
+                    {
                         ViewBag.QuantMsgGrupo = model.QuantMsgGrupo(idgrupo);
                     }
                     using (EventoModel model = new EventoModel())
@@ -112,18 +142,21 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 {
                     iduser = ((Usuario)Session["usuario"]).IdPessoa;
                 }
-
-
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     ViewBag.ReadU = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
+                }
+                using (UsuarioModel model = new UsuarioModel())
+                {
                     ViewBag.GetAgeUser = model.GetAgeUser(iduser);                      //Pegar idade
                 }
                 using (GrupoModel model = new GrupoModel())
                 {
                     ViewBag.Grupos = model.ReadGrupoTotal(iduser);   //Coloca a lista na viewBag pra mostrar na view
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.Quantgrupopart = model.QuantGruposParticipa(iduser);                        //Retorna o count de grupos que o usuario está
-
                 }
                 return View();
             }
@@ -190,8 +223,17 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 using (GrupoModel model = new GrupoModel())
                 {
                     ViewBag.ReadMembrosGrupoTotal = model.ReadMembrosGrupoTotal(idgrupo); //Retorna a quantidade de membros participantes do grupo
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.InfoGrupo = model.InfoGrupo(idgrupo);                       //Pega as informações do grupo pra mostrar
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.QuantUserGrupos = model.QuantUserGrupos(idgrupo);           //Retorna o count de usuarios do grupo
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);   //Retorna o status pra mostra o botão pro usuario
                     ViewBag.IdUsuario = iduser;
                 }
@@ -216,6 +258,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     using (UsuarioModel model = new UsuarioModel())
                     {
                         ViewBag.ReadU = model.ReadU(((Usuario)Session["usuario"]).IdPessoa);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                    }
+                    using (UsuarioModel model = new UsuarioModel())
+                    {
                         ViewBag.GetAgeUser = model.GetAgeUser(iduser);
                     }
                     using (GrupoModel model = new GrupoModel())
@@ -229,6 +274,9 @@ namespace DisciplineTeam.Area52.Web.Controllers
                     using (UsuarioModel model = new UsuarioModel())
                     {
                         ViewBag.ReadU = model.ReadU(iduser);  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View   
+                    }
+                    using (UsuarioModel model = new UsuarioModel())
+                    {
                         ViewBag.GetAgeUser = model.GetAgeUser(iduser);
                     }
                     return View();
@@ -250,11 +298,17 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 using (UsuarioModel model = new UsuarioModel())
                 {
                     ViewBag.ReadU = model.ReadU(iduser);                                  //Recebe Id do usuario pela session, pega os dados do mesmo e coloca na ViewBag para mostrar na View
+                }
+                using (UsuarioModel model = new UsuarioModel())
+                {
                     ViewBag.GetAgeUser = model.GetAgeUser(iduser);
                 }
                 using (GrupoModel model = new GrupoModel())
                 {
                     ViewBag.ReadGrupo = model.ReadGrupo(iduser);                               //Lê os grupos em que o usuario escolhido participa para mostrar na view
+                }
+                using (GrupoModel model = new GrupoModel())
+                {
                     ViewBag.QuantGruposParticipa = model.QuantGruposParticipa(iduser);            //Retorna o count dos grupos em que o usuario escolhido participa pra mostrar
                 }
                 return View();
