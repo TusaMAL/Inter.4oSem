@@ -191,8 +191,9 @@
             {
                 <div id = "collapse2" class="panel-body panel-collapse collapse in">
                     <div class="form-group">
-                        <form role="form" action="@HttpContext.Current.Request.Url.PathAndQuery" method="post">
-                            @Html.TextAreaFor(m => m.Texto, new { rows = 4, @class = "form-control textarea-sem-resize", @required = "required", @placeholder = "Write something...", @maxlength = "350" })
+                        <form role="form" id="form-post" action="@HttpContext.Current.Request.Url.PathAndQuery" method="post">
+                            @Html.TextAreaFor(m => m.Texto, new { rows = 4, @id = "Texto", @class = "form-control textarea-sem-resize", @required = "required", @placeholder = "Write something...", @maxlength = "350", @autocomplete = "off" })
+                            <script type="text/javascript">document.getElementById("Texto").value = null;</script> <!--Reseta o que está no form-->
                             <br />
                             <button id="cor-fonte" type="submit" class="btn btn cor-fonte efeito-fade-navbar"><i class="glyphicon glyphicon-check">&nbsp;</i>Post New Message</button>
                         </form>
@@ -223,17 +224,17 @@
                                     </div>
                                 </form>
                             </li>
-                            @if (e.PIdPessoa != ViewBag.IdUsuario)
+                            @if (e.PIdPessoa != ViewBag.IdUsuario && e.PartStatus != 0)
                             {
-                            <li>
-                                <form method="post" action="~/Grupo/BtnBanUser/?IdGrupo=@e.GIdGrupo&IdUser=@e.PIdPessoa">
-                                    <div class="join">
-                                        <button class="btn-dropmenu" type="submit">
-                                            <i class="icon-pencil"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ban User
-                                        </button>
-                                    </div>
-                                </form>
-                            </li>
+                                    <li>
+                                        <form method="post" action="~/Grupo/BtnBanUser/?IdGrupo=@e.GIdGrupo&IdUser=@e.PIdPessoa">
+                                            <div class="join">
+                                                <button class="btn-dropmenu" type="submit">
+                                                    <i class="icon-pencil"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ban User
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </li>
                             }
                         </ul>
                     </div>
@@ -273,7 +274,7 @@
                                 </a>
                             </h4>
                             <!--Data/Hora e grupo que foi postada a msg-->
-                            <h6 class="fonte-post-pequena">@e.MsgDatahora (UTC- 03:00) at <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo" class="cor-fonte-menu">@e.GNome</a></h6>
+                            <h6 class="fonte-post-pequena">@e.MsgDatahora (GMT) at <a href="~/Grupo/Index/?GrupoId=@e.GIdGrupo" class="cor-fonte-menu">@e.GNome</a></h6>
                         </div>
                         <!--Mensagem Postada-->
                         <p class="text-right text-justify">@e.MsgTexto</p>

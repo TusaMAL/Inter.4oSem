@@ -1,5 +1,4 @@
-CREATE DATABASE BDarea52
-GO
+
 
 USE BDarea52
 GO
@@ -407,7 +406,7 @@ SELECT		m.grupo_id,
 GO
 
 
-ALTER VIEW v_User_Info_Edit		-- View Utilizada no Método ReadEditUsuario, dentro de UsuarioModel.cs
+CREATE VIEW v_User_Info_Edit		-- View Utilizada no Método ReadEditUsuario, dentro de UsuarioModel.cs
 AS
 	SELECT	p.id				PessoaId,
 			p.nome				PessoaNome,

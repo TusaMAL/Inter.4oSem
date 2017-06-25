@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DisciplineTeam.Area52.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,18 @@ namespace DisciplineTeam.Area52.Web.Controllers
         // GET: Error
         public ActionResult Erro404()
         {
+            try
+            {
+            if (((Admin)Session["usuario"]).Status == 2)
+            {
+                ViewBag.StatusAdmin = ((Admin)Session["usuario"]).Status;
+            }
             return View();
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

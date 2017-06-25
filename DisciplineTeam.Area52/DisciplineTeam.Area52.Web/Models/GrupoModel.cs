@@ -159,7 +159,7 @@ namespace DisciplineTeam.Area52.Web.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"SELECT * FROM v_User_Grupo_Part WHERE PartIdGrupo = @idgrupo AND (PartStatus = 1 OR PartStatus = 2)";
+            cmd.CommandText = @"SELECT * FROM v_User_Grupo_Part WHERE PartIdGrupo = @idgrupo AND (PartStatus = 1 OR PartStatus = 2) ORDER BY Nick";
 
             cmd.Parameters.AddWithValue("@idgrupo", idgrupo);
             //cmd.CommandType = System.Data.CommandType.Text;
@@ -278,12 +278,12 @@ namespace DisciplineTeam.Area52.Web.Models
 
             cmd.ExecuteNonQuery();
         }
-        // Muda o status do usuario para 3
+        // Muda o status do usuario para 0
         public void BanUser(int idgrupo, int iduser)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"UPDATE participantes SET status = 3 WHERE grupo_id = @idgrupo AND usuario_id = @iduser";
+            cmd.CommandText = @"UPDATE participantes SET status = 0 WHERE grupo_id = @idgrupo AND usuario_id = @iduser";
 
             cmd.Parameters.AddWithValue("@iduser", iduser);
             cmd.Parameters.AddWithValue("@idgrupo", idgrupo);

@@ -26,10 +26,15 @@
                     <span id="barrinha-menu" class="icon-bar"></span>
                     <span id="barrinha-menu" class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="~/Usuario/Index"><img id="logoarea52" class="img-responsive" src="~/img/area52.png" alt=""></a>
-
+                @if (ViewBag.StatusAdmin == 2)
+            {
+                    <a class="navbar-brand" href="#"><img id="logoarea52" class="img-responsive" src="~/img/area52.png" alt=""></a>
+                }
+                else
+                {
+                    <a class="navbar-brand" href="~/Usuario/Index"><img id="logoarea52" class="img-responsive" src="~/img/area52.png" alt=""></a>
+                }
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 @if (ViewBag.StatusAdmin == 2)

@@ -20,32 +20,31 @@
             }
             <table class="table-hover col-sm-12 col-xs-12 col-md-12 col-lg-12">
                 <tr>
-                    <td class="text-center">Game Pic: </td>
-                    <td class="text-center">Name: </td>
-                    <td class="text-center">Game Type: </td>
+                    <td class="text-center fonte-menu-jogo">Game Pic: </td>
+                    <td class="text-center fonte-menu-jogo">Name: </td>
+                    <td class="text-center fonte-menu-jogo">Game Type: </td>
                 </tr>
                 <tr></tr>
                 
                 @foreach (var e in Model)
                 {
                     <tr id="cor-borda" class="table-bordered">
-                        <td class="text-center"><img style="max-height: 30%; height: auto; border: 1px solid #000000;" class="img-circle" src="@e.Imagem" /></td>
-                        <td class="text-center vertical-align">@e.Nome</td>
-                        <td class="text-center vertical-align">@e.Descricao</td>
+                        <td class="col-lg-2 col-md-2 col-sm-4  col-xs-4  text-center"><img style="border: 1px solid #000000;" class="img-responsive img-circle" src="@e.Imagem" /></td>
+                        <td class="text-center vertical-align fonte-menu-jogo">@e.Nome</td>
+                        <td class="text-center vertical-align fonte-menu-jogo">@e.Descricao</td>
                         <td>
                             <a href="~/Jogo/EditJogo/?JogoId=@e.IdJogo" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search">
-                                <i id="menu-toggle" class="glyphicon glyphicon-edit"></i><span>&nbsp;Edit</span> @*Mudar Status para 1*@
+                                <p class="text-center vertical-align fonte-menu-jogo"><span id="menu-toggle" class="glyphicon glyphicon-edit"></span>&nbsp;Edit</p> @*Mudar Status para 1*@
                             </a>
                         </td>
                     </tr>
                 }
                 
             </table>
-            <div class="col-sm-offset-4 col-xs-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-4 col-xs-4 col-md-4 col-lg-4">
-
-                <br />
-                <a href="../Jogo/Create" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search center-block"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add New Game</a>
-            </div>
+        </div>
+        <div class="row text-center" style="padding-bottom: 20px;">
+            <a href="../Jogo/Create" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add New Game</a>
+        <br/>
         </div>
     </div>
 </div>

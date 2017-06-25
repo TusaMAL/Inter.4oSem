@@ -101,7 +101,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
 
                     using (System.Drawing.Image pic = System.Drawing.Image.FromStream(arquivo.InputStream)) //Converte a arquivo para imagem para poder comparar a as dimensões
                     {
-                        if (pic.Height != 256 && pic.Width != 256)
+                        if (pic.Height != 256 || pic.Width != 256)
                         {
                             TempData["ErroDimensao"] = "Please use a picture with 256x256 pixels.";         //Semelhante a viewbag porem ela "vive" fora da pagina que foi criada
                             return RedirectToAction("Create");
@@ -170,7 +170,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
 
                     using (System.Drawing.Image pic = System.Drawing.Image.FromStream(arquivo.InputStream)) //Converte a arquivo para imagem para poder comparar a as dimensões
                     {
-                        if (pic.Height != 256 && pic.Width != 256)
+                        if (pic.Height != 256 || pic.Width != 256)
                         {
                             TempData["ErroDimensao"] = "Please use a picture with 256x256 pixels.";         //Semelhante a viewbag porem ela "vive" fora da pagina que foi criada
                             return RedirectToAction("EditJogo", new { JogoId = e.IdJogo });
