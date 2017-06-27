@@ -13,7 +13,7 @@ namespace DisciplineTeam.Area52.Web.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC cadEvento @nome, @data, @horario, @tipo, @cep, @numero, @logradouro, @bairro, @cidade, @descricao, @grupo_id";
+            cmd.CommandText = @"EXEC cadEvento @nome, @data, @horario, @tipo, @cep, @numero, @logradouro, @bairro, @cidade, @uf, @descricao, @grupo_id";
 
             cmd.Parameters.AddWithValue("@nome", e.Nome);
             cmd.Parameters.AddWithValue("@data", e.Data);
@@ -29,6 +29,8 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.Parameters.AddWithValue("@bairro", e.Bairro);
             e.Localidade = (e.Localidade != null ? e.Localidade : ""); //Se receber valor nulo, insere no banco valor nulo
             cmd.Parameters.AddWithValue("@cidade", e.Localidade);
+            e.Uf = (e.Uf != null ? e.Uf : ""); //Se receber valor nulo, insere no banco valor nulo
+            cmd.Parameters.AddWithValue("@uf", e.Uf);
             cmd.Parameters.AddWithValue("@descricao", e.Descricao);
             cmd.Parameters.AddWithValue("@grupo_id", idgrupo);
 
@@ -66,6 +68,7 @@ namespace DisciplineTeam.Area52.Web.Models
                 p.Logradouro = (string)(reader["LogEvento"] != DBNull.Value ? reader["LogEvento"] : null);
                 p.Bairro = (string)(reader["BairroEvento"] != DBNull.Value ? reader["BairroEvento"] : null);
                 p.Localidade = (string)(reader["CidadeEvento"] != DBNull.Value ? reader["CidadeEvento"] : null);
+                p.Uf = (string)(reader["UfEvento"] != DBNull.Value ? reader["UfEvento"] : null);
 
             }    
                 return p;
@@ -278,7 +281,7 @@ namespace DisciplineTeam.Area52.Web.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"EXEC editarEvento @grupo_id, @id , @nome, @data, @horario, @tipo, @cep, @numero, @logradouro, @bairro, @cidade, @descricao";
+            cmd.CommandText = @"EXEC editarEvento @grupo_id, @id , @nome, @data, @horario, @tipo, @cep, @numero, @logradouro, @bairro, @cidade,@uf, @descricao";
 
 
             cmd.Parameters.AddWithValue("@grupo_id", e.IdGrupo);
@@ -297,6 +300,8 @@ namespace DisciplineTeam.Area52.Web.Models
             cmd.Parameters.AddWithValue("@bairro", e.Bairro);
             e.Localidade = (e.Localidade != null ? e.Localidade : ""); //Se receber valor nulo, insere no banco valor nulo
             cmd.Parameters.AddWithValue("@cidade", e.Localidade);
+            e.Uf = (e.Uf != null ? e.Uf : ""); //Se receber valor nulo, insere no banco valor nulo
+            cmd.Parameters.AddWithValue("@uf", e.Uf);
             cmd.Parameters.AddWithValue("@descricao", e.Descricao);
 
             cmd.ExecuteNonQuery();

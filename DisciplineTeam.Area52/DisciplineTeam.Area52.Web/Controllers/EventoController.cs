@@ -52,7 +52,7 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 {
                     ViewBag.StatusUserGrupo = model.StatusUserGrupo(iduser, idgrupo);
                 }
-                return View(e);
+                return View();
             }
             catch (Exception ex)
             {
@@ -103,6 +103,11 @@ namespace DisciplineTeam.Area52.Web.Controllers
                         {
                             TempData["DataInvalida"] = "Your event date is older than the current date, for creating an event please use a newer date.";
                             return View(e);
+                        }
+                        if (Validacoes.VerificarValidadeDoCep(e.Cep) == false)
+                        {
+                            TempData["CepInvalido"] = "Invalid Zip-Code!";
+                            return RedirectToAction("Create", "Evento", new { GrupoId = idgrupo });
                         }
                         model2.Create(e, idgrupo);                                   //Cria o evento
                     }
@@ -189,15 +194,20 @@ namespace DisciplineTeam.Area52.Web.Controllers
             {
                 e.IdGrupo = int.Parse(Request.QueryString[0]);
                 e.IdEvento = int.Parse(Request.QueryString[1]);
+                if (Validacoes.VerificarValidadeDoCep(e.Cep) == false)
+                {
+                    TempData["CepInvalido"] = "Invalid Zip-Code!";
+                    return RedirectToAction("EditEvento", "Evento", new { GrupoId = e.IdGrupo, EventoId = e.IdEvento, e });
+                }
                 using (EventoModel model = new EventoModel())
                 {
                     model.EditInfoEvento(e);
                 }
                 return RedirectToAction("Index", "Evento", new { GrupoId = e.IdGrupo, EventoId = e.IdEvento, e });
             }
-            catch (Exception f)
+            catch (Exception ex)
             {
-                Console.WriteLine("{0} Exception caught", f);
+                Console.WriteLine("{0} Exception caught", ex);
                 return RedirectToAction("Erro404", "Error");
             }
         }

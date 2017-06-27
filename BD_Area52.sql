@@ -1,4 +1,5 @@
-
+CREATE DATABASE BDarea52
+GO
 
 USE BDarea52
 GO
@@ -72,10 +73,11 @@ CREATE TABLE eventos
 	logradouro	varchar(50),
 	bairro		varchar(50),
 	cidade		varchar(50),
+	uf			varchar(2),
 	descricao	varchar(500),
 	grupo_id  int			not null references grupos
 )
-GO
+GO	
 
 CREATE TABLE participantes
 (
@@ -237,7 +239,7 @@ GO
 CREATE PROCEDURE editarEvento		--Procedure utilizada no método EditInfoEvento em EventoModel.cs
 (
 	@grupo_id int, @id int, @nome varchar(30), @data date, @horario time, @tipo int, @cep varchar(9), @numero varchar(50), 
-	@logradouro varchar(50), @bairro varchar(50), @cidade varchar(50),  @descricao varchar(500)
+	@logradouro varchar(50), @bairro varchar(50), @cidade varchar(50), @uf varchar(2),  @descricao varchar(500)
 )
 AS
 BEGIN
@@ -253,6 +255,7 @@ BEGIN
 		logradouro	=		@logradouro,
 		bairro		=		@bairro,
 		cidade		=		@cidade,
+		uf			=		@uf,
 		descricao	=		@descricao
 	WHERE id = @id AND grupo_id = @grupo_id
 END
@@ -349,11 +352,11 @@ CREATE PROCEDURE cadEvento			--Procedure utilizada no método Create em EventoMod
 (
 	@nome varchar(30), @data date, @horario time, @tipo int, 
 	@cep varchar(9), @numero varchar(50), @logradouro varchar(50), 
-	@bairro varchar(50), @cidade varchar (50), @descricao varchar(500), @grupo_id int
+	@bairro varchar(50), @cidade varchar (50), @uf varchar(2), @descricao varchar(500), @grupo_id int
 )
 AS
 BEGIN
-	INSERT INTO eventos VALUES (@nome, @data, @horario, @tipo, @cep, @numero, @logradouro, @bairro, @cidade, @descricao, @grupo_id)
+	INSERT INTO eventos VALUES (@nome, @data, @horario, @tipo, @cep, @numero, @logradouro, @bairro, @cidade, @uf, @descricao, @grupo_id)
 END
 GO
 
@@ -529,6 +532,7 @@ AS
 				e.numero		NrEvento,
 				e.logradouro	LogEvento,
 				e.bairro		BairroEvento,
-				e.cidade		CidadeEvento
+				e.cidade		CidadeEvento,
+				e.uf			UfEvento
 	FROM		eventos			e, grupos			g
 GO
