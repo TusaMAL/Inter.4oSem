@@ -27,7 +27,7 @@
                                 @if (ViewBag.StatusUserGrupo == 0)
                                 {
                                     <form method="post" action="~/Grupo/BtnVoltarGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
-                                        <div class="joined" style="">
+                                        <div class="row text-center">
                                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
                                                 <span class="glyphicon glyphicon-plus"></span> Join
                                             </button>
@@ -37,7 +37,7 @@
                                 else if (ViewBag.StatusUserGrupo == 1)
                                 {
                                     <form method="post" action="~/Grupo/BtnSairGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
-                                        <div class="joined" style="">
+                                        <div class="row text-center">
                                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
                                                 <span class="glyphicon glyphicon-minus"></span> Leave Group
                                             </button>
@@ -47,7 +47,7 @@
                                 else if (ViewBag.StatusUserGrupo == 5)
                                 {
                                     <form method="post" action="~/Grupo/BtnPartGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
-                                        <div class="join">
+                                        <div class="row text-center">
                                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
                                                 <span class="glyphicon glyphicon-plus"></span> Join
                                             </button>
@@ -60,7 +60,7 @@
                                     if (ViewBag.QuantModGrupo > 1)
                                     {
                                         <form method="post" action="~/Grupo/BtnSairGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
-                                            <div class="joined" style="">
+                                            <div class="row text-center">
                                                 <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
                                                     <span class="glyphicon glyphicon-minus"></span> Leave Group
                                                 </button>
@@ -69,10 +69,10 @@
                                     }
                                     else
                                     {
-                                        <div class="text-center">
+                                        <div class="row text-center">
                                             <p class="">You cannot leave the group being the only moderator left, please add another user as moderator to leave the group.</p>
                                         </div>
-                                        <div class="joined" style="">
+                                        <div class="row text-center">
                                             <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit" disabled title="You cannot leave the group">
                                                 <span class="glyphicon glyphicon-minus"></span> Leave Group
                                             </button>
