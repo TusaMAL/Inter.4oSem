@@ -61,7 +61,6 @@ namespace DisciplineTeam.Area52.Web.Controllers
                 {
                     ViewBag.QuantMsgGrupo = model.QuantMsgGrupo(idgrupo);
                 }
-
                 using (EventoModel model = new EventoModel())
                 {
                     ViewBag.ViewEventosIndex = model.ViewEventosIndex(idgrupo);               //Mostra os eventos cadastrados no grupo

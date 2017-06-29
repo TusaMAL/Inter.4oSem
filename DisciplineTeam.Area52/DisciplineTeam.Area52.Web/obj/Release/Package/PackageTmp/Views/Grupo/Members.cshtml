@@ -135,7 +135,12 @@
                         <!--Link do usuario-->
                         <a id="cor-fonte-menu" href="~/Grupo/Person/?UserID=@e.PartIdUsuario" title="@e.UNick">
                             <!--Nick do Usuario-->
-                            <h3 class="text-overflow">@e.UNick</h3>
+                            
+                            <h3 class="text-overflow">@if(e.PartStatus == 2)
+                            {
+                                <i class="glyphicon glyphicon-user" title="Group Admin"></i>
+                            }
+                            @e.UNick</h3>
                             <!--Nome do Usuário-->
                             <p class="text-overflow">@e.PNome</p>
                         </a>

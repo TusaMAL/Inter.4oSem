@@ -10,7 +10,8 @@
             <a id="cor-fonte"><i class="glyphicon glyphicon-flash"></i><span>&nbsp;Create Event</span></a>
         </div>
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
-            <form id="endereco" action="/Evento/Endereco/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo" method="post"></form>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <form method="get" action="."></form>
                 <form id="myform" action="/Evento/Create/?GrupoId=@ViewBag.InfoGrupo.GIdGrupo" class="form-horizontal" method="post">
 
                     <br />
@@ -34,11 +35,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Zip-Code:</label>
                             <div class="col-sm-3">
-                                @Html.Hidden("Cep", (string)TempData["Cep"], new { @form = "myform", @required = "required" })
-                                @Html.TextBox("Cep", (string)TempData["Cep"], new { @id = "cep", @form = "endereco", @class = "form-control", @placeholder = "Zip-Code", @required = "required", @maxlength = "9" })
-                            </div>
-                            <div class="col-sm-3">
-                                <button id="cor-fonte" name="botao" class="btn cor-fonte efeito-fade-navbar borda-botao-search" form="endereco"><span class="glyphicon glyphicon-download"></span>&nbsp;Get Address</button>
+                                @Html.TextBoxFor(m => m.Cep, new { @type = "text", @id = "cep", @class = "form-control", @placeholder = "Zip-Code", @required = "required", @maxlength = "9" })
                             </div>
                             @if (TempData["CepInvalido"] != null)
                             {
@@ -53,32 +50,35 @@
                                 </div>
                             }
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Number:</label>
                             <div class="col-sm-3">
-                                @Html.TextBoxFor(m => m.Numero, new { @form = "myform", @class = "form-control", @placeholder = "Number" })
+                                @Html.TextBoxFor(m => m.Numero, new { @class = "form-control", @placeholder = "Number" })
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Address:</label>
                             <div class="col-sm-6">
-                                @Html.Hidden("Logradouro", (string)TempData["Logradouro"], new { @form = "myform", @required = "required" })
-                                @Html.TextBox("Logradouro", (string)TempData["Logradouro"], new { @disabled = "disabled", @class = "form-control", @placeholder = "Address" })
+                                @Html.TextBoxFor(m => m.Logradouro, new { @id = "logradouro", @readonly = "readonly", @class = "form-control", @placeholder = "Address", @maxlength = "9" })
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">District:</label>
                             <div class="col-sm-6">
-                                @Html.Hidden("Bairro", (string)TempData["Bairro"], new { @form = "myform", @required = "required" })
-                                @Html.TextBox("Bairro", (string)TempData["Bairro"], new { @disabled = "disabled", @class = "form-control", @placeholder = "District" })
+                                @Html.TextBoxFor(m => m.Bairro, new { @id = "bairro", @readonly = "readonly", @class = "form-control", @placeholder = "District" })
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">City:</label>
                             <div class="col-sm-6">
-                                @Html.Hidden("Localidade", (string)TempData["Localidade"], new { @form = "myform", @required = "required" })
-                                @Html.TextBox("Localidade", (string)TempData["Localidade"], new { @disabled = "disabled", @class = "form-control", @placeholder = "City" })
+                                @Html.TextBoxFor(m => m.Localidade, new { @id = "localidade", @readonly = "readonly", @class = "form-control", @placeholder = "City" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">State:</label>
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(m => m.Uf, new { @id = "uf", @readonly = "readonly", @class = "form-control", @placeholder = "State" })
                             </div>
                         </div>
                     </div>
@@ -172,4 +172,54 @@
     //};
     //$(enableRadio);
     //$("#Online").change(enableRadio);
+</script>
+<script>
+    var inputsCEP = $('#logradouro, #bairro, #localidade, #uf');
+    var validacep = /^[0-9]{8}$/;
+
+    function limpa_formulário_cep(alerta) {
+        if (alerta !== undefined) {
+            alert(alerta);
+        }
+
+        inputsCEP.val('');
+    }
+
+    function get(url) {
+
+        $.get(url, function (data) {
+
+            if (!("erro" in data)) {
+
+                if (Object.prototype.toString.call(data) === '[object Array]') {
+                    var data = data[0];
+                }
+
+                $.each(data, function (nome, info) {
+                    $('#' + nome).val(nome === 'cep' ? info.replace(/\D/g, '') : info).attr('info', nome === 'cep' ? info.replace(/\D/g, '') : info);
+                });
+
+
+
+            } else {
+                limpa_formulário_cep("CEP não encontrado.");
+            }
+
+        });
+    }
+
+    // Digitando CEP
+    $('#cep').on('blur', function (e) {
+
+        var cep = $('#cep').val().replace(/\D/g, '');
+
+        if (cep !== "" && validacep.test(cep)) {
+
+            inputsCEP.val('...');
+            get('https://viacep.com.br/ws/' + cep + '/json/');
+
+        } else {
+            limpa_formulário_cep(cep == "" ? undefined : "Formato de CEP inválido.");
+        }
+    });
 </script>
