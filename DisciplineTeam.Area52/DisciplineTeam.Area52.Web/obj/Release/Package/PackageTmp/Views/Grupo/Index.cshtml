@@ -34,6 +34,17 @@
                                         </div>
                                     </form>
                                 }
+                                else if (ViewBag.StatusUserGrupo == 3)
+                                {
+                                    <div class="row text-center">
+                                        <p class="">You have been banned from this group!</p>
+                                    </div>
+                                    <div class="row text-center">
+                                        <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit" disabled>
+                                            <span class="glyphicon glyphicon-plus"></span> Join
+                                        </button>
+                                    </div>
+                                }
                                 else if (ViewBag.StatusUserGrupo == 1)
                                 {
                                     <form method="post" action="~/Grupo/BtnSairGrupo/?IdGrupo=@ViewBag.InfoGrupo.GIdGrupo&IdUser=@ViewBag.IdUsuario">
