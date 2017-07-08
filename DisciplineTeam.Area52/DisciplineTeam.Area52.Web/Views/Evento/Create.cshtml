@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Zip-Code:</label>
                             <div class="col-sm-3">
-                                @Html.TextBoxFor(m => m.Cep, new { @type = "text", @id = "cep", @class = "form-control", @placeholder = "Zip-Code", @required = "required", @maxlength = "9" })
+                                @Html.TextBoxFor(m => m.Cep, new { @type = "text", @id = "cep", @class = "form-control", @placeholder = "Zip-Code", @maxlength = "9" })
                             </div>
                             @if (TempData["CepInvalido"] != null)
                             {

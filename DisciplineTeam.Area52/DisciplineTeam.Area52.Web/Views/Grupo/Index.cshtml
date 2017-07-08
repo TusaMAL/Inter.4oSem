@@ -235,7 +235,7 @@
                                     </div>
                                 </form>
                             </li>
-                            @if (e.PIdPessoa != ViewBag.IdUsuario && e.PartStatus != 0)
+                            @if (e.PIdPessoa != ViewBag.IdUsuario && e.PartStatus != 0 && e.PartStatus != 3)
                             {
                                     <li>
                                         <form method="post" action="~/Grupo/BtnBanUser/?IdGrupo=@e.GIdGrupo&IdUser=@e.PIdPessoa">
