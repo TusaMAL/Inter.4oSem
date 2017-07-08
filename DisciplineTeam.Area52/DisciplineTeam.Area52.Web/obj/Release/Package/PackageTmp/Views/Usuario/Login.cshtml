@@ -1,0 +1,63 @@
+﻿@model DisciplineTeam.Area52.Web.Models.Pessoa
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
+<!--Começo Menu Login-->
+<!--Colunas lg 4/12 md 6/12 sm 6/12-->
+<div class="container col-lg-4 col-md-4 col-sm-4 thumbnail">
+    <h3 class="text-center">Login to Your Account</h3>
+    <hr id="borda-footer" />
+    <div class="col-lg-12">
+        @if (ViewBag.Erro != null)
+        {
+            <div class="alert alert-danger text-center" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                @ViewBag.Erro
+            </div>
+        }
+        <!-- Mensagem de sucesso da criação da conta embutido no UsuarioController.cs-->
+        @if (TempData["Sucesso"] != null)
+        {
+            <div class="alert alert-success text-center" role="alert">
+                <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                <span class="sr-only">Success:</span>
+                Account created successfully!
+            </div>
+        }
+        <!--começo form auto validador usando o validator.js obs: esse script está declarado só no _LayoutIndex.cshtml no rodapé da pagina-->
+        <form data-toggle="validator" role="form" action="~/Usuario/Login" method="POST">
+            <!-- classe has-feedback informa os campos que não estão preenchidos corretamente-->
+            <div class="form-group has-feedback">
+                <label class="control-label">Email: </label>
+                <!-- Textbox criado pelo razor-->
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @required="required" })
+                <!--Mostra os glphicon conforme a ação-->
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <!-- mensagem de validação do razor-->
+                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Email)</div>
+        
+                @*<input type="email" name="Email" class="form-control" />*@
+            </div>
+
+            <div class="form-group has-feedback">
+                <label class="control-label">Password: </label>
+                @Html.PasswordFor(m => m.Senha, new { @class = "form-control control-label", @minlength = "6", @required="required" })
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Senha)</div>
+                @*<input type="password" name="Senha" class="form-control" />*@
+            </div>
+            <div class="form-group text-center">
+                <div class="form-group col-xs-6">
+                    <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-log-in"></span>&nbsp; Sign In</button>
+                </div>
+                <div class="form-group col-xs-6">
+                    <a id="cor-fonte" href="/Usuario/Create" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-check"></span>&nbsp; Register</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div><!--./col-lg-4 col-md-6 col-sm-6-->
+<!--Fim Coluna login-->

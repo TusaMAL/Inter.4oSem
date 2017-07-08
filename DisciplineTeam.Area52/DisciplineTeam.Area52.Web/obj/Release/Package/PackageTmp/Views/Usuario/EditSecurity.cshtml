@@ -1,0 +1,100 @@
+﻿@model DisciplineTeam.Area52.Web.Models.Usuario
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--btn cor-fonte efeito-fade-navbar borda-botao-search item-barra-set botao-barra tablink botao-settings-select-->
+
+<div class="col-lg-offset-2 col-lg-8 col-sm-12 col-md-12 col-lg-offset-2">
+    <div id="cor-borda" class="well" style="background: white">
+        <ul id="efeito-form" class="nav nav-tabs">
+            <li><a class="btn efeito-fade-navbar borda-botao-search" onclick="window.location = '../Usuario/Edit'" data-toggle="tab"><p class="fonte-settings"><span class="glyphicon glyphicon-user"></span>&nbsp; Profile</p></a></li>
+            <li class="active"><a href="#security" class="btn efeito-fade-navbar borda-botao-search" data-toggle="tab"><p class="fonte-settings"><span class="glyphicon glyphicon-lock"></span>&nbsp; Security</p></a></li>
+            <li><a class="btn efeito-fade-navbar borda-botao-search" onclick="window.location = '../Usuario/EditPicture'" data-toggle="tab"><p class="fonte-settings"><span class="glyphicon glyphicon-camera"></span>&nbsp; Picture</p></a></li>
+        </ul>
+        <div id="cor-borda myTabContent" class="tab-content">
+            <div class="tab-pane active" id="profile">
+                <form class="form-horizontal" data-toggle="validator" role="form" action="~/Usuario/EditSecurity" method="POST">
+                    <fieldset>
+                            <br />
+                            <div id="cor-borda myTabContent" class="tab-content">
+                                <div class="tab-pane active" id="security">
+                                    <!-- classe has-feedback informa os campos que não estão preenchidos corretamente-->
+                                    <div class="col-lg-12">
+                                    @if (ViewBag.ChangePwdFail != null)
+                                    {
+                                        <div class="alert alert-danger text-center col-lg-offset-2 col-lg-8 col-lg-offset-2" role="alert">
+                                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                            <span class="sr-only">Error:</span>
+                                            @ViewBag.ChangePwdFail
+                                        </div>
+                                    }
+                                    <!-- Mensagem de sucesso da criação da conta embutido no UsuarioController.cs-->
+                                    @if (ViewBag.ChangePwdSucess  != null)
+                                    {
+                                        <div class="alert alert-success text-center col-lg-offset-2 col-lg-8 col-lg-offset-2" role="alert">
+                                            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                                            <span class="sr-only">Success:</span>
+                                            @ViewBag.ChangePwdSucess
+                                        </div>
+                                    }
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="col-sm-2 control-label">Old Password: </label>
+                                        <div class="col-sm-9">
+                                            <!-- Textbox criado pelo razor-->
+                                            @Html.PasswordFor(m => m.Senha, new { @class = "form-control", @minlength = "6", @maxlength = "20", @placeholder = "Old Password...", @required = "required"})
+                                            <!--Mostra os glphicon conforme a ação-->
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <!-- mensagem de validação do razor-->
+                                            <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Senha)</div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="col-sm-2 control-label">New Password: </label>
+                                        <div class="col-sm-9">
+                                            <!-- Textbox criado pelo razor-->
+                                            @Html.PasswordFor(m => m.NewPwd, new { @id = "inputPassword", @class = "form-control", @minlength = "6", @placeholder = "New Password...", @required = "required", @maxlength = "20"})
+                                            <!--Mostra os glphicon conforme a ação-->
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <!-- mensagem de validação do razor-->
+                                            <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.NewPwd)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="col-sm-2 control-label">Confirm New Password: </label>
+                                        <div class="col-sm-9">
+                                            <!-- Textbox criado pelo razor-->
+                                            <input type="password" class="form-control" id="NewPwdConfirm" data-match="#inputPassword" data-match-error="Passwords must match" placeholder="Confirm New Password..." required maxlength="20">
+                                            <!--Mostra os glphicon conforme a ação-->
+                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                            <!-- mensagem de validação do razor-->
+                                            <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.NewPwdConfirm)</div>
+                                        </div>
+                                        
+                                    </div>
+                                    <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar center-block"><span class="glyphicon glyphicon-ok"></span>&nbsp; Change Password</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+</div>
+        </div>
+
+        <!--<div id="cor-fundo" class="panel-heading">            
+            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search item-barra-set botao-barra tablink botao-settings-select" onclick="openTab(event,'Profile')">Profile</button>
+            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search item-barra-set botao-barra tablink" onclick="openTab(event,'Secutiry')">Security</button>
+        </div>
+        <div class="panel-body myTabContent" class="tab-content">
+            <div id="Profile" class="settings-container form-horizontal tab-set panel-body">
+
+            </div>
+            <div id="Secutiry" class="settings-container form-horizontal tab-set panel-body" style="display:none">
+                
+            </div>
+            </div>-->
+        </div><!--./well-->
+    </div><!--./col-lg-offset-2 col-lg-8 col-sm-12 col-md-12 col-lg-offset-2-->
+      

@@ -1,0 +1,119 @@
+﻿@model DisciplineTeam.Area52.Web.Models.Jogo
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="col-lg-offset-2 col-lg-8 col-sm-12 col-md-12 col-lg-offset-2">
+    <div id="cor-borda" class="panel panel-default">
+        <div id="cor-fundo-header" class="panel-heading no-border">
+            <a id="cor-fonte"><span class="glyphicon glyphicon-edit cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Edit Game</span></a>
+        </div>
+        <div class="panel-body no-border">
+            <form action="~/Jogo/EditJogo" method="post" enctype="multipart/form-data">
+
+                    @Html.HiddenFor(m => m.IdJogo)
+                @if (TempData["SucessoImgChange"] != null)
+                {
+                    <div class="alert alert-success text-center" role="alert">
+                        <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Success:</span>
+                        @TempData["SucessoImgChange"]
+                    </div>
+                }
+                else if (TempData["ErroDimensao"] != null)
+                {
+                <div class="alert alert-danger text-center col-lg-offset-2 col-lg-8 col-lg-offset-2" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    @TempData["ErroDimensao"]
+                </div>
+                }
+                else if (TempData["ErroFormato"] != null)
+                {
+                <div class="alert alert-danger text-center col-lg-offset-2 col-lg-8 col-lg-offset-2" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    @TempData["ErroFormato"]
+                </div>
+                }
+                else if (TempData["ErroTamanho"] != null)
+                {
+                <div class="alert alert-danger text-center col-lg-offset-2 col-lg-8 col-lg-offset-2" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    @TempData["ErroTamanho"]
+                </div>
+                }
+                <div class="form-group col-lg-12">
+                    <label for="nome">Name:</label>
+                    @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @required = "required", maxlength = "100" })
+                    @Html.ValidationMessageFor(m => m.Nome)
+                </div>
+
+                <div class="form-group col-lg-12">
+                    <label for="desc">About:</label>
+                    @Html.TextAreaFor(m => m.Descricao, new { @class = "form-control textarea-sem-resize", rows = "4", @required = "required", maxlength = "20" })
+                    @Html.ValidationMessageFor(m => m.Descricao)
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-xs-12 control-label">Current Pic:</label>
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                        <img src="@ViewBag.ReadJogoImg" alt="..." class="img-rounded borda-profile img-responsive">
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                        <p class="help-block">Please select a picture with dimensions equal to 256x256.</p>
+                        <p class="help-block">Formats accepted .jpg, .png and .jpeg.</p>
+                        <p class="help-block">Picture must have less than 2 MiB</p>
+                        
+                        <!-- Button trigger modal -->
+                        <button type="button" id="cor-fonte" class="center-block btn cor-fonte efeito-fade-navbar borda-botao-search" data-toggle="modal" data-target="#myModal">
+                            <span class="glyphicon glyphicon-upload"></span>&nbsp;Open Upload Window
+                        </button>
+                        <!-- Modal -->
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <br/>
+                    <a href="~/Jogo/Index" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><i class="glyphicon glyphicon-floppy-remove"></i>&nbsp;Back</a>
+                    <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><i class="glyphicon glyphicon-floppy-saved"></i>&nbsp;Save</button>     
+                </div>
+                <div class="row text-center">
+                    </div>
+            </form>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="padding-top: 50px;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Upload Picture</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label class="col-sm-3 control-label">Current Pic:</label>
+                            <div>
+                                <img src="@ViewBag.ReadJogoImg" alt="..." class="img-rounded borda-profile" style="height: 96px; width: auto;">
+                            </div>
+                            <br />
+                            <p class="help-block">Please select a picture with dimensions equal to 256x256.</p>
+                            <p class="help-block">Formats accepted .jpg, .png and .jpeg.</p>
+                            <p class="help-block">Picture must have less than 2 MiB</p>
+                            <form class="form-horizontal" action="~/Jogo/EditImgJogo" method="post" enctype="multipart/form-data">
+                                <label class="control-label">Select File</label>
+                                @*<input id="input-1" type="file" class="file" required>*@
+                                @Html.HiddenFor(m => m.IdJogo)
+                                @Html.TextBoxFor(m => m.Imagem, new { @id = "input-1", @class = "file", @type = "file", @placeholder = "Upload", @required = "required", @accept = ".png, .jpg, .jpeg" })
+                                <div class="modal-footer">
+                                    <button type="button" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;Close</button>
+                                    @*<button type="submit" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upload Image</button>*@
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -104,12 +104,24 @@ namespace DisciplineTeam.Area52.Web.Controllers
                             TempData["DataInvalida"] = "Your event date is older than the current date, for creating an event please use a newer date.";
                             return View(e);
                         }
-                        if (Validacoes.VerificarValidadeDoCep(e.Cep) == false)
+                        if (e.Cep == null)
                         {
-                            TempData["CepInvalido"] = "Invalid Zip-Code!";
-                            return RedirectToAction("Create", "Evento", new { GrupoId = idgrupo });
+                            if (e.Tipo == 2)
+                            {
+                                TempData["CepInvalido"] = "Please insert a cep for creating a lan event";
+                                return RedirectToAction("Create", "Evento", new { GrupoId = idgrupo });
+                            }
+                        }
+                        else
+                        {
+                            if (Validacoes.VerificarValidadeDoCep(e.Cep) == false)
+                            {
+                                TempData["CepInvalido"] = "Invalid Zip-Code!";
+                                return RedirectToAction("Create", "Evento", new { GrupoId = idgrupo });
+                            }
                         }
                         model2.Create(e, idgrupo);                                   //Cria o evento
+                        
                     }
                 }
                 return RedirectToAction("Index", "Grupo", new { GrupoId = idgrupo });
@@ -194,16 +206,27 @@ namespace DisciplineTeam.Area52.Web.Controllers
             {
                 e.IdGrupo = int.Parse(Request.QueryString[0]);
                 e.IdEvento = int.Parse(Request.QueryString[1]);
-                if (Validacoes.VerificarValidadeDoCep(e.Cep) == false)
+                if (e.Cep == null)
                 {
-                    TempData["CepInvalido"] = "Invalid Zip-Code!";
-                    return RedirectToAction("EditEvento", "Evento", new { GrupoId = e.IdGrupo, EventoId = e.IdEvento, e });
+                    if (e.Tipo == 2)
+                    {
+                        TempData["CepInvalido"] = "Please insert a cep for creating a lan event";
+                        return RedirectToAction("EditEvento", "Evento", new { GrupoId = e.IdGrupo, EventoId = e.IdEvento });
+                    }
+                }
+                else
+                {
+                    if (Validacoes.VerificarValidadeDoCep(e.Cep) == false)
+                    {
+                        TempData["CepInvalido"] = "Invalid Zip-Code!";
+                        return RedirectToAction("EditEvento", "Evento", new { GrupoId = e.IdGrupo, EventoId = e.IdEvento });
+                    }
                 }
                 using (EventoModel model = new EventoModel())
                 {
                     model.EditInfoEvento(e);
                 }
-                return RedirectToAction("Index", "Evento", new { GrupoId = e.IdGrupo, EventoId = e.IdEvento, e });
+                return RedirectToAction("Index", "Evento", new { GrupoId = e.IdGrupo, EventoId = e.IdEvento});
             }
             catch (Exception ex)
             {

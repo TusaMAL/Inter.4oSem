@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <!-- Teste -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Nosso CSS -->
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="~/Content/fileinput.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <!-- the main fileinput plugin file -->
+    <link rel="icon" href="~/img/icon.png" />
+</head>
+<body>
+    <!--        Começo NavBAR       -->
+    <nav class="navbar navbar-default navbar-static-top fixed-nav-bar">
+        <div id="cor-fundo" class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button id="botao-menu" type="button" class="navbar-toggle collapsed efeito-fade-navbar" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span id="barrinha-menu" class="icon-bar"></span>
+                    <span id="barrinha-menu" class="icon-bar"></span>
+                    <span id="barrinha-menu" class="icon-bar"></span>
+                </button>
+                @if (ViewBag.StatusAdmin == 2)
+            {
+                    <a class="navbar-brand" href="#"><img id="logoarea52" class="img-responsive" src="~/img/area52.png" alt=""></a>
+                }
+                else
+                {
+                    <a class="navbar-brand" href="~/Usuario/Index"><img id="logoarea52" class="img-responsive" src="~/img/area52.png" alt=""></a>
+                }
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                @if (ViewBag.StatusAdmin == 2)
+                {
+                }
+                else
+                {
+                    <!--Form get pra fazer a busca no banco-->
+                    using (Html.BeginForm("Search", "Grupo", new { Search = "Find" }, FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("Find", "", new { @class = "form-control", @type = "text", @placeholder = "Search Groups", @required = "required", maxlength = "30" })
+                            <button id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search" type="submit">
+                                <i class="glyphicon glyphicon-search"></i><span>&nbsp;Search</span>
+                            </button>
+                        </div>
+                    }
+                }
+                <ul class="nav navbar-nav navbar-right">
+                    @if (ViewBag.StatusAdmin == 2)
+                    {
+                        <li class="cor-fonte efeito-fade-navbar"><a href="~/Usuario/Logout"><i class="glyphicon glyphicon-log-out cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Logout</span></a></li>
+                    }
+                    else
+                    {
+                        <li class="cor-fonte efeito-fade-navbar"><a href="~/Usuario/Index"><i class="glyphicon glyphicon-home cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Home</span></a></li>
+                        <li class="cor-fonte efeito-fade-navbar"><a href="~/Usuario/Edit"><i class="glyphicon glyphicon-cog cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Settings</span></a></li>
+                        <!--<li class="cor-fonte efeito-fade-navbar"><a href="#"><i class="glyphicon glyphicon-ok cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Requests</span></a></li>-->
+                        <li class="cor-fonte efeito-fade-navbar"><a href="~/Usuario/Logout"><i class="glyphicon glyphicon-log-out cor-fonte-sem-efeito"></i> <span class="cor-fonte-sem-efeito">Logout</span></a></li>
+                    }
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!--    FimNavBAR    -->
+    <!--Div's pra fazer o footer ficar sempre embaixo-->
+    <div id="wrap">
+        <div class="container col-lg-12 col-md-12 col-sm-12">
+            @RenderBody()
+        </div>
+    </div>
+    <!--./Div's pra fazer o footer ficar sempre embaixo-->
+    <!--    Começo Footer   -->
+    <div id="footer">
+        <!-- usado pra deixar a coluna para fixar o footer do tamanho da tela, se não usar as 3 colunas o navegador vai usar o
+            padrão do container e dar uma encolhida no footer-->
+        <div class="container col-lg-12 col-sm-12 col-md-12">
+            <!-- adiciona o separador-->
+            <hr id="borda-footer" />
+            <ul class="nav nav-pills nav-justified">
+                <li><a id="cor-fonte-menu" class="" href="#">© 2017 Disciplina Team</a></li>
+                @*<li><a id="cor-fonte-menu" href="#">Terms of Service</a></li>
+                    <li><a id="cor-fonte-menu" href="#">Privacy</a></li>*@
+            </ul>
+            <div id="push"></div>
+        </div><!-- /.col-lg-12 -->
+    </div><!--    fim Footer    -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/fileinput.min.js"></script>
+    @*<script>
+        $("#input-1").fileinput({ 'showUpload': false, 'previewFileType': 'any' }); //Tira o botão de upload do id #input-1
+    </script>*@
+    <!--Credits to https://github.com/1000hz/bootstrap-validator -->
+    <script src="~/Scripts/validator.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DisciplineTeam.Area52.Web.Models.Jogo>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-offset-2 col-lg-8 col-sm-12 col-md-12 col-lg-offset-2">
+    <div id="cor-borda" class="panel panel-default">
+        <div id="cor-fundo-header" class="panel-heading no-border">
+            <a id="cor-fonte"><span class="glyphicon glyphicon-plus cor-fonte-sem-efeito">&nbsp;</span><span class="head-amigrups">Add a game</span></a>
+        </div>
+        <div class="panel-body col-sm-12 col-xs-12 col-md-12 col-lg-12">
+            @if (TempData["SucessoImg"] != null)
+            {
+            <div class="alert alert-success text-center" role="alert">
+                <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                <span class="sr-only">Success:</span>
+                @TempData["SucessoImg"]
+            </div>
+            }
+            <table class="table-hover col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                <tr>
+                    <td class="text-center fonte-menu-jogo">Game Pic: </td>
+                    <td class="text-center fonte-menu-jogo">Name: </td>
+                    <td class="text-center fonte-menu-jogo">Game Type: </td>
+                </tr>
+                <tr></tr>
+                
+                @foreach (var e in Model)
+                {
+                    <tr id="cor-borda" class="table-bordered">
+                        <td class="col-lg-2 col-md-2 col-sm-4  col-xs-4  text-center"><img style="border: 1px solid #000000;" class="img-responsive img-circle" src="@e.Imagem" /></td>
+                        <td class="text-center vertical-align fonte-menu-jogo">@e.Nome</td>
+                        <td class="text-center vertical-align fonte-menu-jogo">@e.Descricao</td>
+                        <td>
+                            <a href="~/Jogo/EditJogo/?JogoId=@e.IdJogo" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search">
+                                <p class="text-center vertical-align fonte-menu-jogo"><span id="menu-toggle" class="glyphicon glyphicon-edit"></span>&nbsp;Edit</p> @*Mudar Status para 1*@
+                            </a>
+                        </td>
+                    </tr>
+                }
+                
+            </table>
+        </div>
+        <div class="row text-center" style="padding-bottom: 20px;">
+            <a href="../Jogo/Create" id="cor-fonte" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add New Game</a>
+        <br/>
+        </div>
+    </div>
+</div>

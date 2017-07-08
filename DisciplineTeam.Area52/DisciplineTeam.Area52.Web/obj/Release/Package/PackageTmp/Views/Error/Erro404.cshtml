@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Erro404";
+    Layout = "~/Views/Shared/LayoutError.cshtml";
+}
+@if (ViewBag.StatusAdmin == 2)
+{
+    <div id="cor-borda" class="panel panel-default text-center">
+        <h1>You don't have access to this page!</h1>
+        <p>For using this page please logout your admin account first!</p>
+        <p><a id="cor-fonte" class="btn cor-fonte efeito-fade-navbar" href="~/Jogo/Index" role="button">Back to Games Index</a></p>
+    </div>
+}
+else
+{
+    <div id="cor-borda" class="panel panel-default text-center">
+        <h1>Error 404, not found</h1>
+        <p>The page that you are trying to access doesn't exist or has invalid parameters</p>
+        <p><a id="cor-fonte" class="btn cor-fonte efeito-fade-navbar" href="~/Usuario/Index" role="button">Back to Home</a></p>
+    </div>
+}
+

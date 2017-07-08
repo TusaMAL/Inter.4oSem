@@ -1,0 +1,79 @@
+﻿@model DisciplineTeam.Area52.Web.Models.Usuario
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+<!--Começo Menu Login-->
+<!--Colunas lg 4/12 md 6/12 sm 6/12-->
+<div class="container col-lg-4 col-md-4 col-sm-4 thumbnail">
+    <h3 class="text-center">Create a new Account</h3>
+    <hr id="borda-footer" />
+    <div class="col-lg-12">
+        <!-- Mensagem de erro-->
+        @if (ViewBag.Erro != null)
+        {
+            <div class="alert alert-danger text-center" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                @ViewBag.Erro
+            </div>
+        }
+        <!--começo form auto validador usando o validator.js obs: esse script está declarado só no _LayoutIndex.cshtml no rodapé da pagina-->
+        <form data-toggle="validator" role="form" action="~/Usuario/Create" method="POST">
+            <!-- classe has-feedback informa os campos que não estão preenchidos corretamente-->
+            <div class="form-group has-feedback">
+                <label class="control-label">Name: </label>
+                <!-- Textbox criado pelo razor-->
+                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", @type = "text", @placeholder = "Name", @required="required", maxlength="50"})
+                <!--Mostra os glphicon conforme a ação-->
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <!-- mensagem de validação do razor-->
+                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Nome)</div>
+            </div>
+            <div class="form-group has-feedback">
+                <label class="control-label">Email: </label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "email", @placeholder = "Email", @required = "required", maxlength="60" })
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Email)</div>
+
+                @*<input type="email" name="Email" class="form-control" />*@
+            </div>
+                <label for="inputPassword" class="control-label">Password</label>
+                <!-- cria uma linha para que os campos fiquem na mesma-->
+                <div class="row">
+                    <div class="form-group col-sm-6 has-feedback">
+                        @Html.PasswordFor(m => m.Senha, new { @id = "inputPassword", @class = "form-control", @minlength = "6", @placeholder="Password", @required = "required", maxlength="20" })
+                        <span class="glyphicon form-control-feedback" aria-hidden="true" style="padding-right: 30px;"></span>
+                        <div class="help-block">Minimum of 6 characters</div>
+                    </div>
+                    <div class="form-group col-sm-6 has-feedback">
+                        <!-- comparação de senhas pelo id="inputPassword" com a div acima, talvez não funcione em browsers antigos-->
+                        <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Passwords must match" placeholder="Confirm" required maxlength="20" />
+                        <span class="glyphicon form-control-feedback" aria-hidden="true" style="padding-right: 30px;"></span>
+                        <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Senha)</div>
+                    </div>
+                </div>
+            <div class="form-group has-feedback">
+                <label class="control-label">Nick: </label>
+                @Html.TextBoxFor(m => m.Nick, new { @class = "form-control", @type = "text", @placeholder = "Nick", @required = "required", maxlength = "20" })
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Nick)</div>
+            </div>
+            <div class="form-group has-feedback">
+                <label class="control-label">Date of Birth: </label>
+                @Html.TextBoxFor(m => m.Datanasc, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control date", @placeholder = "Date of Birth", @required = "required", min="1900-01-01", max="2017-12-31"})
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors">@Html.ValidationMessageFor(m => m.Datanasc)</div>
+            </div>
+            <div class="form-group text-center">
+                <div class="form-group col-xs-6">
+                    <button id="cor-fonte" type="submit" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-check"></span>&nbsp; Sign Up</button>
+                </div>
+                <div class="form-group col-xs-6">
+                    <a id="cor-fonte" href="/Usuario/Login" class="btn cor-fonte efeito-fade-navbar borda-botao-search"><span class="glyphicon glyphicon-remove"></span>&nbsp; Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div><!--./col-lg-4 col-md-6 col-sm-6-->
+<!--Fim Coluna login-->
